@@ -13,7 +13,7 @@ services:
     image: server_projectx_image
     #Mapeja la carpeta del projecte a la carpeta /var/www/html. Així si feu canvis al projecte, es veuran reflectits al contenidor
     volumes:
-      - ../app:/var/www/html
+      - .:/var/www/html
     #Xarxa a la que pertany el contenidor
     networks:
       - network_project
