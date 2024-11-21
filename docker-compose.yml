@@ -1,7 +1,7 @@
 services:
   php-apache:
     #Nom del contenidor
-    container_name: server_projectX_container
+    container_name: server_totmaquina_container
     #Mapeig de ports
     ports:
       - "8080:80"
@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Build/server/Dockerfile
     #Nom de la imatge que crearà. En el cas que no hi hagués el --build, buscaria la imatge a local o DockerHub
-    image: server_projectx_image
+    image: server_totmaquina_image
     #Mapeja la carpeta del projecte a la carpeta /var/www/html. Així si feu canvis al projecte, es veuran reflectits al contenidor
     volumes:
       - .:/var/www/html
@@ -21,8 +21,8 @@ services:
     depends_on:
       - mariadb
   mariadb:
-    #Nom del contenidor de la bdd, útil perquè el server_projectX_container pugui connectar-se a la bdd
-    container_name: mariadb_projectX_container
+    #Nom del contenidor de la bdd, útil perquè el server_totmaquina_container pugui connectar-se a la bdd
+    container_name: mariadb_totmaquina_container
     #Mapeig de ports
     ports:
       - "3306:3306"
@@ -31,11 +31,11 @@ services:
       context: .
       dockerfile: Build/mariadb/Dockerfile
     #Nom de la imatge que crearà. En el cas que no hi hagués el build, buscaria la imatge a local o DockerHub
-    image: mariadb_projectx_image
+    image: mariadb_totmaquina_image
     #Variables d'entorn per la bdd.
     environment:
       MYSQL_ROOT_PASSWORD: 12345
-      MYSQL_DATABASE: dbname
+      MYSQL_DATABASE: totmaquina
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassw0rd
     # La base de dades es crea amb format utf8mb4
@@ -48,7 +48,7 @@ services:
       - network_project
   phpmyadmin:
     #Nom del contenidor de phpmyadmin
-    container_name: phpmyadmin_projectx_container
+    container_name: phpmyadmin_totmaquina_container
     #Mapeig de ports
     ports:
       - "8000:80"
