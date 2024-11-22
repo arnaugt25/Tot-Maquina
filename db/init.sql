@@ -29,7 +29,7 @@ CREATE TABLE Machine (
 
 -- Tabla para las Maintenance
 CREATE TABLE Maintenance (
-    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    maintenance_id INT AUTO_INCREMENT PRIMARY KEY,
     description TEXT NOT NULL,
     type VARCHAR(100),
     assigned_date DATE,
@@ -46,10 +46,10 @@ CREATE TABLE Notification (
     next_maintenance TEXT,
     machine_id INT,
     user_id INT,
-    task_id INT,
+    maintenance_id INT,
     FOREIGN KEY (machine_id) REFERENCES Machine(machine_id),
     FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (task_id) REFERENCES Maintenance(task_id)
+    FOREIGN KEY (maintenance_id) REFERENCES Maintenance(maintenance_id)
 );
 
 -- Tabla para la relación entre usuarios y máquinas
