@@ -38,11 +38,7 @@ $app->route("/hola/{id}", function ($request, $response) {
     return $response;
 });
 
-$app->route("/", function ($request, $response) {
-    $response->setBody(file_get_contents("../App/Views/index.php"));
-    return $response;
-});
-
+$app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 
 $app->execute();
