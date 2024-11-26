@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="bg-[#C1D1D8] text-gray-800">
   <!-- Header y Nav mejorados -->
@@ -35,20 +37,16 @@
         <!-- Enlaces de navegación -->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
-            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-house"></i> Inicio
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
-            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <a href="/list" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-desktop"></i> Maquinas
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
-            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
-            <i class="fa-solid fa-globe"></i> Mapa
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
-            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
-            <i class="fa-solid fa-address-card"></i> Sobre nosotros
+            <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
             <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
@@ -72,20 +70,24 @@
       </div>
 
       <!-- Menú móvil -->
+
+      <!-- Menú móvil -->
       <div class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            Inicio
+          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+          </a>
+          <a href="/list" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Máquinas
+          </a>
+          <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
           </a>
           <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            Máquinas
+            <i class="fa-solid fa-envelope"></i> Notificaciones
           </a>
-          <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            Mapa
-          </a>
-          
           <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-            + Añadir máquina
+            Admin panel
           </a>
         </div>
       </div>
@@ -162,9 +164,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Mapa -->
         <div class="bg-[#214969] text-white shadow-lg rounded-xl p-6 transform transition-all hover:scale-[1.02]">
-          <div class="h-64 bg-gradient-to-r from-[#132048] to-[#0C0C04] rounded-lg flex items-center justify-center">
-            <p class="text-white text-lg">Mapa con ubicación de máquinas</p>
-          </div>
+          <div id="map" class="h-64 rounded-lg"></div>
         </div>
 
         <!-- Botón Añadir -->
@@ -204,5 +204,20 @@
   </footer>
   <script src="/js/nav.js"></script>
   <script src="/js/slider.js"></script>
+  <script>
+    // Inicializar el mapa
+    var map = L.map('map').setView([41.3851, 2.1734], 13); // Coordenadas de Barcelona como ejemplo
+
+    // Añadir la capa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Ejemplo de marcador
+    L.marker([41.3851, 2.1734]).addTo(map)
+      .bindPopup('Máquina #1')
+      .openPopup();
+  </script>
 </body>
 </html>
