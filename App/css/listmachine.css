@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-blue-light: #C1D1D8;
+  --color-blue-1: #5DA6C3;
+  --color-blue-2: #054525;
+  --color-blue-3: #16334b;
+  --color-blue-4: #577788;
+  --color-blue-5: #478249;
+  --color-blue-6: #2D3F58;
+  --color-blue-7: #132048;
+  --color-blue-8: #0C0C04;
+  --color-blue-dark: #4E525A;
+}
+
+/* Clases personalizadas para los colores */
+.bg-custom-gradient {
+  background: linear-gradient(to right, var(--color-blue-3), var(--color-blue-6));
+}
+
+.hover-custom-blue:hover {
+  background-color: var(--color-blue-4);
+}
