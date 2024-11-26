@@ -28,7 +28,7 @@ $app->middleware([\App\Middleware\App::class, "execute"]);
 
 
 $app->route("/", "\App\Controllers\ctrlIndex:index");
-
+$app->route("/login", "\App\Controllers\ctrlLogin:login");
 
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
