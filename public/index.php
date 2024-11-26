@@ -29,6 +29,7 @@ $app->middleware([\App\Middleware\App::class, "execute"]);
 
 $app->route("/", "\App\Controllers\ctrlIndex:index");
 
+$app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
