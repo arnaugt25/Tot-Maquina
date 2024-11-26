@@ -27,18 +27,10 @@ $app = new \Emeset\Emeset($contenidor);
 $app->middleware([\App\Middleware\App::class, "execute"]);
 
 
-$app->route("ajax", function ($request, $response) {
-    $response->set("result", "ok");
-    return $response;
-});
-
-$app->route("/hola/{id}", function ($request, $response) {
-    $id = $request->getParam("id");
-    $response->setBody("Hola {$id}!");
-    return $response;
-});
-
 $app->route("/", "\App\Controllers\ctrlIndex:index");
+
+
+
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 
 $app->execute();
