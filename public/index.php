@@ -31,8 +31,9 @@ $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/login", "\App\Controllers\ctrlLogin:login");
 $app->route("/list", "\App\Controllers\ctrlListm:listm");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
-
+$app->route("/admin", "\App\Controllers\ctrlAdmin:index");
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 
 $app->execute();
+
