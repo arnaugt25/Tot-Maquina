@@ -30,6 +30,7 @@ $app->middleware([\App\Middleware\App::class, "execute"]);
 $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/login", "\App\Controllers\ctrlLogin:login");
 $app->route("/list", "\App\Controllers\ctrlListm:listm");
+$app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
