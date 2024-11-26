@@ -7,11 +7,11 @@
     <title>lista máquinas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/listmachine.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="bg-[#C1D1D8] text-gray-800">
-<header class="bg-[#0C0C04] text-white">
+  <header class="bg-[#0C0C04] text-white">
     <!-- Barra de navegación principal -->
     <nav class="container mx-auto px-6">
       <div class="flex items-center justify-between h-20">
@@ -59,48 +59,126 @@
       <!-- Menú móvil -->
       <div class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            Inicio
+          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+          </a>
+          <a href="/list" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Máquinas
+          </a>
+          <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
           </a>
           <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            Máquinas
+            <i class="fa-solid fa-envelope"></i> Notificaciones
           </a>
-          <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            Mapa
-          </a>
-          
           <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-            + Añadir máquina
+            Admin panel
           </a>
         </div>
       </div>
     </nav>
   </header>    <!-- Target -->
-    <div class="flex justify-center mt-4 ">
-        <div class="dark:bg-gray-800 w-80 min-w-[20rem] rounded overflow-hidden shadow-lg">
-            <img class="w-full" src="/uploads/ordenador.jpg" alt="Imge Maquina">
-            <div class="px-6 py-4">
-                <div class="text-white font-bold text-xl mb-2">Máquina 1</div>
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- Grid de tarjetas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tarjeta de máquina -->
+            <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
+                <!-- Imagen de la máquina -->
+                <div class="relative group">
+                    <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" 
+                         src="/uploads/ordenador.jpg" alt="Imagen Máquina">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-[#478249] to-[#3d7040] text-white px-4 py-1.5 m-3 rounded-full text-sm font-medium shadow-lg flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
+                        <span>Activa</span>
+                    </div>
+                </div>
+                
+                <!-- Contenido de la tarjeta -->
+                <div class="p-6">
+                    <h3 class="text-[#5DA6C3] font-bold text-xl mb-3 flex items-center space-x-2">
+                        <i class="fas fa-desktop text-lg"></i>
+                        <span>Máquina 1</span>
+                    </h3>
+                    
+                    <!-- Detalles de la máquina -->
+                    <div class="space-y-3 text-[#C1D1D8] mb-6">
+                        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                            <i class="fas fa-barcode text-[#5DA6C3]"></i>
+                            <span>SN: 123456789</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                            <i class="fas fa-calendar text-[#5DA6C3]"></i>
+                            <span>Instalada: 01/01/2024</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                            <i class="fas fa-tools text-[#5DA6C3]"></i>
+                            <span>Último mantenimiento: 15/03/2024</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de acción -->
+                    <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
+                        <a href="/maquina.php" 
+                           class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
+                            <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
+                            <span>Detalles</span>
+                        </a>
+                        <button class="text-[#5DA6C3] hover:text-white transition-colors duration-300 p-2 hover:bg-[#1a3850]/50 rounded-lg">
+                            <i class="fas fa-qrcode text-2xl hover:scale-110 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="flex justify-center items-center">
-                <a href="/maquina.php" class="bg-[#577788] text-white py-2 px-4 rounded-lg hover:bg-[#132048] transition-colors duration-200 text-lg font-medium shadow-md hover:shadow-xl">
-                    Detalles
-                </a>
-            </div>
-        </div>
 
-        <div class="ml-56 dark:bg-gray-800 w-80 min-w-[20rem] rounded overflow-hidden shadow-lg">
-            <img class="w-full" src="/uploads/ordenador.jpg" alt="Imge Maquina">
-            <div class="px-6 py-4">
-                <div class="text-white font-bold text-xl mb-2">Máquina 1</div>
-            </div>
-            <div class="flex justify-center items-center">
-                <a href="/maquina.php" class="bg-[#577788] text-white py-2 px-4 rounded-lg hover:bg-[#132048] transition-colors duration-200 text-lg font-medium shadow-md hover:shadow-xl">
-                    Detalles
-                </a>
+            <!-- Segunda tarjeta -->
+            <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
+                <!-- Imagen de la máquina -->
+                <div class="relative group">
+                    <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" 
+                         src="/uploads/ordenador.jpg" alt="Imagen Máquina">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-[#478249] to-[#3d7040] text-white px-4 py-1.5 m-3 rounded-full text-sm font-medium shadow-lg flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
+                        <span>Activa</span>
+                    </div>
+                </div>
+                
+                <!-- Contenido de la tarjeta -->
+                <div class="p-6">
+                    <h3 class="text-[#5DA6C3] font-bold text-xl mb-3 flex items-center space-x-2">
+                        <i class="fas fa-desktop text-lg"></i>
+                        <span>Máquina 2</span>
+                    </h3>
+                    
+                    <!-- Detalles de la máquina -->
+                    <div class="space-y-3 text-[#C1D1D8] mb-6">
+                        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                            <i class="fas fa-barcode text-[#5DA6C3]"></i>
+                            <span>SN: 987654321</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                            <i class="fas fa-calendar text-[#5DA6C3]"></i>
+                            <span>Instalada: 15/01/2024</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                            <i class="fas fa-tools text-[#5DA6C3]"></i>
+                            <span>Último mantenimiento: 20/03/2024</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de acción -->
+                    <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
+                        <a href="/maquina.php" 
+                           class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
+                            <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
+                            <span>Detalles</span>
+                        </a>
+                        <button class="text-[#5DA6C3] hover:text-white transition-colors duration-300 p-2 hover:bg-[#1a3850]/50 rounded-lg">
+                            <i class="fas fa-qrcode text-2xl hover:scale-110 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        
     </div>
     <!-- Page navigation -->
     <div class="flex justify-center items-center mt-4">
@@ -125,5 +203,6 @@
         </nav>
     </div>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/js/nav.js"></script>
 </html>
