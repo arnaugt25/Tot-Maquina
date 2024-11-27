@@ -44,33 +44,33 @@
 
         <!-- Tabla de Incidencias -->
         <div class="overflow-x-auto bg-[#1B4B5F] rounded-lg shadow">
-            <table class="min-w-full" aria-label="Lista de incidencias">
-                <caption class="px-4 py-2 bg-[#2C2C2C] text-[#FFFFFF] text-left">
+            <table class="min-w-full text-center" aria-label="Lista de incidencias">
+                <caption class="px-4 py-2 bg-[#2C2C2C] text-[#FFFFFF] text-center">
                     <span class="absolute w-1 h-1 p-0 -m-1 overflow-hidden clip-path-[inset(50%)] whitespace-nowrap border-0 bg-[#2C2C2C] text-[#FFFFFF]">
                         Listado de incidencias registradas en el sistema
                     </span>
                 </caption>
                 <thead class="bg-[#2C2C2C]">
                     <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
-                            ID
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                            Nº Incidencia
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
-                            Máquina
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                            ID Máquina
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Descripción
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
-                            Estado
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                            Técnico
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
-                            Prioridad
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Fecha
                         </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[#FFFFFF] uppercase tracking-wider">
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                            Tipo
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Acciones
                         </th>
                     </tr>
@@ -78,30 +78,28 @@
                 <tbody class="bg-[#0A2A3A] divide-y divide-gray-700">
                     <!-- Ejemplo de una fila -->
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#FFFFFF]">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
                             #001
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#FFFFFF]">
-                            Torno CNC-01
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
+                            MAQ-123
                         </td>
-                        <td class="px-6 py-4 text-sm text-[#FFFFFF]">
+                        <td class="px-6 py-4 text-sm text-center text-[#FFFFFF]">
                             Error en el sistema de refrigeración
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
-                                En Proceso
-                            </span>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
+                            Juan Pérez
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
-                                Alta
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-[#FFFFFF]">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
                             2024-03-20
                         </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
+                                Urgente
+                            </span>
+                        </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div class="flex space-x-2">
+                            <div class="flex justify-center space-x-2">
                                 <button class="text-[#00B4FF] hover:text-[#FFFFFF] bg-[#022232] px-2 py-1 rounded" aria-label="Editar incidencia #001">
                                     Editar
                                 </button>
