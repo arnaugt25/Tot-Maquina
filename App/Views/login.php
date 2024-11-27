@@ -59,23 +59,9 @@
                         </div>
                     </div>
 
-                    <!-- Recordar contraseña y recuperación -->
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex items-center space-x-2">
-                            <input type="checkbox" id="remember" name="remember"
-                                class="w-4 h-4 rounded border-[#577788] bg-[#132048] text-[#5DA6C3] focus:ring-[#5DA6C3]/50">
-                            <label for="remember" class="text-[#C1D1D8]">
-                                Recordarme
-                            </label>
-                        </div>
-                        <a href="#" class="text-[#5DA6C3] hover:text-[#C1D1D8] transition-colors duration-300">
-                            ¿Olvidaste tu contraseña?
-                        </a>
-                    </div>
-
                     <!-- Botón de login -->
                     <button type="submit"
-                        class="w-full bg-[#051425] hover:bg-[#132048] text-[#C1D1D8] py-3 rounded-xl transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" onclick="window.location.href='/'">
+                        class="w-full bg-[#051425] hover:bg-[#132048] text-[#C1D1D8] py-3 rounded-xl transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                         Iniciar Sesión
                     </button>
                 </form>
