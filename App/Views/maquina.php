@@ -105,12 +105,23 @@
       </div>
     </div>
 
-    <!-- Mapa de ubicación -->
-    <div class="mt-8 bg-[#214969] p-4 rounded-lg shadow-lg">
-      <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Ubicación de la máquina</h2>
-      <div class="w-full h-96 bg-white/10 rounded-lg">
-        <!-- Aquí puedes integrar tu mapa (Google Maps, Leaflet, etc.) -->
-        <p class="text-center py-40 text-white/70">Integrar mapa aquí</p>
+    <!-- Mapa de ubicación y botones -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="md:col-span-2 bg-[#214969] p-4 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Ubicación de la máquina</h2>
+        <div class="w-full h-96 bg-white/10 rounded-lg">
+          <!-- Aquí puedes integrar tu mapa (Google Maps, Leaflet, etc.) -->
+          <p class="text-center py-40 text-white/70">Integrar mapa aquí</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-col items-center justify-center space-y-4">
+        <button class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
+          Añadir incidencia
+        </button>
+        <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
+          Añadir técnico
+        </button>
       </div>
     </div>
   </main>
