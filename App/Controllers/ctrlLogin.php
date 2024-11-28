@@ -35,7 +35,7 @@ class ctrlLogin {
         $response->setSession("user", null);
         $response->setSession("logged", false);
         $response->setSession("message", "Has cerrado sesión correctamente");
-        $response->redirect("Location: /login");
+        $response->redirect("Location: /");
         return $response;
     }
 }
