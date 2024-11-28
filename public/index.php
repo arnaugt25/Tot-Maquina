@@ -37,12 +37,13 @@ $app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
+$app->get("/editprofile", "\App\Controllers\ctrlProfile:showEditForm");
+$app->post("/profile/update", "\App\Controllers\ctrlProfile:processEditProfile");
+$app->route(Router::DEFAULT_ROUTE, "ctrlError");
+$app->route("/logout", "\App\Controllers\ctrlLogin:logout");
 $app->route("/notification", "\App\Controllers\ctrlNotification:index");
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
-
-
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->route("/listinci", "\App\Controllers\ctrlListinci:index");
 
 $app->execute();
-
