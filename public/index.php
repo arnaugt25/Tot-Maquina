@@ -34,8 +34,9 @@ $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
-
+$app->get("/editprofile", "\App\Controllers\ctrlProfile:showEditForm");
+$app->post("/profile/update", "\App\Controllers\ctrlProfile:processEditProfile");
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
+$app->route("/logout", "\App\Controllers\ctrlLogin:logout");
 
 $app->execute();
-

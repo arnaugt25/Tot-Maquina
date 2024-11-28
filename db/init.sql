@@ -5,20 +5,21 @@ USE totmaquina;
 -- Tabla para los usuarios
 CREATE TABLE User (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    surname VARCHAR(100) NOT NULL,
-    username VARCHAR(100) NOT NULL,
-    password VARCHAR(100) NOT NULL,
+    name VARCHAR(100),
+    surname VARCHAR(100),
+    username VARCHAR(100) UNIQUE,
+    email VARCHAR(100)UNIQUE,
+    password VARCHAR(255),
     profile_pic VARCHAR(100),
-    role VARCHAR(100) NOT NULL
+    role VARCHAR(100) 
 );
 
 -- Tabla para las máquinas
 CREATE TABLE Machine (
     machine_id INT AUTO_INCREMENT PRIMARY KEY,
-    model VARCHAR(100) NOT NULL,
-    created_by INT NOT NULL,
-    serial_number VARCHAR(100) NOT NULL,
+    model VARCHAR(100) ,
+    created_by INT ,
+    serial_number VARCHAR(100) ,
     installation_date DATE,
     coordinates VARCHAR(100),
     image VARCHAR(100),
@@ -30,7 +31,7 @@ CREATE TABLE Machine (
 -- Tabla para las Maintenance
 CREATE TABLE Maintenance (
     maintenance_id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT NOT NULL,
+    description TEXT ,
     type VARCHAR(100),
     assigned_date DATE,
     user_id INT,
@@ -42,7 +43,7 @@ CREATE TABLE Maintenance (
 -- Tabla para las Notifications
 CREATE TABLE Notification (
     notification_id INT AUTO_INCREMENT PRIMARY KEY,
-    frequency VARCHAR(100) NOT NULL,
+    frequency VARCHAR(100) ,
     next_maintenance TEXT,
     machine_id INT,
     user_id INT,
@@ -63,7 +64,7 @@ CREATE TABLE UserMachine (
 -- Tabla para los técnicos
 CREATE TABLE Technician (
     technician_id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT NOT NULL,
+    description TEXT ,
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );
