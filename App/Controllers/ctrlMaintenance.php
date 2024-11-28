@@ -22,6 +22,8 @@ class ctrlMaintenance {
             }
             
         } catch (\Exception $e) {
+            // Manejar el error
+            error_log("Error en mantenimientos: " . $e->getMessage());
             echo "Error: " . $e->getMessage();
         }
     }
