@@ -30,4 +30,13 @@ class ctrlLogin {
         
         return $response;
     }
+
+    public function logout($request, $response, $container) {
+        $response->setSession("user", null);
+        $response->setSession("logged", false);
+        $response->setSession("message", "Has cerrado sesión correctamente");
+        $response->redirect("Location: /");
+        return $response;
+    }
 }
+

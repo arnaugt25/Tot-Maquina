@@ -3,6 +3,7 @@
 namespace App\Models;
 
 class Notification extends DB {
+    // INSERT
     public function addNotification($data) {
         try {
             $query = "INSERT INTO Notification (notification_id, frequency, next_maintenance, machine_id, user_id, maintenance_id) 
@@ -29,4 +30,3 @@ class Notification extends DB {
             throw new \Exception("Error al crear la notificación");
         }
     }
-}

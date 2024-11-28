@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controllers;
 
 class ctrlNotification {
@@ -26,5 +27,3 @@ class ctrlNotification {
             echo "Error: " . $e->getMessage();
         }
     }
-}
-
