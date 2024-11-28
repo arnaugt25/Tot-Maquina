@@ -33,6 +33,7 @@ $app->route("/list", "\App\Controllers\ctrlListm:listm");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
+$app->route("/history", "\App\Controllers\ctrlHistory:history");
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 
