@@ -1,5 +1,8 @@
 <?php
 
+
+namespace App\Controllers;
+
 $notificationModel = new \App\Models\Notification();
 
 try {
@@ -29,3 +32,4 @@ try {
     error_log("Error en notificaciones: " . $e->getMessage());
     echo "Error: " . $e->getMessage();
 }
+

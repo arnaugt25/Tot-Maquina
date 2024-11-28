@@ -12,12 +12,14 @@ class ctrlMaintenance {
             
             // Obtener un mantenimiento específico
             $maintenance = $maintenanceModel->getMaintenanceById($maintenance_id);
-            
-            // Obtener mantenimientos por técnico
-            $technicianMaintenances = $maintenanceModel->getMaintenancesByUser($user_id);
-            
-            // Obtener mantenimientos por máquina
-            $machineMaintenances = $maintenanceModel->getMaintenancesByMachine($machine_id);
+               
+            // Usar los datos...
+            foreach($maintenanceDetails as $maintenance) {
+                echo "Mantenimiento: " . $maintenance['description'] . "<br>";
+                echo "Técnico: " . $maintenance['technician_name'] . " " . $maintenance['technician_surname'] . "<br>";
+                echo "Máquina: " . $maintenance['machine_name'] . "<br>";
+                echo "Fecha: " . $maintenance['formatted_date'] . "<br>";
+            }
             
         } catch (\Exception $e) {
             // Manejar el error

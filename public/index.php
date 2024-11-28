@@ -37,6 +37,8 @@ $app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
+$app->route("/notification", "\App\Controllers\ctrlNotification:index");
+$app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
