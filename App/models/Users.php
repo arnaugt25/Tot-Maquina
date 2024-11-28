@@ -48,7 +48,37 @@ class Users extends DB {
             throw new \Exception("Error al registrar el usuario");
         }
     }
+    public function editProfile($data) {
+        try {
+            $query = "UPDATE User SET name = :name, surname = :surname, email = :email";
+            $params = [
+                ':name' => $data['name'],
+                ':surname' => $data['surname'],
+                ':email' => $data['email'],
+                ':user_id' => $data['user_id']
+            ];
 
-    // ... otros métodos adaptados a la nueva estructura ...
+            if (!empty($data['new_password'])) {
+                $query .= ", password = :password";
+                $params[':password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+            }
+
+            $query .= " WHERE user_id = :user_id";
+
+            $stmt = $this->sql->prepare($query);
+            $result = $stmt->execute($params);
+
+            if (!$result) {
+                throw new \Exception("Error al actualizar el usuario");
+            }
+
+            return true;
+
+        } catch (\PDOException $e) {
+            error_log("Error actualizando usuario: " . $e->getMessage());
+            throw new \Exception("Error al actualizar el perfil");
+        }
+    }
+
 } 
 

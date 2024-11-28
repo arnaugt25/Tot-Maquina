@@ -37,6 +37,7 @@
             <i class="fa-solid fa-desktop"></i> Maquinas
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-address-card"></i> Perfil
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
@@ -45,9 +46,17 @@
             <i class="fa-solid fa-envelope"></i> Notificaciones
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
-            <a href="#" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-              Admin panel
-            </a>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
+                <a href="#" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    Admin panel
+                </a>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['user'])): ?>
+                <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                </a>
+            <?php endif; ?>
           </div>
         </div>  
         <!-- Botón menú móvil -->
@@ -92,17 +101,21 @@
                 <div class="flex items-center space-x-6">
                     <div class="relative">
                         <div class="w-32 h-32 rounded-full bg-[#132048] flex items-center justify-center">
-                            <i class="fas fa-user-circle text-6xl text-[#5DA6C3]"></i>
+                            <?php if (!empty($user['profile_image'])): ?>
+                                <img src="<?= htmlspecialchars($user['profile_image']) ?>" alt="Foto de perfil" class="w-32 h-32 rounded-full object-cover">
+                            <?php else: ?>
+                                <i class="fas fa-user-circle text-6xl text-[#5DA6C3]"></i>
+                            <?php endif; ?>
                         </div>
                         <button class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors">
                             <i class="fas fa-camera"></i>
                         </button>
                     </div>
                     <div class="flex-1">
-                        <h1 class="text-3xl font-bold text-[#C1D1D8] mb-2">Nombre Usuario</h1>
-                        <p class="text-[#577788]">Técnico de Mantenimiento</p>
+                        <h1 class="text-3xl font-bold text-[#C1D1D8] mb-2"><?= htmlspecialchars($user['name']) ?></h1>
+                        <p class="text-[#577788]"><?= htmlspecialchars($user['role']) ?></p>
                     </div>
-                    <button class="bg-[#478249] text-white px-6 py-3 rounded-lg hover:bg-[#2D3F58] transition-colors">
+                    <button class="bg-[#478249] text-white px-6 py-3 rounded-lg hover:bg-[#2D3F58] transition-colors" onclick="window.location.href='/editprofile'">
                         <i class="fas fa-edit mr-2"></i>Editar Perfil
                     </button>
                 </div>
@@ -116,15 +129,15 @@
                     <div class="space-y-4">
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-envelope w-6"></i>
-                            <span>usuario@totmaquina.com</span>
+                            <span><?= isset($user['email']) ? htmlspecialchars($user['email']) : 'No disponible' ?></span>
                         </div>
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-phone w-6"></i>
-                            <span>+34 600 000 000</span>
+                            <span><?= isset($user['phone']) ? htmlspecialchars($user['phone']) : 'No disponible' ?></span>
                         </div>
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-calendar w-6"></i>
-                            <span>Miembro desde: 01/01/2024</span>
+                            <span>Miembro desde: <?= isset($user['created_at']) ? date('d/m/Y', strtotime($user['created_at'])) : 'Fecha no disponible' ?></span>
                         </div>
                     </div>
                 </div>
@@ -134,11 +147,11 @@
                     <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6">Estadísticas</h2>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-[#132048] p-4 rounded-lg text-center">
-                            <div class="text-3xl font-bold text-[#5DA6C3]">12</div>
+                            <div class="text-3xl font-bold text-[#5DA6C3]"><?= isset($user['machines_count']) ? htmlspecialchars($user['machines_count']) : '0' ?></div>
                             <div class="text-[#C1D1D8]">Máquinas</div>
                         </div>
                         <div class="bg-[#132048] p-4 rounded-lg text-center">
-                            <div class="text-3xl font-bold text-[#5DA6C3]">45</div>
+                            <div class="text-3xl font-bold text-[#5DA6C3]"><?= isset($user['maintenance_count']) ? htmlspecialchars($user['maintenance_count']) : '0' ?></div>
                             <div class="text-[#C1D1D8]">Mantenimientos</div>
                         </div>
                     </div>
