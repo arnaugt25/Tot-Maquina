@@ -3,33 +3,27 @@
 
 namespace App\Controllers;
 
-$notificationModel = new \App\Models\Notification();
+class ctrlNotification {
+    public function index() {
+        $notificationModel = new \App\Models\Notification();
 
-try {
-    // Obtener todas las notificaciones
-    $allNotifications = $notificationModel->getAllNotifications();
-
-    // Obtener notificaciones de un usuario específico
-    $userNotifications = $notificationModel->getNotificationsByUser($user_id);
-
-    // Obtener una notificación específica
-    $notification = $notificationModel->getNotificationById($notification_id);
-
-    // Crear una nueva notificación
-    $notificationData = [
-        'notification_id' => null, 
-        'frequency' => $frequency,
-        'next_maintenance' => $next_maintenance,
-        'machine_id' => $machine_id,
-        'user_id' => $user_id,
-        'maintenance_id' => $maintenance_id
-    ];
-    
-    $newNotificationId = $notificationModel->addNotification($notificationData);
-
-} catch (\Exception $e) {
-    // Manejar el error
-    error_log("Error en notificaciones: " . $e->getMessage());
-    echo "Error: " . $e->getMessage();
-}
-
+        try {
+            // Obtener todos los mantenimientos
+            $allNotifications = $notificationModel->getNotificationDetails();
+            
+            // Obtener un mantenimiento específico
+            $notification = $notificationModel->getNotificationById($notification_id);
+               
+            // Usar los datos...
+            foreach($allNotifications as $notification) {
+                echo "Mantenimiento: " . $notification['maintenance_description'] . "<br>";
+                echo "Técnico: " . $notification['id_user'] . "<br>";
+                echo "Máquina: " . $notification['machine_id'] . "<br>";
+                echo "Fecha: " . $notification['formatted_next_maintenance'] . "<br>";
+                echo "Frecuencia: " . $notification['frequency'] . "<br>";
+            }
+            
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
