@@ -33,6 +33,7 @@ $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
 $app->route("/formInci", "\App\Controllers\ctrlFormInci:index");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
+$app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
