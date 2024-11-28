@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App;
 
 use Emeset\Container as EmesetContainer;
@@ -10,9 +9,22 @@ class Container extends EmesetContainer {
     public function __construct($config){
         parent::__construct($config);
         
-        $this["\App\Controllers\Privat"] = function ($c) {
-            // Aqui podem inicialitzar totes les dependències del controlador i passar-les com a paràmetre.
-            return new \App\Controllers\ctrlIndex($c);
+        // Definir la conexión a la base de datos
+        $this["db"] = function($c) {
+            $config = $c->get("config");
+            $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
+        };
+
+        $this["Users"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $users = new \App\Models\Users(
+                $config["db"]["user"],
+                $config["db"]["pass"],
+                $config["db"]["name"],
+                $config["db"]["host"]
+            );
+            return $users;
         };
     }
 }
