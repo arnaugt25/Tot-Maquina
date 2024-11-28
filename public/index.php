@@ -35,6 +35,8 @@ $app->route("/formInci", "\App\Controllers\ctrlFormInci:index");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
+$app->route("/notification", "\App\Controllers\ctrlNotification:index");
+$app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->route("/listinci", "\App\Controllers\ctrlListinci:index");
