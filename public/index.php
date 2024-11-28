@@ -37,6 +37,7 @@ $app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
+$app->post("/search", "\App\Controllers\ctrlSearch:search");
 
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
