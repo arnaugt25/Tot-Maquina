@@ -15,10 +15,11 @@ class ctrlMaintenance {
                
             // Usar los datos...
             foreach($maintenanceDetails as $maintenance) {
-                echo "Mantenimiento: " . $maintenance['description'] . "<br>";
-                echo "Técnico: " . $maintenance['technician_name'] . " " . $maintenance['technician_surname'] . "<br>";
-                echo "Máquina: " . $maintenance['machine_name'] . "<br>";
-                echo "Fecha: " . $maintenance['formatted_date'] . "<br>";
+                echo "Descripción: " . $maintenance['description'] . "<br>";
+                echo "Tipo: " . $maintenance['type'] . "<br>";
+                echo "Usuario: " . $maintenance['user_id'] . "<br>";
+                echo "Máquina: " . $maintenance['machine_id'] . "<br>";
+                echo "Fecha: " . $maintenance['assigned_date'] . "<br>";
             }
             
         } catch (\Exception $e) {
