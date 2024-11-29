@@ -185,7 +185,7 @@
 
         <!-- Botón Añadir -->
         <div class="flex justify-center items-center">
-          <a href="#" class="bg-[#2D3F58] text-white py-4 px-8 rounded-lg hover:bg-[#132048] transition-colors duration-200 text-lg font-medium shadow-md hover:shadow-xl">
+          <a href="/addmachine" class="bg-[#2D3F58] text-white py-4 px-8 rounded-lg hover:bg-[#132048] transition-colors duration-200 text-lg font-medium shadow-md hover:shadow-xl">
             + Añadir máquina
           </a>
         </div>
