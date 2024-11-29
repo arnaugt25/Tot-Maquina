@@ -36,14 +36,30 @@ class ctrlFormMachine {
                 'serial_number' => $serialnum,
                 'image' => $imageURL
             ];
-            
             $machineModel = $container->get("Machine");
             $machine = $machineModel->addMachine($machineData);
 
             $response->setSession('machine', $machine);
             
+            $response->redirect("Location: /addlist");
+
+        } catch (\Exception $e) {
+            $response->setSession("error", $e->getMessage());
             $response->redirect("Location: /list");
-             
+        }
+        return $response;
+    }
+
+    public function ctrlListMachine($request, $response, $container) {
+        try {
+            $machineModel = $container->get("Machine");
+            // var_dump($machineModel);
+            // die();
+            $machines = $machineModel->listMachine();
+            
+            $response->set('machines', $machines);
+            $response->setTemplate("machinelist.php");
+            
         } catch (\Exception $e) {
             $response->setSession("error", $e->getMessage());
             $response->redirect("Location: /list");

@@ -30,4 +30,19 @@ class Machine extends db {
         //     throw new \Exception("Error al añadir una máquina");
         // }
     }
+
+    public function listMachine(){
+     try {
+        $query = "SELECT * FROM Machine";
+        // var_dump($query);
+        // die();
+        $stmt = $this->sql->prepare($query);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch (\PDOException $e) {
+        error_log("Error getting machines: " . $e->getMessage());
+        throw new \Exception("Error al obtener las máquinas");
+    }
+}
 }
