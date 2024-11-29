@@ -14,43 +14,41 @@
             <!-- Título -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="titulo">
-                    Título
+                   Nº Incidencia
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                    id="titulo" 
-                    name="titulo" 
+                    id="incidencia"
+                    name="incidencia"
                     required>
-                    <option value="">Seleccione un tipo de incidencia</option>
-                    <option value="error_arranque">Error de arranque</option>
-                    <option value="ruido_anormal">Ruido anormal</option>
-                    <option value="sobrecalentamiento">Sobrecalentamiento</option>
-                    <option value="vibracion_excesiva">Vibración excesiva</option>
-                    <option value="fuga_aceite">Fuga de aceite</option>
-                    <option value="falla_electrica">Falla eléctrica</option>
-                    <option value="error_sensor">Error en sensores</option>
-                    <option value="desgaste_piezas">Desgaste de piezas</option>
-                    <option value="bajo_rendimiento">Bajo rendimiento</option>
-                    <option value="parada_emergencia">Parada de emergencia</option>
-                    <option value="otros">Otros</option>
                 </select>
             </div>
 
-            <!-- Campo adicional para "Otros" -->
-            <div class="mb-4 hidden" id="otroTitulo">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="titulo_otro">
-                    Especifique el título
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="responsable">
+                   ID Maquina
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                    id="titulo_otro" 
-                    name="titulo_otro" 
-                    type="text" 
-                    placeholder="Especifique el título de la incidencia">
+                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="id_maquina"
+                        name="id_maquina"
+                        required>
+                </select>
             </div>
-
+            <!-- Descripción -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">
+                    Descripción
+                </label>
+                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                          id="descripcion"
+                          name="descripcion"
+                          rows="4"
+                          placeholder="Describe el problema"
+                          required></textarea>
+            </div>
             <!-- Responsable -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="responsable">
-                    Responsable
+                    Tecnico
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                     id="responsable" 
@@ -58,15 +56,26 @@
                     required>
                     <option value="">Seleccione un técnico</option>
                     <?php foreach($tecnicos as $tecnico): ?>
-                        <option value="<?= $tecnico['id'] ?>"><?= $tecnico['nombre'] ?></option>
+                        <option value="<?= $tecnico['nombre'] ?>"><?= $tecnico['technician_id'] ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <!-- Fecha -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha">
+                    Fecha
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                       id="fecha"
+                       name="fecha"
+                       type="date"
+                       required>
             </div>
 
             <!-- Prioridad -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="prioridad">
-                    Prioridad
+                    Tipo
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                     id="prioridad" 
@@ -75,52 +84,10 @@
                     <option value="">Seleccione la prioridad</option>
                     <option value="baja">Baja</option>
                     <option value="mediana">Mediana</option>
-                    <option value="critica">Crítica</option>
+                    <option value="critica">Urgente</option>
                 </select>
             </div>
 
-              <!-- Fecha -->
-              <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="fecha">
-                    Fecha
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                    id="fecha" 
-                    name="fecha" 
-                    type="date"
-                    required>
-            </div>
-
-            <!-- Estado -->
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="estado">
-                    Estado de la Incidencia
-                </label>
-                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                    id="estado" 
-                    name="estado" 
-                    required>
-                    <option value="">Seleccione un estado</option>
-                    <option value="abierta">Abierta</option>
-                    <option value="en_tramite">En trámite</option>
-                    <option value="cerrada">Cerrada</option>
-                </select>
-            </div>
-
-            <!-- Descripción -->
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="descripcion">
-                    Descripción
-                </label>
-                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
-                    id="descripcion" 
-                    name="descripcion" 
-                    rows="4" 
-                    placeholder="Describe el problema"
-                    required></textarea>
-            </div>
-
-           
             <!-- Botón de envío -->
             <div class="flex justify-end">
                 <button class="px-4 py-2 text-sm bg-[#0a2b5e] text-white rounded-md hover:bg-[#081d40] focus:outline-none focus:ring-2 focus:ring-[#0a2b5e] focus:ring-opacity-50 transition duration-150 ease-in-out">

@@ -66,9 +66,11 @@
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Fecha
+                        <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                            Estado
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
-                            Tipo
+                            Prioridad
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Acciones
