@@ -35,6 +35,7 @@ $app->route("/formInci", "\App\Controllers\ctrlFormInci:index");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 $app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
+$app->route("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
 $app->post("/search", "\App\Controllers\ctrlSearch:search");
