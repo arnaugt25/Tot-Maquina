@@ -51,5 +51,7 @@ $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->route("/listinci", "\App\Controllers\ctrlListinci:index");
+$app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
+$app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
 
 $app->execute();
