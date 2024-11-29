@@ -23,31 +23,37 @@ class Users extends DB {
         }
     }
 
-    public function register($data) {
+    public function addUser($username, $password, $email, $profile_pic, $name, $surname, $role) {
         try {
-            $query = "INSERT INTO User (name, surname, username, password, role) 
-                      VALUES (:name, :surname, :username, :password, :role)";
+            $query = "INSERT INTO User (username, password, email, profile_pic, name, surname, role) 
+                      VALUES (:username, :password, :email, :profile_pic, :name, :surname, :role)";
             
             $stmt = $this->sql->prepare($query);
             $result = $stmt->execute([
-                ':name' => $data['name'],
-                ':surname' => $data['surname'],
-                ':username' => $data['username'],
-                ':password' => password_hash($data['password'], PASSWORD_DEFAULT),
-                ':role' => $data['role'] ?? 'user'
+                ':username' => $username,
+                ':password' => $password,
+                ':email' => $email,
+                ':profile_pic' => $profile_pic,
+                ':name' => $name,
+                ':surname' => $surname,
+                ':role' => $role
             ]);
 
             if (!$result) {
-                throw new \Exception("Error al registrar el usuario");
+                throw new \Exception("Error al insertar el usuario");
             }
             
             return $this->sql->lastInsertId();
             
         } catch (\PDOException $e) {
-            error_log("Error registering user: " . $e->getMessage());
-            throw new \Exception("Error al registrar el usuario");
+            // Si es un error de duplicado (username o email)
+            if ($e->getCode() == 23000) {
+                throw new \Exception("El nombre de usuario o email ya existe");
+            }
+            throw new \Exception("Error al crear el usuario: " . $e->getMessage());
         }
     }
+
     public function editProfile($data) {
         try {
             $query = "UPDATE User SET name = :name, surname = :surname, email = :email";
@@ -80,5 +86,30 @@ class Users extends DB {
         }
     }
 
-} 
+    // Get user by id
+    public function getUserById($id) {
+        try {
+            $query = "SELECT * FROM User WHERE user_id = :id";
+            $stmt = $this->sql->prepare($query);
+            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting user: " . $e->getMessage());
+            return null;
+        }
+    }
 
+    public function getAllUsers() {
+        try {
+            $query = "SELECT user_id as id, name, surname, role FROM User ORDER BY name ASC";
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting users: " . $e->getMessage());
+            return [];
+        }
+    }
+
+} 
