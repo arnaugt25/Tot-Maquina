@@ -110,27 +110,33 @@
         <div class="bg-[#132048] rounded-lg p-4 shadow-lg">
             <h4 class="text-[#5DA6C3] font-semibold mb-3">Máquinas Recientes</h4>
             <div class="space-y-2 text-white">
-                <div class="flex items-center justify-between p-2 hover:bg-[#214969] rounded transition-colors">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-10 h-10 rounded-full bg-[#214969] flex items-center justify-center">
-                            <i class="fas fa-desktop text-[#5DA6C3]"></i>
+                <?php if (!empty($machines)): ?>
+                    <?php foreach ($machines as $machine): ?>
+                        <div class="flex items-center justify-between p-2 hover:bg-[#214969] rounded transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-[#214969] flex items-center justify-center">
+                                    <i class="fas fa-desktop text-[#5DA6C3]"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium"><?= htmlspecialchars($machine['model']) ?></span>
+                                    <span class="text-sm text-green-400 block">SN: <?= htmlspecialchars($machine['serial_number']) ?></span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button onclick="window.location.href='/admin/editMachine/<?= $machine['machine_id'] ?>'" 
+                                        class="text-yellow-400 hover:text-yellow-300 transition-colors">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="if(confirm('¿Estás seguro de que deseas eliminar esta máquina?')) window.location.href='/admin/deleteMachine/<?= $machine['machine_id'] ?>'" 
+                                        class="text-red-400 hover:text-red-300 transition-colors">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <span class="font-medium">Máquina #001</span>
-                            <span class="text-sm text-green-400 block">Activa</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <button onclick="window.location.href='/admin/editMachine/1'" 
-                                class="text-yellow-400 hover:text-yellow-300 transition-colors">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button onclick="if(confirm('¿Estás seguro de que deseas eliminar esta máquina?')) window.location.href='/admin/deleteMachine/1'" 
-                                class="text-red-400 hover:text-red-300 transition-colors">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-white">No hay máquinas disponibles.</p>
+                <?php endif; ?>
             </div>
         </div>
       </div>
