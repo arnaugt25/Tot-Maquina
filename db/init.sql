@@ -25,7 +25,15 @@ CREATE TABLE machine (
     image VARCHAR(100),
     qr_code VARCHAR(100),
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
+
+-- Tabla para los técnicos
+CREATE TABLE technician (
+    technician_id INT AUTO_INCREMENT PRIMARY KEY,
+    description TEXT ,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Tabla para las Maintenance
@@ -36,8 +44,8 @@ CREATE TABLE maintenance (
     assigned_date DATE,
     user_id INT,
     machine_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (machine_id) REFERENCES Machine(machine_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
 );
 
 -- Tabla para las Notifications
@@ -48,23 +56,15 @@ CREATE TABLE notification (
     machine_id INT,
     user_id INT,
     maintenance_id INT,
-    FOREIGN KEY (machine_id) REFERENCES Machine(machine_id),
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (maintenance_id) REFERENCES Maintenance(maintenance_id)
+    FOREIGN KEY (machine_id) REFERENCES machine(machine_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (maintenance_id) REFERENCES maintenance(maintenance_id)
 );
 
 -- Tabla para la relación entre usuarios y máquinas
 CREATE TABLE usermachine (
     user_id INT,
     machine_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (machine_id) REFERENCES Machine(machine_id)
-);
-
--- Tabla para los técnicos
-CREATE TABLE technician (
-    technician_id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT ,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
 );
