@@ -27,3 +27,4 @@ class ctrlNotification {
             echo "Error: " . $e->getMessage();
         }
     }
+}
