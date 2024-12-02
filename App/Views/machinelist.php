@@ -146,15 +146,15 @@
                             <div class="space-y-3 text-[#C1D1D8] mb-6">
                                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                                     <i class="fas fa-barcode text-[#5DA6C3]"></i>
-                                    <span>SN:<?= htmlspecialchars($machine['serial_number']) ?></span>
+                                    <span>SN: <?= htmlspecialchars($machine['serial_number']) ?></span>
                                 </div>
                                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                                     <i class="fas fa-calendar text-[#5DA6C3]"></i>
-                                    <span>Instalada:<?= htmlspecialchars($machine['installation_date']) ?></span>
+                                    <span>Instalada: <?= htmlspecialchars($machine['installation_date']) ?></span>
                                 </div>
                                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                                     <i class="fas fa-tools text-[#5DA6C3]"></i>
-                                    <span>Fabricante:<?= htmlspecialchars($machine['created_by']) ?></span>
+                                    <span>Fabricante: <?= htmlspecialchars($machine['created_by']) ?></span>
                                 </div>
                             </div>
                             <!-- Botones de acción -->
@@ -163,6 +163,10 @@
                                     class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
                                     <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
                                     <span>Detalles</span>
+                                </a>
+                                <a href="/editmachine?id=<?= htmlspecialchars($machine['machine_id']) ?>"
+                                    class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
+                                    <span>Editar</span>
                                 </a>
                                 <button
                                     class="text-[#5DA6C3] hover:text-white transition-colors duration-300 p-2 hover:bg-[#1a3850]/50 rounded-lg"
