@@ -5,7 +5,7 @@ namespace App\Models;
 class Maintenance extends DB {
     public function addMaintenance($data) {
         try {
-            $query = "INSERT INTO Maintenance (maintenance_id, description, type, assigned_date, user_id, machine_id) 
+            $query = "INSERT INTO maintenance (maintenance_id, description, type, assigned_date, user_id, machine_id) 
                       VALUES (:maintenance_id, :description, :type, :assigned_date, :user_id, :machine_id)";
             
             $stmt = $this->sql->prepare($query);
@@ -36,10 +36,10 @@ class Maintenance extends DB {
             $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date,
                              u.name as technician_name,
                              mc.name as machine_name
-                      FROM Maintenance m
-                      JOIN User u ON m.user_id = u.user_id
-                      JOIN Machine mc ON m.machine_id = mc.machine_id
-                      ORDER BY m.assigned_date DESC";
+                    FROM maintenance m
+                    JOIN user u ON m.user_id = u.user_id
+                    JOIN machine mc ON m.machine_id = mc.machine_id
+                    ORDER BY m.assigned_date DESC";
             
             $stmt = $this->sql->prepare($query);
             $stmt->execute();
@@ -58,9 +58,9 @@ class Maintenance extends DB {
             $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date,
                              u.name as technician_name,
                              mc.name as machine_name
-                      FROM Maintenance m
-                      JOIN User u ON m.user_id = u.user_id
-                      JOIN Machine mc ON m.machine_id = mc.machine_id
+                      FROM maintenance m
+                      JOIN user u ON m.user_id = u.user_id
+                      JOIN machine mc ON m.machine_id = mc.machine_id
                       WHERE m.maintenance_id = :maintenance_id";
             
             $stmt = $this->sql->prepare($query);
@@ -79,8 +79,8 @@ class Maintenance extends DB {
         try {
             $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date,
                              mc.name as machine_name
-                      FROM Maintenance m
-                      JOIN Machine mc ON m.machine_id = mc.machine_id
+                      FROM maintenance m
+                      JOIN machine mc ON m.machine_id = mc.machine_id
                       WHERE m.user_id = :user_id
                       ORDER BY m.assigned_date DESC";
             
@@ -100,8 +100,8 @@ class Maintenance extends DB {
         try {
             $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date,
                              u.name as technician_name
-                      FROM Maintenance m
-                      JOIN User u ON m.user_id = u.user_id
+                      FROM maintenance m
+                      JOIN user u ON m.user_id = u.user_id
                       WHERE m.machine_id = :machine_id
                       ORDER BY m.assigned_date DESC";
             

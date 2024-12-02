@@ -28,14 +28,6 @@ CREATE TABLE machine (
     FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
--- Tabla para los técnicos
-CREATE TABLE technician (
-    technician_id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT ,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
-);
-
 -- Tabla para las Maintenance
 CREATE TABLE maintenance (
     maintenance_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -62,9 +54,17 @@ CREATE TABLE notification (
 );
 
 -- Tabla para la relación entre usuarios y máquinas
-CREATE TABLE usermachine (
+CREATE TABLE user_machine (
     user_id INT,
     machine_id INT,
     FOREIGN KEY (user_id) REFERENCES user(user_id),
     FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
+);
+
+-- Tabla para los técnicos
+CREATE TABLE technician (
+    technician_id INT AUTO_INCREMENT PRIMARY KEY,
+    description TEXT ,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );

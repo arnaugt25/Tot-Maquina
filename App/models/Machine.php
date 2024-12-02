@@ -7,7 +7,7 @@ class Machine extends db {
     public function addMachine($data){
         // try {
     
-            $query = "INSERT INTO Machine (model, created_by, serial_number, installation_date, image ) 
+            $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, image ) 
                        VALUES (:model, :created_by, :serial_number, :installation_date, :image)";
         //     var_dump($query);
         //    die();
@@ -33,7 +33,7 @@ class Machine extends db {
 
     public function listMachine(){
      try {
-        $query = "SELECT * FROM Machine";
+        $query = "SELECT * FROM machine";
         // var_dump($query);
         // die();
         $stmt = $this->sql->prepare($query);
@@ -48,7 +48,7 @@ class Machine extends db {
 
     public function getAllMachines() {
         try {
-            $query = "SELECT * FROM Machine ORDER BY machine_id DESC";
+            $query = "SELECT * FROM machine ORDER BY machine_id DESC";
             $stmt = $this->sql->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
