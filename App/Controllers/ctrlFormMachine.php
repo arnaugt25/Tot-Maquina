@@ -66,5 +66,28 @@ class ctrlFormMachine {
         }
         return $response;
     }
+    
 
+    // Para mostrar máquina 
+   public function machineId($request, $response, $container){
+
+      $response->setTemplate("maquina.php");
+
+        return $response;
+   }
+
+    // Buscar por id de la máquina
+    public function showMachine($request, $response, $container) {
+        $machineShow = $request->get(INPUT_GET, "machine_id");
+        
+        $machineModel = $container->get("Machine");
+        $machines = $machineModel->getMachineById($machineShow);
+        
+        $response->set('machine', $machines);
+        //var_dump($machines);
+        //die();
+
+        $response->setTemplate("maquina.php");
+        return $response;
+    }
 }

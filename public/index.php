@@ -31,7 +31,6 @@ $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
 $app->route("/formInci", "\App\Controllers\ctrlFormInci:index");
-$app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 $app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->get("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
@@ -51,5 +50,10 @@ $app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
 $app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
 $app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
+
+$app->route("/maquina_id", "\App\Controllers\ctrlFormMachine:machineId");
+$app->route("/id", "\App\Controllers\ctrlFormMachine:showMachine");
+
+
 
 $app->execute();
