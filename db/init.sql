@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS totmaquina;
 USE totmaquina;
 
 -- Tabla para los usuarios
-CREATE TABLE User (
+CREATE TABLE user (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     surname VARCHAR(100),
@@ -15,7 +15,7 @@ CREATE TABLE User (
 );
 
 -- Tabla para las máquinas
-CREATE TABLE Machine (
+CREATE TABLE machine (
     machine_id INT AUTO_INCREMENT PRIMARY KEY,
     model VARCHAR(100) ,
     created_by INT ,
@@ -25,46 +25,46 @@ CREATE TABLE Machine (
     image VARCHAR(100),
     qr_code VARCHAR(100),
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Tabla para las Maintenance
-CREATE TABLE Maintenance (
+CREATE TABLE maintenance (
     maintenance_id INT AUTO_INCREMENT PRIMARY KEY,
     description TEXT ,
     type VARCHAR(100),
     assigned_date DATE,
     user_id INT,
     machine_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (machine_id) REFERENCES Machine(machine_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
 );
 
 -- Tabla para las Notifications
-CREATE TABLE Notification (
+CREATE TABLE notification (
     notification_id INT AUTO_INCREMENT PRIMARY KEY,
     frequency VARCHAR(100) ,
     next_maintenance TEXT,
     machine_id INT,
     user_id INT,
     maintenance_id INT,
-    FOREIGN KEY (machine_id) REFERENCES Machine(machine_id),
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (maintenance_id) REFERENCES Maintenance(maintenance_id)
+    FOREIGN KEY (machine_id) REFERENCES machine(machine_id),
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (maintenance_id) REFERENCES maintenance(maintenance_id)
 );
 
 -- Tabla para la relación entre usuarios y máquinas
-CREATE TABLE UserMachine (
+CREATE TABLE user_machine (
     user_id INT,
     machine_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
-    FOREIGN KEY (machine_id) REFERENCES Machine(machine_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
 );
 
 -- Tabla para los técnicos
-CREATE TABLE Technician (
+CREATE TABLE technician (
     technician_id INT AUTO_INCREMENT PRIMARY KEY,
     description TEXT ,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );

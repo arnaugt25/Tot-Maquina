@@ -4,7 +4,7 @@
 namespace App\Controllers;
 
 class ctrlNotification {
-    public function index() {
+    public function ctrlNotification() {
         $notificationModel = new \App\Models\Notification();
 
         try {

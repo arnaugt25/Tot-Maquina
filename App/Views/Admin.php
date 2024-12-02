@@ -10,27 +10,89 @@
 </head>
 <body class="bg-[#C1D1D8]">
 
-  <!-- Header y Nav -->
-  <header class="bg-[#0C0C04] text-white sticky top-0 z-50 shadow-md">
+<header class="bg-[#0C0C04] text-white">
+    <!-- Barra de navegación principal -->
     <nav class="container mx-auto px-6">
       <div class="flex items-center justify-between h-20">
+        <!-- Logo y nombre -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-16">
-          <span class="text-2xl font-bold text-[#5DA6C3]">Tot Maquina</span>
+          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
+
+        <!-- Enlaces de navegación -->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
-            <a href="/" class="text-[#C1D1D8] hover:text-white transition-all">Inicio</a>
-            <a href="/list" class="text-[#C1D1D8] hover:text-white transition-all">Máquinas</a>
-            <a href="/profile" class="text-[#C1D1D8] hover:text-white transition-all">Perfil</a>
-            <a href="#" class="text-[#C1D1D8] hover:text-white transition-all">Notificaciones</a>
-            <a href="#" class="bg-[#214969] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#478249] transition-all">Admin Panel</a>
-            <a href="/logout" class="bg-[#d32f2f] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#b71c1c] transition-all">Cerrar Sesión</a>
+            <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Maquinas
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <?php if (isset($_SESSION['user'])): ?>
+            <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <a href="/admin" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="#" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    Admin panel
+                </a>
+            <?php endif; ?>
+            <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+            </a>
+            <?php else: ?>
+            <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+            </a>
+            <?php endif; ?>
           </div>
+        </div>  
+        <!-- Botón menú móvil -->
+        <div class="md:hidden">
+          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú móvil -->
+      <div class="hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+          </a>
+          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Máquinas
+          </a>
+          <?php if (isset($_SESSION['user'])): ?>
+          <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
+          </a>
+          <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+          <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            Admin panel
+          </a>
+          <?php endif; ?>
+          <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+          </a>
+          <?php else: ?>
+          <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+          </a>
+          <?php endif; ?>
         </div>
       </div>
     </nav>
   </header>
+
 
   <div class="container mx-auto px-6 py-8">
     <h1 class="text-3xl font-bold text-[#214969] mb-8">Panel de Administración</h1>
@@ -153,7 +215,8 @@
           </div>
           <div class="space-y-3">
             <button class="w-full bg-[#478249] text-white py-2 rounded-lg hover:bg-[#054525] transition-all">
-              Nueva Incidencia
+                <a href="/forminci" >
+                    Nueva Incidencia</a>
             </button>
           </div>
         </div>
