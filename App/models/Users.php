@@ -5,7 +5,7 @@ namespace App\Models;
 class Users extends DB {
     public function login($username, $password) {
         try {
-            $query = "SELECT user_id, name, surname, username, password, role FROM User WHERE username = :username";
+            $query = "SELECT user_id, name, surname, username, password, role FROM user WHERE username = :username";
             $stmt = $this->sql->prepare($query);
             $stmt->execute([':username' => $username]);
             $user = $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ class Users extends DB {
 
     public function addUser($username, $password, $email, $profile_pic, $name, $surname, $role) {
         try {
-            $query = "INSERT INTO User (username, password, email, profile_pic, name, surname, role) 
+            $query = "INSERT INTO user (username, password, email, profile_pic, name, surname, role) 
                       VALUES (:username, :password, :email, :profile_pic, :name, :surname, :role)";
             
             $stmt = $this->sql->prepare($query);
@@ -56,7 +56,7 @@ class Users extends DB {
 
     public function editProfile($data) {
         try {
-            $query = "UPDATE User SET name = :name, surname = :surname, email = :email";
+            $query = "UPDATE user SET name = :name, surname = :surname, email = :email";
             $params = [
                 ':name' => $data['name'],
                 ':surname' => $data['surname'],
@@ -89,7 +89,7 @@ class Users extends DB {
     // Get user by id
     public function getUserById($id) {
         try {
-            $query = "SELECT * FROM User WHERE user_id = :id";
+            $query = "SELECT * FROM user WHERE user_id = :id";
             $stmt = $this->sql->prepare($query);
             $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
             $stmt->execute();
@@ -102,7 +102,7 @@ class Users extends DB {
 
     public function getAllUsers() {
         try {
-            $query = "SELECT user_id as id, name, surname, role FROM User ORDER BY name ASC";
+            $query = "SELECT user_id as id, name, surname, role FROM user ORDER BY name ASC";
             $stmt = $this->sql->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);

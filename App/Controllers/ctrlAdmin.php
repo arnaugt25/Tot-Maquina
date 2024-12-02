@@ -9,10 +9,11 @@ class ctrlAdmin {
         $usersModel = $container->get("Users");
         $users = $usersModel->getAllUsers();
         
-        // Debug
-        error_log(print_r($users, true));
+        $machinesModel = $container->get("Machines");
+        $machines = $machinesModel->getAllMachines();
         
         $response->set("users", $users);
+        $response->set("machines", $machines);
         $response->setTemplate("Admin.php");
         
         return $response;

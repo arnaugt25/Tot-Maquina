@@ -30,30 +30,45 @@ $app->middleware([\App\Middleware\App::class, "execute"]);
 $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
+
 $app->route("/formInci", "\App\Controllers\ctrlFormInci:index");
+
+$app->route("/forminci", "\App\Controllers\ctrlFormInci:ctrlFormInci");
+$app->post ("/incidencias/crear", "\App\Controllers\ctrlListinci:create");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
+
 $app->route("/history", "\App\Controllers\ctrlHistory:history");
 $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->route("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
 $app->route("/addlist", "\App\Controllers\ctrlFormMachine:ctrlListMachine");
 $app->get("/editmachine", "\App\Controllers\ctrlFormMachine:editMachine");
 $app->post("/updatemachine", "\App\Controllers\ctrlFormMachine:updateMachine");
+
+
+$app->route("/history", "\App\Controllers\ctrlHistory:history");
+$app->get("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
+$app->post("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
+$app->route("/addlist", "\App\Controllers\ctrlFormMachine:ctrlListMachine");
+
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
 $app->post("/search", "\App\Controllers\ctrlSearch:search");
-
-
-
 $app->get("/editprofile", "\App\Controllers\ctrlProfile:showEditForm");
 $app->post("/profile/update", "\App\Controllers\ctrlProfile:processEditProfile");
-$app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->route("/logout", "\App\Controllers\ctrlLogin:logout");
 $app->route("/notification", "\App\Controllers\ctrlNotification:index");
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
-
-$app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->route("/listinci", "\App\Controllers\ctrlListinci:index");
 $app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
 $app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
+$app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
+$app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
 
+
+$app->route("/maquina_id", "\App\Controllers\ctrlFormMachine:machineId");
+$app->route("/id", "\App\Controllers\ctrlFormMachine:showMachine");
+
+
+$app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->execute();
+
