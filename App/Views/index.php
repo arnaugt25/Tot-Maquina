@@ -61,26 +61,31 @@
             <i class="fa-solid fa-desktop"></i> Maquinas
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-address-card"></i> Perfil
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
-            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
-            <i class="fa-solid fa-envelope"></i> Notificaciones
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            <a href="/admin" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    Admin panel
+                </a>
+            <?php endif; ?>
+            <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
-            <a href="#" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-              Admin panel
+            <?php else: ?>
+            <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
             </a>
+            <?php endif; ?>
           </div>
-        </div>
-
+        </div>  
         <!-- Botón menú móvil -->
         <div class="md:hidden">
-          <button 
-            type="button" aria-label="Abrir menú navegación" aria-expanded="false" aria-controls="mobile-menu"
-            class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
           </button>
@@ -93,24 +98,30 @@
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-house"></i> Inicio
           </a>
-          <a href="/list" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-desktop"></i> Máquinas
           </a>
+          <?php if (isset($_SESSION['user'])): ?>
           <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-address-card"></i> Perfil
           </a>
-          <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-envelope"></i> Notificaciones
-          </a>
-          <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+          <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+          <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
             Admin panel
           </a>
-          
+          <?php endif; ?>
+          <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+          </a>
+          <?php else: ?>
+          <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+          </a>
+          <?php endif; ?>
         </div>
       </div>
     </nav>
   </header>
-
   <!-- Contenido Principal -->
   <main class="container mx-auto my-12 px-6 max-w-7xl">
     <!-- Slider -->

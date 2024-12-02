@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS totmaquina;
 USE totmaquina;
 
 -- Tabla para los usuarios
-CREATE TABLE User (
+CREATE TABLE user (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     surname VARCHAR(100),
@@ -15,7 +15,7 @@ CREATE TABLE User (
 );
 
 -- Tabla para las máquinas
-CREATE TABLE Machine (
+CREATE TABLE machine (
     machine_id INT AUTO_INCREMENT PRIMARY KEY,
     model VARCHAR(100) ,
     created_by INT ,
@@ -29,7 +29,7 @@ CREATE TABLE Machine (
 );
 
 -- Tabla para las Maintenance
-CREATE TABLE Maintenance (
+CREATE TABLE maintenance (
     maintenance_id INT AUTO_INCREMENT PRIMARY KEY,
     description TEXT ,
     type VARCHAR(100),
@@ -41,7 +41,7 @@ CREATE TABLE Maintenance (
 );
 
 -- Tabla para las Notifications
-CREATE TABLE Notification (
+CREATE TABLE notification (
     notification_id INT AUTO_INCREMENT PRIMARY KEY,
     frequency VARCHAR(100) ,
     next_maintenance TEXT,
@@ -54,7 +54,7 @@ CREATE TABLE Notification (
 );
 
 -- Tabla para la relación entre usuarios y máquinas
-CREATE TABLE UserMachine (
+CREATE TABLE usermachine (
     user_id INT,
     machine_id INT,
     FOREIGN KEY (user_id) REFERENCES User(user_id),
@@ -62,7 +62,7 @@ CREATE TABLE UserMachine (
 );
 
 -- Tabla para los técnicos
-CREATE TABLE Technician (
+CREATE TABLE technician (
     technician_id INT AUTO_INCREMENT PRIMARY KEY,
     description TEXT ,
     user_id INT,
