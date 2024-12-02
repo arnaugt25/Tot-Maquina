@@ -11,96 +11,89 @@
 </head>
 
 <body class="bg-[#C1D1D8] text-gray-800">
-    <header class="bg-[#0C0C04] text-white">
-        <nav class="container mx-auto px-4 sm:px-6">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo y nombre -->
-                <div class="flex items-center space-x-2 sm:space-x-4">
-                    <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-16 sm:h-20 transition-transform hover:scale-105">
-                    <span class="text-lg sm:text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
-                </div>
+<header class="bg-[#0C0C04] text-white">
+    <!-- Barra de navegación principal -->
+    <nav class="container mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo y nombre -->
+        <div class="flex items-center space-x-4">
+          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
+        </div>
 
-                <!-- Enlaces de navegación (desktop) -->
-                <div class="hidden lg:block">
-                    <ul class="flex items-center space-x-4 xl:space-x-8">
-                        <li>
-                            <a href="/" class="relative group px-2 sm:px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300 text-sm sm:text-base">
-                                <i class="fa-solid fa-house"></i>
-                                <span class="hidden sm:inline">Inicio</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/addlist" class="relative group px-2 sm:px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300 text-sm sm:text-base">
-                                <i class="fa-solid fa-desktop"></i>
-                                <span class="hidden sm:inline">Maquinas</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/profile" class="relative group px-2 sm:px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300 text-sm sm:text-base">
-                                <i class="fa-solid fa-address-card"></i>
-                                <span class="hidden sm:inline">Perfil</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="relative group px-2 sm:px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300 text-sm sm:text-base">
-                                <i class="fa-solid fa-envelope"></i>
-                                <span class="hidden sm:inline">Notificaciones</span>
-                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="bg-[#214969] hover:bg-[#478249] text-white px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                                Admin panel
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <!-- Enlaces de navegación -->
+        <div class="hidden md:block">
+          <div class="flex items-center space-x-8">
+            <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Maquinas
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <?php if (isset($_SESSION['user'])): ?>
+            <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    Admin panel
+                </a>
+            <?php endif; ?>
+            <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+            </a>
+            <?php else: ?>
+            <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+            </a>
+            <?php endif; ?>
+          </div>
+        </div>  
+        <!-- Botón menú móvil -->
+        <div class="md:hidden">
+          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
 
-                <!-- Botón menú móvil -->
-                <div class="lg:hidden">
-                    <button type="button"
-                        id="mobile-menu-button"
-                        aria-label="Abrir menú de navegación"
-                        aria-expanded="false"
-                        aria-controls="mobile-menu"
-                        class="text-gray-300 hover:text-white focus:outline-none focus:text-white p-2">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+      <!-- Menú móvil -->
+      <div class="hidden md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+          </a>
+          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Máquinas
+          </a>
+          <?php if (isset($_SESSION['user'])): ?>
+          <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-address-card"></i> Perfil
+          </a>
+          <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+          <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            Admin panel
+          </a>
+          <?php endif; ?>
+          <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+          </a>
+          <?php else: ?>
+          <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+          </a>
+          <?php endif; ?>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-            <!-- Menú móvil -->
-            <div class="hidden lg:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-                        <i class="fa-solid fa-house w-6"></i>
-                        <span>Inicio</span>
-                    </a>
-                    <a href="/list" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-                        <i class="fa-solid fa-desktop w-6"></i>
-                        <span>Máquinas</span>
-                    </a>
-                    <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-                        <i class="fa-solid fa-address-card w-6"></i>
-                        <span>Perfil</span>
-                    </a>
-                    <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-                        <i class="fa-solid fa-envelope w-6"></i>
-                        <span>Notificaciones</span>
-                    </a>
-                    <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-                        <i class="fa-solid fa-lock w-6"></i>
-                        <span>Admin panel</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
 
     <!-- Target -->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
