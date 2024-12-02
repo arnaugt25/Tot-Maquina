@@ -36,6 +36,10 @@ class Container extends EmesetContainer {
             return $machine;
         };
 
+        
+        $this["Machines"] = function($container) {
+
+
         $this["Technician"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");
@@ -61,6 +65,7 @@ class Container extends EmesetContainer {
 
         };
          $this["Machines"] = function($container) {
+
             return new \App\Models\Machine(
                 $container->get("config")["db"]["user"],
                 $container->get("config")["db"]["pass"],
