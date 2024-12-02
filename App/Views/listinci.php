@@ -23,10 +23,9 @@
                 <div class="flex flex-wrap gap-2">
                     <select class="px-4 py-2 border rounded-lg bg-[#1B4B5F] text-[#FFFFFF]" aria-label="Filtrar por estado">
                         <optgroup label="Estado de la incidencia">
-                            <option value="" selected>Seleccionar estado</option>
-                            <option value="pendiente">Pendiente</option>
-                            <option value="en_proceso">En Proceso</option>
-                            <option value="resuelta">Resuelta</option>
+                            <option value="" selected>Seleccionar tipo</option>
+                            <option value="pendiente">Preventivo</option>
+                            <option value="en_proceso">Correctivo</option>
                         </optgroup>
                     </select>
                     <select class="px-4 py-2 border rounded-lg bg-[#1B4B5F] text-[#FFFFFF]" aria-label="Filtrar por prioridad">
@@ -67,10 +66,10 @@
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Fecha
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
-                            Estado
+                            Prioridad
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
-                            Prioridad
+                            Tipo
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             Acciones
@@ -95,9 +94,14 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
                             2024-03-20
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                        <td class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
                                 Urgente
+                            </span>
+                        </td>
+                        <td  class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
+                                 Preventivo
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
