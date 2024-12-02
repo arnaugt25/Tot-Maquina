@@ -60,6 +60,14 @@ class Container extends EmesetContainer {
             return $technician;
 
         };
+         $this["Machines"] = function($container) {
+            return new \App\Models\Machine(
+                $container->get("config")["db"]["user"],
+                $container->get("config")["db"]["pass"],
+                $container->get("config")["db"]["name"],
+                $container->get("config")["db"]["host"]
+            );
+        };
     }
 
 }
