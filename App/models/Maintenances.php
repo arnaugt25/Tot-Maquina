@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Maintenance extends DB {
+class Maintenances extends DB {
     public function addMaintenance($data) {
         try {
             $query = "INSERT INTO maintenance (maintenance_id, description, type, assigned_date, user_id, machine_id) 

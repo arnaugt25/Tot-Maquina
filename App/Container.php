@@ -36,13 +36,30 @@ class Container extends EmesetContainer {
             return $machine;
         };
 
-        $this["Machines"] = function($container) {
-            return new \App\Models\Machine(
-                $container->get("config")["db"]["user"],
-                $container->get("config")["db"]["pass"],
-                $container->get("config")["db"]["name"],
-                $container->get("config")["db"]["host"]
+        $this["Technician"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $technician = new \App\Models\Technician(
+                $config["db"]["user"],
+                $config["db"]["pass"],
+                $config["db"]["name"],
+                $config["db"]["host"]
             );
+            return $technician;
+        };
+
+        $this["Maintenance"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $technician = new \App\Models\Maintenances(
+                $config["db"]["user"],
+                $config["db"]["pass"],
+                $config["db"]["name"],
+                $config["db"]["host"]
+            );
+            return $technician;
+
         };
     }
+
 }

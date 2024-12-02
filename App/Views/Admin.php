@@ -215,7 +215,8 @@
           </div>
           <div class="space-y-3">
             <button class="w-full bg-[#478249] text-white py-2 rounded-lg hover:bg-[#054525] transition-all">
-              Nueva Incidencia
+                <a href="/forminci" >
+                    Nueva Incidencia</a>
             </button>
           </div>
         </div>
