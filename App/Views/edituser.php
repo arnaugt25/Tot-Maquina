@@ -33,7 +33,8 @@
                     <input type="text" 
                            id="name" 
                            name="name" 
-                           value="<?=($user['name']) ?>"  text-white" 
+                           value="<?=($user['name']) ?>"
+                           class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white" 
                            required>
                 </div>
 
@@ -73,8 +74,8 @@
                             name="role" 
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white" 
                             required>
-                        <option value="Administrador" <?= ($user['role'] === 'Administrador') ? 'selected' : '' ?>>Administrador</option>
-                        <option value="Usuario" <?= ($user['role'] === 'Usuario') ? 'selected' : '' ?>>Usuario</option>
+                        <option value="admin" <?= ($user['role'] === 'admin') ? 'selected' : '' ?>>Administrador</option>
+                        <option value="user" <?= ($user['role'] === 'user') ? 'selected' : '' ?>>Usuario</option>
                     </select>
                 </div>
 

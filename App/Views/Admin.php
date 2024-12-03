@@ -33,15 +33,15 @@
             </a>
             <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
-            <i class="fa-solid fa-address-card"></i> Perfil
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                <i class="fa-solid fa-address-card"></i> Perfil
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
-            <a href="/admin" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <?php if ($_SESSION['user']['role'] == 'admin'): ?>
-                <a href="#" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-                    Admin panel
+                <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                    <i class="fas fa-cog mr-2"></i>Admin panel
                 </a>
             <?php endif; ?>
+            
             <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
@@ -95,6 +95,19 @@
 
 
   <div class="container mx-auto px-6 py-8">
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline"><?= htmlspecialchars($_SESSION['success']) ?></span>
+            <?php unset($_SESSION['success']); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline"><?= htmlspecialchars($_SESSION['error']) ?></span>
+            <?php unset($_SESSION['error']); ?>
+        </div>
+    <?php endif; ?>
     <h1 class="text-3xl font-bold text-[#214969] mb-8">Panel de Administración</h1>
     
     <!-- Tarjetas de Gestión -->
@@ -137,8 +150,9 @@
                                         class="text-yellow-400 hover:text-yellow-300 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button onclick="if(confirm('¿Estás seguro de que deseas eliminar este usuario?')) window.location.href='/admin/deleteUser/<?= $user['id'] ?>'" 
-                                        class="text-red-400 hover:text-red-300 transition-colors">
+                                <button onclick="confirmDeleteUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name'], ENT_QUOTES) ?>')" 
+                                        class="text-red-400 hover:text-red-300 transition-colors"
+                                        title="Eliminar usuario">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -254,6 +268,12 @@
   </div>
 
 <script src="/js/nav.js"></script>
+<script>
+function confirmDeleteUser(userId, userName) {
+    if (confirm(`¿Estás seguro que deseas eliminar al usuario ${userName}? Esta acción no se puede deshacer.`)) {
+        window.location.href = `/admin/deleteuser/${userId}`;
+    }
+}
+</script>
 </body>
 </html>
-  

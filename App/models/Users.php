@@ -148,7 +148,12 @@ class Users extends DB {
 
     }
 
-    
+    public function deleteUser($userId) {
+        $query = "DELETE FROM user WHERE user_id = :user_id";
+        $stmt = $this->sql->prepare($query);
+        $result = $stmt->execute([':user_id' => $userId]); 
+        return true;
+    }
 
 } 
 
