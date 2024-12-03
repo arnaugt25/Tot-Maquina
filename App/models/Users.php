@@ -61,6 +61,7 @@ class Users extends DB {
                 ':name' => $data['name'],
                 ':surname' => $data['surname'],
                 ':email' => $data['email'],
+                
                 ':user_id' => $data['user_id']
             ];
 
@@ -88,16 +89,11 @@ class Users extends DB {
 
     // Get user by id
     public function getUserById($id) {
-        try {
             $query = "SELECT * FROM user WHERE user_id = :id";
             $stmt = $this->sql->prepare($query);
             $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
             $stmt->execute();
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting user: " . $e->getMessage());
-            return null;
-        }
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function getAllUsers() {

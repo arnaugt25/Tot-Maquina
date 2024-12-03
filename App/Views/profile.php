@@ -106,20 +106,24 @@
             <div class="bg-[#214969] rounded-xl shadow-lg p-8 mb-8">
                 <div class="flex items-center space-x-6">
                     <div class="relative">
-                        <div class="w-32 h-32 rounded-full bg-[#132048] flex items-center justify-center">
-                            <?php if (!empty($user['profile_image'])): ?>
-                                <img src="<?= htmlspecialchars($user['profile_image']) ?>" alt="Foto de perfil" class="w-32 h-32 rounded-full object-cover">
+                        <div class="w-32 h-32 rounded-full overflow-hidden bg-[#132048] flex items-center justify-center">
+                            <?php if (!empty($user['profile_pic'])): ?>
+                                <img src="/uploads/images/<?= ($user['profile_pic']) ?>" 
+                                     alt="Foto de perfil" 
+                                     class="w-full h-full object-cover">
                             <?php else: ?>
                                 <i class="fas fa-user-circle text-6xl text-[#5DA6C3]"></i>
                             <?php endif; ?>
                         </div>
-                        <button class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors">
+                        <a href="/editprofile" class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors">
                             <i class="fas fa-camera"></i>
-                        </button>
+                        </a>
                     </div>
                     <div class="flex-1">
-                        <h1 class="text-3xl font-bold text-[#C1D1D8] mb-2"><?= htmlspecialchars($user['name']) ?></h1>
-                        <p class="text-[#577788]"><?= htmlspecialchars($user['role']) ?></p>
+                        <h1 class="text-3xl font-bold text-[#C1D1D8] mb-2">
+                            <?= ($user['name'] . ' ' . ($user['surname'] ?? '')) ?>
+                        </h1>
+                        <p class="text-[#577788]"><?= ($user['role'] ?? 'Usuario') ?></p>
                     </div>
                     <button class="bg-[#478249] text-white px-6 py-3 rounded-lg hover:bg-[#2D3F58] transition-colors" onclick="window.location.href='/editprofile'">
                         <i class="fas fa-edit mr-2"></i>Editar Perfil
@@ -133,49 +137,70 @@
                 <div class="bg-[#214969] rounded-xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6">Información Personal</h2>
                     <div class="space-y-4">
+                        <!-- Email -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-envelope w-6"></i>
-                            <span><?= isset($user['email']) ? htmlspecialchars($user['email']) : 'No disponible' ?></span>
+                            <div class="flex flex-col">
+                                <span class="text-sm text-[#577788]">Correo Electrónico</span>
+                                <span class="text-[#C1D1D8]"><?= $user['email'] ?? 'No disponible' ?></span>
+                            </div>
                         </div>
+                        
+                        <!-- Nombre Completo -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
-                            <i class="fas fa-phone w-6"></i>
-                            <span><?= isset($user['phone']) ? htmlspecialchars($user['phone']) : 'No disponible' ?></span>
+                            <i class="fas fa-user w-6"></i>
+                            <div class="flex flex-col">
+                                <span class="text-sm text-[#577788]">Nombre Completo</span>
+                                <span class="text-[#C1D1D8]"><?= ($user['name'] ?? '') . ' ' . ($user['surname'] ?? '') ?></span>
+                            </div>
                         </div>
+
+                        <!-- Nombre de Usuario -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
-                            <i class="fas fa-calendar w-6"></i>
-                            <span>Miembro desde: <?= isset($user['created_at']) ? date('d/m/Y', strtotime($user['created_at'])) : 'Fecha no disponible' ?></span>
+                            <i class="fas fa-user-tag w-6"></i>
+                            <div class="flex flex-col">
+                                <span class="text-sm text-[#577788]">Nombre de Usuario</span>
+                                <span class="text-[#C1D1D8]"><?= $user['username'] ?? 'No disponible' ?></span>
+                            </div>
                         </div>
+
+                        <!-- Rol -->
+                        <div class="flex items-center space-x-4 text-[#C1D1D8]">
+                            <i class="fas fa-user-shield w-6"></i>
+                            <div class="flex flex-col">
+                                <span class="text-sm text-[#577788]">Rol</span>
+                                <span class="text-[#C1D1D8]"><?= $user['role'] ?? 'No disponible' ?></span>
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
 
-                <!-- Estadísticas -->
+                <!-- Estadísticas Mejoradas -->
                 <div class="bg-[#214969] rounded-xl shadow-lg p-8">
-                    <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6">Estadísticas</h2>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-[#132048] p-4 rounded-lg text-center">
-                            <div class="text-3xl font-bold text-[#5DA6C3]"><?= isset($user['machines_count']) ? htmlspecialchars($user['machines_count']) : '0' ?></div>
-                            <div class="text-[#C1D1D8]">Máquinas</div>
+                    <h2 class="text-2xl font-bold text-[#C1D1D8] mb-8">Estadísticas</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <!-- Máquinas Asignadas -->
+                        <div class="bg-[#132048] p-8 rounded-xl text-center hover:bg-[#1A2B3C] transition-colors duration-300 transform hover:scale-105">
+                            <div class="flex flex-col items-center justify-center h-full">
+                                <i class="fas fa-desktop text-4xl text-[#5DA6C3] mb-4"></i>
+                                <div class="text-lg text-[#577788] mb-3">Máquinas Asignadas</div>
+                                <div class="text-3xl font-bold text-[#C1D1D8]"><?= $user['machines_count'] ?? '0' ?></div>
+                            </div>
                         </div>
-                        <div class="bg-[#132048] p-4 rounded-lg text-center">
-                            <div class="text-3xl font-bold text-[#5DA6C3]"><?= isset($user['maintenance_count']) ? htmlspecialchars($user['maintenance_count']) : '0' ?></div>
-                            <div class="text-[#C1D1D8]">Mantenimientos</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Configuración -->
-            <div class="bg-[#214969] rounded-xl shadow-lg p-8 mt-8">
-                <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6">Configuración</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button class="flex items-center justify-between bg-[#132048] p-4 rounded-lg text-[#C1D1D8] hover:bg-[#2D3F58] transition-colors">
-                        <span><i class="fas fa-lock mr-2"></i>Cambiar Contraseña</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button class="flex items-center justify-between bg-[#132048] p-4 rounded-lg text-[#C1D1D8] hover:bg-[#2D3F58] transition-colors">
-                        <span><i class="fas fa-bell mr-2"></i>Notificaciones</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                        <!-- Mantenimientos Realizados -->
+                        <div class="bg-[#132048] p-8 rounded-xl text-center hover:bg-[#1A2B3C] transition-colors duration-300 transform hover:scale-105">
+                            <div class="flex flex-col items-center justify-center h-full">
+                                <i class="fas fa-tools text-4xl text-[#5DA6C3] mb-4"></i>
+                                <div class="text-lg text-[#577788] mb-3">Mantenimientos Realizados</div>
+                                <div class="text-3xl font-bold text-[#C1D1D8]"><?= $user['maintenance_count'] ?? '0' ?></div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
                 </div>
             </div>
         </div>
