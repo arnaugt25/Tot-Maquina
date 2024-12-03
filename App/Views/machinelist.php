@@ -36,15 +36,15 @@
             </a>
             <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
-            <i class="fa-solid fa-address-card"></i> Perfil
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                <i class="fa-solid fa-address-card"></i> Perfil
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
-            <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <?php if ($_SESSION['user']['role'] == 'admin'): ?>
                 <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-                    Admin panel
+                    <i class="fas fa-cog mr-2"></i>Admin panel
                 </a>
             <?php endif; ?>
+            
             <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
