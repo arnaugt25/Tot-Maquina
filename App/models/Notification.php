@@ -30,3 +30,4 @@ class Notification extends DB {
             throw new \Exception("Error al crear la notificación");
         }
     }
+}
