@@ -54,66 +54,62 @@ class ctrlFormMachine
     //MOSTRAR LA MAQUINA EN LISTA DE MAQUINAS CON LA INFO DE LA BDD
     public function ctrlListMachine($request, $response, $container)
     {
-        try {
-            $machineModel = $container->get("Machine");
-            // var_dump($machineModel);
-            // die();
-            $machines = $machineModel->listMachine();
+        // try {
+        $machineModel = $container->get("Machine");
+        // var_dump($machineModel);
+        // die();
+        $machines = $machineModel->listMachine();
 
-            $response->set('machines', $machines);
-            $response->setTemplate("machinelist.php");
-        } catch (\Exception $e) {
-            $response->setSession("error", $e->getMessage());
-            $response->redirect("Location: /list");
-        }
+        $response->set('machines', $machines);
+        $response->setTemplate("machinelist.php");
+        // } catch (\Exception $e) {
+        //     $response->setSession("error", $e->getMessage());
+        //     $response->redirect("Location: /addlist");
+        // }
         return $response;
     }
-    
+
 
 
     //MOSTRAR FORM EDITAR MAQUINA
     public function editMachine($request, $response, $container)
     {
-        try {
-            $machineId = $request->get(INPUT_GET, "id");
-            $machineModel = $container->get("Machine");
-            $machine = $machineModel->editMachine($machineId);
+        // try {
+        $machineId = $request->get(INPUT_GET, "machine_id");
+        // var_dump($machineId);
+        // die();
+        $machineModel = $container->get("Machine");
+        $machine = $machineModel->getMachineById($machineId);
 
-            if (!$machine) {
-                throw new \Exception("Máquina no encontrada");
-            }
 
-            $response->set('machine', $machine);
-            $response->setTemplate("editMachine.php");
-        } catch (\Exception $e) {
-            $response->setSession("error", $e->getMessage());
-            $response->redirect("Location: /list");
-        }
+        $response->set('machine', $machine);
+        $response->setTemplate("editMachine.php");
+        // } catch (\Exception $e) {
+        //     $response->setSession("error", $e->getMessage());
+        //     $response->redirect("Location: /addlist");
+        // }
         return $response;
     }
 
     //PARA EDITAR LA MAQUINA 
     public function editaMachine($request, $response, $container)
     {
-        try {
-            // TOMAR ID 
-            $machineId = $request->get(INPUT_GET, "machine_id");
-            // die();
-            $machineModel = $container->get("Machine");
-            $machine = $machineModel->editMachine($machineId);
+        // try {
+        // TOMAR ID 
+        $machineId = $request->get(INPUT_GET, "machine_id");
+        // die();
+        $machineModel = $container->get("Machine");
+        $machine = $machineModel->editMachine($machineId);
 
-            if (!$machine) {
-                throw new \Exception("Máquina no encontrada ");
-            }
 
-            $response->set('machine', $machine);
-            $response->setTemplate("editMachine.php");
-            return $response;
-        } catch (\Exception $e) {
-            $response->setSession("error", $e->getMessage());
-            $response->redirect("Location: /addlist");
-            return $response;
-        }
+        $response->set('machine', $machine);
+        $response->setTemplate("editMachine.php");
+        return $response;
+        // } catch (\Exception $e) {
+        //     $response->setSession("error", $e->getMessage());
+        //     $response->redirect("Location: /addlist");
+        //     return $response;
+        // }
     }
 
     //PARA HACER EL UPDATE EN LA BASE DE DATOS 
@@ -121,44 +117,44 @@ class ctrlFormMachine
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
         //$machine = $machineModel->editMachine($machineId);
-        
+
         $data = [
             'machine_id' => $machineId,
             'model' => $request->get(INPUT_POST, "model"),
             'created_by' => $request->get(INPUT_POST, "created_by"),
             'installation_date' => $request->get(INPUT_POST, "installation_date"),
             'serial_number' => $request->get(INPUT_POST, "serial_number"),
-            
         ];
 
         $result = $machineModel->editMachine($data);
-        
+
         $response->redirect("Location: /addlist");
         return $response;
-        
+
     }
     // Para mostrar máquina 
-   public function machineId($request, $response, $container){
+    public function machineId($request, $response, $container)
+    {
 
-      $response->setTemplate("maquina.php");
+        $response->setTemplate("maquina.php");
 
         return $response;
-   }
+    }
 
     // Buscar por id de la máquina
-    public function showMachine($request, $response, $container) {
+    public function showMachine($request, $response, $container)
+    {
         $machineShow = $request->get(INPUT_GET, "machine_id");
-        
+
         $machineModel = $container->get("Machine");
         $machines = $machineModel->getMachineById($machineShow);
-        
+
         $response->set('machine', $machines);
         //var_dump($machines);
         //die();
 
         $response->setTemplate("maquina.php");
         return $response;
-
     }
 
     //Eliminar máquina

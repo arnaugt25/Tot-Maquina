@@ -8,10 +8,7 @@ class Machine extends db
     public function addMachine($data)
     {
         // try {
-
-
-    
-            $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, image ) 
+        $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, image ) 
 
                        VALUES (:model, :created_by, :serial_number, :installation_date, :image)";
         //     var_dump($query);
@@ -38,24 +35,19 @@ class Machine extends db
 
     public function listMachine()
     {
-        try {
-            $query = "SELECT * FROM Machine";
+        // try {
+            $query = "SELECT * FROM machine";
             // var_dump($query);
             // die();
             $stmt = $this->sql->prepare($query);
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting machines: " . $e->getMessage());
-            throw new \Exception("Error al obtener las máquinas");
-        }
+        // } catch (\PDOException $e) {
+        //     error_log("Error getting machines: " . $e->getMessage());
+        //     throw new \Exception("Error al obtener las máquinas");
+        // }
     }
-
-
-
-
-
 
     public function editMachine($data)
     {
@@ -66,27 +58,27 @@ class Machine extends db
 
         // Si es un array, actualizar la máquina
         // try {
-            $query = "UPDATE Machine 
+        $query = "UPDATE machine 
                  SET model = :model, 
                      created_by = :created_by, 
                      serial_number = :serial_number, 
                      installation_date = :installation_date
                  WHERE machine_id = :machine_id";
 
-            $stmt = $this->sql->prepare($query);
-            $result = $stmt->execute([
-                ':machine_id' => $data['machine_id'],
-                ':model' => $data['model'],
-                ':created_by' => $data['created_by'],
-                ':serial_number' => $data['serial_number'],
-                ':installation_date' => $data['installation_date'],
-                
-            ]);
+        $stmt = $this->sql->prepare($query);
+        $result = $stmt->execute([
+            ':machine_id' => $data['machine_id'],
+            ':model' => $data['model'],
+            ':created_by' => $data['created_by'],
+            ':serial_number' => $data['serial_number'],
+            ':installation_date' => $data['installation_date'],
 
-            if (!$result) {
-                throw new \Exception("Error al actualizar la máquina");
-            }
-            return true;
+        ]);
+
+        if (!$result) {
+            throw new \Exception("Error al actualizar la máquina");
+        }
+        return true;
         // } catch (\PDOException $e) {
         //     error_log("Error updating machine: " . $e->getMessage());
         //     throw new \Exception("Error al actualizar la máquina");
@@ -94,7 +86,8 @@ class Machine extends db
     }
 
 
-    public function getByIdMachine($idmachine){
+    public function getByIdMachine($idmachine)
+    {
         try {
             $query = "SELECT * FROM Machine where machine_id = :machine_id";
             $stmt = $this->sql->prepare($query);
@@ -108,23 +101,24 @@ class Machine extends db
     }
 
 
-    // public function listMachine(){
-    //  try {
-    //     $query = "SELECT * FROM machine";
-    //     // var_dump($query);
-    //     // die();
-    //     $stmt = $this->sql->prepare($query);
-    //     $stmt->execute();
-        
-    //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    //  } catch (\PDOException $e) {
-    //     error_log("Error getting machines: " . $e->getMessage());
-    //     throw new \Exception("Error al obtener las máquinas");
-    //  }
+    // public function listMachine()
+    // {
+    //     try {
+    //         $query = "SELECT * FROM machine";
+    //         // var_dump($query);
+    //         // die();
+    //         $stmt = $this->sql->prepare($query);
+    //         $stmt->execute();
+
+    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    //     } catch (\PDOException $e) {
+    //         error_log("Error getting machines: " . $e->getMessage());
+    //         throw new \Exception("Error al obtener las máquinas");
+    //     }
     // }
 
-
-    public function getAllMachines() {
+    public function getAllMachines()
+    {
         try {
             $query = "SELECT * FROM machine ORDER BY machine_id DESC";
             $stmt = $this->sql->prepare($query);
@@ -136,10 +130,11 @@ class Machine extends db
         }
     }
 
+
     //Buscar máquina por ID
     public function getMachineById($machine_id) {
         try {
-            $query = "SELECT * FROM Machine WHERE machine_id = :machine_id";
+            $query = "SELECT * FROM machine WHERE machine_id = :machine_id";
             $stmt = $this->sql->prepare($query);
             $stmt->execute([':machine_id' => $machine_id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -155,7 +150,6 @@ class Machine extends db
        $stmt = $this->sql->prepare($query);
        $result = $stmt->execute([':machine_id' => $machine_id]);
        return true;
+   
     }
-
 }
-
