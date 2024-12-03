@@ -33,7 +33,8 @@
                     <input type="text" 
                            id="name" 
                            name="name" 
-                           value="<?=($user['name']) ?>"  text-white" 
+                           value="<?=($user['name']) ?>"
+                           class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white" 
                            required>
                 </div>
 
