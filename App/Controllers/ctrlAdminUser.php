@@ -35,37 +35,19 @@ class ctrlAdminUser {
     }
 
     public function formEditUser($request, $response, $container) {
-        try {
             // Obtener el ID del usuario de los parámetros de la URL
-            $userId = $request->getParam('id'); // Cambiado para obtener el parámetro de la URL
-            
-            if (!$userId) {
-                throw new \Exception("ID de usuario no proporcionado");
-            }
-            
+            $userId = $request->getParam('id'); // Cambiado para obtener el parámetro de la URL 
+
             // Obtener los datos del usuario
             $users = $container->get("Users");
             $user = $users->getUserById($userId);
-            
-            // Verificar si el usuario existe
-            if (!$user) {
-                throw new \Exception("Usuario no encontrado");
-            }
             
             // Pasar los datos del usuario a la vista
             $response->set("user", $user);
             $response->setTemplate("edituser.php");
             return $response;
             
-        } catch (\Exception $e) {
-            // Log del error
-            error_log("Error en formEditUser: " . $e->getMessage());
-            
-            // Pasar el mensaje de error a la vista de error
-            $response->set("error", "No se pudo cargar la información del usuario");
-            $response->setTemplate("error.php");
-            return $response;
-        }
+        
     }
 
     public function editUser($request, $response, $container) {
