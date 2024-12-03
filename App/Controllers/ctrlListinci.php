@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 class ctrlListinci {
 
     public function index($request, $response, $container){
@@ -12,18 +13,16 @@ class ctrlListinci {
         return $response;
     }
     public function create($request, $response, $container){
-        try{
-            $maintenanceModel = $container->get("Maintenance");
 
-            $hola = $request->get(INPUT_POST, "maquina");
-            print_r($hola);
-            die();
-            $maintenanceModel-> addMaintenance($_POST);
+        $hola = $_POST;
+        //var_dump($hola);
+        //die();
+
+            $maintenanceModel = $container->get("maintenance");
+
+            $maintenanceModel-> addMaintenance($hola);
 
 
-        }catch (\Exception $e){
-
-        }
 
     }
 }

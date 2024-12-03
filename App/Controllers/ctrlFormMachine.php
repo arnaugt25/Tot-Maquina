@@ -83,8 +83,7 @@ class ctrlFormMachine
     }
 
     //PARA HACER EL UPDATE EN LA BASE DE DATOS 
-    public function updateMachine($request, $response, $container)
-    {
+    public function updateMachine($request, $response, $container){
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
         //$machine = $machineModel->editMachine($machineId);
@@ -101,6 +100,7 @@ class ctrlFormMachine
 
         $response->redirect("Location: /addlist");
         return $response;
+
     }
 
     // Para mostrar máquina 
@@ -121,5 +121,13 @@ class ctrlFormMachine
         //die();
         $response->setTemplate("maquina.php");
         return $response;
+    }
+
+    //Eliminar máquina
+    public function deleteMachine($request, $response, $container) {
+        $machine_id = $request->getParam('id');
+        $machineModel = $container->get("Machine");
+        $result = $machineModel->deleteMachine($machine_id);
+        $response->redirect("Location: /list");
     }
 }
