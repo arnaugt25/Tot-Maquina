@@ -95,6 +95,19 @@
 
 
   <div class="container mx-auto px-6 py-8">
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline"><?= htmlspecialchars($_SESSION['success']) ?></span>
+            <?php unset($_SESSION['success']); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline"><?= htmlspecialchars($_SESSION['error']) ?></span>
+            <?php unset($_SESSION['error']); ?>
+        </div>
+    <?php endif; ?>
     <h1 class="text-3xl font-bold text-[#214969] mb-8">Panel de Administración</h1>
     
     <!-- Tarjetas de Gestión -->
@@ -137,8 +150,9 @@
                                         class="text-yellow-400 hover:text-yellow-300 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button onclick="if(confirm('¿Estás seguro de que deseas eliminar este usuario?')) window.location.href='/admin/deleteUser/<?= $user['id'] ?>'" 
-                                        class="text-red-400 hover:text-red-300 transition-colors">
+                                <button onclick="confirmDeleteUser(<?= $user['id'] ?>, '<?= htmlspecialchars($user['name'], ENT_QUOTES) ?>')" 
+                                        class="text-red-400 hover:text-red-300 transition-colors"
+                                        title="Eliminar usuario">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -254,6 +268,12 @@
   </div>
 
 <script src="/js/nav.js"></script>
+<script>
+function confirmDeleteUser(userId, userName) {
+    if (confirm(`¿Estás seguro que deseas eliminar al usuario ${userName}? Esta acción no se puede deshacer.`)) {
+        window.location.href = `/admin/deleteuser/${userId}`;
+    }
+}
+</script>
 </body>
 </html>
-  

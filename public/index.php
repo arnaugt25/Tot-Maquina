@@ -64,7 +64,7 @@ $app->get("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMa
 $app->post("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"]);
 $app->get("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "formEditUser"]);
 $app->post("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "editUser"]);
-        
+$app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "deleteUser"]);
 
 
 $app->route("/maquina_id", "\App\Controllers\ctrlFormMachine:machineId");

@@ -127,4 +127,14 @@ class ctrlAdminUser {
         
         return $response;
     }
+
+    public function deleteUser($request, $response, $container) {
+        $userId = $request->getParam('id');
+        $usersModel = $container->get("Users");
+        $result = $usersModel->deleteUser($userId);  
+        $_SESSION['success'] = "Usuario eliminado correctamente";
+        $response->redirect("Location: /admin");
+    
+        return $response;
+    }
 }	
