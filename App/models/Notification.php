@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-class Notification extends DB {
+class notification extends DB {
     // INSERT
-    public function addNotification($data) {
+    public function addNotification($data)
+    {
         try {
-            $query = "INSERT INTO Notification (notification_id, frequency, next_maintenance, machine_id, user_id, maintenance_id) 
+            $query = "INSERT INTO notification (notification_id, frequency, next_maintenance, machine_id, user_id, maintenance_id) 
                       VALUES (:notification_id, :frequency, :next_maintenance, :machine_id, :user_id, :maintenance_id)";
-            
+
             $stmt = $this->sql->prepare($query);
             $result = $stmt->execute([
                 ':notification_id' => $data['notification_id'],
@@ -22,12 +23,12 @@ class Notification extends DB {
             if (!$result) {
                 throw new \Exception("Error al crear la notificación");
             }
-            
+
             return $this->sql->lastInsertId();
-            
+
         } catch (\PDOException $e) {
             error_log("Error creating notification: " . $e->getMessage());
             throw new \Exception("Error al crear la notificación");
         }
     }
-}
+

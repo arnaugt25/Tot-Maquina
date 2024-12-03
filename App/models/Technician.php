@@ -1,11 +1,11 @@
 <?php
 namespace App\Models;
 
-class Technician extends DB {
+class technician extends DB {
     public function getallTechnician() {
         try {
 
-            $query = "SELECT t.*,u.username FROM Technician t left join User u on t.user_id = u.user_id";
+            $query = "SELECT t.*,u.username FROM technician t left join user u on t.user_id = u.user_id";
             $stmt = $this->sql->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
