@@ -40,15 +40,14 @@ $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 $app->route("/history", "\App\Controllers\ctrlHistory:history");
 // $app->route("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 // $app->route("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
-$app->route("/addlist", "\App\Controllers\ctrlFormMachine:ctrlListMachine");
-$app->route("/editmachine", "\App\Controllers\ctrlFormMachine:editMachine");
-$app->post("/updatemachine", "\App\Controllers\ctrlFormMachine:updateMachine");
-
 
 $app->route("/history", "\App\Controllers\ctrlHistory:history");
+
 $app->get("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
 $app->route("/addlist", "\App\Controllers\ctrlFormMachine:ctrlListMachine");
+$app->get("/editmachine", "\App\Controllers\ctrlFormMachine:editMachine");
+$app->post("/updatemachine", "\App\Controllers\ctrlFormMachine:updateMachine");
 
 $app->get("/login", "\App\Controllers\ctrlLogin:login");
 $app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
