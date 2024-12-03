@@ -26,7 +26,7 @@
         
         <?php if (isset($error) && $error != "") { ?>
           <div class="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
-            <?= $error ?>
+            <?= htmlspecialchars($error) ?>
           </div>
         <?php } ?>
         
@@ -35,8 +35,8 @@
         </p>
         
         <div class="space-y-4">
-          <a href="/" class="inline-block bg-[#478249] hover:bg-[#2D3F58] text-white px-6 py-3 rounded-lg transition-colors duration-300">
-            <i class="fas fa-home mr-2"></i> Volver al inicio
+          <a href="/admin" class="inline-block bg-[#478249] hover:bg-[#2D3F58] text-white px-6 py-3 rounded-lg transition-colors duration-300">
+            <i class="fas fa-home mr-2"></i> Volver al panel de administración
           </a>
         </div>
       </div>

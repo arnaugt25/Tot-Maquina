@@ -128,12 +128,12 @@
                                     <i class="fas fa-user text-[#5DA6C3]"></i>
                                 </div>
                                 <div>
-                                    <span class="font-medium"><?= htmlspecialchars($user['name'] . ' ' . $user['surname']) ?></span>
-                                    <span class="text-sm text-[#5DA6C3] block"><?= htmlspecialchars($user['role']) ?></span>
+                                    <span class="font-medium"><?= $user['name'] . ' ' . $user['surname'] ?></span>
+                                    <span class="text-sm text-[#5DA6C3] block"><?= $user['role'] ?></span>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <button onclick="window.location.href='/editprofile'" 
+                                <button onclick="window.location.href='/admin/edituser/<?= $user['id'] ?>'" 
                                         class="text-yellow-400 hover:text-yellow-300 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </button>
@@ -210,7 +210,8 @@
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Incidencias</h3>
             <div class="bg-[#5DA6C3]/10 p-3 rounded-full">
-              <i class="fas fa-exclamation-circle text-[#5DA6C3] text-xl"></i>
+            <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
+
             </div>
           </div>
           <div class="space-y-3">
@@ -228,7 +229,7 @@
                 <div class="flex items-center justify-between p-2 hover:bg-[#214969] rounded transition-colors">
                     <div class="flex items-center space-x-4">
                         <div class="w-10 h-10 rounded-full bg-[#214969] flex items-center justify-center">
-                            <i class="fas fa-exclamation-circle text-[#5DA6C3]"></i>
+                        <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
                         </div>
                         <div>
                             <span class="font-medium">Error Sistema</span>

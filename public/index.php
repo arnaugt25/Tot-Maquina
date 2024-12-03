@@ -50,6 +50,9 @@ $app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
 $app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
 $app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
+$app->get("/admin/edituser/{id}", "\App\Controllers\ctrlAdminUser:formEditUser");
+$app->post("/admin/edituser/{id}", "\App\Controllers\ctrlAdminUser:editUser");
+        
 
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");

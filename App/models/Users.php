@@ -112,4 +112,43 @@ class Users extends DB {
         }
     }
 
+    public function editUser($data) {
+            $query = "UPDATE user SET 
+                      name = :name, 
+                      surname = :surname, 
+                      username = :username, 
+                      email = :email, 
+                      role = :role 
+                      WHERE user_id = :user_id";
+            
+            $stmt = $this->sql->prepare($query);
+            $params = [
+                ':name' => $data['name'],
+                ':surname' => $data['surname'],
+                ':username' => $data['username'],
+                ':email' => $data['email'],
+                ':role' => $data['role'],
+                ':user_id' => $data['user_id']
+            ];
+
+           $result = $stmt->execute($params);
+
+            if (!$result) {
+                error_log("Error PDO: " . print_r($stmt->errorInfo(), true));
+                throw new \Exception("Error al actualizar el usuario");
+            }
+
+            // Verificar si se actualizó alguna fila
+            if ($stmt->rowCount() === 0) {
+                error_log("No se actualizó ninguna fila");
+                return false;
+            }
+
+            return true;
+
+    }
+
+    
+
 } 
+
