@@ -160,4 +160,12 @@ class ctrlFormMachine
         return $response;
 
     }
+
+    //Eliminar máquina
+    public function deleteMachine($request, $response, $container) {
+        $machine_id = $request->getParam('id');
+        $machineModel = $container->get("Machine");
+        $result = $machineModel->deleteMachine($machine_id);
+        $response->redirect("Location: /list");
+    }
 }
