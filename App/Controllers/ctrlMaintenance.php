@@ -2,30 +2,24 @@
 
 namespace App\Controllers;
 
-class ctrlMaintenance {
-    public function index() {
-        $maintenanceModel = new \App\Models\Maintenance();
+class ctrlMaintenances {
 
-        try {
-            // Obtener todos los mantenimientos
-            $allMaintenances = $maintenanceModel->getMaintenances();
-            
-            // Obtener un mantenimiento específico
-            $maintenance = $maintenanceModel->getMaintenanceById($maintenance_id);
-               
-            // Usar los datos...
-            foreach($maintenanceDetails as $maintenance) {
-                echo "Descripción: " . $maintenance['description'] . "<br>";
-                echo "Tipo: " . $maintenance['type'] . "<br>";
-                echo "Usuario: " . $maintenance['user_id'] . "<br>";
-                echo "Máquina: " . $maintenance['machine_id'] . "<br>";
-                echo "Fecha: " . $maintenance['assigned_date'] . "<br>";
-            }
-            
-        } catch (\Exception $e) {
-            // Manejar el error
-            error_log("Error en mantenimientos: " . $e->getMessage());
-            echo "Error: " . $e->getMessage();
-        }
+    public function maintenance($request, $response, $container){
+
+        
+        $response->setTemplate("maintenance.php");
+
+        return $response;
+    }
+    public function create($request, $response, $container){
+
+        $hola = $_POST;
+        //var_dump($hola);
+        //die();
+
+            $maintenanceModel = $container->get("maintenance");
+
+            $maintenanceModel-> addMaintenance($hola);
+
     }
 }

@@ -18,13 +18,13 @@
                     Maquina
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="maquina"
-                        name="maquina"
+                        id="machine"
+                        name="machine"
                         required>
                     <option value="">Seleccione la maquina</option>
                         <?php foreach ($machines as $machine){?>
-                        <option value=""><?php echo $machine["model"];?></option>
-                        <?php }?>
+                            <option value="<?php echo $machine['machine_id']; ?>"><?php echo $machine['model']; ?></option>
+                        <?php } ?>
                 </select>
             </div>
             <!-- Descripción -->
@@ -33,8 +33,8 @@
                     Descripción
                 </label>
                 <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                          id="descripcion"
-                          name="descripcion"
+                          id="description"
+                          name="description"
                           rows="4"
                           placeholder="Describe el problema"
                           required></textarea>
@@ -45,14 +45,15 @@
                     Tecnico
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="responsable" 
-                    name="responsable" 
-                    required>
+                        id="user_id"
+                        name="user_id"
+                        required>
                     <option value="">Seleccione el tecnico</option>
-                    <?php foreach ($technicians as $technician){?>
-                        <option value=""><?php echo $technician["username"];?></option>
-                    <?php }?>
+                    <?php foreach ($technicians as $technician) { ?>
+                        <option value="<?php echo $technician['technician_id']; ?>"><?php echo $technician['username']; ?></option>
+                    <?php } ?>
                 </select>
+
             </div>
             <!-- Fecha -->
             <div class="mb-4">
@@ -60,8 +61,8 @@
                     Fecha
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                       id="fecha"
-                       name="fecha"
+                       id="assigned_date"
+                       name="assigned_date"
                        type="date"
                        required>
             </div>
@@ -72,8 +73,8 @@
                     Prioridad
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                    id="prioridad" 
-                    name="prioridad" 
+                    id="priority"
+                    name="priority"
                     required>
                     <option value="">Seleccione la prioridad</option>
                     <option value="baja">Baja</option>
@@ -87,8 +88,8 @@
                     Tipo
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="tipo"
-                        name="tipo"
+                        id="type"
+                        name="type"
                         required>
                     <option value="">Seleccione el tipo</option>
                     <option value="baja">Preventivo</option>

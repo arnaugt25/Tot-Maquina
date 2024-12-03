@@ -87,6 +87,7 @@ class Machine extends db
         // }
     }
 
+
     public function getByIdMachine($idmachine)
     {
         try {
@@ -100,6 +101,7 @@ class Machine extends db
             return null;
         }
     }
+
 
     // public function listMachine()
     // {
@@ -129,16 +131,26 @@ class Machine extends db
         }
     }
 
-    public function getMachineById($machine_id)
-    {
-        // try {
+
+    //Buscar máquina por ID
+    public function getMachineById($machine_id) {
+        try {
             $query = "SELECT * FROM machine WHERE machine_id = :machine_id";
             $stmt = $this->sql->prepare($query);
             $stmt->execute([':machine_id' => $machine_id]);
             return $stmt->fetch(\PDO::FETCH_ASSOC);
-        // } catch (\PDOException $e) {
-        //     error_log("Error getting machine by ID: " . $e->getMessage());
-        //     throw new \Exception("Error al obtener la máquina por ID");
-        // }
+        } catch (\PDOException $e) {
+            error_log("Error getting machine by ID: " . $e->getMessage());
+            throw new \Exception("Error al obtener la máquina por ID");
+        } 
+    }
+
+    //Eliminar Máquina
+    public function deleteMachine($machine_id) {
+       $query = "DELETE FROM machine WHERE machine_id = :machine_id";
+       $stmt = $this->sql->prepare($query);
+       $result = $stmt->execute([':machine_id' => $machine_id]);
+       return true;
+   
     }
 }
