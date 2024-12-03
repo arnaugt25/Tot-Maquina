@@ -163,6 +163,12 @@
                                     class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
                                     <span>Editar</span>
                                 </a>
+                                <a href="/deletemachine?id=<?= htmlspecialchars($machine['machine_id']) ?>"
+                                    class="bg-gradient-to-r from-[#d32f2f] to-[#b71c1c] text-white py-2.5 px-5 rounded-lg hover:from-[#9a0007] hover:to-[#7f0000] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
+                                    onclick="return confirm('¿Estás seguro de que deseas eliminar esta máquina?')">
+                                    <i class="fas fa-trash-alt"></i>
+                                    <span>Eliminar</span>
+                                </a>
                                 <button
                                     class="text-[#5DA6C3] hover:text-white transition-colors duration-300 p-2 hover:bg-[#1a3850]/50 rounded-lg"
                                     aria-label="Ver código QR de la máquina"
