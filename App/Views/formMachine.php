@@ -31,7 +31,7 @@
                         <i class="fas fa-cube mr-2 text-[#5DA6C3]"></i>
                         Modelo
                     </label>
-                    <input type="text" name="model" id="model" 
+                    <input type="text" name="model" id="model"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                         placeholder="Ingrese el modelo" required />
                 </div>
@@ -43,7 +43,7 @@
                             <i class="fas fa-industry mr-2 text-[#5DA6C3]"></i>
                             Fabricante
                         </label>
-                        <input type="text" name="created_by" id="created_by" 
+                        <input type="text" name="created_by" id="created_by"
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                             placeholder="Ingrese el fabricante" required />
                     </div>
@@ -52,7 +52,7 @@
                             <i class="fas fa-calendar mr-2 text-[#5DA6C3]"></i>
                             Fecha instalación
                         </label>
-                        <input type="date" name="installation_date" id="installation_date" 
+                        <input type="date" name="installation_date" id="installation_date"
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                             required />
                     </div>
@@ -64,9 +64,20 @@
                         <i class="fas fa-barcode mr-2 text-[#5DA6C3]"></i>
                         Número serie
                     </label>
-                    <input type="text" name="serial_number" id="serial_number" 
+                    <input type="text" name="serial_number" id="serial_number"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                         placeholder="Ingrese el número de serie" required />
+                </div>
+
+                <!-- Cordenadas -->
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="coordinates" class="block text-[#A8C5D6] font-medium mb-2">
+                        <i class="fas fa-barcode mr-2 text-[#5DA6C3]"></i>
+                        Cordenadas
+                    </label>
+                    <input type="text" name="serial_number" id="serial_number"
+                        class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
+                        placeholder="Ingrese las coordenadas" required />
                 </div>
 
                 <!-- Imagen -->
@@ -75,13 +86,13 @@
                         <i class="fas fa-image mr-2 text-[#5DA6C3]"></i>
                         Imagen
                     </label>
-                    <input type="file" name="image" id="image" 
+                    <input type="file" name="image" id="image"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#5DA6C3] file:text-white hover:file:bg-[#4A8A9F]" />
                 </div>
 
                 <!-- Botones -->
                 <div class="flex space-x-4">
-                    <button type="submit" 
+                    <button type="submit"
                         class="flex-1 bg-gradient-to-r from-[#478249] to-[#539959] text-white py-3 px-6 rounded-lg hover:from-[#2D3F58] hover:to-[#3A516D] transition-all duration-300 font-medium flex items-center justify-center">
                         <i class="fas fa-save mr-2"></i>
                         Guardar Máquina
