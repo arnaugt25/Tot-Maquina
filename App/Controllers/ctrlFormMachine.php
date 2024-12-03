@@ -12,6 +12,7 @@ class ctrlFormMachine
 
         return $response;
     }
+
     //AÑADIR MAQUINA A LA BASE DE DATOS DESDE EL FORM
     public function ctrladdMachine($request, $response, $container)
     {
@@ -51,6 +52,7 @@ class ctrlFormMachine
         }
         return $response;
     }
+
     //MOSTRAR LA MAQUINA EN LISTA DE MAQUINAS CON LA INFO DE LA BDD
     public function ctrlListMachine($request, $response, $container)
     {
@@ -68,8 +70,6 @@ class ctrlFormMachine
         }
         return $response;
     }
-    
-
 
     //MOSTRAR FORM EDITAR MAQUINA
     public function editMachine($request, $response, $container)
@@ -122,43 +122,44 @@ class ctrlFormMachine
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
         //$machine = $machineModel->editMachine($machineId);
-        
+
         $data = [
             'machine_id' => $machineId,
             'model' => $request->get(INPUT_POST, "model"),
             'created_by' => $request->get(INPUT_POST, "created_by"),
             'installation_date' => $request->get(INPUT_POST, "installation_date"),
             'serial_number' => $request->get(INPUT_POST, "serial_number"),
-            
+
         ];
 
         $result = $machineModel->editMachine($data);
-        
+
         $response->redirect("Location: /addlist");
         return $response;
-        
+    }
 
     // Para mostrar máquina 
-   public function machineId($request, $response, $container){
+    public function machineId($request, $response, $container)
+    {
 
-      $response->setTemplate("maquina.php");
+        $response->setTemplate("maquina.php");
 
         return $response;
-   }
+    }
 
     // Buscar por id de la máquina
-    public function showMachine($request, $response, $container) {
+    public function showMachine($request, $response, $container)
+    {
         $machineShow = $request->get(INPUT_GET, "machine_id");
-        
+
         $machineModel = $container->get("Machine");
         $machines = $machineModel->getMachineById($machineShow);
-        
+
         $response->set('machine', $machines);
         //var_dump($machines);
         //die();
 
         $response->setTemplate("maquina.php");
         return $response;
-
     }
 }
