@@ -42,7 +42,7 @@
             </div>
 
             <!-- Formulario -->
-            <form action="/profile/update" method="POST" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
+            <form action="/profile/update" method="POST" enctype="multipart/form-data" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
                 <!-- Nombre -->
                 <div class="mb-6">
                     <label for="name" class="block text-[#A8C5D6] font-medium mb-2">
@@ -72,8 +72,43 @@
                         Correo Electrónico
                     </label>
                     <input type="email" id="email" name="email" 
-                        value="<?= htmlspecialchars($user['email'] ?? '') ?>"
+                        value="<?= $user['email'] ?? '' ?>"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all">
+                </div>
+
+                <!-- Foto de Perfil Combinado -->
+                <div class="mb-8">
+                    <label class="block text-[#A8C5D6] font-medium mb-4">
+                        <i class="fas fa-camera mr-2 text-[#5DA6C3]"></i>
+                        Imagen de Perfil
+                    </label>
+                    <div class="bg-[#132048] p-6 rounded-lg border border-[#577788]">
+                        <!-- Imagen Actual -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-24 h-24 rounded-full overflow-hidden bg-[#214969] flex items-center justify-center">
+                                <?php if (!empty($user['profile_pic'])): ?>
+                                    <img src="/uploads/images/<?= htmlspecialchars($user['profile_pic']) ?>" 
+                                         alt="Foto de perfil" 
+                                         class="w-full h-full object-cover">
+                                <?php else: ?>
+                                    <i class="fas fa-user text-4xl text-[#5DA6C3]"></i>
+                                <?php endif; ?>
+                            </div>
+                            <div class="text-[#A8C5D6]">
+                                <p class="text-sm mb-2">
+                                    <?php if (!empty($user['profile_pic'])): ?>
+                                        Archivo actual: <?= htmlspecialchars($user['profile_pic']) ?>
+                                    <?php else: ?>
+                                        No hay imagen de perfil
+                                    <?php endif; ?>
+                                </p>
+                                <!-- Input para Nueva Imagen -->
+                                <input type="file" id="profile_pic" name="profile_pic" accept="image/*"
+                                    class="w-full bg-[#1A2B3C] border border-[#577788] rounded-lg px-3 py-2 text-white text-sm placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-1 focus:ring-[#5DA6C3]/50 transition-all">
+                                <p class="mt-2 text-xs text-[#577788]">Formatos permitidos: PNG, JPG o JPEG</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Contraseña -->

@@ -26,7 +26,6 @@ $contenidor = new \App\Container(__DIR__ . "/../App/config.php");
 $app = new \Emeset\Emeset($contenidor);
 $app->middleware([\App\Middleware\App::class, "execute"]);
 
-
 $app->route("/", [\App\Controllers\ctrlIndex::class, "index"]);
 $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"]);
@@ -65,7 +64,6 @@ $app->post("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "ctrla
 $app->get("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "formEditUser"]);
 $app->post("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "editUser"]);
 $app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "deleteUser"]);
-
 
 $app->route("/maquina_id", "\App\Controllers\ctrlFormMachine:machineId");
 $app->route("/id", "\App\Controllers\ctrlFormMachine:showMachine");
