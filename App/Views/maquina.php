@@ -56,8 +56,6 @@
       </div>
 
       <!-- Menú móvil -->
-
-      <!-- Menú móvil -->
       <div class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -81,7 +79,7 @@
   </header>
   <header class="bg-[#214969] shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-white">Nombre máquina</h1>
+      <h1 class="text-3xl font-bold tracking-tight text-white"><?= htmlspecialchars($machine['model']) ?></h1>
     </div>
   </header>
 
@@ -91,16 +89,15 @@
       <div class="bg-[#214969] p-6 rounded-lg shadow-lg text-white">
         <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
         <div class="space-y-4">
-          <p><span class="font-medium text-[#5DA6C3]">Modelo:</span> [Modelo de la máquina]</p>
-          <p><span class="font-medium text-[#5DA6C3]">Año:</span> [Año]</p>
-          <p><span class="font-medium text-[#5DA6C3]">Estado:</span> [Estado]</p>
-          <p><span class="font-medium text-[#5DA6C3]">Descripción:</span> [Descripción detallada de la máquina]</p>
+          <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= htmlspecialchars($machine['created_by']) ?></p>
+          <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= htmlspecialchars($machine['installation_date']) ?></p>
+          <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= htmlspecialchars($machine['serial_number']) ?></p>
         </div>
       </div>
 
       <!-- Imagen de la máquina -->
       <div class="bg-[#214969] p-4 rounded-lg shadow-lg">
-        <img src="/uploads/images/maquina-placeholder.jpg" alt="Imagen de la máquina" 
+        <img src="<?= htmlspecialchars($machine['image']) ?>" alt="Imagen de la máquina" 
              class="w-full h-auto rounded-lg object-cover transition-transform hover:scale-105">
       </div>
     </div>
@@ -117,7 +114,9 @@
       
       <div class="flex flex-col items-center justify-center space-y-4">
         <button class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
-          Añadir incidencia
+          <a href="/formInci">
+            Añadir incidencia
+          </a>
         </button>
         <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
           Añadir técnico
