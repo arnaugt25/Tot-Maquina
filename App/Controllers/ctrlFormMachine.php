@@ -117,8 +117,7 @@ class ctrlFormMachine
     }
 
     //PARA HACER EL UPDATE EN LA BASE DE DATOS 
-    public function updateMachine($request, $response, $container)
-    {
+    public function updateMachine($request, $response, $container){
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
         //$machine = $machineModel->editMachine($machineId);
@@ -137,7 +136,7 @@ class ctrlFormMachine
         $response->redirect("Location: /addlist");
         return $response;
         
-
+    }
     // Para mostrar máquina 
    public function machineId($request, $response, $container){
 

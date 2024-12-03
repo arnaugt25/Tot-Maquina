@@ -107,7 +107,7 @@ class Machine extends db
             return null;
         }
     }
-}
+
 
     public function listMachine(){
      try {
@@ -122,7 +122,7 @@ class Machine extends db
         error_log("Error getting machines: " . $e->getMessage());
         throw new \Exception("Error al obtener las máquinas");
     }
-}
+
 
     public function getAllMachines() {
         try {
