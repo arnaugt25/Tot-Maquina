@@ -30,7 +30,7 @@ $app->middleware([\App\Middleware\App::class, "execute"]);
 $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
-$app->route("/forminci", "\App\Controllers\ctrlFormInci:ctrlFormInci");
+$app->route("/forminci", "\App\Controllers\ctrlFormInci:forminci");
 $app->post ("/incidencias/crear", "\App\Controllers\ctrlListinci:create");
 $app->route("/machine", "\App\Controllers\ctrlMachine:machine");
 $app->route("/history", "\App\Controllers\ctrlHistory:history");

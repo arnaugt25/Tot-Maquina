@@ -20,6 +20,7 @@ class ctrlMaintenance {
                 echo "Usuario: " . $maintenance['user_id'] . "<br>";
                 echo "Máquina: " . $maintenance['machine_id'] . "<br>";
                 echo "Fecha: " . $maintenance['assigned_date'] . "<br>";
+                echo "Prioridad: " . $maintenance['priority'] . "<br>";
             }
             
         } catch (\Exception $e) {

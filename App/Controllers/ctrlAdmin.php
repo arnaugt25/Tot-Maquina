@@ -9,7 +9,7 @@ class ctrlAdmin {
         $usersModel = $container->get("Users");
         $users = $usersModel->getAllUsers();
         
-        $machinesModel = $container->get("Machines");
+        $machinesModel = $container->get("Machine");
         $machines = $machinesModel->getAllMachines();
         
         $response->set("users", $users);

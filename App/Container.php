@@ -48,7 +48,7 @@ class Container extends EmesetContainer {
             return $technician;
         };
 
-        $this["Maintenance"] = function ($c) {
+        $this["maintenance"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");
             $technician = new \App\Models\Maintenances(
