@@ -39,7 +39,9 @@ $app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachi
 $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"]);
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
 $app->route("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
-$app->route("/id", [\App\Controllers\ctrlFormMachine::class, "showMachine"]);
+$app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+
+ 
 
 // Rutas de autenticación y perfil
 $app->get("/login", [\App\Controllers\ctrlLogin::class, "login"]);
