@@ -1,10 +1,27 @@
-// Inicializar el mapa
-var map = L.map('map').setView([41.3851, 2.1734], 13);
+// Inicializar el mapa con un estilo más moderno
+var map = L.map('map', {
+    zoomControl: false  // Desactivamos el control de zoom predeterminado
+}).setView([41.3851, 2.1734], 13);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
+// Añadir un estilo de mapa más moderno
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
 }).addTo(map);
+
+// Añadir control de zoom en una posición personalizada
+L.control.zoom({
+    position: 'bottomright'
+}).addTo(map);
+
+// Definir el icono personalizado
+const customIcon = L.divIcon({
+    html: '<i class="fa-solid fa-location-dot" style="color: #214969;"></i>',
+    iconSize: [20, 20],
+    className: 'custom-div-icon',
+    iconAnchor: [10, 20],
+    popupAnchor: [0, -20]
+});
 
 // Función para cargar los marcadores
 function loadMarkers(machines) {
@@ -14,6 +31,7 @@ function loadMarkers(machines) {
     }
 
     const bounds = [];
+    const markersLayer = L.featureGroup().addTo(map);
 
     machines.forEach(function(machine) {
         if (machine.coordinates) {
@@ -24,17 +42,19 @@ function loadMarkers(machines) {
                     const lng = parseFloat(coords[1].trim());
                     
                     if (!isNaN(lat) && !isNaN(lng)) {
-                        // Añadir coordenadas a los límites
                         bounds.push([lat, lng]);
 
-                        // Crear marcador
+                        // Crear marcador con animación de rebote
                         const marker = L.marker([lat, lng], {
-                            title: machine.model
-                        }).addTo(map);
+                            icon: customIcon,                              // Usar el icono personalizado
+                            title: machine.model,
+                            riseOnHover: true,
+                            bounceOnAdd: true
+                        }).addTo(markersLayer);
 
-                        // Añadir popup con información
+                        // Añadir popup con diseño mejorado
                         marker.bindPopup(`
-                            <div class="p-4 min-w-[200px]">
+                            <div class="p-4 min-w-[250px]">
                                 <h3 class="text-[#214969] font-bold text-lg mb-3 border-b border-gray-200 pb-2">
                                     ${machine.model}
                                 </h3>
@@ -58,7 +78,16 @@ function loadMarkers(machines) {
                                     </a>
                                 </div>
                             </div>
-                        `);
+                        `, {
+                            maxWidth: 400,
+                            closeButton: true,
+                            className: 'custom-popup'
+                        });
+
+                        // Añadir efecto hover al marcador
+                        marker.on('mouseover', function() {
+                            this.openPopup();
+                        });
                     }
                 }
             } catch (error) {
@@ -67,37 +96,48 @@ function loadMarkers(machines) {
         }
     });
 
-    // Ajustar el mapa para mostrar todos los marcadores
+    // Ajustar el mapa para mostrar todos los marcadores con padding
     if (bounds.length > 0) {
-        map.fitBounds(bounds);
+        map.fitBounds(bounds, {
+            padding: [50, 50],
+            maxZoom: 15
+        });
     }
 }
 
-  function abrirMapaModal() {
+// Funciones para el modal
+function abrirMapaModal() {
     const modal = document.getElementById('mapaModal');
+    document.body.classList.add('modal-open');
     modal.classList.remove('hidden');
+    
     // Reinicializar el mapa cuando se abre el modal
     setTimeout(() => {
-      map.invalidateSize();
-      loadMarkers(machines);
+        map.invalidateSize();
+        loadMarkers(machines);
     }, 100);
-  }
+}
 
-  function cerrarMapaModal() {
+function cerrarMapaModal() {
     const modal = document.getElementById('mapaModal');
+    document.body.classList.remove('modal-open');
     modal.classList.add('hidden');
-  }
+}
 
-  // Cerrar modal con la tecla Escape
-  document.addEventListener('keydown', function(event) {
+// Event Listeners
+document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
-      cerrarMapaModal();
+        cerrarMapaModal();
     }
-  });
+});
 
-  // Cerrar modal al hacer clic fuera del contenido
-  document.getElementById('mapaModal').addEventListener('click', function(event) {
+document.getElementById('mapaModal').addEventListener('click', function(event) {
     if (event.target === this) {
-      cerrarMapaModal();
+        cerrarMapaModal();
     }
-  });
+});
+
+// Manejar el resize de la ventana
+window.addEventListener('resize', function() {
+    map.invalidateSize();
+});
