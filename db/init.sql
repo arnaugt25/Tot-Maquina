@@ -60,11 +60,3 @@ CREATE TABLE user_machine (
     FOREIGN KEY (user_id) REFERENCES user(user_id),
     FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
 );
-
--- Tabla para los técnicos
-CREATE TABLE technician (
-    technician_id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT ,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
-);
