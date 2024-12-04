@@ -141,3 +141,6 @@ document.getElementById('mapaModal').addEventListener('click', function(event) {
 window.addEventListener('resize', function() {
     map.invalidateSize();
 });
+
+
+
