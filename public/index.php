@@ -33,6 +33,7 @@ $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"
 $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 
 // Rutas de máquinas
+$app->get("/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"]);
 $app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"]);
 $app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
 $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"]);
