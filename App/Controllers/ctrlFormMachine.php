@@ -132,6 +132,8 @@ class ctrlFormMachine
         $machine_id = $request->getParam('id');
         $machineModel = $container->get("Machine");
         $result = $machineModel->deleteMachine($machine_id);
-        $response->redirect("Location: /list");
+        $response->redirect("Location: /addlist");
+
+        return $response;
     }
 }
