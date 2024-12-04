@@ -231,63 +231,13 @@
   </footer>
   <script src="/js/nav.js"></script>
   <script src="/js/slider.js"></script>
+  <script src="/js/map.js"></script>
   <script>
-    // Inicializar el mapa
-    var map = L.map('map').setView([41.3851, 2.1734], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© <a href="https://www.openstreetmap.org/copyright" class="high-contrast-link">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Crear un marcador accesible personalizado
-    L.Marker.AccessibleMarker = L.Marker.extend({
-      onAdd: function(map) {
-        // Llamar al método original
-        L.Marker.prototype.onAdd.call(this, map);
-        
-        // Obtener el elemento del marcador
-        var el = this.getElement();
-        
-        // Configurar atributos de accesibilidad
-        el.setAttribute('aria-label', 'Marcador de Máquina #1 - Haz clic para ver detalles');
-        el.setAttribute('role', 'button');
-        el.setAttribute('tabindex', '0');
-        
-        // Añadir manejo de eventos de teclado
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.openPopup();
-          }
-        });
-
-        return this;
-      }
+    // Obtener los datos de las máquinas del PHP y pasarlos al mapa
+    const machines = <?php echo json_encode($machines); ?>;
+    document.addEventListener('DOMContentLoaded', function() {
+        loadMarkers(machines);
     });
-
-    // Crear una instancia del marcador accesible
-    var marker = new L.Marker.AccessibleMarker([41.3851, 2.1734], {
-      icon: L.icon({
-        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-        shadowSize: [41, 41],
-        shadowAnchor: [12, 41]
-      }),
-      title: 'Máquina #1',
-      alt: 'Ubicación de la Máquina #1'
-    }).addTo(map);
-
-    // Añadir popup con contenido accesible
-    marker.bindPopup(
-      '<div role="dialog" aria-label="Información de la máquina">' +
-      '<h3>Máquina #1</h3>' +
-      '<p>Información detallada sobre la máquina</p>' +
-      '</div>'
-    );
   </script>
   <div class="popup-wrapper" id="folleto-popup">
     <div class="popup-content">

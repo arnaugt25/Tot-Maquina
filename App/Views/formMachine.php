@@ -69,15 +69,18 @@
                         placeholder="Ingrese el número de serie" required />
                 </div>
 
-                <!-- Cordenadas -->
+                <!-- Coordenadas -->
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="coordinates" class="block text-[#A8C5D6] font-medium mb-2">
-                        <i class="fas fa-barcode mr-2 text-[#5DA6C3]"></i>
-                        Cordenadas
+                        <i class="fas fa-map-marker-alt mr-2 text-[#5DA6C3]"></i>
+                        Coordenadas
                     </label>
-                    <input type="text" name="serial_number" id="serial_number"
+                    <input type="text" name="coordinates" id="coordinates"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
-                        placeholder="Ingrese las coordenadas" required />
+                        placeholder="Ejemplo: 41.3851,2.1734"
+                        pattern="^\s*-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?\s*$"
+                        title="Ingrese las coordenadas en formato: latitud,longitud (ejemplo: 41.3851,2.1734)" />
+                    <p class="mt-1 text-sm text-[#A8C5D6]">Formato: latitud,longitud (ejemplo: 41.3851,2.1734)</p>
                 </div>
 
                 <!-- Imagen -->

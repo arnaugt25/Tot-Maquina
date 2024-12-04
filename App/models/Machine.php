@@ -118,8 +118,8 @@ class Machine extends db
     //     }
     // }
 
-    public function getAllMachines()
-    {
+
+    public function getAllMachines() {
         try {
             $query = "SELECT * FROM machine ORDER BY machine_id DESC";
             $stmt = $this->sql->prepare($query);
@@ -153,4 +153,6 @@ class Machine extends db
        return true;
    
     }
+
 }
+
