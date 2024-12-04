@@ -32,3 +32,4 @@ class notification extends DB {
         }
     }
 
+}

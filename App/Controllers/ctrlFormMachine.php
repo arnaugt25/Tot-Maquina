@@ -18,6 +18,8 @@ class ctrlFormMachine
         $createdby = $request->get(INPUT_POST, "created_by");
         $dateinstall = $request->get(INPUT_POST, "installation_date");
         $serialnum = $request->get(INPUT_POST, "serial_number");
+        $coordinates = $request->get(INPUT_POST, "coordinates");
+
         // Manejo simple de la imagen
         $imageURL = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -35,6 +37,7 @@ class ctrlFormMachine
             'created_by' => $createdby,
             'installation_date' => $dateinstall,
             'serial_number' => $serialnum,
+            'coordinates' => $coordinates,
             'image' => $imageURL
         ];
         $machineModel = $container->get("Machine");
@@ -94,6 +97,7 @@ class ctrlFormMachine
             'created_by' => $request->get(INPUT_POST, "created_by"),
             'installation_date' => $request->get(INPUT_POST, "installation_date"),
             'serial_number' => $request->get(INPUT_POST, "serial_number"),
+            'coordinates' =>  $request->get(INPUT_POST, "coordinates")
         ];
 
         $result = $machineModel->editMachine($data);

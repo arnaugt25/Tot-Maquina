@@ -67,4 +67,3 @@ $app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "del
 // Ruta por defecto (error)
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->execute();
-

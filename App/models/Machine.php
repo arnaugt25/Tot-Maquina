@@ -8,12 +8,9 @@ class Machine extends db
     public function addMachine($data)
     {
         // try {
+        $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, coordinates,  image ) 
 
-
-    
-            $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, image ) 
-
-                       VALUES (:model, :created_by, :serial_number, :installation_date, :image)";
+                       VALUES (:model, :created_by, :serial_number, :installation_date, :coordinates, :image)";
         //     var_dump($query);
         //    die();
         $stmt = $this->sql->prepare($query);
@@ -22,6 +19,7 @@ class Machine extends db
             ':created_by' => $data['created_by'],
             ':serial_number' => $data['serial_number'],
             ':installation_date' => $data['installation_date'],
+            ':coordinates' => $data['coordinates'],
             ':image' => $data['image']
         ]);
         //  var_dump($result);
@@ -65,23 +63,24 @@ class Machine extends db
                  SET model = :model, 
                      created_by = :created_by, 
                      serial_number = :serial_number, 
-                     installation_date = :installation_date
+                     installation_date = :installation_date,
+                     coordinates = :coordinates
                  WHERE machine_id = :machine_id";
 
-            $stmt = $this->sql->prepare($query);
-            $result = $stmt->execute([
-                ':machine_id' => $data['machine_id'],
-                ':model' => $data['model'],
-                ':created_by' => $data['created_by'],
-                ':serial_number' => $data['serial_number'],
-                ':installation_date' => $data['installation_date'],
-                
-            ]);
+        $stmt = $this->sql->prepare($query);
+        $result = $stmt->execute([
+            ':machine_id' => $data['machine_id'],
+            ':model' => $data['model'],
+            ':created_by' => $data['created_by'],
+            ':serial_number' => $data['serial_number'],
+            ':installation_date' => $data['installation_date'],
+            ':coordinates' => $data['coordinates']
+        ]);
 
-            if (!$result) {
-                throw new \Exception("Error al actualizar la máquina");
-            }
-            return true;
+        // if (!$result) {
+        //     throw new \Exception("Error al actualizar la máquina");
+        // }
+        return true;
         // } catch (\PDOException $e) {
         //     error_log("Error updating machine: " . $e->getMessage());
         //     throw new \Exception("Error al actualizar la máquina");
@@ -112,7 +111,6 @@ class Machine extends db
     //         // die();
     //         $stmt = $this->sql->prepare($query);
     //         $stmt->execute();
-
     //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     //     } catch (\PDOException $e) {
     //         error_log("Error getting machines: " . $e->getMessage());
