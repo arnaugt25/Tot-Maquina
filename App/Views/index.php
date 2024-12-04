@@ -185,23 +185,87 @@
       </div>
     </section>
 
-    <!-- Sección de Máquinas -->
-    <section class="space-y-8">
-      <h2 class="text-2xl font-bold text-[#0C0C04] mb-6">Máquinas</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Mapa -->
-        <div class="bg-[#214969] text-white shadow-lg rounded-xl p-6 transform transition-all hover:scale-[1.02]">
-          <div id="map" class="h-64 rounded-lg"></div>
-        </div>
+    <!-- Sección de Panel de Control con estilo consistente -->
+    <section class="mt-16 bg-[#214969] text-white shadow-lg rounded-xl p-8">
+        <div class="max-w-6xl mx-auto">
+            <!-- Encabezado -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Panel de Control</h2>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Gestiona y monitorea todas tus máquinas desde un solo lugar</p>
+            </div>
+            
+            <!-- Grid de botones principales -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Botón del Mapa -->
+                <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-white/20 flex flex-col h-full">
+                    <div class="flex flex-col items-center text-center p-8 h-full justify-between">
+                        <div class="w-20 h-20 bg-[#5DA6C3] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fas fa-map-marked-alt text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-4">Mapa de Máquinas</h3>
+                        <p class="text-gray-300 mb-8">Visualiza la ubicación de todas las máquinas en tiempo real</p>
+                        <button onclick="abrirMapaModal()" 
+                                class="w-full bg-[#5DA6C3] text-white py-4 px-6 rounded-lg hover:bg-[#4a8ba3] transition-all duration-300 flex items-center justify-center space-x-3 group">
+                            <i class="fas fa-map-marker-alt text-lg"></i>
+                            <span class="font-medium">Ver Mapa</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                        </button>
+                    </div>
+                </div>
 
-        <!-- Botón Añadir -->
-        <div class="flex justify-center items-center">
-          <a href="/addmachine" class="bg-[#2D3F58] text-white py-4 px-8 rounded-lg hover:bg-[#132048] transition-colors duration-200 text-lg font-medium shadow-md hover:shadow-xl">
-            + Añadir máquina
-          </a>
+                <!-- Botón de Añadir Máquina -->
+                <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-white/20 flex flex-col h-full">
+                    <div class="flex flex-col items-center text-center p-8 h-full justify-between">
+                        <div class="w-20 h-20 bg-[#478249] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fas fa-plus text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-4">Nueva Máquina</h3>
+                        <p class="text-gray-300 mb-8">Registra una nueva máquina en el sistema</p>
+                        <a href="/addmachine" 
+                           class="w-full bg-[#478249] text-white py-4 px-6 rounded-lg hover:bg-[#2a652c] transition-all duration-300 flex items-center justify-center space-x-3 group">
+                            <i class="fas fa-plus text-lg"></i>
+                            <span class="font-medium">Añadir Máquina</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Botón de Lista de Máquinas -->
+                <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-white/20 flex flex-col h-full">
+                    <div class="flex flex-col items-center text-center p-8 h-full justify-between">
+                        <div class="w-20 h-20 bg-[#5DA6C3] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <i class="fas fa-list text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-4">Lista de Máquinas</h3>
+                        <p class="text-gray-300 mb-8">Accede al listado completo de máquinas</p>
+                        <a href="/addlist" 
+                           class="w-full bg-[#5DA6C3] text-white py-4 px-6 rounded-lg hover:bg-[#4a8ba3] transition-all duration-300 flex items-center justify-center space-x-3 group">
+                            <i class="fas fa-list text-lg"></i>
+                            <span class="font-medium">Ver Lista</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal del Mapa -->
+    <div id="mapaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+      <div class="fixed inset-0 p-4 flex items-center justify-center">
+        <div class="bg-white rounded-lg w-full h-full md:h-[90vh] max-w-7xl relative">
+          <!-- Cabecera del modal -->
+          <div class="bg-[#214969] text-white p-4 rounded-t-lg flex justify-between items-center">
+            <h3 class="text-xl font-bold">Mapa de Máquinas</h3>
+            <button onclick="cerrarMapaModal()" class="text-white hover:text-gray-300 transition-colors">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <!-- Contenedor del mapa -->
+          <div id="map" class="w-full h-[calc(100%-4rem)]"></div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -233,39 +297,11 @@
   <script src="/js/slider.js"></script>
   <script src="/js/map.js"></script>
   <script>
-    // Obtener los datos de las máquinas del PHP y pasarlos al mapa
+    // Mantener solo el código del mapa que sí se utiliza
     const machines = <?php echo json_encode($machines); ?>;
     document.addEventListener('DOMContentLoaded', function() {
         loadMarkers(machines);
     });
-  </script>
-  <div class="popup-wrapper" id="folleto-popup">
-    <div class="popup-content">
-      <!-- Contenido del popup -->
-    </div>
-    <button 
-      type="button"
-      class="boton-cierre-ventana-emergente-folleto" 
-      aria-label="Cerrar ventana emergente"
-      onclick="cerrarPopupFolleto()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <script>
-    function cerrarPopupFolleto() {
-      const popup = document.getElementById('folleto-popup');
-      if (popup) {
-        popup.style.display = 'none';
-      }
-    }
-
-    // Función para abrir el popup (si es necesaria)
-    function abrirPopupFolleto() {
-      const popup = document.getElementById('folleto-popup');
-      if (popup) {
-        popup.style.display = 'block';
-      }
-    }
   </script>
 </body>
 </html>
