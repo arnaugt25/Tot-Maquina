@@ -5,13 +5,12 @@ namespace App\Models;
 class Maintenances extends Db {
     public function addMaintenance($data)
     {
-
         try {
             $query = "INSERT INTO maintenance (description, type, assigned_date, user_id, machine_id, priority) 
                       VALUES (:description, :type, :assigned_date, :user_id, :machine_id, :priority)";
             $userId = isset($data['user_id']) && !empty($data['user_id']) ? (int)$data['user_id'] : NULL;
-            $stmt = $this->sql->prepare("INSERT INTO maintenance (user_id, other_column) VALUES (?, ?)");
-            $stmt->execute([$userId, $data['other_value']]);
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute(
             [
                 ':description' => $data['description'],
                 ':type' => $data['type'],
@@ -19,7 +18,7 @@ class Maintenances extends Db {
                 ':user_id' => $data['user_id'],
                 ':machine_id' => $data['machine'],
                 ':priority' => $data['priority']
-            ];
+            ]);
         }    catch (\Exception $e) {
             error_log("Error in addMaintenance: " . $e->getMessage());
             error_log("Stack trace: " . $e->getTraceAsString());
@@ -27,20 +26,23 @@ class Maintenances extends Db {
         }
             return $this->sql->lastInsertId();
     }
-    
             // SELECT para obtener todos los mantenimientos con información relacionada
     public function getMaintenances() {
         try {
-            $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority
+            $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority,
                              u.name as technician_name,
-                             mc.name as machine_name
+                             mc.model as machine_name
                     FROM maintenance m
                     JOIN user u ON m.user_id = u.user_id
                     JOIN machine mc ON m.machine_id = mc.machine_id
-                    ORDER BY m.assigned_date DESC";
+                    ORDER BY m.assigned_date ASC;";
+
 
             $stmt = $this->sql->prepare($query);
+                //die('hola');
+
             $stmt->execute();
+
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 

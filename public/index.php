@@ -50,7 +50,7 @@ $app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
 $app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
 $app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
-
+$app->route("/admin/editinci","\App\Controllers\ctrlEditinci:editinci");
 
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->execute();

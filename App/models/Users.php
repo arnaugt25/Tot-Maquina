@@ -112,4 +112,16 @@ class Users extends DB {
         }
     }
 
+    public function getAllTechnicians(){
+        try {
+            $query = "SELECT user_id, name, surname,username, role FROM user where role like'tecnico' ORDER BY user_id ASC";
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting users: " . $e->getMessage());
+            return [];
+        }
+    }
+
 } 

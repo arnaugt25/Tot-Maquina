@@ -5,9 +5,11 @@ namespace App\Controllers;
 
 class ctrlListinci {
 
+
     public function index($request, $response, $container){
-
-
+        $maintenances = $container->get('maintenance');
+        $maintenance = $maintenances->getMaintenances();
+        $response->set("maintenances", $maintenance);
         $response->setTemplate("listinci.php");
 
         return $response;
@@ -15,14 +17,12 @@ class ctrlListinci {
     public function create($request, $response, $container){
 
         $hola = $_POST;
-        //var_dump($hola);
-        //die();
 
-            $maintenanceModel = $container->get("maintenance");
+        $maintenanceModel = $container->get("maintenance");
 
-            $maintenanceModel-> addMaintenance($hola);
+        $maintenanceModel-> addMaintenance($hola);
 
-
-
+        $response->redirect("location: /listinci");
+        return $response;
     }
 }

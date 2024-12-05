@@ -125,7 +125,7 @@
                         <!-- Imagen de la máquina -->
                         <div class="relative group">
                             <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                                src=<?= htmlspecialchars($machine['image']) ?> alt="Imagen Máquina">
+                                src=<?= htmlspecialchars($machine['image']) ?> alt="">
                             <div class="absolute top-0 right-0 bg-gradient-to-r from-[#478249] to-[#3d7040] text-white px-4 py-1.5 m-3 rounded-full text-sm font-medium shadow-lg flex items-center space-x-2">
                                 <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
                                 <span>Activa</span>
