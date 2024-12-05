@@ -23,7 +23,7 @@ class ctrlFormMachine
         // Manejo simple de la imagen
         $imageURL = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = 'uploads/';
+            $uploadDir = 'uploads/images';
             $imageName = basename($_FILES['image']['name']);
             $targetPath = $uploadDir . $imageName;
 
