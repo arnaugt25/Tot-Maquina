@@ -224,8 +224,53 @@ window.addEventListener('resize', function() {
     map.invalidateSize();
 });
 
+<<<<<<< HEAD:App/js/map.js
 <<<<<<<<< Temporary merge branch 1
 
 
 =========
 >>>>>>>>> Temporary merge branch 2
+=======
+function loadSingleMarker(machine) {
+    if (!machine.coordinates) {
+        console.log('No hay coordenadas para esta máquina');
+        return;
+    }
+
+    try {
+        const coords = machine.coordinates.split(',');
+        if (coords.length === 2) {
+            const lat = parseFloat(coords[0].trim());
+            const lng = parseFloat(coords[1].trim());
+
+            if (!isNaN(lat) && !isNaN(lng)) {
+                // Actualizar la vista del mapa existente
+                map.setView([lat, lng], 15);
+
+                // Limpiar marcadores existentes
+                map.eachLayer((layer) => {
+                    if (layer instanceof L.Marker) {
+                        map.removeLayer(layer);
+                    }
+                });
+
+                // Crear nuevo marcador
+                const marker = L.marker([lat, lng], {
+                    title: machine.model
+                }).addTo(map);
+
+                // Añadir popup con información
+                marker.bindPopup(`
+                    <div class="p-2">
+                        <h3 class="font-bold text-lg mb-2">${machine.model}</h3>
+                        <p class="mb-1"><strong>Serie:</strong> ${machine.serial_number}</p>
+                        <p class="mb-1"><strong>Fabricante:</strong> ${machine.created_by}</p>
+                    </div>
+                `);
+            }
+        }
+    } catch (error) {
+        console.error('Error al procesar coordenadas:', error);
+    }
+}
+>>>>>>> 68bb32701d2e525d2eeb163432576424ddbe1e7d:public/js/map.js

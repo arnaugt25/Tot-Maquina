@@ -152,7 +152,8 @@ class Users extends DB {
                 return false;
             }
 
-            return true;
+            return true;}
+
 
     }
 
