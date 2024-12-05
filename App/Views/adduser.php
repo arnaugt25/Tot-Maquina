@@ -1,3 +1,5 @@
+<?php if (isset($_SESSION['user']['role']) == 'admin'):  ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -162,3 +164,4 @@
     </main>
 </body>
 </html> 
+<?php endif; ?>

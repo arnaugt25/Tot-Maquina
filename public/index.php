@@ -7,11 +7,6 @@
  * de M07.
  * @author: Dani Prados dprados@cendrassos.net
  * @version 0.4.0
- *
- * Punt d'netrada de l'aplicació exemple del Framework Emeset.
- * Per provar com funciona es pot executer php -S localhost:8000 a la carpeta public.
- * I amb el navegador visitar la url http://localhost:8000/
- *
  */
 
 use \Emeset\Contracts\Routers\Router;
@@ -26,6 +21,10 @@ $contenidor = new \App\Container(__DIR__ . "/../App/config.php");
 $app = new \Emeset\Emeset($contenidor);
 $app->middleware([\App\Middleware\App::class, "execute"]);
 
+// Rutas básicas
+$app->route("/", [\App\Controllers\ctrlIndex::class, "index"]);
+$app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
+$app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"]);
 
 $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
@@ -52,5 +51,48 @@ $app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
 $app->route("/admin/editinci","\App\Controllers\ctrlEditinci:editinci");
 
+// Rutas de formularios e incidencias
+$app->route("/formInci", [\App\Controllers\ctrlFormInci::class, "index"]);
+$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
+$app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"]);
+$app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
+
+// Rutas de máquinas
+$app->get("/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"]);
+$app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"]);
+$app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
+$app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"]);
+$app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
+$app->route("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
+$app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+
+
+ 
+
+// Rutas de autenticación y perfil
+$app->get("/login", [\App\Controllers\ctrlLogin::class, "login"]);
+$app->post("/login", [\App\Controllers\ctrlLogin::class, "ctrlLogin"]);
+$app->route("/logout", [\App\Controllers\ctrlLogin::class, "logout"]);
+$app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"]);
+$app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
+
+// Rutas de búsqueda y notificaciones
+$app->post("/search", [\App\Controllers\ctrlSearch::class, "search"]);
+$app->route("/notification", [\App\Controllers\ctrlNotification::class, "index"]);
+
+// Rutas de mantenimiento e historial
+$app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
+$app->route("/history", [\App\Controllers\ctrlHistory::class, "history"]);
+
+// Rutas de administración
+$app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"]);
+$app->post("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "addUser"]);
+$app->get("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"]);
+$app->post("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"]);
+$app->get("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "formEditUser"]);
+$app->post("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "editUser"]);
+$app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "deleteUser"]);
+
+// Ruta por defecto (error)
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
 $app->execute();

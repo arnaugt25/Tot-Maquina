@@ -18,7 +18,7 @@ CREATE TABLE user (
 CREATE TABLE machine (
     machine_id INT AUTO_INCREMENT PRIMARY KEY,
     model VARCHAR(100) ,
-    created_by INT ,
+    created_by VARCHAR(100) ,
     serial_number VARCHAR(100) ,
     installation_date DATE,
     coordinates VARCHAR(100),
@@ -59,12 +59,4 @@ CREATE TABLE user_machine (
     machine_id INT,
     FOREIGN KEY (user_id) REFERENCES user(user_id),
     FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
-);
-
--- Tabla para los técnicos
-CREATE TABLE technician (
-    technician_id INT AUTO_INCREMENT PRIMARY KEY,
-    description TEXT ,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
 );

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir Máquina</title>
+    <title>Editar Máquina</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -18,13 +18,13 @@
             <div class="bg-gradient-to-r from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8 mb-8">
                 <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
                     <i class="fas fa-cog mr-4 text-[#5DA6C3]"></i>
-                    Añadir Nueva Máquina
+                    Editar Máquina
                 </h1>
                 <p class="text-[#A8C5D6]">Introduce la información de la nueva máquina</p>
             </div>
 
             <!-- Formulario -->
-            <form class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8" method="POST" action="/addmachine1" enctype="multipart/form-data">
+            <form class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8" method="POST" action="/updatemachine?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>" enctype="multipart/form-data">
                 <!-- Modelo -->
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="model" class="block text-[#A8C5D6] font-medium mb-2">
@@ -32,6 +32,7 @@
                         Modelo
                     </label>
                     <input type="text" name="model" id="model"
+                        value="<?= htmlspecialchars($machine['model']) ?>"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                         placeholder="Ingrese el modelo" required />
                 </div>
@@ -44,6 +45,7 @@
                             Fabricante
                         </label>
                         <input type="text" name="created_by" id="created_by"
+                            value="<?= htmlspecialchars($machine['created_by']) ?>"
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                             placeholder="Ingrese el fabricante" required />
                     </div>
@@ -53,6 +55,7 @@
                             Fecha instalación
                         </label>
                         <input type="date" name="installation_date" id="installation_date"
+                            value="<?= htmlspecialchars($machine['installation_date']) ?>"
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                             required />
                     </div>
@@ -65,23 +68,23 @@
                         Número serie
                     </label>
                     <input type="text" name="serial_number" id="serial_number"
+                        value="<?= htmlspecialchars($machine['serial_number']) ?>"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
                         placeholder="Ingrese el número de serie" required />
                 </div>
 
-                <!-- Coordenadas -->
+                <!-- Cordenadas -->
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="coordinates" class="block text-[#A8C5D6] font-medium mb-2">
-                        <i class="fas fa-map-marker-alt mr-2 text-[#5DA6C3]"></i>
-                        Coordenadas
+                        <i class="fas fa-barcode mr-2 text-[#5DA6C3]"></i>
+                        Cordenadas
                     </label>
                     <input type="text" name="coordinates" id="coordinates"
+                        value="<?= htmlspecialchars($machine['coordinates']) ?>"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
-                        placeholder="Ejemplo: 41.3851,2.1734"
-                        pattern="^\s*-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?\s*$"
-                        title="Ingrese las coordenadas en formato: latitud,longitud (ejemplo: 41.3851,2.1734)" />
-                    <p class="mt-1 text-sm text-[#A8C5D6]">Formato: latitud,longitud (ejemplo: 41.3851,2.1734)</p>
+                        placeholder="Ingrese las coordenadas" required />
                 </div>
+
 
                 <!-- Imagen -->
                 <div class="relative z-0 w-full mb-8 group">
@@ -100,7 +103,7 @@
                         <i class="fas fa-save mr-2"></i>
                         Guardar Máquina
                     </button>
-                    <a href="/list"
+                    <a href="/addlist"
                         class="flex-1 bg-gradient-to-r from-[#132048] to-[#1D2F6F] text-white py-3 px-6 rounded-lg hover:from-[#1a2a5e] hover:to-[#243a8a] transition-all duration-300 font-medium flex items-center justify-center">
                         <i class="fas fa-times mr-2"></i>
                         Cancelar

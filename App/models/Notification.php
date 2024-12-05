@@ -31,4 +31,5 @@ class notification extends DB {
             throw new \Exception("Error al crear la notificación");
         }
     }
-    }
+
+}
