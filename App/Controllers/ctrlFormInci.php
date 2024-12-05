@@ -9,15 +9,15 @@ class ctrlFormInci {
 
         try {
             $machineModel = $container->get("Machine");
-            $technicianModel = $container->get("Technician");
+            $UserModel = $container->get("Users");
              //var_dump($machineModel);
             // die();
             $machines = $machineModel->listMachine();
 
-            $technicians = $technicianModel->getallTechnician();
+            $Users = $UserModel->getAllTechnicians();
 
             $response->set('machines', $machines);
-            $response->set('technicians', $technicians);
+            $response->set('Users', $Users );
 
         } catch (\Exception $e) {
             $response->setSession("error", $e->getMessage());

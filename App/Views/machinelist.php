@@ -181,9 +181,67 @@
                 </button>
               </div>
             </div>
+
+        </div>
+        <!-- Grid de tarjetas -->
+        <div class="container mx-auto px-4 py-8 max-w-7xl">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+                <?php foreach ($machines as $machine): ?>
+                    <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
+                        <!-- Imagen de la máquina -->
+                        <div class="relative group">
+                            <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                                src=<?= htmlspecialchars($machine['image']) ?> alt="">
+                            <div class="absolute top-0 right-0 bg-gradient-to-r from-[#478249] to-[#3d7040] text-white px-4 py-1.5 m-3 rounded-full text-sm font-medium shadow-lg flex items-center space-x-2">
+                                <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
+                                <span>Activa</span>
+                            </div>
+                        </div>
+                        <!-- Contenido de la tarjeta -->
+                        <div class="p-6">
+                            <h1 class="text-[#5DA6C3] font-bold text-xl mb-3 flex items-center space-x-2">
+                                <i class="fas fa-desktop text-lg"></i>
+                                <span><?= htmlspecialchars($machine['model']) ?></span>
+                            </h1>
+                            <!-- Detalles de la máquina -->
+                            <div class="space-y-3 text-[#C1D1D8] mb-6">
+                                <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                                    <i class="fas fa-barcode text-[#5DA6C3]"></i>
+                                    <span>SN:<?= htmlspecialchars($machine['serial_number']) ?></span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                                    <i class="fas fa-calendar text-[#5DA6C3]"></i>
+                                    <span>Instalada:<?= htmlspecialchars($machine['installation_date']) ?></span>
+                                </div>
+                                <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
+                                    <i class="fas fa-tools text-[#5DA6C3]"></i>
+                                    <span>Fabricante:<?= htmlspecialchars($machine['created_by']) ?></span>
+                                </div>
+                            </div>
+                            <!-- Botones de acción -->
+                            <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
+                                <a href="/machine"
+                                    class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
+                                    <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
+                                    <span>Detalles</span>
+                                </a>
+                                <button
+                                    class="text-[#5DA6C3] hover:text-white transition-colors duration-300 p-2 hover:bg-[#1a3850]/50 rounded-lg"
+                                    aria-label="Ver código QR de la máquina"
+                                    role="button"
+                                    type="button">
+                                    <i class="fas fa-qrcode text-2xl hover:scale-110 transition-transform" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+  </div>
           </div>
         <?php endforeach; ?>
       </div>
+
     </div>
   </div>
 

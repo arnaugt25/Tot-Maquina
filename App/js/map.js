@@ -224,5 +224,8 @@ window.addEventListener('resize', function() {
     map.invalidateSize();
 });
 
+<<<<<<<<< Temporary merge branch 1
 
 
+=========
+>>>>>>>>> Temporary merge branch 2
