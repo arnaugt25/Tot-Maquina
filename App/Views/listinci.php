@@ -21,20 +21,19 @@
                            aria-label="Buscar incidencia">
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <select class="px-4 py-2 border rounded-lg bg-[#1B4B5F] text-[#FFFFFF]" aria-label="Filtrar por estado">
-                        <optgroup label="Estado de la incidencia">
-                            <option value="" selected>Seleccionar tipo</option>
-                            <option value="pendiente">Preventivo</option>
-                            <option value="en_proceso">Correctivo</option>
-                        </optgroup>
-                    </select>
                     <select class="px-4 py-2 border rounded-lg bg-[#1B4B5F] text-[#FFFFFF]" aria-label="Filtrar por prioridad">
                         <optgroup label="Nivel de prioridad">
                             <option value="" selected>Seleccionar prioridad</option>
                             <option value="baja">Baja</option>
                             <option value="media">Media</option>
-                            <option value="alta">Alta</option>
                             <option value="urgente">Urgente</option>
+                        </optgroup>
+                    </select>
+                    <select class="px-4 py-2 border rounded-lg bg-[#1B4B5F] text-[#FFFFFF]" aria-label="Filtrar por tipo">
+                        <optgroup label="tipo de incidencia">
+                            <option value="" selected>Seleccionar tipo</option>
+                            <option value="preventivo">Preventivo</option>
+                            <option value="correctivo">Correctivo</option>
                         </optgroup>
                     </select>
                 </div>
@@ -78,43 +77,48 @@
                 </thead>
                 <tbody class="bg-[#0A2A3A] divide-y divide-gray-700">
                     <!-- Ejemplo de una fila -->
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
-                            #001
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
-                            MAQ-123
-                        </td>
-                        <td class="px-6 py-4 text-sm text-center text-[#FFFFFF]">
-                            Error en el sistema de refrigeración
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
-                            Juan Pérez
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
-                            2024-03-20
-                        </td>
-                        <td class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
-                                Urgente
+                    <?php foreach ($maintenances as $maintenance){
+                       ?>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
+                                <?= htmlspecialchars($maintenance["maintenance_id"]) ?>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-center text-[#FFFFFF]">
+                                <?= htmlspecialchars($maintenance["machine_name"]) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
+                                <?= htmlspecialchars($maintenance["description"]) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
+                                <?= htmlspecialchars($maintenance["technician_name"]) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
+                                 <?= htmlspecialchars($maintenance["assigned_date"]) ?>
                             </span>
-                        </td>
-                        <td  class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                            </td>
+                            <td  class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
                              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
-                                 Preventivo
+                                 <?= htmlspecialchars($maintenance["priority"]) ?>
                             </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div class="flex justify-center space-x-2">
-                                <button class="text-[#00B4FF] hover:text-[#FFFFFF] bg-[#022232] px-2 py-1 rounded" aria-label="Editar incidencia #001">
-                                    Editar
-                                </button>
-                                <button class="text-[#FFFDFD] hover:text-[#FFFFFF] bg-[#002030] px-2 py-1 rounded" aria-label="Eliminar incidencia #001">
-                                    Eliminar
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                            <td  class="px-6 py-3 text-xs font-medium text-center text-[#FFFFFF] uppercase tracking-wider">
+                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#B60000] text-[#FFFFFF]">
+                                 <?= htmlspecialchars($maintenance["type"]) ?>
+                            </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-[#00B4FF] hover:text-[#FFFFFF] bg-[#022232] px-2 py-1 rounded" aria-label="Editar incidencia #001">
+                                        <a href="/admin/editinci" >Editar</a>
+                                    </button>
+                                    <button class="text-[#FFFDFD] hover:text-[#FFFFFF] bg-[#002030] px-2 py-1 rounded" aria-label="Eliminar incidencia #001">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php }?>
+
                     <!-- Fin ejemplo de fila -->
                 </tbody>
             </table>

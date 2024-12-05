@@ -86,30 +86,50 @@ class ctrlFormMachine
     }
 
     //PARA HACER EL UPDATE EN LA BASE DE DATOS 
-    public function updateMachine($request, $response, $container){
+    public function updateMachine($request, $response, $container)
+    {
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
-        //$machine = $machineModel->editMachine($machineId);
-
+    
+        // Obtener los datos actuales de la máquina
+        $currentMachine = $machineModel->getMachineById($machineId);
+    
+        // Manejo de la imagen
+        $imageURL = $currentMachine['image']; // Mantener la imagen actual por defecto
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'uploads/';
+            $imageName = basename($_FILES['image']['name']);
+            $targetPath = $uploadDir . $imageName;
+    
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
+                $imageURL = '/' . $targetPath; // Actualizar la URL de la imagen si se sube una nueva
+            }
+        }
+    
         $data = [
             'machine_id' => $machineId,
             'model' => $request->get(INPUT_POST, "model"),
             'created_by' => $request->get(INPUT_POST, "created_by"),
             'installation_date' => $request->get(INPUT_POST, "installation_date"),
             'serial_number' => $request->get(INPUT_POST, "serial_number"),
-            'coordinates' =>  $request->get(INPUT_POST, "coordinates")
+            'coordinates' =>  $request->get(INPUT_POST, "coordinates"),
+            'image' =>  $imageURL // Usar la URL de la imagen actualizada
         ];
-
+    
         $result = $machineModel->editMachine($data);
-
+    
         $response->redirect("Location: /addlist");
         return $response;
-
     }
 
     // Para mostrar máquina 
     public function machineId($request, $response, $container)
     {
+        $machineId = $request->get(INPUT_GET, "machine_id");
+        $machineModel = $container->get("Machine");
+        $machine = $machineModel->getMachineById($machineId);
+        $response->set('machine', $machine);
+
         $response->setTemplate("maquina.php");
         return $response;
     }
@@ -128,7 +148,8 @@ class ctrlFormMachine
     }
 
     //Eliminar máquina
-    public function deleteMachine($request, $response, $container) {
+    public function deleteMachine($request, $response, $container)
+    {
         $machine_id = $request->getParam('id');
         $machineModel = $container->get("Machine");
         $result = $machineModel->deleteMachine($machine_id);

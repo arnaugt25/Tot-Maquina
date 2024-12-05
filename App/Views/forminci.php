@@ -49,8 +49,8 @@
                         name="user_id"
                         required>
                     <option value="">Seleccione el tecnico</option>
-                    <?php foreach ($technicians as $technician) { ?>
-                        <option value="<?php echo $technician['technician_id']; ?>"><?php echo $technician['username']; ?></option>
+                    <?php foreach ($Users as $user) {?>
+                        <option value="<?php echo $user['user_id']; ?>"><?php echo $user['username']; ?></option>
                     <?php } ?>
                 </select>
 
@@ -92,8 +92,8 @@
                         name="type"
                         required>
                     <option value="">Seleccione el tipo</option>
-                    <option value="baja">Preventivo</option>
-                    <option value="mediana">Correctivo</option>
+                    <option value="preventivo">Preventivo</option>
+                    <option value="correctivo">Correctivo</option>
                 </select>
             </div>
             <!-- Botón de envío -->
