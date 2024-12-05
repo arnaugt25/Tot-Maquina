@@ -110,6 +110,11 @@ class ctrlFormMachine
     // Para mostrar máquina 
     public function machineId($request, $response, $container)
     {
+        $machineId = $request->get(INPUT_GET, "machine_id");
+        $machineModel = $container->get("Machine");
+        $machine = $machineModel->getMachineById($machineId);
+        $response->set('machine', $machine);
+
         $response->setTemplate("maquina.php");
         return $response;
     }
@@ -135,5 +140,12 @@ class ctrlFormMachine
         $response->redirect("Location: /addlist");
 
         return $response;
+    }
+
+    //Buscador de máquinas
+    public function searchM($request, $response, $container) {
+        $machine = $request->getParam('id');
+        $machineModel = $container->get("Machine");
+        $result = $machineModel->searchM($machine);
     }
 }

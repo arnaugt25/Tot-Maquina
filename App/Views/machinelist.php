@@ -99,7 +99,7 @@
 
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Buscador -->
+    <!-- Buscador --------------------------------->
     <div class="mb-8 max-w-2xl mx-auto">
       <div class="relative flex">
         <div class="relative flex-1">
@@ -154,7 +154,7 @@
               </div>
               <!-- Botones de acción -->
               <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
-                <a href="/id?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
+                <a href="/maquina_id?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
                   class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
                   <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
                   <span>Detalles</span>

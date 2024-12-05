@@ -12,26 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Petición AJAX para resultados
-        fetch(`/search_machines.php?search=${encodeURIComponent(searchTerm)}`)
-            .then(response => response.json())
-            .then(data => {
-                // Limpiar resultados anteriores
-                searchResults.innerHTML = '';
-                
-                // Mostrar los resultados
-                data.forEach(machine => {
-                    const div = document.createElement('div');
-                    div.className = 'search-result';
-                    div.innerHTML = `
-                        <h3>${machine.name}</h3>
-                        <p>${machine.description}</p>
-                    `;
-                    searchResults.appendChild(div);
-                });
-            })
-            .catch(error => {
-                console.error('Error en la búsqueda:', error);
-            });
+        
     });
 });
