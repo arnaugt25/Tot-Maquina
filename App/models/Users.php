@@ -108,6 +108,18 @@ class Users extends DB {
         }
     }
 
+
+    public function getAllTechnicians(){
+        try {
+            $query = "SELECT user_id, name, surname,username, role FROM user where role like'tecnico' ORDER BY user_id ASC";
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting users: " . $e->getMessage());
+            return [];
+        }
+
     public function editUser($data) {
             $query = "UPDATE user SET 
                       name = :name, 
@@ -149,6 +161,7 @@ class Users extends DB {
         $stmt = $this->sql->prepare($query);
         $result = $stmt->execute([':user_id' => $userId]); 
         return true;
+
     }
 
 } 

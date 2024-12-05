@@ -26,6 +26,31 @@ $app->route("/", [\App\Controllers\ctrlIndex::class, "index"]);
 $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"]);
 
+$app->route("/", "\App\Controllers\ctrlIndex:index");
+$app->route("/profile", "\App\Controllers\ctrlProfile:profile");
+$app->route("/admin", "\App\Controllers\ctrlAdmin:index");
+$app->route("/forminci", "\App\Controllers\ctrlFormInci:forminci");
+$app->post ("/incidencias/crear", "\App\Controllers\ctrlListinci:create");
+$app->route("/machine", "\App\Controllers\ctrlMachine:machine");
+$app->route("/history", "\App\Controllers\ctrlHistory:history");
+$app->get("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
+$app->post("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
+$app->route("/addlist", "\App\Controllers\ctrlFormMachine:ctrlListMachine");
+$app->get("/login", "\App\Controllers\ctrlLogin:login");
+$app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
+$app->post("/search", "\App\Controllers\ctrlSearch:search");
+$app->get("/editprofile", "\App\Controllers\ctrlProfile:showEditForm");
+$app->post("/profile/update", "\App\Controllers\ctrlProfile:processEditProfile");
+$app->route("/logout", "\App\Controllers\ctrlLogin:logout");
+$app->route("/notification", "\App\Controllers\ctrlNotification:index");
+$app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
+$app->route("/listinci", "\App\Controllers\ctrlListinci:index");
+$app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
+$app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
+$app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
+$app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
+$app->route("/admin/editinci","\App\Controllers\ctrlEditinci:editinci");
+
 // Rutas de formularios e incidencias
 $app->route("/formInci", [\App\Controllers\ctrlFormInci::class, "index"]);
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
@@ -40,6 +65,7 @@ $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
 $app->route("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+
 
  
 
