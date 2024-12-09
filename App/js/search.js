@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         `;
-                        grid.innerHTML += card;+-
+                        grid.innerHTML += card;
                     });
                 })
                 .catch(error => console.error("Error:", error));
