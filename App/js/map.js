@@ -72,7 +72,7 @@ window.loadMarkers = function (machines) {
                                 </div>
                                 
                                 <div class="mt-4 pt-2 border-t border-gray-200">
-                                    <a href="/id?machine_id=${machine.machine_id}" 
+                                    <a href="/maquina_id?machine_id=${machine.machine_id}" 
                                        class="block text-center bg-[#214969] text-white py-2 px-4 rounded-lg hover:bg-[#5DA6C3] transition-all duration-300">
                                         <i class="fas fa-info-circle mr-2"></i>Ver detalles
                                     </a>
