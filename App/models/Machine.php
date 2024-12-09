@@ -158,8 +158,9 @@ class Machine extends db
     public function searchMachine($model) {
         $query = "SELECT machine_id, model FROM machine WHERE model LIKE ':model%' ";
         $stmt = $this->sql->prepare($query);
-        $result = $stmt->execute(['model => $model']);
-        
+        $stmt->execute([':model' => $model . '%']);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
     }
 
 }

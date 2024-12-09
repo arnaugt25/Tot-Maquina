@@ -144,8 +144,11 @@ class ctrlFormMachine
 
     //Buscador de máquinas
     public function searchM($request, $response, $container) {
-        $machine = $request->getParam('id');
+        $machine = $request->getParam('query'); //Texto que ingresa el usuario
         $machineModel = $container->get("Machine");
         $result = $machineModel->searchM($machine);
+        return $response->withJson($result); //Devuelve los resultados como JSON
     }
 }
+    
+
