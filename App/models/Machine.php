@@ -103,4 +103,16 @@ class Machine extends db
         $result = $stmt->execute([':machine_id' => $machine_id]);
         return true;
     }
+
+
+    // Buscar máquina
+    public function searchMachine($model) {
+        $query = "SELECT machine_id, model FROM machine WHERE model LIKE ':model%' ";
+        $stmt = $this->sql->prepare($query);
+        $stmt->execute([':model' => $model . '%']);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+    }
+
+
 }
