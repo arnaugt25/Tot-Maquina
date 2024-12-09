@@ -164,12 +164,10 @@
                   <i class="fas fa-trash"></i>
                   <span>Eliminar</span>
                 </button>
-                <button
-                  class="text-[#5DA6C3] hover:text-white transition-colors duration-300 p-2 hover:bg-[#1a3850]/50 rounded-lg"
-                  aria-label="Ver código QR de la máquina"
-                  role="button"
-                  type="button">
-                  <i class="fas fa-qrcode text-2xl hover:scale-110 transition-transform" aria-hidden="true"></i>
+                <button onclick="showMachineQRCode(<?= $machine['machine_id'] ?>)"
+                  class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
+                  title="Generar QR">
+                  <i class="fas fa-qrcode"></i>
                 </button>
               </div>
             </div>
@@ -186,10 +184,11 @@
       window.location.href = `/delete/${machine_id}`;
     }
   }
+  function showMachineQRCode(machineId) {
+    window.location.href = `/generate_machine_qr/${machineId}`;
+  }
 </script>
-<script src="/js/menuButton.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="/js/nav.js"></script>
 <script src="/js/bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </html>
