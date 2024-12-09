@@ -5,3 +5,4 @@ import "./slider.js";
 import "./nav.js";
 import "./search.js";
 import "./menuButton.js";
+import "./individualMap.js";
