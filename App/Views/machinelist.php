@@ -97,22 +97,16 @@
 
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Buscador -->
+    <!-- Buscador --------------------------------->
     <div class="mb-8 max-w-2xl mx-auto">
       <div class="relative flex">
         <div class="relative flex-1">
-          <input type="text" placeholder="Buscar máquina..." class="w-full px-4 py-2 pl-10 pr-4 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] focus:border-transparent id=" searchMachine">
+          <input type="text" id="searchMachine" placeholder="Buscar máquina..." class="w-full px-4 py-2 pl-10 pr-4 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] focus:border-transparent">
+          <!-- Lupita del buscador -->
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <i class="fas fa-search text-gray-400"></i>
           </div>
-          <!-- Acordeón de resultados -->
-          <div id="searchResults" class="absolute w-full bg-white mt-1 rounded-lg shadow-lg border border-gray-200 hidden z-50">
-            <!-- Los resultados se insertarán dinámicamente aquí -->
-          </div>
         </div>
-        <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white px-6 py-2 rounded-r-lg transition-colors duration-300 flex items-center">
-          <span>Buscar</span>
-        </button>
       </div>
     </div>
     <!-- Grid de tarjetas -->
@@ -196,6 +190,6 @@
 <script src="/js/menuButton.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/js/nav.js"></script>
-<script src="/js/search.js"></script>
+<script src="/js/bundle.js"></script>
 
 </html>
