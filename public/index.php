@@ -65,6 +65,8 @@ $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
 $app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+$app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
+
 
 
  
