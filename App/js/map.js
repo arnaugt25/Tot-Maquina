@@ -24,7 +24,7 @@ const customIcon = L.divIcon({
 });
 
 // Función para cargar los marcadores
-function loadMarkers(machines) {
+window.loadMarkers = function (machines) {
     if (!machines || machines.length === 0) {
         console.log('No hay máquinas para mostrar');
         return;
@@ -72,7 +72,7 @@ function loadMarkers(machines) {
                                 </div>
                                 
                                 <div class="mt-4 pt-2 border-t border-gray-200">
-                                    <a href="/id?machine_id=${machine.machine_id}" 
+                                    <a href="/maquina_id?machine_id=${machine.machine_id}" 
                                        class="block text-center bg-[#214969] text-white py-2 px-4 rounded-lg hover:bg-[#5DA6C3] transition-all duration-300">
                                         <i class="fas fa-info-circle mr-2"></i>Ver detalles
                                     </a>
@@ -106,7 +106,7 @@ function loadMarkers(machines) {
 }
 
 // Funciones para el modal
-function abrirMapaModal() {
+window.abrirMapaModal = function () {
     const modal = document.getElementById('mapaModal');
     document.body.classList.add('modal-open');
     modal.classList.remove('hidden');
@@ -118,7 +118,7 @@ function abrirMapaModal() {
     }, 100);
 }
 
-function cerrarMapaModal() {
+window.cerrarMapaModal = function () {
     const modal = document.getElementById('mapaModal');
     document.body.classList.remove('modal-open');
     modal.classList.add('hidden');
@@ -142,7 +142,7 @@ window.addEventListener('resize', function() {
     map.invalidateSize();
 });
 
-function loadSingleMarker(machine) {
+window.loadSingleMarker = function (machine) {
     if (!machine.coordinates) {
         console.log('No hay coordenadas para esta máquina');
         return;

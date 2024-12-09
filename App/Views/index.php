@@ -293,45 +293,14 @@
       </div>
     </div>
   </footer>
-  <script src="/js/nav.js"></script>
-  <script src="/js/slider.js"></script>
-  <script src="/js/map.js"></script>
+  <script src="/js/bundle.js"></script>
+  
   <script>
-
     const machines = <?php echo json_encode($machines); ?>;
     document.addEventListener('DOMContentLoaded', function() {
         loadMarkers(machines);
     });
-
   </script>
-  <div class="popup-wrapper" id="folleto-popup">
-    <div class="popup-content">
-      <!-- Contenido del popup -->
-    </div>
-    <button 
-      type="button"
-      class="boton-cierre-ventana-emergente-folleto" 
-      aria-label="Cerrar ventana emergente"
-      onclick="cerrarPopupFolleto()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <script>
-    function cerrarPopupFolleto() {
-      const popup = document.getElementById('folleto-popup');
-      if (popup) {
-        popup.style.display = 'none';
-      }
-    }
 
-    // Función para abrir el popup (si es necesaria)
-    function abrirPopupFolleto() {
-      const popup = document.getElementById('folleto-popup');
-      if (popup) {
-        popup.style.display = 'block';
-      }
-    }
-
-  </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 
+
     document.getElementById("searchMachine").addEventListener("input", function() {
         const query = this.value.trim();
 
@@ -51,4 +52,5 @@
             document.querySelector(".grid").innerHTML = "";
         }
     });
+
 
