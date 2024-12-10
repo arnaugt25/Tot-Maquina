@@ -1,15 +1,23 @@
+import $ from "jquery";
 
+$(document).ready(function () { //Ejecutar antes html y después js
+// Buscador de máquinas
+var identificador = document.getElementById("searchMachine");
 
-    document.getElementById("searchMachine").addEventListener("input", function() {
-        const query = this.value.trim();
+if (identificador != null){
+    identificador.addEventListener("input", function () {
+    const query = this.value.trim();
+    const grid = document.querySelector(".grid");
 
-        if (query.length > 0) {
-            fetch(`/search-machines?query=${encodeURIComponent(query)}`)
-                .then(response => response.json())
-                .then(data => {
-                    const grid = document.querySelector(".grid");
-                    grid.innerHTML = ""; // Limpiar resultados anteriores
+    if (query.length > 0) {
+        fetch(`/search-machines?query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                grid.innerHTML = "";
 
+                // Agregar resultados
+                if (data.length > 0) {
+                    //HTML para gregar las máquinas
                     data.forEach(machine => {
                         const card = `
                             <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
@@ -43,14 +51,19 @@
                                 </div>
                             </div>
                         `;
-                        grid.innerHTML += card;+-
+                        grid.innerHTML += card; // Añadir la carta
                     });
-                })
-                .catch(error => console.error("Error:", error));
-        } else {
-            // Si no hay texto, limpiar el grid
-            document.querySelector(".grid").innerHTML = "";
-        }
+                } else {
+                    grid.innerHTML = "<p>No se encontraron máquinas</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error en la búsqueda:", error);
+                grid.innerHTML = "<p>Error en labúsqueda.</p>";
+            });
+    } else {
+        grid.innerHTML = "";
+    }
     });
-
-
+}
+});
