@@ -158,13 +158,17 @@ class ctrlFormMachine
         return $response;
     }
 
-    //Buscador de máquinas
-    public function searchM($request, $response, $container) {
-        $machine = $request->getParam('query'); //Texto que ingresa el usuario
+   //Buscador de máquinas controlador
+    public function searchMachines($request, $response, $container) {
+        $query = $request->get(INPUT_GET, "query");
         $machineModel = $container->get("Machine");
-        $result = $machineModel->searchM($machine);
-        return $response->withJson($result); //Devuelve los resultados como JSON
+        $results = $machineModel->searchMachine($query);
+        
+        header('Content-Type: application/json');
+        echo json_encode($results);
+        exit;
     }
+
 }
     
 

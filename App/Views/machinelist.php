@@ -101,11 +101,12 @@
     <div class="mb-8 max-w-2xl mx-auto">
       <div class="relative flex">
         <div class="relative flex-1">
-          <input type="text" id="searchMachine" placeholder="Buscar máquina..." class="w-full px-4 py-2 pl-10 pr-4 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] focus:border-transparent">
+          <input type="text" id="searchMachine" placeholder="Buscar máquina..." class="w-full px-4 py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] focus:border-transparent shadow-sm hover:shadow-md transition-shadow duration-300">
           <!-- Lupita del buscador -->
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-search text-gray-400"></i>
+            <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
           </div>
+          <div class="grid"></div> <!-- Máquinas -->
         </div>
       </div>
     </div>
@@ -176,7 +177,6 @@
       </div>
     </div>
   </div>
-
 </body>
 <script>
   function confirmDeleteMachine(machine_id, model) {

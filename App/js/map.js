@@ -1,3 +1,9 @@
+import L from "leaflet";
+
+import 'leaflet/dist/leaflet.css';
+
+if (document.getElementById("map") != null){
+
 // Inicializar el mapa con un estilo más moderno
 var map = L.map('map', {
     zoomControl: false  // Desactivamos el control de zoom predeterminado
@@ -183,4 +189,6 @@ window.loadSingleMarker = function (machine) {
     } catch (error) {
         console.error('Error al procesar coordenadas:', error);
     }
+}
+
 }
