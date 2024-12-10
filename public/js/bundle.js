@@ -124,7 +124,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar swiper = new Swiper(\".mySwiper\", {\r\n    // Configuración del slider\r\n    slidesPerView: 1,\r\n    spaceBetween: 30,\r\n    loop: true,\r\n    pagination: {\r\n      el: \".swiper-pagination\",\r\n      clickable: true,\r\n    },\r\n    navigation: {\r\n      nextEl: \".swiper-button-next\",\r\n      prevEl: \".swiper-button-prev\",\r\n    },\r\n    autoplay: {\r\n      delay: 3500,\r\n      disableOnInteraction: false,\r\n    },\r\n  });\r\n\n\n//# sourceURL=webpack:///./App/js/slider.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar swiper = new Swiper(\".mySwiper\", {\r\n    // Configuración del slider\r\n    slidesPerView: 1,\r\n    spaceBetween: 30,\r\n    loop: true,\r\n    pagination: {\r\n      el: \".swiper-pagination\",\r\n      clickable: true,\r\n    },\r\n    navigation: {\r\n      nextEl: \".swiper-button-next\",\r\n      prevEl: \".swiper-button-prev\",\r\n    },\r\n    autoplay: {\r\n      delay: 3500,\r\n      disableOnInteraction: false,\r\n    },\r\n  });\r\n}\n\n//# sourceURL=webpack:///./App/js/slider.js?");
 
 /***/ })
 
