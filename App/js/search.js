@@ -52,6 +52,7 @@ if (identificador != null){
                             </div>
                         `;
                         grid.innerHTML += card; // Añadir la carta
+
                     });
                 } else {
                     grid.innerHTML = "<p>No se encontraron máquinas</p>";

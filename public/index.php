@@ -41,8 +41,9 @@ $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
 $app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
-//Buscador de máquina-----------------------------------------------------
-//$app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
+
+$app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
+
 
 
 
@@ -55,8 +56,6 @@ $app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"])
 $app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
 
 // Rutas de búsqueda y notificaciones
-//$app->post("/search", [\App\Controllers\ctrlSearch::class, "search"]);
-//Buscador de máquina-----------------------------------------------------
 $app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
 $app->route("/notification", [\App\Controllers\ctrlNotification::class, "index"]);
 

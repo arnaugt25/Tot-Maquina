@@ -49,6 +49,16 @@ eval("module.exports = __webpack_require__.p + \"leaflet.css\";\n\n//# sourceURL
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
 
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n/* harmony import */ var _qr_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./qr.js */ \"./App/js/qr.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
+
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './map.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './slider.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './nav.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './menuButton.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './individualMap.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
+
+
+
 /***/ }),
 
 /***/ "./App/js/individualMap.js":
@@ -92,6 +102,17 @@ eval("__webpack_require__.r(__webpack_exports__);\nif (document.getElementById('
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\ndocument.addEventListener('DOMContentLoaded', function() {\r\n    // Seleccionar elementos necesarios\r\n    const mobileMenuButton = document.querySelector('button');\r\n    const mobileMenu = document.querySelector('.md\\\\:hidden.hidden');\r\n\r\n    // Añadir evento click al botón\r\n    mobileMenuButton.addEventListener('click', function() {\r\n        // Toggle la clase hidden del menú móvil\r\n        mobileMenu.classList.toggle('hidden');\r\n    });\r\n\r\n    // Cerrar menú al hacer click fuera\r\n    document.addEventListener('click', function(event) {\r\n        if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {\r\n            mobileMenu.classList.add('hidden');\r\n        }\r\n    });\r\n});\r\n\n\n//# sourceURL=webpack:///./App/js/nav.js?");
+
+/***/ }),
+
+/***/ "./App/js/qr.js":
+/*!**********************!*\
+  !*** ./App/js/qr.js ***!
+  \**********************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\ndocument.addEventListener('DOMContentLoaded', function() {\r\n    const urlParams = new URLSearchParams(window.location.search);\r\n    const machineId = urlParams.get('machine_id');\r\n    \r\n    if (machineId) {\r\n        const qrContainer = document.getElementById('qrContainer');\r\n        if (qrContainer) {\r\n            const qrUrl = `/generate_machine_qr/${machineId}`;\r\n            qrContainer.innerHTML = `<img src=\"${qrUrl}\" alt=\"QR Code\" class=\"mx-auto\">`;\r\n        }\r\n    }\r\n});\n\n//# sourceURL=webpack:///./App/js/qr.js?");
 
 /***/ }),
 
