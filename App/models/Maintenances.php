@@ -51,6 +51,7 @@ class Maintenances extends Db
         return $this->sql->lastInsertId();
     }
 
+
     // SELECT para obtener todos los mantenimientos con información relacionada
     public function getMaintenances()
     {
@@ -219,4 +220,3 @@ class Maintenances extends Db
 
 
 }
-
