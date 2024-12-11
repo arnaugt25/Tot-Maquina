@@ -73,17 +73,17 @@ class ctrlFormMachine
     }
 
     //PARA EDITAR LA MAQUINA 
-    public function editaMachine($request, $response, $container)
-    {
-        // Get id 
-        $machineId = $request->get(INPUT_GET, "machine_id");
-        // die();
-        $machineModel = $container->get("Machine");
-        $machine = $machineModel->editMachine($machineId);
-        $response->set('machine', $machine);
-        $response->setTemplate("editMachine.php");
-        return $response;
-    }
+    // public function editaMachine($request, $response, $container)
+    // {
+    //     // Get id 
+    //     $machineId = $request->get(INPUT_GET, "machine_id");
+    //     // die();
+    //     $machineModel = $container->get("Machine");
+    //     $machine = $machineModel->editMachine($machineId);
+    //     $response->set('machine', $machine);
+    //     $response->setTemplate("editMachine.php");
+    //     return $response;
+    // }
 
     //PARA HACER EL UPDATE EN LA BASE DE DATOS 
     public function updateMachine($request, $response, $container)
