@@ -97,18 +97,27 @@
 
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Buscador --------------------------------->
+    <!-- Buscador y botón de importación -->
     <div class="mb-8 max-w-2xl mx-auto">
-      <div class="relative flex">
-        <div class="relative flex-1">
-          <input type="text" id="searchMachine" placeholder="Buscar máquina..." class="w-full px-4 py-2 pl-10 pr-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] focus:border-transparent shadow-sm hover:shadow-md transition-shadow duration-300">
-          <!-- Lupita del buscador -->
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
-          </div>
-          <div class="grid"></div> <!-- Máquinas -->
+        <div class="relative flex space-x-4">
+            <div class="relative flex-1">
+                <input type="text" id="searchMachine" 
+                       class="w-full pl-10 pr-4 py-3 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
+                       placeholder="Buscar máquina...">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
+                </div>
+            </div>
+            
+            <!-- Botón de importación CSV -->
+            <div class="relative">
+                <button onclick="showCSVModal()" 
+                        class="flex items-center px-4 py-3 bg-[#478249] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
+                    <i class="fas fa-file-csv mr-2"></i>
+                    <span>Importar CSV</span>
+                </button>
+            </div>
         </div>
-      </div>
     </div>
     <!-- Grid de tarjetas -->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
@@ -177,6 +186,47 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal de importación CSV -->
+  <div id="csvModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+      <div class="bg-[#214969] rounded-lg max-w-md w-full p-6 shadow-xl">
+        <h3 class="text-xl font-bold text-white mb-4">
+          <i class="fas fa-file-csv mr-2 text-[#5DA6C3]"></i>
+          Importar Máquinas
+        </h3>
+        
+        <div class="mb-4">
+          <input type="file" 
+                 id="csvFileInput" 
+                 accept=".csv" 
+                 class="hidden" 
+                 onchange="handleFileSelection(this)">
+          <label for="csvFileInput" 
+                 class="flex items-center px-4 py-3 bg-[#132048] text-white rounded-lg cursor-pointer hover:bg-[#1a3850] transition-all">
+            <i class="fas fa-upload mr-2"></i>
+            <span id="fileName">Seleccionar archivo CSV</span>
+          </label>
+        </div>
+
+        <div id="fileInfo" class="mb-4 text-[#A8C5D6] hidden">
+          <p>Archivo seleccionado: <span id="selectedFileName" class="font-semibold"></span></p>
+          <p class="text-sm">¿Deseas proceder con la importación?</p>
+        </div>
+
+        <div class="flex justify-end space-x-3">
+          <button onclick="closeCSVModal()" 
+                  class="px-4 py-2 text-[#A8C5D6] hover:text-white transition-colors">
+            Cancelar
+          </button>
+          <button id="importButton" 
+                  class="bg-[#478249] hover:bg-[#3d6e3f] text-white px-4 py-2 rounded-lg hidden">
+            Importar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <script>
   function confirmDeleteMachine(machine_id, model) {
@@ -188,6 +238,8 @@
     window.location.href = `/generate_machine_qr/${machineId}`;
   }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

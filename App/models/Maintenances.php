@@ -60,7 +60,7 @@ class Maintenances extends Db
     public function getMaintenanceById($maintenance_id)
     {
 
-        $query = "SELECT mc.machine_id, u.user_id, m.maintenance_id, m.description, m.type, m.assigned_date, m.priority,
+            $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority,
                              u.name as technician_name,
                              mc.model as machine_name
                       FROM maintenance m
@@ -68,10 +68,10 @@ class Maintenances extends Db
                       JOIN machine mc ON m.machine_id = mc.machine_id
                       WHERE m.maintenance_id = :maintenance_id";
 
-        $stmt = $this->sql->prepare($query);
-        $stmt->execute([':maintenance_id' => $maintenance_id]);
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute([':maintenance_id' => $maintenance_id]);
 
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
 
     }
 
@@ -168,4 +168,6 @@ class Maintenances extends Db
 
     }
 
+
 }
+

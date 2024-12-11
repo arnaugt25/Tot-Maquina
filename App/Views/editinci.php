@@ -39,10 +39,13 @@
             </h1>
             <p class="text-[#A8C5D6]">Actualiza la informacion de la incidencia</p>
         </div>
-        <?php print_r($maintenance);
-        ?>
+
         <form action="/maintenances/update/<?=$maintenance['maintenance_id']?>" method="POST" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
             <!-- <input type="hidden" name="maintenance_id" value="<?=$maintenance['maintenance_id']?>">            Machine -->
+
+
+        <form action="/maintenances/update/<?=$maintenance['maintenance_id']?>" method="POST" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
+           <!-- <input type="hidden" name="maintenance_id" value="<?=$maintenance['maintenance_id']?>">            Machine -->
             <div class="mb-6">
                 <label for="machine_id" class="block text-[#A8C5D6] font-medium mb-2">
                     <i class="fa-solid fa-desktop text-[#5DA6C3]"></i>
@@ -53,6 +56,7 @@
                         name="machine_id">
 
                     <option value="<?= htmlspecialchars($maintenance['machine_id'] ?? '') ?>"><?= htmlspecialchars($maintenance['machine_name'] ?? '') ?></option>
+
                     <?php foreach ($machine as $machin){?>
                         <option value="<?php echo $machin['machine_id']; ?>" ><?php echo $machin['model']; ?></option>
                     <?php } ?>
@@ -81,10 +85,12 @@
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="user_id"
                         name="user_id">
+
                     <option value="<?= htmlspecialchars($maintenance['user_id'] ?? '') ?>"><?= htmlspecialchars($maintenance['technician_name'] ?? '') ?></option>
                     <?php foreach ($Users as $user){?>
                         <option value="<?php echo $user['user_id'];  ?>"> <?php echo $user['username']; ?></option>
                     <?php } ?>
+
                 </select>
             </div>
 
@@ -113,6 +119,7 @@
                     <option value="baja">Baja</option>
                     <option value="media">Media</option>
                     <option value="urgente">Urgente</option>
+
                 </select>
             </div>
 
@@ -129,6 +136,7 @@
                     <option><?= htmlspecialchars($maintenance['type'] ?? '') ?></option>
                     <option value="preventivo">Preventivo</option>
                     <option value="correctivo">Correctivo</option>
+
                     </optgroup>
                 </select>
             </div>
