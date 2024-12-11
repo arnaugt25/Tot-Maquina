@@ -26,6 +26,7 @@ $app->route("/", [\App\Controllers\ctrlIndex::class, "index"]);
 $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"]);
 
+
 $app->route("/", "\App\Controllers\ctrlIndex:index");
 $app->route("/profile", "\App\Controllers\ctrlProfile:profile");
 $app->route("/admin", "\App\Controllers\ctrlAdmin:index");
@@ -48,6 +49,7 @@ $app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
 $app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
 $app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
 
+
 // Rutas de formularios e incidencias
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
@@ -64,12 +66,15 @@ $app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMac
 $app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
 $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"]);
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
-$app->route("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
+$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+
+$app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
+
+
 
 
  
-
 // Rutas de autenticación y perfil
 $app->get("/login", [\App\Controllers\ctrlLogin::class, "login"]);
 $app->post("/login", [\App\Controllers\ctrlLogin::class, "ctrlLogin"]);
@@ -78,7 +83,7 @@ $app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"])
 $app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
 
 // Rutas de búsqueda y notificaciones
-$app->post("/search", [\App\Controllers\ctrlSearch::class, "search"]);
+$app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
 $app->route("/notification", [\App\Controllers\ctrlNotification::class, "index"]);
 
 // Rutas de mantenimiento e historial
@@ -93,6 +98,7 @@ $app->post("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "ctrla
 $app->get("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "formEditUser"]);
 $app->post("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "editUser"]);
 $app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "deleteUser"]);
+$app->get("/admin/deletemachine/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
 
 // Ruta por defecto (error)
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");

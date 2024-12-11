@@ -93,6 +93,7 @@
                         Imagen
                     </label>
                     <input type="file" name="image" id="image"
+                        value="<?= htmlspecialchars($machine['image']) ?>"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#5DA6C3] file:text-white hover:file:bg-[#4A8A9F]" />
                 </div>
 
@@ -108,6 +109,7 @@
                         <i class="fas fa-times mr-2"></i>
                         Cancelar
                     </a>
+                    
                 </div>
             </form>
         </div>
