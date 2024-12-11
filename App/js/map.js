@@ -1,12 +1,8 @@
+import L from "leaflet";
 
-// Inicializar el mapa
-var map = L.map('map').setView([41.3851, 2.1734], 13);
+import 'leaflet/dist/leaflet.css';
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
-}).addTo(map);
-
+if (document.getElementById("map") != null){
 
 // Inicializar el mapa con un estilo más moderno
 var map = L.map('map', {
@@ -34,51 +30,22 @@ const customIcon = L.divIcon({
 });
 
 // Función para cargar los marcadores
-function loadMarkers(machines) {
+window.loadMarkers = function (machines) {
     if (!machines || machines.length === 0) {
         console.log('No hay máquinas para mostrar');
         return;
     }
 
     const bounds = [];
-
-
-    machines.forEach(function (machine) {
-
     const markersLayer = L.featureGroup().addTo(map);
 
     machines.forEach(function(machine) {
-
         if (machine.coordinates) {
             try {
                 const coords = machine.coordinates.split(',');
                 if (coords.length === 2) {
                     const lat = parseFloat(coords[0].trim());
                     const lng = parseFloat(coords[1].trim());
-
-
-                    if (!isNaN(lat) && !isNaN(lng)) {
-                        // Añadir coordenadas a los límites
-                        bounds.push([lat, lng]);
-
-                        // Crear marcador
-                        const marker = L.marker([lat, lng], {
-                            title: machine.model
-                        }).addTo(map);
-
-                        // Añadir popup con información
-                        marker.bindPopup(`
-                            <div class="p-2">
-                                <h3 class="font-bold text-lg mb-2">${machine.model}</h3>
-                                <p class="mb-1"><strong>Serie:</strong> ${machine.serial_number}</p>
-                                <p class="mb-1"><strong>Fabricante:</strong> ${machine.created_by}</p>
-                                <a href="/id?machine_id=${machine.machine_id}" 
-                                   class="text-blue-500 hover:text-blue-700">
-                                   Ver detalles
-                                </a>
-                            </div>
-                        `);
-
                     
                     if (!isNaN(lat) && !isNaN(lng)) {
                         bounds.push([lat, lng]);
@@ -111,7 +78,7 @@ function loadMarkers(machines) {
                                 </div>
                                 
                                 <div class="mt-4 pt-2 border-t border-gray-200">
-                                    <a href="/id?machine_id=${machine.machine_id}" 
+                                    <a href="/maquina_id?machine_id=${machine.machine_id}" 
                                        class="block text-center bg-[#214969] text-white py-2 px-4 rounded-lg hover:bg-[#5DA6C3] transition-all duration-300">
                                         <i class="fas fa-info-circle mr-2"></i>Ver detalles
                                     </a>
@@ -127,7 +94,6 @@ function loadMarkers(machines) {
                         marker.on('mouseover', function() {
                             this.openPopup();
                         });
-
                     }
                 }
             } catch (error) {
@@ -135,48 +101,6 @@ function loadMarkers(machines) {
             }
         }
     });
-
-    // Ajustar el mapa para mostrar todos los marcadores
-    if (bounds.length > 0) {
-        map.fitBounds(bounds);
-    }
-
-}
-function loadSingleMarker(machine) {
-    if (!machine.coordinates) {
-        console.log('No hay coordenadas para esta máquina');
-        return;
-    }
-
-    try {
-        const coords = machine.coordinates.split(',');
-        if (coords.length === 2) {
-            const lat = parseFloat(coords[0].trim());
-            const lng = parseFloat(coords[1].trim());
-
-            if (!isNaN(lat) && !isNaN(lng)) {
-                // Actualizar la vista del mapa existente
-                map.setView([lat, lng], 15);
-
-                // Limpiar marcadores existentes
-                map.eachLayer((layer) => {
-                    if (layer instanceof L.Marker) {
-                        map.removeLayer(layer);
-                    }
-                });
-
-                // Crear nuevo marcador
-                const marker = L.marker([lat, lng], {
-                    title: machine.model
-                }).addTo(map);
-
-                
-            }
-        }
-    } catch (error) {
-        console.error('Error al procesar coordenadas:', error);
-    }
-}
 
     // Ajustar el mapa para mostrar todos los marcadores con padding
     if (bounds.length > 0) {
@@ -188,7 +112,7 @@ function loadSingleMarker(machine) {
 }
 
 // Funciones para el modal
-function abrirMapaModal() {
+window.abrirMapaModal = function () {
     const modal = document.getElementById('mapaModal');
     document.body.classList.add('modal-open');
     modal.classList.remove('hidden');
@@ -200,7 +124,7 @@ function abrirMapaModal() {
     }, 100);
 }
 
-function cerrarMapaModal() {
+window.cerrarMapaModal = function () {
     const modal = document.getElementById('mapaModal');
     document.body.classList.remove('modal-open');
     modal.classList.add('hidden');
@@ -224,14 +148,7 @@ window.addEventListener('resize', function() {
     map.invalidateSize();
 });
 
-<<<<<<< HEAD:App/js/map.js
-<<<<<<<<< Temporary merge branch 1
-
-
-=========
->>>>>>>>> Temporary merge branch 2
-=======
-function loadSingleMarker(machine) {
+window.loadSingleMarker = function (machine) {
     if (!machine.coordinates) {
         console.log('No hay coordenadas para esta máquina');
         return;
@@ -273,4 +190,5 @@ function loadSingleMarker(machine) {
         console.error('Error al procesar coordenadas:', error);
     }
 }
->>>>>>> 68bb32701d2e525d2eeb163432576424ddbe1e7d:public/js/map.js
+
+}
