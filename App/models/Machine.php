@@ -77,9 +77,6 @@ class Machine extends db
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getAllMachines()
-    {
-
 
     // public function listMachine()
     // {
