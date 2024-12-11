@@ -79,7 +79,6 @@ class Machine extends db
 
     public function getAllMachines()
     {
-
         $query = "SELECT * FROM machine ORDER BY machine_id DESC";
         $stmt = $this->sql->prepare($query);
         $stmt->execute();

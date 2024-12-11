@@ -143,6 +143,14 @@
         <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
           Añadir técnico
         </button>
+        <button class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
+          <a href="/history/<?= htmlspecialchars($machine['id']) ?>">
+            Ver historial
+          </a>
+        </button>
+
+
+
       </div>
     </div>
   </main>
