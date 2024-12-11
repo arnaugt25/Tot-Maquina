@@ -60,9 +60,6 @@ class ctrlListinci{
             'machine_id' => $request->get(INPUT_POST, "machine_id")
         ];
 
-
-        
-
         $result= $maintenanceModel->editMaintenance($data);
         $response->redirect("Location: /listinci");
         return $response;
@@ -76,6 +73,4 @@ class ctrlListinci{
         $response->redirect("Location: /listinci");
         return $response;
     }
-
-
 }

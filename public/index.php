@@ -82,8 +82,14 @@ $app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"])
 $app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
 
 // Rutas de búsqueda y notificaciones
-$app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
-$app->route("/notification", [\App\Controllers\ctrlNotification::class, "index"]);
+$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
+$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
+$app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"]);
+$app->get("/admin/editinci/{id}", [\App\Controllers\ctrlListinci::class, "editMaintenance"]);
+$app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "updateMaintenance"]);
+$app->get("/maintenances/delete/{id}", [\App\Controllers\ctrlListinci::class, "deleteMaintenance"]);
+$app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
+$app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
 // Rutas de mantenimiento e historial
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);

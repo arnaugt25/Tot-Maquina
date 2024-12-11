@@ -41,6 +41,10 @@
         </div>
 
         <form action="/maintenances/update/<?=$maintenance['maintenance_id']?>" method="POST" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
+            <!-- <input type="hidden" name="maintenance_id" value="<?=$maintenance['maintenance_id']?>">            Machine -->
+
+
+        <form action="/maintenances/update/<?=$maintenance['maintenance_id']?>" method="POST" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
            <!-- <input type="hidden" name="maintenance_id" value="<?=$maintenance['maintenance_id']?>">            Machine -->
             <div class="mb-6">
                 <label for="machine_id" class="block text-[#A8C5D6] font-medium mb-2">
@@ -51,7 +55,8 @@
                         id="machine_id"
                         name="machine_id">
 
-                    <option value=""><?= htmlspecialchars($maintenance['machine_name'] ?? '') ?></option>
+                    <option value="<?= htmlspecialchars($maintenance['machine_id'] ?? '') ?>"><?= htmlspecialchars($maintenance['machine_name'] ?? '') ?></option>
+
                     <?php foreach ($machine as $machin){?>
                         <option value="<?php echo $machin['machine_id']; ?>" ><?php echo $machin['model']; ?></option>
                     <?php } ?>
@@ -68,7 +73,7 @@
                 <input type="text" id="description" name="description"
                        value="<?= htmlspecialchars($maintenance['description'] ?? '') ?>"
                        class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
-                        placeholder="Ingrese la descripcion">
+                       placeholder="Ingrese la descripcion">
             </div>
 
             <!-- Tecnic -->
@@ -80,10 +85,12 @@
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="user_id"
                         name="user_id">
-              <option value=""><?= htmlspecialchars($maintenance['technician_name'] ?? '') ?></option>
-                        <?php foreach ($Users as $user){?>
+
+                    <option value="<?= htmlspecialchars($maintenance['user_id'] ?? '') ?>"><?= htmlspecialchars($maintenance['technician_name'] ?? '') ?></option>
+                    <?php foreach ($Users as $user){?>
                         <option value="<?php echo $user['user_id'];  ?>"> <?php echo $user['username']; ?></option>
-                        <?php } ?>
+                    <?php } ?>
+
                 </select>
             </div>
 
@@ -103,15 +110,16 @@
             <div class="mb-8">
                 <label for="new_password" class="block text-[#A8C5D6] font-medium mb-2">
                     <i class="fa-sharp-duotone fa-regular fa-list text-[#5DA6C3]"></i>
-                   Prioridad
+                    Prioridad
                 </label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="priority"
                         name="priority">
-                <option><?= htmlspecialchars($maintenance['priority'] ?? '') ?></option>
-                        <option value="baja">Baja</option>
-                        <option value="media">Media</option>
-                        <option value="urgente">Urgente</option>
+                    <option><?= htmlspecialchars($maintenance['priority'] ?? '') ?></option>
+                    <option value="baja">Baja</option>
+                    <option value="media">Media</option>
+                    <option value="urgente">Urgente</option>
+
                 </select>
             </div>
 
@@ -125,9 +133,10 @@
                         id="type"
                         name="type"
                         required>
-                <option><?= htmlspecialchars($maintenance['type'] ?? '') ?></option>
-                        <option value="preventivo">Preventivo</option>
-                        <option value="correctivo">Correctivo</option>
+                    <option><?= htmlspecialchars($maintenance['type'] ?? '') ?></option>
+                    <option value="preventivo">Preventivo</option>
+                    <option value="correctivo">Correctivo</option>
+
                     </optgroup>
                 </select>
             </div>
