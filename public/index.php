@@ -70,8 +70,7 @@ $app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"])
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
 
 $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
-
-
+$app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 
 
  

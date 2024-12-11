@@ -38,7 +38,7 @@ window.loadMarkers = function (machines) {
 
     const bounds = [];
     const markersLayer = L.featureGroup().addTo(map);
-
+    console.log(machines);
     machines.forEach(function(machine) {
         if (machine.coordinates) {
             try {
