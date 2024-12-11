@@ -19,6 +19,26 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n * jQ
 
 /***/ }),
 
+/***/ "./App/js/example.ts":
+/*!***************************!*\
+  !*** ./App/js/example.ts ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Example: () => (/* binding */ Example),\n/* harmony export */   obj: () => (/* binding */ obj)\n/* harmony export */ });\nvar Example = /** @class */ (function () {\n    function Example(nameBook, years) {\n        this.nameBook = nameBook;\n        this.years = years;\n    }\n    return Example;\n}());\nvar obj = new Example(\"Meditation\", 2023);\n\n\n\n//# sourceURL=webpack:///./App/js/example.ts?");
+
+/***/ }),
+
+/***/ "./App/js/hola.js":
+/*!************************!*\
+  !*** ./App/js/hola.js ***!
+  \************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   add: () => (/* binding */ add),\n/* harmony export */   \"default\": () => (/* binding */ hola),\n/* harmony export */   resta: () => (/* binding */ resta)\n/* harmony export */ });\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\r\nwindow.$ = window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0__;\r\n\r\nfunction hola() {\r\n    console.log('hola hola');\r\n}\r\nconsole.log(\"Hola 2\");\r\n\r\n$(\"#missatge\").append(\"<p>Text afegit amb jQuery.</p>\");\r\n\r\nfunction add(a, b) {\r\n  return a + b;\r\n}\r\n\r\nfunction resta(a, b) {\r\n  return a - b;\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/hola.js?");
+=======
 /***/ "./node_modules/leaflet/dist/leaflet-src.js":
 /*!**************************************************!*\
   !*** ./node_modules/leaflet/dist/leaflet-src.js ***!
@@ -37,6 +57,7 @@ eval("/* @preserve\n * Leaflet 1.9.4, a JS library for interactive maps. https:/
 
 "use strict";
 eval("module.exports = __webpack_require__.p + \"leaflet.css\";\n\n//# sourceURL=webpack:///./node_modules/leaflet/dist/leaflet.css?");
+
 
 /***/ }),
 
@@ -58,7 +79,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n$(document).ready(function() 
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n/* harmony import */ var _qr_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./qr.js */ \"./App/js/qr.js\");\n/* harmony import */ var _csv_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./csv.js */ \"./App/js/csv.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
+
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var _hola_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hola.js */ \"./App/js/hola.js\");\n/* harmony import */ var _example_ts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./example.ts */ \"./App/js/example.ts\");\n\r\n\r\n\r\n\r\n\r\n\r\njquery__WEBPACK_IMPORTED_MODULE_0__(function() {\r\n    console.log('Hello World');\r\n    (0,_hola_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n    console.log(\"Example\", _example_ts__WEBPACK_IMPORTED_MODULE_2__.obj);\r\n});\n\n//# sourceURL=webpack:///./App/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n/* harmony import */ var _qr_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./qr.js */ \"./App/js/qr.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
+
 
 /***/ }),
 
@@ -137,6 +164,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar swiper = new Swiper(\".mySwiper\", {\r\n    // Configuración del slider\r\n    slidesPerView: 1,\r\n    spaceBetween: 30,\r\n    loop: true,\r\n    pagination: {\r\n      el: \".swiper-pagination\",\r\n      clickable: true,\r\n    },\r\n    navigation: {\r\n      nextEl: \".swiper-button-next\",\r\n      prevEl: \".swiper-button-prev\",\r\n    },\r\n    autoplay: {\r\n      delay: 3500,\r\n      disableOnInteraction: false,\r\n    },\r\n  });\r\n}\n\n//# sourceURL=webpack:///./App/js/slider.js?");
 
+
 /***/ })
 
 /******/ 	});
@@ -166,6 +194,23 @@ eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar s
 /******/ 	}
 /******/ 	
 /************************************************************************/
+
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+=======
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -176,6 +221,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar s
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -189,6 +235,8 @@ eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar s
 /******/ 		};
 /******/ 	})();
 /******/ 	
+
+=======
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		var scriptUrl;
@@ -212,6 +260,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar s
 /******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
+
 /************************************************************************/
 /******/ 	
 /******/ 	// startup

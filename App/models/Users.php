@@ -107,6 +107,7 @@ class Users extends DB {
     }
 
     public function getAllTechnicians() {
+
         try {
             $query = "SELECT user_id, name, surname, username, role FROM user WHERE role = 'tecnico' ORDER BY user_id ASC";
             $stmt = $this->sql->prepare($query);

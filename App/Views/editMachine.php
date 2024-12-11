@@ -34,7 +34,7 @@
                     <input type="text" name="model" id="model"
                         value="<?= htmlspecialchars($machine['model']) ?>"
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all"
-                        placeholder="Ingrese el modelo" required />
+                        placeholder="Ingrese la maquina" required />
                 </div>
 
                 <!-- Fabricante y Fecha de instalación -->
