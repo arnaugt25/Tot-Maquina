@@ -26,30 +26,6 @@ $app->route("/", [\App\Controllers\ctrlIndex::class, "index"]);
 $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"]);
 
-
-$app->route("/", "\App\Controllers\ctrlIndex:index");
-$app->route("/profile", "\App\Controllers\ctrlProfile:profile");
-$app->route("/admin", "\App\Controllers\ctrlAdmin:index");
-$app->route("/machine", "\App\Controllers\ctrlMachine:machine");
-$app->route("/history", "\App\Controllers\ctrlHistory:history");
-$app->get("/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
-$app->post("/addmachine1", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
-$app->route("/addlist", "\App\Controllers\ctrlFormMachine:ctrlListMachine");
-$app->get("/login", "\App\Controllers\ctrlLogin:login");
-$app->post("/login", "\App\Controllers\ctrlLogin:ctrlLogin");
-$app->post("/search", "\App\Controllers\ctrlSearch:search");
-$app->get("/editprofile", "\App\Controllers\ctrlProfile:showEditForm");
-$app->post("/profile/update", "\App\Controllers\ctrlProfile:processEditProfile");
-$app->route("/logout", "\App\Controllers\ctrlLogin:logout");
-$app->route("/notification", "\App\Controllers\ctrlNotification:index");
-
-
-$app->get("/admin/adduser", "\App\Controllers\ctrlAdminUser:index");
-$app->post("/admin/adduser", "\App\Controllers\ctrlAdminUser:addUser");
-$app->get("/admin/addmachine", "\App\Controllers\ctrlFormMachine:formMachine");
-$app->post("/admin/addmachine", "\App\Controllers\ctrlFormMachine:ctrladdMachine");
-
-
 // Rutas de formularios e incidencias
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
@@ -73,7 +49,6 @@ $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 
 
- 
 // Rutas de autenticación y perfil
 $app->get("/login", [\App\Controllers\ctrlLogin::class, "login"]);
 $app->post("/login", [\App\Controllers\ctrlLogin::class, "ctrlLogin"]);
@@ -93,7 +68,8 @@ $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
 // Rutas de mantenimiento e historial
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
-$app->route("/history", [\App\Controllers\ctrlHistory::class, "history"]);
+$app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
+$app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
 
 // Rutas de administración
 $app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"]);
