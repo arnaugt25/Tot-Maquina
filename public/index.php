@@ -66,9 +66,6 @@ $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintena
 $app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
 $app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
 
-
-
-
 // Rutas de administración
 $app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"]);
 $app->post("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "addUser"]);

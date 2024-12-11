@@ -128,14 +128,14 @@
                 <div>
                   <h3 class="text-sm font-medium text-gray-500">Descripción</h3>
                   <p class="mt-1 text-[#214969]">
-                    <?= htmlspecialchars($historialbd1['description']); var_dump($historialbd1);  ?>
-                    
-                    
+                    <?= htmlspecialchars($historialbd['description']);   ?>
                   </p>
                 </div>
                 <div>
                   <h3 class="text-sm font-medium text-gray-500">Tipo</h3>
-                  <p class="mt-1 text-[#214969]"><?= htmlspecialchars($historialbd1['type']) ?></p>
+                  <p class="mt-1 text-[#214969]">
+                    <?= htmlspecialchars($historialbd['type']) ?>
+                </p>
                 </div>
               </div>
           </div>
@@ -145,11 +145,13 @@
           <div class="space-y-4">
             <div>
               <h3 class="text-sm font-medium text-gray-500">Fecha de Instalación</h3>
-              <p class="mt-1 text-[#214969]">Aquí va la fecha de instalación.</p>
+              <p class="mt-1 text-[#214969]">
+                <?= htmlspecialchars($historialbd['installation_date']);   ?>
+              </p>
             </div>
             <div>
               <h3 class="text-sm font-medium text-gray-500">Técnico Responsable</h3>
-              <p class="mt-1 text-[#214969]">Aquí va el nombre del técnico.</p>
+              <p class="mt-1 text-[#214969]"><?= htmlspecialchars($historialbd['name']);   ?></p>
             </div>
           </div>
         </div>

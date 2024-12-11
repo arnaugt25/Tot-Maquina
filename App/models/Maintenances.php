@@ -41,9 +41,10 @@ class Maintenances extends Db
     //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     // }
 
-    public function getByIdMaintenance($idmaintenance)
+    public function historydMaintenance($idmaintenance)
     {
-        $query = "SELECT * FROM maintenance WHERE maintenance_id = :maintenance_id";
+        //$query = "SELECT * FROM maintenance WHERE maintenance_id = :maintenance_id";
+        $query = "SELECT maintenance_id, m.description, m.type, ma.installation_date, u.name from maintenance m join machine ma on m.machine_id = ma.machine_id join user u on u.user_id = m.user_id WHERE maintenance_id = :maintenance_id";
         $stmt = $this->sql->prepare($query);
         // $idmaintenance = 1;
         $stmt->bindParam(':maintenance_id', $idmaintenance, \PDO::PARAM_INT);
@@ -51,12 +52,4 @@ class Maintenances extends Db
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getMaintenance($idmaintenance)
-    {
-        $query = "SELECT m.description, m.type, ma.installation_date, u.name from maintenance m join machine ma on m.machine_id = ma.machine_id join user u on u.user_id = ma.user_id";
-        $stmt = $this->sql->prepare($query);
-        $stmt->bindParam(':maintenance_id', $idmaintenance, \PDO::PARAM_INT);
-        //$stmt->execute();
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
-    }
 }
