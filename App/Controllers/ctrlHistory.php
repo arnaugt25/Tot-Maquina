@@ -17,7 +17,7 @@ class ctrlHistory
     {
         $idmaintenance = $request->getParam('id');
         $historyModel = $container->get("Maintenances");
-        $history = $historyModel->historydMaintenance($idmaintenance);
+        $history = $historyModel->historyMaintenance($idmaintenance);
         //$historyModel2 = $container->get("Maintenances");
         //$history2 = $historyModel2->getMaintenance($idmaintenance);
         // var_dump($history);
