@@ -109,10 +109,11 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex justify-center space-x-2">
                                     <button class="text-[#00B4FF] hover:text-[#FFFFFF] bg-[#022232] px-2 py-1 rounded" aria-label="Editar incidencia #001">
-                                        <a href="/admin/editinci" >Editar</a>
+
+                                        <a href="/admin/editinci/<?= htmlspecialchars($maintenance['maintenance_id']) ?>" > Editar</a>
                                     </button>
                                     <button class="text-[#FFFDFD] hover:text-[#FFFFFF] bg-[#002030] px-2 py-1 rounded" aria-label="Eliminar incidencia #001">
-                                        Eliminar
+                                        <a href="/maintenances/delete/<?= htmlspecialchars($maintenance['maintenance_id']) ?>">Eliminar</a>
                                     </button>
                                 </div>
                             </td>
