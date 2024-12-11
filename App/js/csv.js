@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 $(document).ready(function() {
     $('#csvFileInput').on('change', function() {
         const fileName = $('#fileName');
