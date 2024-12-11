@@ -16,8 +16,8 @@ class ctrlNotification {
                
             // Usar los datos...
             foreach($allNotifications as $notification) {
-                echo "Mantenimiento: " . $notification['maintenance_description'] . "<br>";
-                echo "Técnico: " . $notification['id_user'] . "<br>";
+                echo "Mantenimiento: " . $notification['maintenance_id'] . "<br>";
+                echo "Técnico: " . $notification['surname'] . "<br>";
                 echo "Máquina: " . $notification['machine_id'] . "<br>";
                 echo "Fecha: " . $notification['formatted_next_maintenance'] . "<br>";
                 echo "Frecuencia: " . $notification['frequency'] . "<br>";

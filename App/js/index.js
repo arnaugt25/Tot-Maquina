@@ -1,11 +1,10 @@
 import $ from "jquery";
 
-import hola from "./hola.js";
-
-import {Example, obj} from "./example.ts";
-
-$(function() {
-    console.log('Hello World');
-    hola();
-    console.log("Example", obj);
-});
+import "./map.js";
+import "./slider.js";
+import "./nav.js";
+import "./menuButton.js";
+import "./individualMap.js";
+import "./search.js";
+import "./qr.js";
+import "./csv.js";

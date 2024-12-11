@@ -205,9 +205,10 @@
                                         class="text-yellow-400 hover:text-yellow-300 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button onclick="if(confirm('¿Estás seguro de que deseas eliminar esta máquina?')) window.location.href='/admin/deleteMachine/<?= $machine['machine_id'] ?>'" 
-                                        class="text-red-400 hover:text-red-300 transition-colors">
+                                <button onclick="confirmDeleteMachine(<?= $machine['machine_id'] ?>, '<?= htmlspecialchars($machine['model'], ENT_QUOTES) ?>')"
+                                        class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
                                     <i class="fas fa-trash"></i>
+                                    <span>Eliminar</span>
                                 </button>
                             </div>
                         </div>
@@ -274,6 +275,12 @@
 function confirmDeleteUser(userId, userName) {
     if (confirm(`¿Estás seguro que deseas eliminar al usuario ${userName}? Esta acción no se puede deshacer.`)) {
         window.location.href = `/admin/deleteuser/${userId}`;
+    }
+}
+
+function confirmDeleteMachine(machineId, machineModel) {
+    if (confirm(`¿Estás seguro que deseas eliminar la máquina ${machineModel}? Esta acción no se puede deshacer.`)) {
+        window.location.href = `/admin/deletemachine/${machineId}`;
     }
 }
 </script>

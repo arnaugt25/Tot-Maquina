@@ -1,14 +1,15 @@
+
 <?php
 
-namespace App\Controllers;
+//namespace App\Controllers;
 
-class ctrlSearch {
+//class ctrlSearch {
 
-    public function search($request, $response, $container){
-
+  //  public function search($request, $response, $container){
+//
          
-        $response->setTemplate("machinelist.php");
+ //       $response->setTemplate("machinelist.php");
 
-        return $response;
-    }
-}
+ //       return $response;
+ //   }
+//}

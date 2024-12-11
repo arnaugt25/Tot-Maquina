@@ -116,44 +116,66 @@
           <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= htmlspecialchars($machine['serial_number']) ?></p>
         </div>
       </div>
-
+      
       <!-- Imagen de la máquina -->
       <div class="bg-[#214969] p-4 rounded-lg shadow-lg">
         <img src="<?= htmlspecialchars($machine['image']) ?>" alt="Imagen de la máquina"
           class="w-full h-auto rounded-lg object-cover transition-transform hover:scale-105">
       </div>
     </div>
-
+<!-- Botones -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+  <button class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-full">
+    <a href="/formInci" class="block w-full">
+      Añadir incidencia
+    </a>
+  </button>
+  <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-full">
+    Añadir técnico
+  </button>
+</div>
     <!-- Mapa de ubicación y botones -->
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="md:col-span-2 bg-[#214969] p-4 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Ubicación de la máquina</h2>
-        <!-- Mapa -->
-        <div class="bg-[#214969] text-white shadow-lg rounded-xl p-6 transform transition-all hover:scale-[1.02]">
-          <div id="map" class="h-64 rounded-lg"></div>
-        </div>
-      </div>
-
-      <div class="flex flex-col items-center justify-center space-y-4">
-        <button class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
-          <a href="/formInci">
-            Añadir incidencia
-          </a>
-        </button>
-        <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-48">
-          Añadir técnico
-        </button>
-
-      </div>
+    <div class="mt-8 bg-[#214969] p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Ubicación de la máquina</h2>
+      <div id="individualMap" class="w-full h-[400px] rounded-lg"></div>
     </div>
+
+    
   </main>
-  <script src="/js/map.js"></script>
+
+  <!-- Include Leaflet CSS and JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  
+  <!-- Include bundled JS -->
+  <script src="/js/bundle.js"></script>
   <script>
-    // Pasar solo la máquina actual en lugar del array completo
     const machine = <?php echo json_encode($machine); ?>;
     document.addEventListener('DOMContentLoaded', function() {
-      // Cambiar la función a loadSingleMarker
-      loadSingleMarker(machine);
+      // Initialize map
+      const map = L.map('individualMap').setView([39.5696, 2.6502], 12);
+      
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: ' OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Parse coordinates from the string format
+      if (machine && machine.coordinates) {
+        const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
+        
+        if (!isNaN(lat) && !isNaN(lng)) {
+          const marker = L.marker([lat, lng]).addTo(map);
+          marker.bindPopup(`
+            <div class="popup-content">
+              <h3 class="font-semibold">${machine.created_by}</h3>
+              <p>Serial: ${machine.serial_number}</p>
+              <p>Installed: ${machine.installation_date}</p>
+            </div>
+          `).openPopup();
+          map.setView([lat, lng], 15);
+        }
+      }
     });
   </script>
 </body>

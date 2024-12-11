@@ -4,13 +4,13 @@ namespace App\Controllers;
 
 class ctrlFormInci {
 
-    public function forminci($request, $response, $container)
+    public function ctrlFormInci($request, $response, $container)
     {
 
         try {
             $machineModel = $container->get("Machine");
             $UserModel = $container->get("Users");
-             //var_dump($machineModel);
+            //var_dump($machineModel);
             // die();
             $machines = $machineModel->listMachine();
 

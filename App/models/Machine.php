@@ -77,12 +77,48 @@ class Machine extends db
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getAllMachines()
-    {
+
+    // public function listMachine()
+    // {
+    //     try {
+    //         $query = "SELECT * FROM machine";
+    //         // var_dump($query);
+    //         // die();
+    //         $stmt = $this->sql->prepare($query);
+    //         $stmt->execute();
+    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    //     } catch (\PDOException $e) {
+    //         error_log("Error getting machines: " . $e->getMessage());
+    //         throw new \Exception("Error al obtener las máquinas");
+    //     }
+    // }
+
+
+    public function getAllMachines() {
+        try {
+            $query = "SELECT * FROM machine ORDER BY machine_id DESC";
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting machines: " . $e->getMessage());
+            throw new \Exception("Error al obtener las máquinas");
+        }
+        try {
+            $query = "SELECT machine_id, model FROM machine ORDER BY model";
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting machines: " . $e->getMessage());
+            throw new \Exception("Error al obtener las máquinas");
+        }
+
         $query = "SELECT * FROM machine ORDER BY machine_id DESC";
         $stmt = $this->sql->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
     }
 
     //Buscar máquina por ID
@@ -101,5 +137,19 @@ class Machine extends db
         $stmt = $this->sql->prepare($query);
         $result = $stmt->execute([':machine_id' => $machine_id]);
         return true;
+    }
+
+
+    //Buscador de máquina modelo
+    public function searchMachine($query) {
+        $searchTerm = "%{$query}%";
+        $sql = "SELECT * FROM machine 
+                WHERE model LIKE :query 
+                OR serial_number LIKE :query 
+                OR created_by LIKE :query";
+        
+        $stmt = $this->sql->prepare($sql);
+        $stmt->execute([':query' => $searchTerm]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

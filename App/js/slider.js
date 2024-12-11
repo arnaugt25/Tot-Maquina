@@ -1,3 +1,4 @@
+if (swiper != null){
 var swiper = new Swiper(".mySwiper", {
     // Configuración del slider
     slidesPerView: 1,
@@ -16,3 +17,4 @@ var swiper = new Swiper(".mySwiper", {
       disableOnInteraction: false,
     },
   });
+}

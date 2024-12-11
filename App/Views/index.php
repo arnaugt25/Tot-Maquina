@@ -308,15 +308,15 @@
       </div>
     </div>
   </footer>
-  <script src="/js/nav.js"></script>
-  <script src="/js/slider.js"></script>
-  <script src="/js/map.js"></script>
+  <script src="/js/bundle.js"></script>
+  
   <script>
     const machines = <?php echo json_encode($machines); ?>;
     document.addEventListener('DOMContentLoaded', function() {
       loadMarkers(machines);
     });
   </script>
+
   <div class="popup-wrapper" id="folleto-popup">
     <div class="popup-content">
       <!-- Contenido del popup -->
@@ -345,6 +345,7 @@
       }
     }
   </script>
+
 </body>
 
 </html>
