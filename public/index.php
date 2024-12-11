@@ -47,7 +47,7 @@ $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMac
 
 $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
-
+$app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
 
 // Rutas de autenticación y perfil
 $app->get("/login", [\App\Controllers\ctrlLogin::class, "login"]);
