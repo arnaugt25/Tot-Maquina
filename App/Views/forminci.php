@@ -21,11 +21,13 @@
                         id="machine"
                         name="machine"
                         required>
+
                     <option value="">Seleccione la maquina</option>
-                        <?php foreach ($machines as $machine){?>
-                            <option value="<?php echo $machine['machine_id']; ?>"><?php echo $machine['model']; ?></option>
-                        <?php } ?>
+                    <?php foreach ($machines as $machine){?>
+                        <option value="<?php echo $machine['machine_id']; ?>"><?php echo $machine['model']; ?></option>
+                    <?php } ?>
                 </select>
+
             </div>
             <!-- Descripción -->
             <div class="mb-4">
@@ -79,7 +81,7 @@
                     <option value="">Seleccione la prioridad</option>
                     <option value="baja">Baja</option>
                     <option value="mediana">Mediana</option>
-                    <option value="critica">Urgente</option>
+                    <option value="Urgente">Urgente</option>
                 </select>
             </div>
             <!-- Tipo -->
