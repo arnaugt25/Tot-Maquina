@@ -109,7 +109,8 @@ class Users extends DB {
     }
 
 
-    public function getAllTechnicians(){
+    public function getAllTechnicians()
+    {
         try {
             $query = "SELECT user_id, name, surname,username, role FROM user where role like'tecnico' ORDER BY user_id ASC";
             $stmt = $this->sql->prepare($query);
@@ -119,6 +120,7 @@ class Users extends DB {
             error_log("Error getting users: " . $e->getMessage());
             return [];
         }
+    }
 
     public function editUser($data) {
             $query = "UPDATE user SET 

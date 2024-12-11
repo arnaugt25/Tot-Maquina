@@ -129,6 +129,15 @@ class Machine extends db
             error_log("Error getting machines: " . $e->getMessage());
             throw new \Exception("Error al obtener las máquinas");
         }
+        try {
+            $query = "SELECT machine_id, model FROM machine ORDER BY model";
+            $stmt = $this->sql->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            error_log("Error getting machines: " . $e->getMessage());
+            throw new \Exception("Error al obtener las máquinas");
+        }
     }
 
 
