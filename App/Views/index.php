@@ -63,7 +63,7 @@
         <!-- Logo y nombre -->
         <div class="flex items-center space-x-4">
           <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
-          <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
+          <span class="text-xl font-bold text-[#165f7c]">Tot Maquina</span>
         </div>
 
         <!-- Enlaces de navegación -->
@@ -71,16 +71,16 @@
           <div class="flex items-center space-x-8">
             <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
               <i class="fa-solid fa-house"></i> Inicio
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#165f7c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
             <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
               <i class="fa-solid fa-desktop"></i> Maquinas
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#165f7c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
             <?php if (isset($_SESSION['user'])): ?>
               <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
                 <i class="fa-solid fa-address-card"></i> Perfil
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#165f7c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </a>
               <?php if ($_SESSION['user']['role'] == 'admin'): ?>
                 <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
@@ -92,7 +92,7 @@
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
               </a>
             <?php else: ?>
-              <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <a href="/login" class="bg-[#165f7c] hover:bg-[#0d4259] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
               </a>
             <?php endif; ?>
@@ -130,7 +130,7 @@
               <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
           <?php else: ?>
-            <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            <a href="/login" class="block px-3 py-2 bg-[#165f7c] text-white hover:bg-[#0d4259] rounded-md transition-colors duration-300">
               <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
             </a>
           <?php endif; ?>
@@ -150,7 +150,7 @@
             <img src="/uploads/images/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slider2.jpg" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/images/slider2.webp" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
             <img src="/uploads/images/slider3.jpg" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
@@ -180,15 +180,15 @@
 
               <div class="space-y-3">
                 <div class="flex items-center space-x-2">
-                  <i class="fas fa-check-circle text-[#5DA6C3]"></i>
+                  <i class="fas fa-check-circle text-[#165f7c]"></i>
                   <span>Servicio técnico especializado 24/7</span>
                 </div>
                 <div class="flex items-center space-x-2">
-                  <i class="fas fa-check-circle text-[#5DA6C3]"></i>
+                  <i class="fas fa-check-circle text-[#165f7c]"></i>
                   <span>Mantenimiento preventivo y correctivo</span>
                 </div>
                 <div class="flex items-center space-x-2">
-                  <i class="fas fa-check-circle text-[#5DA6C3]"></i>
+                  <i class="fas fa-check-circle text-[#165f7c]"></i>
                   <span>Sistema de gestión avanzado</span>
                 </div>
               </div>
@@ -214,13 +214,13 @@
           <!-- Botón del Mapa -->
           <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-white/20 flex flex-col h-full">
             <div class="flex flex-col items-center text-center p-8 h-full justify-between">
-              <div class="w-20 h-20 bg-[#5DA6C3] rounded-full flex items-center justify-center mb-6 shadow-lg">
+              <div class="w-20 h-20 bg-[#165f7c] rounded-full flex items-center justify-center mb-6 shadow-lg">
                 <i class="fas fa-map-marked-alt text-3xl text-white"></i>
               </div>
               <h3 class="text-2xl font-semibold text-white mb-4">Mapa de Máquinas</h3>
               <p class="text-gray-300 mb-8">Visualiza la ubicación de todas las máquinas en tiempo real</p>
               <button onclick="abrirMapaModal()"
-                class="w-full bg-[#5DA6C3] text-white py-4 px-6 rounded-lg hover:bg-[#4a8ba3] transition-all duration-300 flex items-center justify-center space-x-3 group">
+                class="w-full bg-[#165f7c] text-white py-4 px-6 rounded-lg hover:bg-[#0d4259] transition-all duration-300 flex items-center justify-center space-x-3 group">
                 <i class="fas fa-map-marker-alt text-lg"></i>
                 <span class="font-medium">Ver Mapa</span>
                 <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
@@ -248,13 +248,13 @@
           <!-- Botón de Lista de Máquinas -->
           <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-white/20 flex flex-col h-full">
             <div class="flex flex-col items-center text-center p-8 h-full justify-between">
-              <div class="w-20 h-20 bg-[#5DA6C3] rounded-full flex items-center justify-center mb-6 shadow-lg">
+              <div class="w-20 h-20 bg-[#165f7c] rounded-full flex items-center justify-center mb-6 shadow-lg">
                 <i class="fas fa-list text-3xl text-white"></i>
               </div>
               <h3 class="text-2xl font-semibold text-white mb-4">Lista de Máquinas</h3>
               <p class="text-gray-300 mb-8">Accede al listado completo de máquinas</p>
               <a href="/addlist"
-                class="w-full bg-[#5DA6C3] text-white py-4 px-6 rounded-lg hover:bg-[#4a8ba3] transition-all duration-300 flex items-center justify-center space-x-3 group">
+                class="w-full bg-[#165f7c] text-white py-4 px-6 rounded-lg hover:bg-[#0d4259] transition-all duration-300 flex items-center justify-center space-x-3 group">
                 <i class="fas fa-list text-lg"></i>
                 <span class="font-medium">Ver Lista</span>
                 <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
