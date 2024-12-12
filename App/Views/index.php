@@ -51,6 +51,7 @@
       text-decoration: none;
     }
   </style>
+
 </head>
 
 <body class="bg-[#C1D1D8] text-gray-800">
@@ -141,24 +142,23 @@
   <main class="container mx-auto my-12 px-6 max-w-7xl">
     <!-- Slider -->
     <section class="bg-[#214969] text-white shadow-lg rounded-xl p-6 mb-12">
+      <!-- Swiper -->
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <!-- Repite este div para cada imagen -->
           <div class="swiper-slide">
-            <img src="/uploads/images/slide1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/images/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slide2.jpg" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/images/slider2.jpg" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slide3.jpg" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/images/slider3.jpg" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
           </div>
         </div>
-        <!-- Agregar navegación -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <!-- Agregar paginación -->
         <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </section>
     <!-- Sección Sobre Nosotros -->
@@ -344,6 +344,35 @@
         popup.style.display = 'block';
       }
     }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var swiper = new Swiper(".mySwiper", {
+        // Configuración básica
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        
+        // Agregar paginación
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        
+        // Agregar navegación
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        
+        // Autoplay (opcional)
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+      });
+    });
   </script>
 
 </body>
