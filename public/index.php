@@ -71,6 +71,10 @@ $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
 $app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
 $app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
+///////////////////////////////
+// $app->route("/prueba/{id}", [\App\Controllers\ctrlHistory::class, "showMaintenances"]);
+
+
 
 // Rutas de administración
 $app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"]);
