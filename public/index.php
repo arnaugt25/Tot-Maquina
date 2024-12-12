@@ -57,8 +57,8 @@ $app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"])
 $app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
 
 // Rutas de búsqueda y notificaciones
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
+$app->route("/forminci/{id}", [\App\Controllers\ctrlFormInci::class, "index"]);
+$app->route("/forminci/{id}", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"]);
 $app->get("/admin/editinci/{id}", [\App\Controllers\ctrlListinci::class, "editMaintenance"]);
 $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "updateMaintenance"]);

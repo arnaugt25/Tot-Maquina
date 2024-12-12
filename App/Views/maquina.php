@@ -115,7 +115,7 @@
   </header>
   <header class="bg-[#214969] shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-white"><?= htmlspecialchars($machine['model']) ?></h1>
+      <h1 class="text-3xl font-bold tracking-tight text-white"><?= ($machine['model']) ?></h1>
     </div>
   </header>
 
@@ -125,28 +125,24 @@
       <div class="bg-[#214969] p-6 rounded-lg shadow-lg text-white">
         <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
         <div class="space-y-4">
-          <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= htmlspecialchars($machine['created_by']) ?></p>
-          <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= htmlspecialchars($machine['installation_date']) ?></p>
-          <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= htmlspecialchars($machine['serial_number']) ?></p>
+          <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= ($machine['created_by']) ?></p>
+          <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= ($machine['installation_date']) ?></p>
+          <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= ($machine['serial_number']) ?></p>
         </div>
       </div>
       
       <!-- Imagen de la máquina -->
-      <div class="bg-[#214969] p-4 rounded-lg shadow-lg">
-        <img src="<?= htmlspecialchars($machine['image']) ?>" alt="Imagen de la máquina"
-          class="w-full h-auto rounded-lg object-cover transition-transform hover:scale-105">
-      </div>
+        <div class="h-64 overflow-hidden">
+          <img src="<?= ($machine['image']) ?>" alt="Imagen de la máquina"
+            class="w-full h-full object-contain rounded-lg">
+        </div>
     </div>
 <!-- Botones -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-  <button class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-full">
-    <a href="/formInci" class="block w-full">
-      Añadir incidencia
-    </a>
-  </button>
-  <button class="bg-[#214969] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl w-full">
-    Añadir técnico
-  </button>
+<div class="flex justify-center mt-8">
+  <a href="/history/<?= ($machine['machine_id']) ?>" class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center w-1/2">
+    <i class="fas fa-plus mr-2"></i>
+    Ver historial
+  </a>
 </div>
     <!-- Mapa de ubicación y botones -->
     <div class="mt-8 bg-[#214969] p-6 rounded-lg shadow-lg">
