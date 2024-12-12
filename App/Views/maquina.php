@@ -33,7 +33,7 @@
 
 <body class="bg-[#C1D1D8] text-gray-800">
   <header class="bg-[#0C0C04] text-white">
-  <nav class="container mx-auto px-6">
+    <nav class="container mx-auto px-6">
       <div class="flex items-center justify-between h-20">
         <!-- Logo y nombre -->
         <div class="flex items-center space-x-4">
@@ -111,7 +111,7 @@
           <?php endif; ?>
         </div>
       </div>
-    </nav>  
+    </nav>
   </header>
   <header class="bg-[#214969] shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -130,33 +130,34 @@
           <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= ($machine['serial_number']) ?></p>
         </div>
       </div>
-      
+
       <!-- Imagen de la máquina -->
-        <div class="h-64 overflow-hidden">
-          <img src="<?= ($machine['image']) ?>" alt="Imagen de la máquina"
-            class="w-full h-full object-contain rounded-lg">
-        </div>
+      <div class="h-64 overflow-hidden">
+        <img src="<?= ($machine['image']) ?>" alt="Imagen de la máquina"
+          class="w-full h-full object-contain rounded-lg">
+      </div>
     </div>
-<!-- Botones -->
-<div class="flex justify-center mt-8">
-  <a href="/history/<?= ($machine['machine_id']) ?>" class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center w-1/2">
-    <i class="fas fa-plus mr-2"></i>
-    Ver historial
-  </a>
-</div>
+    <!-- Botones -->
+    <div class="flex justify-center mt-8">
+      <a href="/history/<?= htmlspecialchars($machine['machine_id']) ?>"
+        class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center w-1/2">
+        <i class="fas fa-plus mr-2"></i>
+        Ver historial
+      </a>
+    </div>
     <!-- Mapa de ubicación y botones -->
     <div class="mt-8 bg-[#214969] p-6 rounded-lg shadow-lg">
       <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Ubicación de la máquina</h2>
       <div id="individualMap" class="w-full h-[400px] rounded-lg"></div>
     </div>
 
-    
+
   </main>
 
   <!-- Include Leaflet CSS and JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  
+
   <!-- Include bundled JS -->
   <script src="/js/bundle.js"></script>
   <script>
@@ -164,7 +165,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize map
       const map = L.map('individualMap').setView([39.5696, 2.6502], 12);
-      
+
       // Add OpenStreetMap tiles
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: ' OpenStreetMap contributors'
@@ -173,7 +174,7 @@
       // Parse coordinates from the string format
       if (machine && machine.coordinates) {
         const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
-        
+
         if (!isNaN(lat) && !isNaN(lng)) {
           const marker = L.marker([lat, lng]).addTo(map);
           marker.bindPopup(`
