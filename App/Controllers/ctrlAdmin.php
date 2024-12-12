@@ -12,8 +12,12 @@ class ctrlAdmin {
         $machinesModel = $container->get("Machine");
         $machines = $machinesModel->getAllMachines();
         
+        $maintenanceModel = $container->get("maintenance");
+        $maintenances = $maintenanceModel->getMaintenances();
+        
         $response->set("users", $users);
         $response->set("machines", $machines);
+        $response->set("maintenances", $maintenances);
         $response->setTemplate("Admin.php");
         
         return $response;

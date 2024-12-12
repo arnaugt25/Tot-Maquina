@@ -85,6 +85,10 @@ $app->get("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "formE
 $app->post("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "editUser"]);
 $app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "deleteUser"]);
 $app->get("/admin/deletemachine/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+$app->get("/admin/deleteinci/{id}", [\App\Controllers\ctrlListinci::class, "deleteMaintenance"]);
+$app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
+$app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
+
 
 // Ruta por defecto (error)
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");

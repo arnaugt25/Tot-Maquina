@@ -36,6 +36,7 @@ CREATE TABLE maintenance (
     assigned_date DATE,
     user_id INT,
     machine_id INT,
+    priority VARCHAR(100),
     FOREIGN KEY (user_id) REFERENCES user(user_id),
     FOREIGN KEY (machine_id) REFERENCES machine(machine_id)
 );
