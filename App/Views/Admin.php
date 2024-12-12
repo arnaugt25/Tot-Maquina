@@ -1,5 +1,3 @@
-<?php if (isset($_SESSION['user']['role']) == 'admin'):  ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -206,9 +204,8 @@
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button onclick="confirmDeleteMachine(<?= $machine['machine_id'] ?>, '<?= htmlspecialchars($machine['model'], ENT_QUOTES) ?>')"
-                                        class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
+                                        class="text-red-400 hover:text-red-300 transition-colors duration-300">
                                     <i class="fas fa-trash"></i>
-                                    <span>Eliminar</span>
                                 </button>
                             </div>
                         </div>
@@ -227,14 +224,12 @@
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Incidencias</h3>
             <div class="bg-[#5DA6C3]/10 p-3 rounded-full">
-            <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
-
+              <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
             </div>
           </div>
           <div class="space-y-3">
             <button class="w-full bg-[#478249] text-white py-2 rounded-lg hover:bg-[#054525] transition-all">
-                <a href="/forminci" >
-                    Nueva Incidencia</a>
+                <a href="admin/forminci">Nueva Incidencia</a>
             </button>
           </div>
         </div>
@@ -243,27 +238,35 @@
         <div class="bg-[#132048] rounded-lg p-4 shadow-lg">
             <h4 class="text-[#5DA6C3] font-semibold mb-3">Incidencias Recientes</h4>
             <div class="space-y-2 text-white">
-                <div class="flex items-center justify-between p-2 hover:bg-[#214969] rounded transition-colors">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-10 h-10 rounded-full bg-[#214969] flex items-center justify-center">
-                        <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
+                <?php if (!empty($maintenances)): ?>
+                    <?php foreach ($maintenances as $maintenance): ?>
+                        <div class="flex items-center justify-between p-2 hover:bg-[#214969] rounded transition-colors">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-[#214969] flex items-center justify-center">
+                                    <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium"><?= htmlspecialchars($maintenance['description']) ?></span>
+                                    <span class="text-sm <?= $maintenance['priority'] == 'urgente' ? 'text-red-400' : ($maintenance['priority'] == 'media' ? 'text-yellow-400' : 'text-green-400') ?> block">
+                                        <?= htmlspecialchars($maintenance['priority']) ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button onclick="window.location.href='/admin/editinci/<?= $maintenance['maintenance_id'] ?>'" 
+                                        class="text-yellow-400 hover:text-yellow-300 transition-colors">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="confirmDeleteMaintenance(<?= $maintenance['maintenance_id'] ?>, '<?= htmlspecialchars($maintenance['description'], ENT_QUOTES) ?>')" 
+                                        class="text-red-400 hover:text-red-300 transition-colors">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <span class="font-medium">Error Sistema</span>
-                            <span class="text-sm text-red-400 block">Urgente</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <button onclick="window.location.href='/admin/editIncidence/1'" 
-                                class="text-yellow-400 hover:text-yellow-300 transition-colors">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button onclick="if(confirm('¿Estás seguro de que deseas eliminar esta incidencia?')) window.location.href='/admin/deleteIncidence/1'" 
-                                class="text-red-400 hover:text-red-300 transition-colors">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-white">No hay incidencias disponibles.</p>
+                <?php endif; ?>
             </div>
         </div>
       </div>
@@ -283,7 +286,12 @@ function confirmDeleteMachine(machineId, machineModel) {
         window.location.href = `/admin/deletemachine/${machineId}`;
     }
 }
+
+function confirmDeleteMaintenance(maintenanceId, description) {
+    if (confirm(`¿Estás seguro que deseas eliminar la incidencia "${description}"? Esta acción no se puede deshacer.`)) {
+        window.location.href = `/maintenances/delete/${maintenanceId}`;
+    }
+}
 </script>
 </body>
 </html>
-<?php endif; ?>
