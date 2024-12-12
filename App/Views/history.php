@@ -120,42 +120,48 @@
       <!-- Contenido principal -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
         <!-- Información básica -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border-b border-gray-200">
-          <div>
-            
-              <h2 class="text-xl font-semibold text-[#214969] mb-4">Información General</h2>
-              <div class="space-y-4">
-                <div>
-                  <h3 class="text-sm font-medium text-gray-500">Descripción</h3>
-                  <p class="mt-1 text-[#214969]">
-                    <?= htmlspecialchars($historialbd['description']);   ?>
-                  </p>
+        <?php if (isset($historialbd) && !empty($historialbd)): ?>
+          <?php $contador = 1; // Inicializar contador ?>
+            <?php foreach($historialbd as $historial): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border-b border-gray-200">
+                    <div>
+                        <h2 class="text-xl font-semibold text-[#214969] mb-4">Mantenimiento <?= $contador++ ?></h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Máquina</h3>
+                                <p class="mt-1 text-[#214969]">
+                                    <?= htmlspecialchars($historial['model']) ?>
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Tipo</h3>
+                                <p class="mt-1 text-[#214969]">
+                                    <?= htmlspecialchars($historial['type']) ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold text-[#214969] mb-4">Detalles</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Fecha de Instalación</h3>
+                                <p class="mt-1 text-[#214969]">
+                                    <?= htmlspecialchars($historial['installation_date']) ?>
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Técnico Responsable</h3>
+                                <p class="mt-1 text-[#214969]">
+                                    <?= htmlspecialchars($historial['name']) ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <h3 class="text-sm font-medium text-gray-500">Tipo</h3>
-                  <p class="mt-1 text-[#214969]">
-                    <?= htmlspecialchars($historialbd['type']) ?>
-                </p>
-                </div>
-              </div>
-          </div>
-     
-        <div>
-          <h2 class="text-xl font-semibold text-[#214969] mb-4">Detalles Técnicos</h2>
-          <div class="space-y-4">
-            <div>
-              <h3 class="text-sm font-medium text-gray-500">Fecha de Instalación</h3>
-              <p class="mt-1 text-[#214969]">
-                <?= htmlspecialchars($historialbd['installation_date']);   ?>
-              </p>
-            </div>
-            <div>
-              <h3 class="text-sm font-medium text-gray-500">Técnico Responsable</h3>
-              <p class="mt-1 text-[#214969]"><?= htmlspecialchars($historialbd['name']);   ?></p>
-            </div>
-          </div>
-        </div>
-        </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+        <?php endif; ?>
 
         <!-- Lista de Incidencias -->
         <div class="p-6">
