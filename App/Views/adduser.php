@@ -102,6 +102,8 @@
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all">
                             <option value="user">Usuario</option>
                             <option value="admin">Administrador</option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="supervisor">Supervisor</option>
                         </select>
                     </div>
                 </div>
