@@ -164,29 +164,35 @@
         <?php endif; ?>
 
         <!-- Lista de Incidencias -->
-        <div class="p-6">
-          <h2 class="text-xl font-semibold text-[#214969] mb-4">Historial de Incidencias</h2>
-          <div class="space-y-3">
-            <div class="border rounded-lg overflow-hidden">
-              <button class="w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 flex justify-between items-center text-[#214969] font-medium" onclick="toggleAccordion('incidencia1')">
-                <span>Incidencia 1</span>
-                <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-              </button>
-              <div id="incidencia1" class="hidden p-4 border-t">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h3 class="text-sm font-medium text-gray-500">Fecha</h3>
-                    <p class="mt-1 text-[#214969]"><?= htmlspecialchars($infomaintenance['assigned_date']);   ?></p>
-                  </div>
-                  <div class="md:col-span-2">
-                    <h3 class="text-sm font-medium text-gray-500">Descripción</h3>
-                    <p class="mt-1 text-[#214969]"><?= htmlspecialchars($infomaintenance['description']);   ?></p>
+        <?php if (isset($infomaintenance) && !empty($infomaintenance)): ?>
+          <?php $contador2 = 1; // Inicializar contador ?>
+            <?php foreach($infomaintenance as $incidence): ?>
+              <div class="p-6">
+                <h2 class="text-xl font-semibold text-[#214969] mb-4">Historial de Incidencias</h2>
+                <div class="space-y-3">
+                  <div class="border rounded-lg overflow-hidden">
+                    <button class="w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 flex justify-between items-center text-[#214969] font-medium" onclick="toggleAccordion('incidencia1')">
+                      <span>Incidencia <?= $contador2++ ?></span>
+                      <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div id="incidencia1" class="hidden p-4 border-t">
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <h3 class="text-sm font-medium text-gray-500">Fecha</h3>
+                          <p class="mt-1 text-[#214969]"><?= htmlspecialchars($incidence['assigned_date']);   ?></p>
+                        </div>
+                        <div class="md:col-span-2">
+                          <h3 class="text-sm font-medium text-gray-500">Descripción</h3>
+                          <p class="mt-1 text-[#214969]"><?= htmlspecialchars($incidence['description']);   ?></p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+        <?php endif; ?>
       </div>
     </div>
   </main>

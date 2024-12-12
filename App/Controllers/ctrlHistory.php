@@ -22,7 +22,7 @@ class ctrlHistory
 
         //$historyModel2 = $container->get("Maintenances");
         //$history2 = $historyModel2->getMaintenance($idmaintenance);
-        // var_dump($history);
+        // var_dump($incidence);
         // die;
         $response->set('historialbd', $history);
         $response->set('infomaintenance', $incidence);

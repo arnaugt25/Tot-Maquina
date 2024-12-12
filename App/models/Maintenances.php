@@ -182,9 +182,9 @@ class Maintenances extends Db
 
     //Consulta para buscar la incidencia en la base de datos
     public function searchMaintenance($idmaintenance) {
-        $query = "SELECT maintenance_id, description, assigned_date, machine_id FROM maintenance WHERE maintenance_id = :maintenance_id"; 
+        $query = "SELECT maintenance_id, description, assigned_date, machine_id FROM maintenance WHERE machine_id = :machine_id"; 
         $stmt = $this->sql->prepare($query);
-        $stmt->bindParam(':maintenance_id', $idmaintenance, \PDO::PARAM_INT);
+        $stmt->bindParam(':machine_id', $idmaintenance, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
