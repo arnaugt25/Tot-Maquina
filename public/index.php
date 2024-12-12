@@ -45,6 +45,7 @@ $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMa
 $app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
 
+
 $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 $app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
@@ -70,6 +71,10 @@ $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
 $app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
 $app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
+///////////////////////////////
+// $app->route("/prueba/{id}", [\App\Controllers\ctrlHistory::class, "showMaintenances"]);
+
+
 
 // Rutas de administración
 $app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"]);

@@ -29,6 +29,7 @@ class Maintenances extends Db
         return $this->sql->lastInsertId();
     }
 
+
     // SELECT para obtener todos los mantenimientos con información relacionada
     public function getMaintenances()
     {
@@ -178,4 +179,16 @@ class Maintenances extends Db
 
         //return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    //Consulta para buscar la incidencia en la base de datos
+    public function searchMaintenance($idmaintenance) {
+        $query = "SELECT maintenance_id, description, assigned_date, machine_id FROM maintenance WHERE machine_id = :machine_id"; 
+        $stmt = $this->sql->prepare($query);
+        $stmt->bindParam(':machine_id', $idmaintenance, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+
 }
+
