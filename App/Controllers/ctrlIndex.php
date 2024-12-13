@@ -7,9 +7,9 @@ class ctrlIndex {
     public function index($request, $response, $container){
 
         $machineModel = $container->get("Machine");
-        $machines = $machineModel->listMachine();
+        $machine = $machineModel->listMachine();
         
-        $response->set('machines', $machines);
+        $response->set('machine', $machine);
         $response->setTemplate("index.php");
 
         return $response;
