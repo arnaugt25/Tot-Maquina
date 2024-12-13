@@ -13,37 +13,74 @@ class Container extends EmesetContainer {
         $this["db"] = function($c) {
             $config = $c->get("config");
             $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
-            return new \PDO($dsn, $config['db']['user'], $config['db']['pass']);
         };
 
-        $this["Machine"] = function($c) {
-            $config = $c->get("config");
+        $this["Machines"] = function($container) {
             return new \App\Models\Machine(
-                $config["db"]["user"],
-                $config["db"]["pass"],
-                $config["db"]["name"],
-                $config["db"]["host"]
+                $container->get("config")["db"]["user"],
+                $container->get("config")["db"]["pass"],
+                $container->get("config")["db"]["name"],
+                $container->get("config")["db"]["host"]
             );
         };
 
         $this["Users"] = function ($c) {
-            $config = $c->get("config");
             return new \App\Models\Users(
-                $config["db"]["user"],
-                $config["db"]["pass"],
-                $config["db"]["name"],
-                $config["db"]["host"]
+                $c->get("config")["db"]["user"],
+                $c->get("config")["db"]["pass"],
+                $c->get("config")["db"]["name"],
+                $c->get("config")["db"]["host"]
             );
         };
 
-        $this["Maintenances"] = function ($c) {
+        $this["Machine"] = function ($c) {
+            $db = $c->get("db");
             $config = $c->get("config");
-            return new \App\Models\Maintenances(
+            $machine = new \App\Models\Machine(
                 $config["db"]["user"],
                 $config["db"]["pass"],
                 $config["db"]["name"],
                 $config["db"]["host"]
             );
+            return $machine;
+        };
+
+        // $this["Technician"] = function ($c) {
+        //     $db = $c->get("db");
+        //     $config = $c->get("config");
+        //     $technician = new \App\Models\Technician(
+        //         $config["db"]["user"],
+        //         $config["db"]["pass"],
+        //         $config["db"]["name"],
+        //         $config["db"]["host"]
+        //     );
+        //     return $technician;
+        // }; 
+
+        $this["maintenance"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $technician = new \App\Models\Maintenances(
+                $config["db"]["user"],
+                $config["db"]["pass"],
+                $config["db"]["name"],
+                $config["db"]["host"]
+            );
+            return $technician;
+
+        };
+
+        $this["Maintenances"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $technician = new \App\Models\Maintenances(
+                $config["db"]["user"],
+                $config["db"]["pass"],
+                $config["db"]["name"],
+                $config["db"]["host"]
+            );
+            return $technician;
         };
     }
+
 }
