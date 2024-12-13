@@ -15,7 +15,7 @@ class Container extends EmesetContainer {
             $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
         };
 
-        $this["Machine"] = function($container) {
+        $this["Machines"] = function($container) {
             return new \App\Models\Machine(
                 $container->get("config")["db"]["user"],
                 $container->get("config")["db"]["pass"],
@@ -32,6 +32,21 @@ class Container extends EmesetContainer {
                 $c->get("config")["db"]["host"]
             );
         };
+
+        $this["Machines"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $machine = new \App\Models\Machine(
+                $config["db"]["user"],
+                $config["db"]["pass"],
+                $config["db"]["name"],
+                $config["db"]["host"]
+            );
+            return $machine;
+        };
+
+
+
         $this["maintenance"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");
