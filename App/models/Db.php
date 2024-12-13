@@ -6,7 +6,7 @@ class Db {
 
     public $sql;
 
-    public function __construct($user, $pass, $db, $host){
+    public function __construct($user, $pass, $db, $host){ 
 
         $dsn = "mysql:dbname={$db};host={$host}";
         try {
