@@ -2,16 +2,8 @@
 
 namespace App\Models;
 
-use PDO;
-
-class Machine {
-    protected $sql;
-    
-    public function __construct($user, $pass, $db, $host) {
-        $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
-        $this->sql = new PDO($dsn, $user, $pass);
-    }
-
+class Machine extends db
+{
     public function addMachine($data)
     {
         $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, coordinates,  image ) 
