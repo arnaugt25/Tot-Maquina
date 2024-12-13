@@ -33,7 +33,7 @@ class Container extends EmesetContainer {
             );
         };
 
-        $this["Machines"] = function ($c) {
+        $this["Machine"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");
             $machine = new \App\Models\Machine(
