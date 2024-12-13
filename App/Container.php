@@ -15,12 +15,12 @@ class Container extends EmesetContainer {
             $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
         };
 
-        $this["Machines"] = function($container) {
+        $this["Machine"] = function ($c) {
             return new \App\Models\Machine(
-                $container->get("config")["db"]["user"],
-                $container->get("config")["db"]["pass"],
-                $container->get("config")["db"]["name"],
-                $container->get("config")["db"]["host"]
+                $c->get("config")["db"]["user"],
+                $c->get("config")["db"]["pass"],
+                $c->get("config")["db"]["name"],
+                $c->get("config")["db"]["host"]
             );
         };
 
@@ -33,29 +33,6 @@ class Container extends EmesetContainer {
             );
         };
 
-        $this["Machine"] = function ($c) {
-            $db = $c->get("db");
-            $config = $c->get("config");
-            $machine = new \App\Models\Machine(
-                $config["db"]["user"],
-                $config["db"]["pass"],
-                $config["db"]["name"],
-                $config["db"]["host"]
-            );
-            return $machine;
-        };
-
-        // $this["Technician"] = function ($c) {
-        //     $db = $c->get("db");
-        //     $config = $c->get("config");
-        //     $technician = new \App\Models\Technician(
-        //         $config["db"]["user"],
-        //         $config["db"]["pass"],
-        //         $config["db"]["name"],
-        //         $config["db"]["host"]
-        //     );
-        //     return $technician;
-        // }; 
 
         $this["maintenance"] = function ($c) {
             $db = $c->get("db");
