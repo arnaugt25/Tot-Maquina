@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Machine extends db
+class Machine extends Db
 {
     public function addMachine($data)
     {

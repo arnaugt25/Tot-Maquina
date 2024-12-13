@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Users extends DB {
+class Users extends Db {
     public function login($username, $password) {
         try {
             $query = "SELECT user_id, name, surname, username, password, role FROM user WHERE username = :username";

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class notification extends DB {
+class notification extends Db {
     // INSERT
     public function addNotification($data)
     {
