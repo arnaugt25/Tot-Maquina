@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Machine extends Db
 {
-    public function addMachine($data)
+    public function addMachinea($data)
     {
         $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, coordinates,  image ) 
 
