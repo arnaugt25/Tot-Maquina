@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Middleware;
+namespace App\Middleware; 
 use \Emeset\Contracts\Http\Request;
 use \Emeset\Contracts\Http\Response;
 use \Emeset\Contracts\Container;
