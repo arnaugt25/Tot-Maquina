@@ -155,7 +155,7 @@
               </a>
             <?php endif; ?>
             <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
-              <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+              <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión 
             </a>
           <?php else: ?>
             <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
