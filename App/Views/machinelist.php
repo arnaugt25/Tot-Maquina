@@ -109,6 +109,15 @@
                 </div>
             </div>
             
+            <!-- Botón de Añadir Incidencia -->
+            <div class="relative">
+                <a href="/forminci" 
+                   class="flex items-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Añadir Incidencia</span>
+                </a>
+            </div>
+            
             <!-- Botón de importación CSV -->
             <div class="relative">
                 <button onclick="showCSVModal()" 

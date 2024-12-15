@@ -45,6 +45,7 @@ $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMa
 $app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
 
+
 $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 $app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
@@ -57,8 +58,8 @@ $app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"])
 $app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
 
 // Rutas de búsqueda y notificaciones
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
+$app->route("/forminci/{id}", [\App\Controllers\ctrlFormInci::class, "index"]);
+$app->route("/forminci/{id}", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"]);
 $app->get("/admin/editinci/{id}", [\App\Controllers\ctrlListinci::class, "editMaintenance"]);
 $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "updateMaintenance"]);
@@ -70,6 +71,10 @@ $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
 $app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
 $app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
+///////////////////////////////
+// $app->route("/prueba/{id}", [\App\Controllers\ctrlHistory::class, "showMaintenances"]);
+
+
 
 // Rutas de administración
 $app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"]);
@@ -80,6 +85,10 @@ $app->get("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "formE
 $app->post("/admin/edituser/{id}", [\App\Controllers\ctrlAdminUser::class, "editUser"]);
 $app->get("/admin/deleteuser/{id}", [\App\Controllers\ctrlAdminUser::class, "deleteUser"]);
 $app->get("/admin/deletemachine/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+$app->get("/admin/deleteinci/{id}", [\App\Controllers\ctrlListinci::class, "deleteMaintenance"]);
+$app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
+$app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
+
 
 // Ruta por defecto (error)
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
