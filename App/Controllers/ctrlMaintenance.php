@@ -25,6 +25,7 @@ class ctrlMaintenances
         $maintenanceModel->addMaintenance($hola);
 
     }
+
     public function update($request, $response, $container) {
         $data = $request->getParsedBody(); // Asegúrate de que estás obteniendo los datos correctamente
     
@@ -46,4 +47,5 @@ class ctrlMaintenances
             return $response->withRedirect('/mantenimientos/edit?id=' . $data['maintenance_id'] . '&error=Error al actualizar');
         }
     }
+
 }
