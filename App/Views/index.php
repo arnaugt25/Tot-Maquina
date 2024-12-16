@@ -186,7 +186,7 @@
     <!--Sección Sobre Nosotros (About Us Section)-->
     <section class="mt-16 bg-[#214969] text-white shadow-lg rounded-xl p-8">
       <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-6">Sobre Nosotros</h2>
+        <h1 class="text-3xl font-bold mb-6">Sobre Nosotros de tot maquina</h2>
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="rounded-lg overflow-hidden shadow-xl md:-ml-28">
               <img src="/uploads/images/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
