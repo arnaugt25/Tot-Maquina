@@ -138,7 +138,7 @@
             <i class="fa-solid fa-house"></i> Inicio
           </a>
           <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-desktop"></i> Máquinas
+            <i class="fa-solid fa-desktop"></i> Máquinas tot maquina
           </a>
           <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
