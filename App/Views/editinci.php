@@ -119,7 +119,6 @@
                     <option value="baja">Baja</option>
                     <option value="media">Media</option>
                     <option value="urgente">Urgente</option>
-
                 </select>
             </div>
 

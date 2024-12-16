@@ -8,3 +8,5 @@ node_modules/
 uploads/
 public/js
 public/css
+App/config.php
+
