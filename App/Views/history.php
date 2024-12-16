@@ -46,7 +46,7 @@
             <li>
               <a href="" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
                 <i class="fa-solid fa-envelope"></i> Notificaciones
-                  <input type="button" id="viewAlerta" value="">
+                <input type="button" id="viewAlerta" value="">
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </a>
             </li>
@@ -124,78 +124,81 @@
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
         <!-- Información básica -->
         <?php if (isset($historialbd) && !empty($historialbd)): ?>
-          <?php $contador = 1; // Inicializar contador ?>
-            <?php foreach($historialbd as $historial): ?>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border-b border-gray-200">
-                    <div>
-                        <h2 class="text-xl font-semibold text-[#214969] mb-4">Mantenimiento <?= $contador++ ?></h2>
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-500">Máquina</h3>
-                                <p class="mt-1 text-[#214969]">
-                                    <?= htmlspecialchars($historial['model']) ?>
-                                </p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-500">Tipo</h3>
-                                <p class="mt-1 text-[#214969]">
-                                    <?= htmlspecialchars($historial['type']) ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-semibold text-[#214969] mb-4">Detalles</h2>
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-500">Fecha de Instalación</h3>
-                                <p class="mt-1 text-[#214969]">
-                                    <?= htmlspecialchars($historial['installation_date']) ?>
-                                </p>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-medium text-gray-500">Técnico Responsable</h3>
-                                <p class="mt-1 text-[#214969]">
-                                    <?= htmlspecialchars($historial['name']) ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+          <?php $contador = 1; // Inicializar contador 
+          ?>
+          <?php foreach ($historialbd as $historial): ?>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border-b border-gray-200">
+              <div>
+                <h2 class="text-xl font-semibold text-[#214969] mb-4">Mantenimiento <?= $contador++ ?></h2>
+                <div class="space-y-4">
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-500">Máquina</h3>
+                    <p class="mt-1 text-[#214969]">
+                      <?= htmlspecialchars($historial['model']) ?>
+                    </p>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-500">Tipo</h3>
+                    <p class="mt-1 text-[#214969]">
+                      <?= htmlspecialchars($historial['type']) ?>
+                    </p>
+                  </div>
                 </div>
-            <?php endforeach; ?>
+              </div>
+              <div>
+                <h2 class="text-xl font-semibold text-[#214969] mb-4">Detalles</h2>
+                <div class="space-y-4">
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-500">Fecha de Instalación</h3>
+                    <p class="mt-1 text-[#214969]">
+                      <?= htmlspecialchars($historial['installation_date']) ?>
+                    </p>
+                  </div>
+                  <div>
+                    <h3 class="text-sm font-medium text-gray-500">Técnico Responsable</h3>
+                    <p class="mt-1 text-[#214969]">
+                      <?= htmlspecialchars($historial['name']) ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
         <?php else: ?>
         <?php endif; ?>
 
         <!-- Lista de Incidencias -->
-        <?php if (isset($infomaintenance) && !empty($infomaintenance)): ?>
-          <?php $contador2 = 1; // Inicializar contador ?>
-            <?php foreach($infomaintenance as $incidence): ?>
-              <div class="p-6">
-                <h2 class="text-xl font-semibold text-[#214969] mb-4">Historial de Incidencias</h2>
-                <div class="space-y-3">
-                  <div class="border rounded-lg overflow-hidden">
-                    <button class="w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 flex justify-between items-center text-[#214969] font-medium" onclick="toggleAccordion('incidencia1')">
-                      <span>Incidencia <?= $contador2++ ?></span>
-                      <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-                    </button>
-                    <div id="incidencia1" class="hidden p-4 border-t">
-                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <h3 class="text-sm font-medium text-gray-500">Fecha</h3>
-                          <p class="mt-1 text-[#214969]"><?= htmlspecialchars($incidence['assigned_date']);   ?></p>
-                        </div>
-                        <div class="md:col-span-2">
-                          <h3 class="text-sm font-medium text-gray-500">Descripción</h3>
-                          <p class="mt-1 text-[#214969]"><?= htmlspecialchars($incidence['description']);   ?></p>
-                        </div>
+        <div class="p-6">
+          <h2 class="text-xl font-semibold text-[#214969] mb-4">Historial de Incidencias</h2>
+          <div class="space-y-3">
+            <?php if (isset($infomaintenance) && !empty($infomaintenance)): ?>
+              <?php $contador2 = 1; // Inicializar contador 
+              ?>
+              <?php foreach ($infomaintenance as $incidence): ?>
+                <div class="border rounded-lg overflow-hidden">
+                  <button class="w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 flex justify-between items-center text-[#214969] font-medium" onclick="toggleAccordion('incidencia1')">
+                    <span>Incidencia <?= $contador2++ ?></span>
+                    <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+                  </button>
+                  <div id="incidencia1" class="hidden p-4 border-t">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <h3 class="text-sm font-medium text-gray-500">Fecha</h3>
+                        <p class="mt-1 text-[#214969]"><?= htmlspecialchars($incidence['assigned_date']);   ?></p>
+                      </div>
+                      <div class="md:col-span-2">
+                        <h3 class="text-sm font-medium text-gray-500">Descripción</h3>
+                        <p class="mt-1 text-[#214969]"><?= htmlspecialchars($incidence['description']);   ?></p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            <?php endforeach; ?>
-          <?php else: ?>
-        <?php endif; ?>
+              <?php endforeach; ?>
+            <?php else: ?>
+            <?php endif; ?>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
