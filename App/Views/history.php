@@ -115,6 +115,14 @@
       <!-- Título y botón de acción -->
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-[#214969]">Historial de la Máquina</h1>
+        <!-- Botón para descargar PDF --> 
+        <div class="flex justify-center mt-8">
+          <a href="/api/history/pdf/<?= htmlspecialchars($machine['machine_id']) ?>"
+            class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center w-1/2">
+            <i class="fas fa-plus mr-2"></i>
+            PDF
+          </a>
+        </div>
         <a href="/addlist" class="bg-[#214969] hover:bg-[#5DA6C3] text-white px-4 py-2 rounded-lg transition-colors duration-300">
           <i class="fa-solid fa-arrow-left mr-2"></i>Volver
         </a>

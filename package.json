@@ -34,5 +34,8 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "jspdf": "^2.5.2"
   }
 }
