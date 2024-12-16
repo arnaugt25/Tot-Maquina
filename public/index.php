@@ -37,13 +37,13 @@ $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
 // Rutas de máquinas
-$app->get("/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"],[[\App\Middleware\auth::class, "user"]]);
-$app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"],[[\App\Middleware\auth::class, "user"]]);
-$app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"],[[\App\Middleware\auth::class, "user"]]);
-$app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"],[[\App\Middleware\auth::class, "user"]]);
-$app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"],[[\App\Middleware\auth::class, "user"]]);
-$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"],[[\App\Middleware\auth::class, "user"]]);
-$app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"],[[\App\Middleware\auth::class, "user"]]);
+$app->get("/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"]);
+$app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"]);
+$app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
+$app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"]);
+$app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
+$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
+$app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
 
 
 $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
