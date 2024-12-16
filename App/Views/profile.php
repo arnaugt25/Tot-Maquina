@@ -74,7 +74,7 @@
             </div>
 
             <!-- Menú móvil -->
-            <div class="hidden md:hidden">
+            <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
                         <i class="fa-solid fa-house"></i> Inicio

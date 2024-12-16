@@ -70,7 +70,7 @@
           </button>
         </div>
         <!-- Menú móvil -->
-        <div class="hidden md:hidden" id="mobile-menu">
+        <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
           <div class="px-2 pt-2 pb-3 space-y-1">
             <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
               <i class="fa-solid fa-house"></i> Inicio
@@ -78,15 +78,23 @@
             <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
               <i class="fa-solid fa-desktop"></i> Máquinas
             </a>
-            <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-              <i class="fa-solid fa-address-card"></i> Perfil
-            </a>
-            <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-              <i class="fa-solid fa-envelope"></i> Notificaciones
-            </a>
-            <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-              Admin panel
-            </a>
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+                <i class="fa-solid fa-address-card"></i> Perfil
+              </a>
+              <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                  <i class="fas fa-cog mr-2"></i>Admin panel
+                </a>
+              <?php endif; ?>
+              <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+              </a>
+            <?php else: ?>
+              <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+              </a>
+            <?php endif; ?>
           </div>
         </div>
     </nav>
@@ -218,7 +226,7 @@
       icon.style.transform = element.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
     }
   </script>
-
+  <script src="/js/bundle.js"></script>
 </body>
 
 </html>
