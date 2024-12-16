@@ -69,7 +69,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n/* harmony import */ var _qr_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./qr.js */ \"./App/js/qr.js\");\n/* harmony import */ var _csv_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./csv.js */ \"./App/js/csv.js\");\n/* harmony import */ var _camera_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./camera.js */ \"./App/js/camera.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map.js */ \"./App/js/map.js\");\n/* harmony import */ var _slider_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider.js */ \"./App/js/slider.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav.js */ \"./App/js/nav.js\");\n/* harmony import */ var _menuButton_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menuButton.js */ \"./App/js/menuButton.js\");\n/* harmony import */ var _individualMap_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./individualMap.js */ \"./App/js/individualMap.js\");\n/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search.js */ \"./App/js/search.js\");\n/* harmony import */ var _qr_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./qr.js */ \"./App/js/qr.js\");\n/* harmony import */ var _csv_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./csv.js */ \"./App/js/csv.js\");\n/* harmony import */ var _camera_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./camera.js */ \"./App/js/camera.js\");\n/* harmony import */ var _pdf_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pdf.js */ \"./App/js/pdf.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./App/js/index.js?");
 
 /***/ }),
 
@@ -114,6 +114,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// Verificar que los elemento
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\ndocument.addEventListener('DOMContentLoaded', function() {\r\n    // Seleccionar elementos necesarios\r\n    const mobileMenuButton = document.querySelector('button');\r\n    const mobileMenu = document.querySelector('.md\\\\:hidden.hidden');\r\n\r\n    // Añadir evento click al botón\r\n    mobileMenuButton.addEventListener('click', function() {\r\n        // Toggle la clase hidden del menú móvil\r\n        mobileMenu.classList.toggle('hidden');\r\n    });\r\n\r\n    // Cerrar menú al hacer click fuera\r\n    document.addEventListener('click', function(event) {\r\n        if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {\r\n            mobileMenu.classList.add('hidden');\r\n        }\r\n    });\r\n});\r\n\n\n//# sourceURL=webpack:///./App/js/nav.js?");
+
+/***/ }),
+
+/***/ "./App/js/pdf.js":
+/*!***********************!*\
+  !*** ./App/js/pdf.js ***!
+  \***********************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n\n\n//# sourceURL=webpack:///./App/js/pdf.js?");
 
 /***/ }),
 
@@ -206,13 +217,13 @@ eval("__webpack_require__.r(__webpack_exports__);\nif (swiper != null){\r\nvar s
 /******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
 /******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript)
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
 /******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
 /******/ 				if(scripts.length) {
 /******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
 /******/ 				}
 /******/ 			}
 /******/ 		}
