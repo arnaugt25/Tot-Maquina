@@ -128,7 +128,11 @@
         </div>
         <!-- Botón menú móvil -->
         <div class="md:hidden">
-          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+          <button id="mobile-menu-button" type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -137,7 +141,7 @@
       </div>
 
       <!-- Menú móvil -->
-      <div class="hidden md:hidden">
+      <div id="mobile-menu" class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-house"></i> Inicio
@@ -339,10 +343,8 @@
   <script src="/js/bundle.js"></script>
   
   <script>
-    const machines = <?php echo json_encode($machines); ?>;
-    document.addEventListener('DOMContentLoaded', function() {
-      loadMarkers(machines);
-    });
+    let machines = [];
+    machines = <?php echo json_encode($machines ?? [], JSON_THROW_ON_ERROR); ?>;
   </script>
 
   <div class="popup-wrapper" id="folleto-popup">

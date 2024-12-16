@@ -75,7 +75,11 @@
         </div>
         <!-- Botón menú móvil -->
         <div class="md:hidden">
-          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+          <button id="mobile-menu-button" type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -84,7 +88,7 @@
       </div>
 
       <!-- Menú móvil -->
-      <div class="hidden md:hidden">
+      <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-house"></i> Inicio
@@ -98,7 +102,7 @@
             </a>
             <?php if ($_SESSION['user']['role'] == 'admin'): ?>
               <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-                Admin panel
+                <i class="fas fa-cog mr-2"></i>Admin panel
               </a>
             <?php endif; ?>
             <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">

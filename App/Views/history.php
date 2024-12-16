@@ -59,18 +59,18 @@
         </div>
         <!-- Botón menú móvil -->
         <div class="md:hidden">
-          <button type="button"
-            aria-label="Abrir menú de navegación"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-            class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <button id="mobile-menu-button" type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
         <!-- Menú móvil -->
-        <div class="hidden md:hidden" id="mobile-menu">
+        <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
           <div class="px-2 pt-2 pb-3 space-y-1">
             <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
               <i class="fa-solid fa-house"></i> Inicio
@@ -78,15 +78,23 @@
             <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
               <i class="fa-solid fa-desktop"></i> Máquinas
             </a>
-            <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-              <i class="fa-solid fa-address-card"></i> Perfil
-            </a>
-            <a href="#" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-              <i class="fa-solid fa-envelope"></i> Notificaciones
-            </a>
-            <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-              Admin panel
-            </a>
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+                <i class="fa-solid fa-address-card"></i> Perfil
+              </a>
+              <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                  <i class="fas fa-cog mr-2"></i>Admin panel
+                </a>
+              <?php endif; ?>
+              <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+              </a>
+            <?php else: ?>
+              <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+              </a>
+            <?php endif; ?>
           </div>
         </div>
     </nav>
@@ -115,6 +123,14 @@
       <!-- Título y botón de acción -->
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-[#214969]">Historial de la Máquina</h1>
+        <!-- Botón para descargar PDF --> 
+        <div class="flex justify-center mt-8">
+          <a href="/api/history/pdf/<?= htmlspecialchars($machine['machine_id']) ?>"
+            class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center w-1/2">
+            <i class="fas fa-plus mr-2"></i>
+            PDF
+          </a>
+        </div>
         <a href="/addlist" class="bg-[#214969] hover:bg-[#5DA6C3] text-white px-4 py-2 rounded-lg transition-colors duration-300">
           <i class="fa-solid fa-arrow-left mr-2"></i>Volver
         </a>
@@ -213,7 +229,7 @@
       icon.style.transform = element.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
     }
   </script>
-
+  <script src="/js/bundle.js"></script>
 </body>
 
 </html>

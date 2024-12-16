@@ -1,5 +1,3 @@
-<?php if (isset($_SESSION['user']['role']) == 'admin'):  ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -164,6 +162,6 @@
             </style>
         </div>
     </main>
+    <script src="/js/bundle.js"></script>
 </body>
 </html> 
-<?php endif; ?>
