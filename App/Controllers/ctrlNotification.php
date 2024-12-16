@@ -1,30 +1,41 @@
 <?php
 
-
 namespace App\Controllers;
 
-class ctrlNotification {
-    public function ctrlNotification() {
-        $notificationModel = new \App\Models\Notification();
+class CtrlNotification {
+    protected $notificationModel;
 
+    public function __construct() {
+        $this->notificationModel = new \App\Models\Notification();
+    }
+
+    public function getNotifications($request,$response,$container) {
         try {
-            // Obtener todos los mantenimientos
-            $allNotifications = $notificationModel->getNotificationDetails();
+            // Obtener todas las notificaciones
+            $allNotifications = $this->notificationModel->getNotificationDetails();
             
-            // Obtener un mantenimiento específico
-            $notification = $notificationModel->getNotificationById($notification_id);
-               
             // Usar los datos...
             foreach($allNotifications as $notification) {
-                echo "Mantenimiento: " . $notification['maintenance_id'] . "<br>";
-                echo "Técnico: " . $notification['surname'] . "<br>";
+                echo "Incidencia: " . $notification['maintenance_id'] . "<br>";
+                echo "Técnico: " . $notification['user_id'] . "<br>";
                 echo "Máquina: " . $notification['machine_id'] . "<br>";
-                echo "Fecha: " . $notification['formatted_next_maintenance'] . "<br>";
+                echo "Fecha: " . $notification['next_maintenance'] . "<br>";
                 echo "Frecuencia: " . $notification['frequency'] . "<br>";
             }
-            
         } catch (\Exception $e) {
+            // Aquí podrías registrar el error en un log
             echo "Error: " . $e->getMessage();
+        }
+        $response->set("notifications",$allNotifications);
+        return $response;
+    }
+
+    public function createNotification($data) {
+        try {
+            $this->notificationModel->createNotification($data);
+            echo "Notificación creada con éxito.";
+        } catch (\Exception $e) {
+            echo "Error al crear la notificación: " . $e->getMessage();
         }
     }
 }
