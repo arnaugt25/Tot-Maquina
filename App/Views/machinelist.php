@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +8,17 @@
   <link rel="stylesheet" href="../css/listmachine.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body class="bg-[#C1D1D8] text-gray-800">
   <header class="bg-[#0C0C04] text-white">
-    <!-- Barra de navegación principal -->
+    <!-- Barra de navegación principal (Main navigation bar) -->
     <nav class="container mx-auto px-6">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo y nombre -->
+        <!-- Logo and name -->
         <div class="flex items-center space-x-4">
           <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
-
-        <!-- Enlaces de navegación -->
+        <!-- Enlaces de navegación (Navigation links) -->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
             <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
@@ -42,28 +39,33 @@
                   <i class="fas fa-cog mr-2"></i>Admin panel
                 </a>
               <?php endif; ?>
-
               <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
               </a>
             <?php else: ?>
-              <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <a href="/login" 
+                 class="bg-[#165f7c] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+                 role="button"
+                 aria-label="Iniciar Sesión">
                 <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
               </a>
             <?php endif; ?>
           </div>
         </div>
-        <!-- Botón menú móvil -->
+        <!-- Botón menú móvil (Mobile menu button)-->
         <div class="md:hidden">
-          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button 
+            type="button" 
+            class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </div>
-
-      <!-- Menú móvil -->
+      <!-- Menú móvil (Mobile menu)-->
       <div class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -85,7 +87,10 @@
               <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
           <?php else: ?>
-            <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            <a href="/login" 
+               class="bg-[#165f7c] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+               role="button"
+               aria-label="Iniciar Sesión">
               <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
             </a>
           <?php endif; ?>
@@ -93,23 +98,20 @@
       </div>
     </nav>
   </header>
-
-
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Buscador y botón de importación -->
+    <!-- Buscador y botón de importación (Search and import button) -->
     <div class="mb-8 max-w-2xl mx-auto">
         <div class="relative flex space-x-4">
             <div class="relative flex-1">
-                <input type="text" id="searchMachine" 
-                       class="w-full pl-10 pr-4 py-3 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
-                       placeholder="Buscar máquina...">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
-                </div>
+              <label for="searchMachine" class="sr-only">Buscar máquina</label>
+              <input type="text" id="searchMachine" name="searchMachine"class="w-full pl-10 pr-4 py-3 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
+                placeholder="Buscar máquina..." aria-label="Buscar máquina" >
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
+              </div>
             </div>
-            
-            <!-- Botón de Añadir Incidencia -->
+            <!-- Botón de Añadir Incidencia (Add Incident Button)-->
             <div class="relative">
                 <a href="/forminci" 
                    class="flex items-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
@@ -117,23 +119,22 @@
                     <span>Añadir Incidencia</span>
                 </a>
             </div>
-            
-            <!-- Botón de importación CSV -->
+            <!-- Botón de importación CSV (CSV Import Button)-->
             <div class="relative">
-                <button onclick="showCSVModal()" 
-                        class="flex items-center px-4 py-3 bg-[#478249] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
+                <button onclick="showCSVModal()" class="flex items-center px-4 py-3 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md"
+                  aria-label="Importar archivo CSV">
                     <i class="fas fa-file-csv mr-2"></i>
                     <span>Importar CSV</span>
                 </button>
             </div>
         </div>
     </div>
-    <!-- Grid de tarjetas -->
+    <!-- Grid de tarjetas (Card grid)-->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
         <?php foreach ($machines as $machine): ?>
           <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
-            <!-- Imagen de la máquina -->
+            <!-- Imagen de la máquina (Image of the machine)-->
             <div class="relative group">
               <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 src=<?= htmlspecialchars($machine['image']) ?> alt="Imagen Máquina">
@@ -142,13 +143,13 @@
                 <span>Activa</span>
               </div>
             </div>
-            <!-- Contenido de la tarjeta -->
+            <!-- Contenido de la tarjeta (Card content)-->
             <div class="p-6">
               <h1 class="text-[#5DA6C3] font-bold text-xl mb-3 flex items-center space-x-2">
                 <i class="fas fa-desktop text-lg"></i>
                 <span><?= htmlspecialchars($machine['model']) ?></span>
               </h1>
-              <!-- Detalles de la máquina -->
+              <!-- Detalles de la máquina (Machine details)-->
               <div class="space-y-3 text-[#C1D1D8] mb-6">
                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                   <i class="fas fa-barcode text-[#5DA6C3]"></i>
@@ -163,7 +164,7 @@
                   <span>Fabricante: <?= htmlspecialchars($machine['created_by']) ?></span>
                 </div>
               </div>
-              <!-- Botones de acción -->
+              <!-- Botones de acción (Action Buttons)-->
               <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
                 <a href="/maquina_id?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
                   class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
@@ -175,14 +176,13 @@
                   <i class="fa-solid fa-pen-to-square"></i>
                   <span>Editar</span>
                 </a>
-
-                <!-- Eliminar máquina -->
                 <button onclick="confirmDeleteMachine(<?= $machine['machine_id'] ?>, '<?= htmlspecialchars($machine['model'], ENT_QUOTES) ?>')"
                   class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
                   title="Eliminar máquina">
                   <i class="fas fa-trash"></i>
                   <span>Eliminar</span>
                 </button>
+                <!-- QR -->
                 <button onclick="showMachineQRCode(<?= $machine['machine_id'] ?>)"
                   class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
                   title="Generar QR">
@@ -195,41 +195,30 @@
       </div>
     </div>
   </div>
-
-  <!-- Modal de importación CSV -->
+  <!-- Modal de importación CSV (CSV Import Modal)-->
   <div id="csvModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
     <div class="fixed inset-0 flex items-center justify-center p-4">
       <div class="bg-[#214969] rounded-lg max-w-md w-full p-6 shadow-xl">
-        <h3 class="text-xl font-bold text-white mb-4">
+        <h1 class="text-xl font-bold text-white mb-4">
           <i class="fas fa-file-csv mr-2 text-[#5DA6C3]"></i>
           Importar Máquinas
-        </h3>
-        
+        </h1>
         <div class="mb-4">
-          <input type="file" 
-                 id="csvFileInput" 
-                 accept=".csv" 
-                 class="hidden" 
-                 onchange="handleFileSelection(this)">
-          <label for="csvFileInput" 
-                 class="flex items-center px-4 py-3 bg-[#132048] text-white rounded-lg cursor-pointer hover:bg-[#1a3850] transition-all">
+          <input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleFileSelection(this)">
+          <label for="csvFileInput" class="flex items-center px-4 py-3 bg-[#132048] text-white rounded-lg cursor-pointer hover:bg-[#1a3850] transition-all">
             <i class="fas fa-upload mr-2"></i>
             <span id="fileName">Seleccionar archivo CSV</span>
           </label>
         </div>
-
         <div id="fileInfo" class="mb-4 text-[#A8C5D6] hidden">
           <p>Archivo seleccionado: <span id="selectedFileName" class="font-semibold"></span></p>
           <p class="text-sm">¿Deseas proceder con la importación?</p>
         </div>
-
         <div class="flex justify-end space-x-3">
-          <button onclick="closeCSVModal()" 
-                  class="px-4 py-2 text-[#A8C5D6] hover:text-white transition-colors">
+          <button onclick="closeCSVModal()" class="px-4 py-2 text-[#A8C5D6] hover:text-white transition-colors">
             Cancelar
           </button>
-          <button id="importButton" 
-                  class="bg-[#478249] hover:bg-[#3d6e3f] text-white px-4 py-2 rounded-lg hidden">
+          <button id="importButton" class="bg-[#478249] hover:bg-[#3d6e3f] text-white px-4 py-2 rounded-lg hidden">
             Importar
           </button>
         </div>
@@ -246,10 +235,19 @@
   function showMachineQRCode(machineId) {
     window.location.href = `/generate_machine_qr/${machineId}`;
   }
-</script>
+  function closePopup() {
+    // Función para cerrar el popup
+    map.closePopup();
+  }
 
+  // Asegurarse de que el botón del menú móvil actualiza su estado
+  document.querySelector('[aria-label="Abrir menú de navegación"]').addEventListener('click', function() {
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    // Aquí va la lógica para mostrar/ocultar el menú
+  });
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 </html>
