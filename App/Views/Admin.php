@@ -120,7 +120,7 @@
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Usuarios</h3>
             <div class="bg-[#5DA6C3]/10 p-3 rounded-full">
-              <i class="fas fa-users text-[#5DA6C3] text-xl"></i>
+              <i class="fas fa-users text-[#5DA6C3] text-xl"></i> 
             </div>
           </div>
           <button onclick="window.location.href='/admin/adduser'" 

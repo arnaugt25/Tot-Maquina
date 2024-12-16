@@ -339,10 +339,8 @@
   <script src="/js/bundle.js"></script>
   
   <script>
-    const machines = <?php echo json_encode($machines); ?>;
-    document.addEventListener('DOMContentLoaded', function() {
-      loadMarkers(machines);
-    });
+    let machines = [];
+    machines = <?php echo json_encode($machines ?? [], JSON_THROW_ON_ERROR); ?>;
   </script>
 
   <div class="popup-wrapper" id="folleto-popup">

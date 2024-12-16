@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\models\Users;
 class ctrlAdminUser {
     public function index($request, $response, $container){
-        $response->setTemplate("addUser.php");
+        $response->setTemplate("adduser.php");
         return $response;
     }
 
