@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/listmachine.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body class="bg-[#C1D1D8] text-gray-800">
@@ -42,8 +43,9 @@
               </a>
             </li>
             <li>
-              <a href="#" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+              <a href="" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
                 <i class="fa-solid fa-envelope"></i> Notificaciones
+                  <input type="button" id="viewAlerta" value="">
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </a>
             </li>

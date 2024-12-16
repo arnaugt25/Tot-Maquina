@@ -76,9 +76,33 @@
                     </tr>
                 </thead>
                 <tbody class="bg-[#0A2A3A] divide-y divide-gray-700">
-                    <!-- Ejemplo de una fila -->
-                    <?php foreach ($maintenances as $maintenance){
-                       ?>
+                    <?php
+                    // Lógica de paginación
+                    $itemsPerPage = 10; // Número de elementos por página
+                    $totalItems = count($maintenances); // Total de incidencias
+                    $totalPages = ceil($totalItems / $itemsPerPage); // Total de páginas
+                    $currentPage = $_GET['page'] ?? 1; // Página actual
+                    $currentPage = max(1, min($totalPages, $currentPage)); // Asegurarse de que la página actual esté dentro del rango
+                    $offset = ($currentPage - 1) * $itemsPerPage; // Calcular el desplazamiento
+                    $paginatedMaintenances = array_slice($maintenances, $offset, $itemsPerPage); // Obtener los elementos de la página actual
+                    // Capturar los filtros
+                    $selectedPriority = $_GET['priority'] ?? '';
+                    $selectedType = $_GET['type'] ?? '';
+
+                    // Filtrar las incidencias según los parámetros seleccionados
+                    $filteredMaintenances = array_filter($maintenances, function($maintenance) use ($selectedPriority, $selectedType) {
+                        $priorityMatch = $selectedPriority ? $maintenance['priority'] === $selectedPriority : true;
+                        $typeMatch = $selectedType ? $maintenance['type'] === $selectedType : true;
+                        return $priorityMatch && $typeMatch;
+                    });
+
+                    // Obtener el total de elementos filtrados
+                    $totalItems = count($filteredMaintenances);
+                    $totalPages = ceil($totalItems / $itemsPerPage); // Total de páginas
+                    $paginatedMaintenances = array_slice($filteredMaintenances, $offset, $itemsPerPage); // Obtener los elementos de la página actual
+                    ?>
+                    
+                    <?php foreach ($paginatedMaintenances as $maintenance) { ?>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-[#FFFFFF]">
                                 <?= htmlspecialchars($maintenance["maintenance_id"]) ?>
@@ -118,43 +142,32 @@
                                 </div>
                             </td>
                         </tr>
-                    <?php }?>
-
-                    <!-- Fin ejemplo de fila -->
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
 
         <!-- Paginación -->
         <div class="bg-[#2C2C2C] px-4 py-3 flex items-center justify-between border-t border-gray-700 sm:px-6 mt-4 rounded-lg shadow">
-            <div class="flex-1 flex justify-between sm:hidden">
-                <button class="relative inline-flex items-center px-4 py-2 border border-gray-700 text-sm font-medium rounded-md text-[#FFFFFF] bg-[#1B4B5F] hover:bg-[#0A2A3A]">
-                    Anterior
-                </button>
-                <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-700 text-sm font-medium rounded-md text-[#FFFFFF] bg-[#1B4B5F] hover:bg-[#0A2A3A]">
-                    Siguiente
-                </button>
-            </div>
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
                     <p class="text-sm text-[#FFFFFF]">
-                        Mostrando <span class="font-medium">1</span> a <span class="font-medium">10</span> de <span class="font-medium">20</span> resultados
+                        Mostrando <span class="font-medium"><?= $offset + 1 ?></span> a <span class="font-medium"><?= min($offset + $itemsPerPage, $totalItems) ?></span> de <span class="font-medium"><?= $totalItems ?></span> resultados
                     </p>
                 </div>
                 <div>
                     <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Paginación">
-                        <button class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A]">
+                        <a href="?page=<?= max(1, $currentPage - 1) ?>" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A]">
                             Anterior
-                        </button>
-                        <button class="relative inline-flex items-center px-4 py-2 border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A]">
-                            1
-                        </button>
-                        <button class="relative inline-flex items-center px-4 py-2 border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A]">
-                            2
-                        </button>
-                        <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A]">
+                        </a>
+                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <a href="?page=<?= $i ?>" class="relative inline-flex items-center px-4 py-2 border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A] <?= $i === $currentPage ? 'bg-[#0A2A3A]' : '' ?>">
+                                <?= $i ?>
+                            </a>
+                        <?php endfor; ?>
+                        <a href="?page=<?= min($totalPages, $currentPage + 1) ?>" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-700 bg-[#1B4B5F] text-sm font-medium text-[#FFFFFF] hover:bg-[#0A2A3A]">
                             Siguiente
-                        </button>
+                        </a>
                     </nav>
                 </div>
             </div>
