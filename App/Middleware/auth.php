@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Middleware;
+
 use \Emeset\Contracts\Http\Request;
 use \Emeset\Contracts\Http\Response;
 use \Emeset\Contracts\Container;
@@ -13,25 +15,101 @@ use \Emeset\Contracts\Container;
  * @param callable $next  següent middleware o controlador.   
  * @return \Emeset\Contracts\Http\Response resposta HTTP
  */
-function auth(Request $request, Response $response, Container $container, $next) : Response
-{
+class auth {
+    public static function auth(Request $request, Response $response, Container $container, $next) : Response
+    {
+        $usuari = $request->get("SESSION", "usuari");
+        $logat = $request->get("SESSION", "logat");
 
-    $usuari = $request->get("SESSION", "usuari");
-    $logat = $request->get("SESSION", "logat");
+        if (!isset($logat)) {
+            $usuari = "";
+            $logat = false;
+        }
 
-    if (!isset($logat)) {
-        $usuari = "";
-        $logat = false;
+        $response->set("usuari", $usuari);
+        $response->set("logat", $logat);
+
+        if ($logat) {
+            $response = \Emeset\Middleware::next($request, $response, $container, $next);
+        } else {
+            $_SESSION['error'] = "Debe iniciar sesión para acceder a esta página.";
+            $response->setTemplate("forbidden.php");
+        }
+        return $response;
     }
 
-    $response->set("usuari", $usuari);
-    $response->set("logat", $logat);
+    public static function admin(Request $request, Response $response, Container $container, $next) : Response 
+    {
+        // Verificamos si el usuario está logado
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['error'] = "Debes iniciar sesión para acceder al panel de administración.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
 
-    // si l'usuari està logat permetem carregar el recurs
-    if ($logat) {
+        // Verificamos si el usuario es admin
+        if ($_SESSION['user']['role'] !== 'admin') {
+            $_SESSION['error'] = "Acceso denegado. Debe ser administrador.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        // Si es admin y está logado, continuamos
         $response = \Emeset\Middleware::next($request, $response, $container, $next);
-    } else {
-        $response->redirect("location: /login");
+        return $response;
     }
-    return $response;
+
+    function tecnico(Request $request, Response $response, Container $container, $next) : Response {
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['error'] = "Debes iniciar sesión para acceder a esta sección.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'tecnico') {
+            $_SESSION['error'] = "No tienes permisos para acceder a esta sección.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        $response = \Emeset\Middleware::next($request, $response, $container, $next);
+        return $response;
+    }
+
+    function supervisor(Request $request, Response $response, Container $container, $next) : Response {
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['error'] = "Debes iniciar sesión para acceder a esta sección.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'supervisor') {
+            $_SESSION['error'] = "No tienes permisos para acceder a esta sección.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        $response = \Emeset\Middleware::next($request, $response, $container, $next);
+        return $response;
+    }
+
+    function user(Request $request, Response $response, Container $container, $next) : Response {
+        // Verifica si existe una sesión de usuario
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['error'] = "Debes iniciar sesión para acceder a esta sección.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        // Verifica si el usuario tiene el rol específico de "user"
+        if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'user') {
+            $_SESSION['error'] = "No tienes permisos para acceder a esta sección.";
+            $response->setTemplate("forbidden.php");
+            return $response;
+        }
+
+        // Si el usuario está autenticado y tiene el rol correcto, continúa
+        $response = \Emeset\Middleware::next($request, $response, $container, $next);
+        return $response;
+    }
 }

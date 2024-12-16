@@ -111,11 +111,18 @@
             <?php endif; ?>
           </div>
         </div>
-      </nav>
-    </header>
-    <header class="bg-[#214969] shadow">
-      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-white"><?= ($machine['model']) ?></h1>
+        <!-- Botón menú móvil -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -130,11 +137,32 @@
             <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= ($machine['serial_number']) ?></p>
           </div>
         </div>
-
-        <!-- Imagen de la máquina -->
-        <div class="h-64 overflow-hidden">
-          <img src="<?= ($machine['image']) ?>" alt="Imagen de la máquina"
-            class="w-full h-full object-contain rounded-lg">
+      <!-- Menú móvil -->
+      <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-house"></i> Inicio
+          </a>
+          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+            <i class="fa-solid fa-desktop"></i> Máquinas
+          </a>
+          <?php if (isset($_SESSION['user'])): ?>
+            <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+              <i class="fa-solid fa-address-card"></i> Perfil
+            </a>
+            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+              <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                <i class="fas fa-cog mr-2"></i>Admin panel
+              </a>
+            <?php endif; ?>
+            <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+              <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+            </a>
+          <?php else: ?>
+            <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+              <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+            </a>
+          <?php endif; ?>
         </div>
       </div>
       <!-- Botones -->

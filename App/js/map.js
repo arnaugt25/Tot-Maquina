@@ -2,25 +2,7 @@ import L from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
 
-if (document.getElementById("map") != null){
-
-// Inicializar el mapa con un estilo más moderno
-var map = L.map('map', {
-    zoomControl: false  // Desactivamos el control de zoom predeterminado
-}).setView([41.3851, 2.1734], 13);
-
-// Añadir un estilo de mapa más moderno
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© OpenStreetMap contributors',
-    maxZoom: 19
-}).addTo(map);
-
-// Añadir control de zoom en una posición personalizada
-L.control.zoom({
-    position: 'bottomright'
-}).addTo(map);
-
-// Definir el icono personalizado
+let map; // Variable global para el mapa
 const customIcon = L.divIcon({
     html: '<i class="fa-solid fa-location-dot" style="color: #214969;"></i>',
     iconSize: [20, 20],
@@ -29,16 +11,39 @@ const customIcon = L.divIcon({
     popupAnchor: [0, -20]
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const mapElement = document.getElementById("map");
+    if (!mapElement) {
+        return;
+    }
+    
+    map = L.map('map', {
+        zoomControl: false
+    }).setView([39.5696, 2.6502], 12);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(map);
+
+    if (typeof machines !== 'undefined' && machines && machines.length > 0) {
+        loadMarkers(machines);
+    }
+});
+
 // Función para cargar los marcadores
-window.loadMarkers = function (machines) {
+window.loadMarkers = function(machines) {
     if (!machines || machines.length === 0) {
-        console.log('No hay máquinas para mostrar');
         return;
     }
 
     const bounds = [];
     const markersLayer = L.featureGroup().addTo(map);
-    console.log(machines);
+    
     machines.forEach(function(machine) {
         if (machine.coordinates) {
             try {
@@ -50,85 +55,70 @@ window.loadMarkers = function (machines) {
                     if (!isNaN(lat) && !isNaN(lng)) {
                         bounds.push([lat, lng]);
 
-                        // Crear marcador con animación de rebote
                         const marker = L.marker([lat, lng], {
-                            icon: customIcon,                              // Usar el icono personalizado
+                            icon: customIcon,
                             title: machine.model,
-                            riseOnHover: true,
-                            bounceOnAdd: true
+                            riseOnHover: true
                         }).addTo(markersLayer);
 
-                        // Añadir popup con diseño mejorado
                         marker.bindPopup(`
                             <div class="p-4 min-w-[250px]">
                                 <h3 class="text-[#214969] font-bold text-lg mb-3 border-b border-gray-200 pb-2">
                                     ${machine.model}
                                 </h3>
-                                
                                 <div class="space-y-2">
                                     <div class="flex items-center text-gray-600">
                                         <i class="fas fa-barcode w-6 text-[#5DA6C3]"></i>
                                         <span class="ml-2">Serie: ${machine.serial_number}</span>
                                     </div>
-                                    
                                     <div class="flex items-center text-gray-600">
                                         <i class="fas fa-industry w-6 text-[#5DA6C3]"></i>
                                         <span class="ml-2">Fabricante: ${machine.created_by}</span>
                                     </div>
                                 </div>
-                                
-                                <div class="mt-4 pt-2 border-t border-gray-200">
+                                <div class="mt-4 text-center">
                                     <a href="/maquina_id?machine_id=${machine.machine_id}" 
-                                       class="block text-center bg-[#214969] text-white py-2 px-4 rounded-lg hover:bg-[#5DA6C3] transition-all duration-300">
-                                        <i class="fas fa-info-circle mr-2"></i>Ver detalles
+                                       class="inline-flex items-center justify-center px-4 py-2 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg transition-colors duration-300 text-sm">
+                                        <i class="fas fa-info-circle mr-2"></i>
+                                        Más detalles
                                     </a>
                                 </div>
                             </div>
-                        `, {
-                            maxWidth: 400,
-                            closeButton: true,
-                            className: 'custom-popup'
-                        });
-
-                        // Añadir efecto hover al marcador
-                        marker.on('mouseover', function() {
-                            this.openPopup();
-                        });
+                        `);
                     }
                 }
-            } catch (error) {
-                console.error('Error al procesar coordenadas:', error);
-            }
+            } catch (error) {}
         }
     });
 
-    // Ajustar el mapa para mostrar todos los marcadores con padding
     if (bounds.length > 0) {
         map.fitBounds(bounds, {
             padding: [50, 50],
             maxZoom: 15
         });
     }
-}
+};
 
-// Funciones para el modal
-window.abrirMapaModal = function () {
+// Funciones del modal
+window.abrirMapaModal = function() {
     const modal = document.getElementById('mapaModal');
-    document.body.classList.add('modal-open');
-    modal.classList.remove('hidden');
-    
-    // Reinicializar el mapa cuando se abre el modal
-    setTimeout(() => {
-        map.invalidateSize();
-        loadMarkers(machines);
-    }, 100);
-}
+    if (modal) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            map.invalidateSize();
+            if (typeof machines !== 'undefined') {
+                loadMarkers(machines);
+            }
+        }, 100);
+    }
+};
 
-window.cerrarMapaModal = function () {
+window.cerrarMapaModal = function() {
     const modal = document.getElementById('mapaModal');
-    document.body.classList.remove('modal-open');
-    modal.classList.add('hidden');
-}
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+};
 
 // Event Listeners
 document.addEventListener('keydown', function(event) {
@@ -137,58 +127,10 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-document.getElementById('mapaModal').addEventListener('click', function(event) {
-    if (event.target === this) {
-        cerrarMapaModal();
-    }
-});
-
-// Manejar el resize de la ventana
-window.addEventListener('resize', function() {
-    map.invalidateSize();
-});
-
-window.loadSingleMarker = function (machine) {
-    if (!machine.coordinates) {
-        console.log('No hay coordenadas para esta máquina');
-        return;
-    }
-
-    try {
-        const coords = machine.coordinates.split(',');
-        if (coords.length === 2) {
-            const lat = parseFloat(coords[0].trim());
-            const lng = parseFloat(coords[1].trim());
-
-            if (!isNaN(lat) && !isNaN(lng)) {
-                // Actualizar la vista del mapa existente
-                map.setView([lat, lng], 15);
-
-                // Limpiar marcadores existentes
-                map.eachLayer((layer) => {
-                    if (layer instanceof L.Marker) {
-                        map.removeLayer(layer);
-                    }
-                });
-
-                // Crear nuevo marcador
-                const marker = L.marker([lat, lng], {
-                    title: machine.model
-                }).addTo(map);
-
-                // Añadir popup con información
-                marker.bindPopup(`
-                    <div class="p-2">
-                        <h3 class="font-bold text-lg mb-2">${machine.model}</h3>
-                        <p class="mb-1"><strong>Serie:</strong> ${machine.serial_number}</p>
-                        <p class="mb-1"><strong>Fabricante:</strong> ${machine.created_by}</p>
-                    </div>
-                `);
-            }
+if (document.getElementById('mapaModal')) {
+    document.getElementById('mapaModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+            cerrarMapaModal();
         }
-    } catch (error) {
-        console.error('Error al procesar coordenadas:', error);
-    }
-}
-
+    });
 }
