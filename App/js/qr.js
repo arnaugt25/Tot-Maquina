@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Obtiene la URL actual (Gets the current URL)
     const urlParams = new URLSearchParams(window.location.search);

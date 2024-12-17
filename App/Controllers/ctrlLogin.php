@@ -12,16 +12,16 @@ class ctrlLogin {
     }
 
     public function ctrlLogin($request, $response, $container) {
-        $username = $request->get(INPUT_POST, "username");
-        $password = $request->get(INPUT_POST, "password");
-
-        $userModel = $container->get("Users");
-        $user = $userModel->login($username, $password);
+            $username = $request->get(INPUT_POST, "username");
+            $password = $request->get(INPUT_POST, "password");
+    
+            $userModel = $container->get("Users");
+            $user = $userModel->login($username, $password);
             
-        $response->setSession('user', $user);
-        $response->setSession('logged', true);
-        $response->redirect("Location: /");
-            
+            $response->setSession('user', $user);
+            $response->setSession('logged', true);
+            $response->redirect("Location: /");
+        
         return $response;
     }
 

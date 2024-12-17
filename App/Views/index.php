@@ -21,6 +21,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   
   <!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMHRSVKM8L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -28,7 +29,10 @@
   gtag('js', new Date());
 
   gtag('config', 'G-RMHRSVKM8L');
-</script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMHRSVKM8L"></script>
+  
+
   <style>
     /* Estilos para mejorar el contraste de la atribución de Leaflet */
     .leaflet-control-attribution {
@@ -89,7 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="flex items-center justify-between h-20">
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!--Enlaces de navegación (Navigation links) -->
@@ -175,13 +179,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="/uploads/images/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slider2.png" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/slider2.png" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slider3.webp" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/slider3.webp" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -197,7 +201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="rounded-lg overflow-hidden shadow-xl md:-ml-28">
-              <img src="/uploads/images/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
+              <img src="/uploads/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
             </div>
             <div class="space-y-4">
               <p class="text-lg">
@@ -393,6 +397,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
   </script>
-
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-RMHRSVKM8L');
+  </script>
 </body>
 </html>

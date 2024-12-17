@@ -13,13 +13,14 @@ class ctrlAdminUser {
 
     //Añadir usuario (Add user)
     public function addUser($request, $response, $container){
-        $name = $request->get(INPUT_POST, "name");
-        $surname = $request->get(INPUT_POST, "surname");
-        $username = $request->get(INPUT_POST, "username");
-        $password = password_hash($request->get(INPUT_POST, "password"), PASSWORD_DEFAULT);
-        $email = $request->get(INPUT_POST, "email");
-        $role = $request->get(INPUT_POST, "role");
-        $profile_pic = $request->get("FILES", "profile_pic");
+
+            $name = $request->get(INPUT_POST, "name");
+            $surname = $request->get(INPUT_POST, "surname");
+            $username = $request->get(INPUT_POST, "username");
+            $password =$request->get(INPUT_POST, "password");
+            $email = $request->get(INPUT_POST, "email");
+            $role = $request->get(INPUT_POST, "role");
+            $profile_pic = $request->get("FILES", "profile_pic");
     
         $unique_id = uniqid();
         $upload_dir = "uploads/images/";
