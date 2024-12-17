@@ -27,6 +27,5 @@ function ctrlError(Request $request, Response $response, Container $container) :
   $error = $request->get("SESSION", "error");
   $response->set("error", $error);
   $response->SetTemplate("error.php");
-
   return $response;
 }
