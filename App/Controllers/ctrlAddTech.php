@@ -18,8 +18,8 @@ class ctrlAddTech {
         $technicians = $userModel->getAllTechnicians();
 
         // Pasar los datos a la vista
-        $response->set('machines', $machines);
-        $response->set('technicians', $technicians);
+        $response->set('Machines', $machines);
+        $response->set('Technicians', $technicians);
         
         $response->setTemplate("addtech.php");
         return $response;
