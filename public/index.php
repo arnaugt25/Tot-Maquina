@@ -15,18 +15,17 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "../vendor/autoload.php";
 include "../App/Controllers/error.php";
 
-/* Creem els diferents models */
 $contenidor = new \App\Container(__DIR__ . "/../App/config.php");
 
 $app = new \Emeset\Emeset($contenidor);
 $app->middleware([\App\Middleware\App::class, "execute"]);
 
-// Rutas básicas
+// Rutas básicas (Basic routes)
 $app->route("/", [\App\Controllers\ctrlIndex::class, "index"]);
 $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"],[[\App\Middleware\auth::class, "admin"]]);
 
-// Rutas de formularios e incidencias
+// Rutas de formularios e incidencias (Form and incident routes)
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"]);
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"]);
@@ -36,7 +35,7 @@ $app->get("/maintenances/delete/{id}", [\App\Controllers\ctrlListinci::class, "d
 $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 
-// Rutas de máquinas
+// Rutas de máquinas (Machine routes)
 $app->get("/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"]);
 $app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMachine"]);
 $app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
@@ -52,14 +51,14 @@ $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 $app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
 
-// Rutas de autenticación y perfil
+// Rutas de autenticación y perfil (Authentication and profile routes)
 $app->get("/login", [\App\Controllers\ctrlLogin::class, "login"]);
 $app->post("/login", [\App\Controllers\ctrlLogin::class, "ctrlLogin"]);
 $app->route("/logout", [\App\Controllers\ctrlLogin::class, "logout"]);
 $app->get("/editprofile", [\App\Controllers\ctrlProfile::class, "showEditForm"]);
 $app->post("/profile/update", [\App\Controllers\ctrlProfile::class, "processEditProfile"]);
 
-// Rutas de búsqueda y notificaciones
+// Rutas de búsqueda y notificaciones (Search routes and notifications)
 $app->route("/forminci/{id}", [\App\Controllers\ctrlFormInci::class, "index"]);
 $app->route("/forminci/{id}", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"]);
@@ -70,12 +69,14 @@ $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
 $app->route("/alertnotify", "\App\Controllers\ctrlNotification:index");
 
-// Rutas de mantenimiento e historial
+// Rutas de mantenimiento e historial Maintenance routes and history
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
 $app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
 $app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
 
-
+// Rutas de administración (Routes of administration)
+$app->get("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
+$app->get("/pdf/{id}", [\App\Controllers\ctrlHistory::class, "generatePdf"]);
 
 
 // Rutas de administración
@@ -91,7 +92,7 @@ $app->get("/admin/deleteinci/{id}", [\App\Controllers\ctrlListinci::class, "dele
 $app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "index"],[[\App\Middleware\auth::class, "admin"]]);
 $app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"],[[\App\Middleware\auth::class, "admin"]]);
 
-
-// Ruta por defecto (error)
+// Ruta por defecto (error) (Default route (error))
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
+
 $app->execute();
