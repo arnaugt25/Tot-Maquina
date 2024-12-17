@@ -40,13 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para abrir la cámara
     window.openCamera = async function() {
-        try {
+        if (document.getElementById("getUserMedia") != null){
             stream = await navigator.mediaDevices.getUserMedia(constraints);
             video.srcObject = stream;
             cameraModal.classList.remove('hidden');
-        } catch (err) {
-            console.error('Error accessing camera:', err);
-            alert('No se pudo acceder a la cámara. Por favor, asegúrate de dar los permisos necesarios.');
         }
     }
 
