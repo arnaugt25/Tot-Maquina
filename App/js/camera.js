@@ -41,12 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para abrir la cámara
     window.openCamera = async function() {
         try {
+            if (!cameraModal || !video) {
+                console.error('Elementos de cámara no encontrados');
+                return;
+            }
+            
             stream = await navigator.mediaDevices.getUserMedia(constraints);
             video.srcObject = stream;
             cameraModal.classList.remove('hidden');
         } catch (err) {
-            console.error('Error accessing camera:', err);
-            alert('No se pudo acceder a la cámara. Por favor, asegúrate de dar los permisos necesarios.');
+            console.error('Error al acceder a la cámara:', err);
+            alert('No se pudo acceder a la cámara. Por favor, verifica los permisos.');
         }
     }
 

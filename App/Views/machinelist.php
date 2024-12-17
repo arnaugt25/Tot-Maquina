@@ -15,7 +15,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!-- Enlaces de navegación (Navigation links) -->
@@ -249,13 +249,6 @@
     // Función para cerrar el popup
     map.closePopup();
   }
-
-  // Asegurarse de que el botón del menú móvil actualiza su estado
-  document.querySelector('[aria-label="Abrir menú de navegación"]').addEventListener('click', function() {
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !isExpanded);
-    // Aquí va la lógica para mostrar/ocultar el menú
-  });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/bundle.js"></script>
