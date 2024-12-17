@@ -10,3 +10,4 @@ import "./qr.js";
 import "./csv.js";
 import "./camera.js";
 import "./pdf.js";
+import "./dragndrop.js";
