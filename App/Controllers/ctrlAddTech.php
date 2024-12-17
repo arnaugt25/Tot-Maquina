@@ -28,26 +28,10 @@ class ctrlAddTech {
     public function assignTechnician($request, $response, $container) {
         header('Content-Type: application/json');
         
-        try {
             $data = json_decode(file_get_contents('php://input'), true);
-            if (!$data) {
-                throw new \Exception('Datos inválidos');
-            }
-            
             $machineModel = $container->get("Machine");
             $result = $machineModel->assignTechnician($data['machine_id'], $data['technician_id']);
-            
-            echo json_encode([
-                'success' => $result,
-                'message' => $result ? 'Técnico asignado correctamente' : 'Error en la asignación'
-            ]);
-        } catch (\Exception $e) {
-            http_response_code(400);
-            echo json_encode([
-                'success' => false,
-                'message' => $e->getMessage()
-            ]);
-        }
+
         return $response;
     }
 }
