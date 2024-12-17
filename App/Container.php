@@ -75,6 +75,7 @@ class Container extends EmesetContainer {
                 $config["db"]["host"]
             );
             return $technician;
+            
         };
         $this["Notification"] = function ($c) {
             $db = $c->get("db");
@@ -83,5 +84,4 @@ class Container extends EmesetContainer {
             return $notification;
         };
     }
-
 }
