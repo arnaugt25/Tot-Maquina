@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { 
     const urlParams = new URLSearchParams(window.location.search);
     const machineId = urlParams.get('machine_id');
     
