@@ -119,14 +119,7 @@ class Maintenances extends Db
 
     public function editMaintenance($data)
     {
-        // Si es un ID, obtener el mantenimiento
-        // if (is_numeric($data)) {
-        //     return $this->getByIdMaintenances($data);
-        // }
 
-
-        // Si es un array, actualizar la máquina
-        // try {
         $query = "UPDATE maintenance 
                  SET machine_id = :machine_id,
                      description = :description, 
