@@ -249,13 +249,6 @@
     // Función para cerrar el popup
     map.closePopup();
   }
-
-  // Asegurarse de que el botón del menú móvil actualiza su estado
-  document.querySelector('[aria-label="Abrir menú de navegación"]').addEventListener('click', function() {
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !isExpanded);
-    // Aquí va la lógica para mostrar/ocultar el menú
-  });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/bundle.js"></script>
