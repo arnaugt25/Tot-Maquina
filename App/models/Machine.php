@@ -139,13 +139,8 @@ class Machine extends Db
     }
 
     public function assignTechnician($machineId, $technicianId) {
-        try {
-            $query = "UPDATE machine SET user_id = ? WHERE machine_id = ?";
-            $stmt = $this->sql->prepare($query);
-            return $stmt->execute([$technicianId, $machineId]);
-        } catch (\PDOException $e) {
-            error_log("Error assigning technician: " . $e->getMessage());
-            return false;
-        }
+        $query = "UPDATE machine SET user_id = ? WHERE machine_id = ?";
+        $stmt = $this->sql->prepare($query);
+        return $stmt->execute([$technicianId, $machineId]);
     }
 }
