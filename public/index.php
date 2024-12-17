@@ -43,6 +43,10 @@ $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"]);
 $app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"]);
+
+$app->get("/addtech", [\App\Controllers\ctrlAddTech::class, "index"]);
+$app->post("/assign-technician", [\App\Controllers\ctrlAddTech::class, "assignTechnician"]);
+
 $app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 $app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
@@ -71,6 +75,11 @@ $app->get("/history1", [\App\Controllers\ctrlHistory::class, "history"]);
 $app->route("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
 
 // Rutas de administración (Routes of administration)
+$app->get("/history/{id}", [\App\Controllers\ctrlHistory::class, "showhistory"]);
+$app->get("/pdf/{id}", [\App\Controllers\ctrlHistory::class, "generatePdf"]);
+
+
+// Rutas de administración
 $app->get("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "index"],[[\App\Middleware\auth::class, "admin"]]);
 $app->post("/admin/adduser", [\App\Controllers\ctrlAdminUser::class, "addUser"],[[\App\Middleware\auth::class, "admin"]]);
 $app->get("/admin/addmachine", [\App\Controllers\ctrlFormMachine::class, "formMachine"],[[\App\Middleware\auth::class, "admin"]]);

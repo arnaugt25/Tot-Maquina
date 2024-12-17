@@ -19,7 +19,8 @@
                     <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
                     <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
                 </div>
-
+            </div>
+        </nav>
                 <!-- Enlaces de navegación -->
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-8">
@@ -132,6 +133,11 @@
                                 <option value="preventivo">Preventivo</option>
                                 <option value="correctivo">Correctivo</option>
                             </select>
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                                <option value="" selected>Selecionar Verificacion</option>
+                                <option value="preventivo">Verificado</option>
+                                <option value="correctivo">No verificado</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -164,6 +170,9 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Acciones
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider text-center pl-2">
+                                Verificado
                                 </th>
                             </tr>
                         </thead>
@@ -206,6 +215,11 @@
                                                 <i class="fas fa-trash-alt mr-1"></i> Eliminar
                                             </a>
                                         </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                       <span class="px-4 inline-flex text-lg leading-6 font-semibold rounded-full text-white">
+                                            <input type="checkbox">
+                                        </span>
                                     </td>
                                 </tr>
                             <?php } ?>
