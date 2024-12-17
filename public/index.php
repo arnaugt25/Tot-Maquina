@@ -66,6 +66,10 @@ $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "
 $app->get("/maintenances/delete/{id}", [\App\Controllers\ctrlListinci::class, "deleteMaintenance"]);
 $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
+$app->route("/notify", [\App\Controllers\ctrlNotification::class, "notification"]);
+
+
+
 
 // Rutas de mantenimiento e historial
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
