@@ -9,3 +9,4 @@ import "./search.js";
 import "./qr.js";
 import "./csv.js";
 import "./camera.js";
+import "./incisearch.js"

@@ -8,8 +8,8 @@ class Container extends EmesetContainer {
 
     public function __construct($config){
         parent::__construct($config);
-        
-        // Definir la conexión a la base de datos
+
+        // Definir la conexiÃ³n a la base de datos
         $this["db"] = function($c) {
             $config = $c->get("config");
             $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
@@ -85,6 +85,13 @@ class Container extends EmesetContainer {
                 $config["db"]["host"]
             );
             return $technician;
+
+        };
+        $this["Notification"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $notification = new \App\Models\Notification($db->getConnection());
+            return $notification;
         };
         $this["Notification"] = function ($c) {
             $db = $c->get("db");
@@ -93,5 +100,6 @@ class Container extends EmesetContainer {
             return $notification;
         };
     }
+
 
 }

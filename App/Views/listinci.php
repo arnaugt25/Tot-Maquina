@@ -111,11 +111,13 @@
                 <!-- Filtros y Búsqueda -->
                 <div class="bg-[#132048] p-6 rounded-lg shadow-lg mb-6">
                     <div class="flex flex-col md:flex-row gap-4">
-                        <div class="flex-1">
-                            <input type="text" 
-                                placeholder="Buscar incidencia..." 
-                                class="w-full px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
-                                aria-label="Buscar incidencia">
+                        <div class="relative flex-1">
+                            <input type="text" id="searchMaintenance"
+                                   class="w-full pl-10 pr-4 py-3 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
+                                   placeholder="Buscar incidencia...">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
+                            </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
                             <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
@@ -167,9 +169,6 @@
                                 <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Acciones
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider text-center pl-2">
-                                Verificado
-                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-[#214969] divide-y divide-[#132048]">
@@ -212,11 +211,6 @@
                                             </a>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                       <span class="px-4 inline-flex text-lg leading-6 font-semibold rounded-full text-white">
-                                            <input type="checkbox">
-                                        </span>
-                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -243,4 +237,18 @@
         </div>
     </main>
 </body>
+<script>
+    function confirmDeleteMachine(machine_id, model) {
+        if (confirm(`¿Estás seguro que deseas eliminar al usuario ${model}? Esta acción no se puede deshacer.`)) {
+            window.location.href = `/delete/${maintenance_id}`;
+        }
+    }
+    function showMachineQRCode(maintenanceId) {
+        window.location.href = '/${maintenanceId}';
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </html>
