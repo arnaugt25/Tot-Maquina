@@ -22,7 +22,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo y nombre -->
                 <div class="flex items-center space-x-4">
-                    <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+                    <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
                     <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
                 </div>
 
@@ -61,16 +61,20 @@
                 
                 <!-- Botón menú móvil -->
                 <div class="md:hidden">
-                    <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+                    <button id="mobile-menu-button" type="button" 
+                            class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                            aria-label="Abrir menú"
+                            aria-expanded="false"
+                            aria-controls="mobile-menu">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
 
             <!-- Menú móvil -->
-            <div class="hidden md:hidden">
+            <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
                         <i class="fa-solid fa-house"></i> Inicio
@@ -116,7 +120,11 @@
                                 <i class="fas fa-user-circle text-6xl text-[#5DA6C3]"></i>
                             <?php endif; ?>
                         </div>
-                        <button id="camera-button" class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors">
+                        <button 
+                            id="camera-button" 
+                            class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors"
+                            aria-label="Activar cámara"
+                            type="button">
                             <i class="fas fa-camera"></i>
                         </button>
                     </div>
@@ -133,8 +141,8 @@
             </div>
 
             <!-- Modal de la Cámara -->
-            <div id="camera-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-                <div class="bg-[#214969] p-6 rounded-xl max-w-2xl w-full mx-4">
+            <div id="camera-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+                <div class="bg-[#214969] max-w-lg mx-auto mt-20 rounded-lg p-6">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-bold text-white">Tomar Foto</h3>
                         <button id="close-modal" class="text-white hover:text-[#5DA6C3]">

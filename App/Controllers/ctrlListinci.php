@@ -4,34 +4,31 @@ namespace App\Controllers;
 
 
 class ctrlListinci{
-
-
+    
     public function index($request, $response, $container){
 
         $maintenances = $container->get('maintenance');
 
         $maintenance = $maintenances->getMaintenances();
-
         $response->set("maintenances", $maintenance);
         $response->setTemplate("listinci.php");
-
         return $response;
     }
+
+    //Crear incidencia (Create an incident)
     public function create($request, $response, $container){
-
         $crear = $_POST;
-
         $maintenanceModel = $container->get("maintenance");
         $maintenanceModel-> addMaintenance($crear);
         $response->redirect("location: /listinci");
         return $response;
     }
 
+    //Editar incidencia (Edit issue)
     public function editMaintenance($request, $response, $container)
     {
         $machine = $container->get('Machine');
         $machine = $machine->listMachine();
-
         $maintenanceid = $request->getparam("id");
         //var_dump($maintenanceid);
         //die();
@@ -47,6 +44,7 @@ class ctrlListinci{
         return $response;
     }
 
+    //Editar incidencia (Edit issue)
     public function updateMaintenance($request, $response, $container)
     {
         $maintenanceid = $request->getparam("id");
@@ -67,7 +65,7 @@ class ctrlListinci{
         return $response;
     }
 
-
+    //Eliminar incidencia (Delete issue)
     public function deleteMaintenance($request, $response, $container) {
         $maintenanceid = $request->getParam('id');
         $maintenancesModel = $container->get("maintenance");

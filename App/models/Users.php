@@ -2,30 +2,23 @@
 
 namespace App\Models;
 
-class Users extends DB {
+class Users extends Db {
     public function login($username, $password) {
-        try {
             $query = "SELECT user_id, name, surname, username, password, role FROM user WHERE username = :username";
             $stmt = $this->sql->prepare($query);
             $stmt->execute([':username' => $username]);
             $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-
+           
             if (!$user || !password_verify($password, $user['password'])) {
                 throw new \Exception("Usuario no encontrado o contraseña incorrecta");
             }
-
             unset($user['password']);
             return $user;
-
-        } catch (\PDOException $e) {
-            error_log("Error PDO en login: " . $e->getMessage());
-            throw new \Exception("Error al iniciar sesión");
-        }
     }
 
     public function addUser($username, $password, $email, $profile_pic, $name, $surname, $role) {
-        try {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
             $query = "INSERT INTO user (username, password, email, profile_pic, name, surname, role) 
                       VALUES (:username, :password, :email, :profile_pic, :name, :surname, :role)";
             
@@ -45,13 +38,6 @@ class Users extends DB {
             }
             
             return $this->sql->lastInsertId();
-            
-        } catch (\PDOException $e) {
-            if ($e->getCode() == 23000) {
-                throw new \Exception("El nombre de usuario o email ya existe");
-            }
-            throw new \Exception("Error al crear el usuario: " . $e->getMessage());
-        }
     }
 
     public function editProfile($data) {

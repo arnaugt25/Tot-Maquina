@@ -7,21 +7,16 @@ class ctrlMaintenances
 
     public function Maintenances($request, $response, $container)
     {
-
         $response->setTemplate("Maintenances.php");
-
         return $response;
     }
 
     public function create($request, $response, $container)
     {
-
         $hola = $_POST;
         //var_dump($hola);
         //die();
-
         $maintenanceModel = $container->get("maintenance");
-
         $maintenanceModel->addMaintenance($hola);
 
     }

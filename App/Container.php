@@ -20,7 +20,7 @@ class Container extends EmesetContainer {
                 $c->get("config")["db"]["host"]));
         };
 
-        $this["Machines"] = function($container) {
+        $this["Machines"] = function($container) { 
             return new \App\Models\Machine(
                 $container->get("config")["db"]["user"],
                 $container->get("config")["db"]["pass"],
@@ -50,17 +50,7 @@ class Container extends EmesetContainer {
             return $machine;
         };
 
-        // $this["Technician"] = function ($c) {
-        //     $db = $c->get("db");
-        //     $config = $c->get("config");
-        //     $technician = new \App\Models\Technician(
-        //         $config["db"]["user"],
-        //         $config["db"]["pass"],
-        //         $config["db"]["name"],
-        //         $config["db"]["host"]
-        //     );
-        //     return $technician;
-        // }; 
+
 
         $this["maintenance"] = function ($c) {
             $db = $c->get("db");
@@ -93,13 +83,5 @@ class Container extends EmesetContainer {
             $notification = new \App\Models\Notification($db->getConnection());
             return $notification;
         };
-        $this["Notification"] = function ($c) {
-            $db = $c->get("db");
-            $config = $c->get("config");
-            $notification = new \App\Models\Notification($db->getConnection());
-            return $notification;
-        };
     }
-
-
 }
