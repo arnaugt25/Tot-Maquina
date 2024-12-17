@@ -13,6 +13,11 @@ class Container extends EmesetContainer {
         $this["db"] = function($c) {
             $config = $c->get("config");
             $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
+            return(new \App\Models\Db(
+                $c->get("config")["db"]["user"],
+                $c->get("config")["db"]["pass"],
+                $c->get("config")["db"]["name"],
+                $c->get("config")["db"]["host"]));
         };
 
         $this["Machines"] = function($container) {
@@ -70,6 +75,12 @@ class Container extends EmesetContainer {
                 $config["db"]["host"]
             );
             return $technician;
+        };
+        $this["Notification"] = function ($c) {
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $notification = new \App\Models\Notification($db->getConnection());
+            return $notification;
         };
     }
 
