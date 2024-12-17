@@ -74,11 +74,12 @@
                             Frecuencia
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
-                            Siguiente Mantenimiento
+                            Next Mantenimiento
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
-                            Accion
+                            Estado
                         </th>
+
                     </tr>
 
 
@@ -99,25 +100,21 @@
                                 <?= htmlspecialchars($notification["user_id"]) ?>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#478249] text-white">
+                                <span class="px-2 inline-flex text-m leading-5 font-semibold rounded-full text-white">
                                     <?= htmlspecialchars($notification["frequency"]) ?>
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                 <?= htmlspecialchars($notification["next_maintenance"]) ?>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <div class="flex justify-center space-x-2">
-                                    <a href="/admin/editinci/<?= htmlspecialchars($maintenance['maintenance_id']) ?>"
-                                       class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-3 py-1 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-                                        <i class=""></i> Abierto
-                                    </a>
-                                    <a href="/maintenances/delete/<?= htmlspecialchars($maintenance['maintenance_id']) ?>"
-                                       class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-3 py-1 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-                                        <i class=""></i> Cerrado
-                                    </a>
-                                </div>
+
+                            <td style="padding: 8px;">
+                                <select style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ddd;">
+                                    <option value="">Hecho</option>
+                                    <option value="">No Hecho</option>
+                                </select>
                             </td>
+
                         </tr>
                     <?php } ?>
                     </tbody>

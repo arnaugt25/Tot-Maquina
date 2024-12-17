@@ -6,7 +6,9 @@ namespace App\Controllers;
 class ctrlListinci{
     
     public function index($request, $response, $container){
+
         $maintenances = $container->get('maintenance');
+
         $maintenance = $maintenances->getMaintenances();
         $response->set("maintenances", $maintenance);
         $response->setTemplate("listinci.php");
@@ -71,4 +73,14 @@ class ctrlListinci{
         $response->redirect("Location: /listinci");
         return $response;
     }
+    public function searchMaintenance($request, $response, $container) {
+        $query = $request->get(INPUT_GET, "query");
+        $maintenanceModel = $container->get("Maintenance");
+        $results = $maintenanceModel->searchMaintenance($query);
+
+        header('Content-Type: application/json');
+        echo json_encode($results);
+        exit;
+    }
+
 }
