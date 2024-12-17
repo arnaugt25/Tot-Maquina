@@ -70,7 +70,7 @@ class Container extends EmesetContainer {
                 $config["db"]["host"]
             );
             return $technician;
+            
         };
     }
-
 }

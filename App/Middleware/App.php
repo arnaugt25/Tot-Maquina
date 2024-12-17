@@ -7,7 +7,7 @@ use \Emeset\Contracts\Container;
 
 class App {
 
-    public static function execute(Request $request,  $response, Container $container, $next) :Response
+    public static function execute(Request $request,  Response $response, Container $container, $next) :Response
     {
         // Code before FrontConroller
 
