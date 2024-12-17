@@ -138,7 +138,7 @@ class Machine extends Db
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function assignTechnician($machineId, $technicianId) {
+    public function assignTechnician($machineId, $technicianId) { 
         $query = "UPDATE machine SET user_id = ? WHERE machine_id = ?";
         $stmt = $this->sql->prepare($query);
         return $stmt->execute([$technicianId, $machineId]);
