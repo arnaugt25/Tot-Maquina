@@ -7,7 +7,7 @@ class ctrlFormInci {
     public function ctrlFormInci($request, $response, $container)
     {
 
-        try {
+        // try {
             $machineModel = $container->get("Machine");
             $UserModel = $container->get("Users");
             //var_dump($machineModel);
@@ -19,10 +19,10 @@ class ctrlFormInci {
             $response->set('machines', $machines);
             $response->set('Users', $Users );
 
-        } catch (\Exception $e) {
-            $response->setSession("error", $e->getMessage());
-            $response->redirect("Location: /list");
-        }
+        // } catch (\Exception $e) {
+        //     $response->setSession("error", $e->getMessage());
+        //     $response->redirect("Location: /list");
+        // }
 
         $response->setTemplate("forminci.php");
         return $response;
