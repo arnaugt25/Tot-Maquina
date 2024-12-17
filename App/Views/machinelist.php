@@ -104,14 +104,14 @@
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
     <!-- Buscador y botón de importación (Search and import button) -->
-    <div class="mb-8 max-w-2xl mx-auto">
+    <div class="mb-8 max-w-4xl mx-auto">
         <div class="relative flex space-x-4">
             <div class="relative flex-1">
               <label for="searchMachine" class="sr-only">Buscar máquina</label>
-              <input type="text" id="searchMachine" name="searchMachine"class="w-full pl-10 pr-4 py-3 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
+                <input type="text" id="searchMachine" name="searchMachine"class="w-full pl-12 pr-6 py-4 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] text-lg"
                 placeholder="Buscar máquina..." aria-label="Buscar máquina" >
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3] text-xl"></i>
               </div>
             </div>
             <!-- Botón de Añadir Incidencia (Add Incident Button)-->
@@ -129,6 +129,13 @@
                     <i class="fas fa-file-csv mr-2"></i>
                     <span>Importar CSV</span>
                 </button>
+            </div>
+            <div class="relative">
+                <a href="/addtech" 
+                   class="flex items-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Añadir Técnico</span>
+                </a>
             </div>
         </div>
     </div>

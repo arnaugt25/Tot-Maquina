@@ -16,9 +16,16 @@ class ctrlHistory
     public function showhistory($request, $response, $container)
     {
         $idmaintenance = $request->getParam('id');
+        
+        $machineId = $request->getParam('id');
+        $machineModel = $container->get("Machine");
+        $machine = $machineModel->getMachineById($machineId);
+        $response->set('machine', $machine);
+
         $historyModel = $container->get("Maintenances");
         $history = $historyModel->historyMaintenance($idmaintenance);
         $incidence = $historyModel->searchMaintenance($idmaintenance);
+        //print_r($machine);
 
         //$historyModel2 = $container->get("Maintenances");
         //$history2 = $historyModel2->getMaintenance($idmaintenance);
@@ -44,7 +51,20 @@ class ctrlHistory
     //     return $response;
     // }
 
+    public function generatePdf($request, $response, $container) {
+        $idmaintenance = $request->getParam('id');
+        $historyModel = $container->get("Maintenances");
+        $history = $historyModel->historyMaintenance($idmaintenance);
+        $incidence = $historyModel->searchMaintenance($idmaintenance);
+        // var_dump($history);
+        // die;
+       
+        $response->set("historial",$history);
+        $response->set("incidencias",$incidence);
+        // var_dump($response);
+        // die();
+        return $response;
+        
+    }
  
-  
-
 }

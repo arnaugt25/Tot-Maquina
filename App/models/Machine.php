@@ -137,4 +137,15 @@ class Machine extends Db
         $stmt->execute([':query' => $searchTerm]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function assignTechnician($machineId, $technicianId) {
+        try {
+            $query = "UPDATE machine SET user_id = ? WHERE machine_id = ?";
+            $stmt = $this->sql->prepare($query);
+            return $stmt->execute([$technicianId, $machineId]);
+        } catch (\PDOException $e) {
+            error_log("Error assigning technician: " . $e->getMessage());
+            return false;
+        }
+    }
 }
