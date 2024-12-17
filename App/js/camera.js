@@ -103,3 +103,28 @@ document.addEventListener('DOMContentLoaded', function() {
         captureButton.addEventListener('click', capturePhoto);
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cameraButton = document.getElementById('camera-button');
+    const cameraModal = document.getElementById('camera-modal');
+    const video = document.getElementById('camera-feed');
+    
+    if (!cameraButton || !cameraModal || !video) {
+        console.error('Elementos necesarios no encontrados');
+        return;
+    }
+
+    cameraButton.addEventListener('click', async function() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ 
+                video: true,
+                audio: false
+            });
+            video.srcObject = stream;
+            cameraModal.classList.remove('hidden');
+        } catch (err) {
+            console.error('Error al acceder a la cámara:', err);
+            alert('No se pudo acceder a la cámara. Por favor, verifica los permisos.');
+        }
+    });
+});
