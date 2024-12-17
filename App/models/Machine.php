@@ -4,6 +4,7 @@ namespace App\Models;
 
 class Machine extends Db
 {
+    //Añadir màquina
     public function addMachine($data)
     {
         $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, coordinates,  image ) 
@@ -42,7 +43,6 @@ class Machine extends Db
             return $this->getByIdMachine($data);
         }
         // Si es un array, actualizar la máquina
-        // try {
         $query = "UPDATE machine 
                  SET model = :model, 
                      created_by = :created_by, 
@@ -51,7 +51,6 @@ class Machine extends Db
                      coordinates = :coordinates,
                      image = :image
                  WHERE machine_id = :machine_id";
-
         $stmt = $this->sql->prepare($query);
         // var_dump($data);
         // die();
@@ -76,22 +75,6 @@ class Machine extends Db
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
-
-
-    // public function listMachine()
-    // {
-    //     try {
-    //         $query = "SELECT * FROM machine";
-    //         // var_dump($query);
-    //         // die();
-    //         $stmt = $this->sql->prepare($query);
-    //         $stmt->execute();
-    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    //     } catch (\PDOException $e) {
-    //         error_log("Error getting machines: " . $e->getMessage());
-    //         throw new \Exception("Error al obtener las máquinas");
-    //     }
-    // }
 
 
     public function getAllMachines() {
@@ -123,7 +106,6 @@ class Machine extends Db
         $result = $stmt->execute([':machine_id' => $machine_id]);
         return true;
     }
-
 
     //Buscador de máquina modelo
     public function searchMachine($query) {

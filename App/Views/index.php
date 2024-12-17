@@ -138,7 +138,7 @@
             <i class="fa-solid fa-house"></i> Inicio
           </a>
           <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-desktop"></i> Máquinas
+            <i class="fa-solid fa-desktop"></i> Máquinas 
           </a>
           <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -186,7 +186,9 @@
     <!--Sección Sobre Nosotros (About Us Section)-->
     <section class="mt-16 bg-[#214969] text-white shadow-lg rounded-xl p-8">
       <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-6">Sobre Nosotros</h2>
+
+        <h1 class="text-3xl font-bold mb-6">Sobre Nosotros </h2>
+
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="rounded-lg overflow-hidden shadow-xl md:-ml-28">
               <img src="/uploads/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
