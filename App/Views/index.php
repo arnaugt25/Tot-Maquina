@@ -83,7 +83,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!--Enlaces de navegación (Navigation links) -->
@@ -169,13 +169,13 @@
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="/uploads/images/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slider2.png" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploadss/slider2.png" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploads/images/slider3.webp" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploadss/slider3.webp" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -189,7 +189,7 @@
         <h1 class="text-3xl font-bold mb-6">Sobre Nosotros</h2>
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="rounded-lg overflow-hidden shadow-xl md:-ml-28">
-              <img src="/uploads/images/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
+              <img src="/uploadss/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
             </div>
             <div class="space-y-4">
               <p class="text-lg">
