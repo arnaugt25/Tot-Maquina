@@ -19,16 +19,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMHRSVKM8L"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-RMHRSVKM8L');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RMHRSVKM8L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RMHRSVKM8L');
+</script>
   <style>
     /* Estilos para mejorar el contraste de la atribución de Leaflet */
     .leaflet-control-attribution {
@@ -72,10 +72,16 @@
   });
 </script>
 
-
 </head>
 
 <body class="bg-[#C1D1D8] text-gray-800">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMQSML3N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
   <!--Header and Nav -->
   <header class="bg-[#0C0C04] text-white">
     <!--Barra de navegación principal (Main navigation bar)-->

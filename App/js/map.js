@@ -2,7 +2,7 @@ import L from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
 
-let map; // Variable global para el mapa
+let map; // Variable global para el mapa (Variable global para el mapa)
 const customIcon = L.divIcon({
     html: '<i class="fa-solid fa-location-dot" style="color: #214969;"></i>',
     iconSize: [20, 20],
@@ -35,12 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Función para cargar los marcadores
+// Función para cargar los marcadores (Función para cargar los marcadores)
 window.loadMarkers = function(machines) {
     if (!machines || machines.length === 0) {
         return;
     }
-
     const bounds = [];
     const markersLayer = L.featureGroup().addTo(map);
     
@@ -99,7 +98,7 @@ window.loadMarkers = function(machines) {
     }
 };
 
-// Funciones del modal
+// Funciones del modal (Functions of the modal)
 window.abrirMapaModal = function() {
     const modal = document.getElementById('mapaModal');
     if (modal) {
@@ -113,6 +112,7 @@ window.abrirMapaModal = function() {
     }
 };
 
+// Funciones para cerrar el mapa del modal (Functions to close the modal map)
 window.cerrarMapaModal = function() {
     const modal = document.getElementById('mapaModal');
     if (modal) {

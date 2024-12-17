@@ -1,6 +1,6 @@
 if (swiper != null){
 var swiper = new Swiper(".mySwiper", {
-    // Configuración del slider
+    // Configuración del slider (Slider Settings)
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
