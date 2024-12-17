@@ -119,7 +119,6 @@
                     <option value="baja">Baja</option>
                     <option value="media">Media</option>
                     <option value="urgente">Urgente</option>
-
                 </select>
             </div>
 
@@ -166,5 +165,6 @@
         <?php } ?>
     </div>
 </main>
+<script src="/js/bundle.js"></script>
 </body>
 </html>
