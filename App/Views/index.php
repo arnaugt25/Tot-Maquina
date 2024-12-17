@@ -172,10 +172,10 @@
             <img src="/uploads/slider1.jpg" alt="Imagen 1" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploadss/slider2.png" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/slider2.png" alt="Imagen 2" class="w-full h-96 object-cover rounded-lg">
           </div>
           <div class="swiper-slide">
-            <img src="/uploadss/slider3.webp" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
+            <img src="/uploads/slider3.webp" alt="Imagen 3" class="w-full h-96 object-cover rounded-lg">
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -189,7 +189,7 @@
         <h1 class="text-3xl font-bold mb-6">Sobre Nosotros</h2>
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div class="rounded-lg overflow-hidden shadow-xl md:-ml-28">
-              <img src="/uploadss/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
+              <img src="/uploads/us.avif" alt="Equipo Tot Maquina" class="w-full h-auto object-cover">
             </div>
             <div class="space-y-4">
               <p class="text-lg">
