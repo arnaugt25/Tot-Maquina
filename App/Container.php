@@ -84,7 +84,9 @@ class Container extends EmesetContainer {
             $notification = new \App\Models\Notification($db->getConnection());
             return $notification;
 
-            
+        
+        };
+    }
 
 
 }
