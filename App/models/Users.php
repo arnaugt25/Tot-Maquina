@@ -33,7 +33,7 @@ class Users extends Db {
                 ':role' => $role
             ]);
 
-            if (!$result) {
+           if (!$result) {
                 throw new \Exception("Error al insertar el usuario");
             }
             
