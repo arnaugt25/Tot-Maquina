@@ -39,7 +39,6 @@ class ctrlAdminUser {
 
     //Formulario editar usuario (Edit user form)
     public function formEditUser($request, $response, $container) {
-        // try {
             // Obtener  ID del usuario (Get user ID)
             $userId = $request->getParam('id'); 
             
@@ -60,21 +59,10 @@ class ctrlAdminUser {
             $response->set("user", $user);
             $response->setTemplate("edituser.php");
             return $response;
-            
-        // } catch (\Exception $e) {
-        //     // Log del error
-        //     error_log("Error en formEditUser: " . $e->getMessage());
-            
-        //     // Pasar el mensaje de error a la vista de error
-        //     $response->set("error", "No se pudo cargar la información del usuario");
-        //     $response->setTemplate("error.php");
-        //     return $response;
-        // }
     }
 
     //Editar ususrio (Edit user)
     public function editUser($request, $response, $container) {
-        // try {
             // Log para verificar los datos recibidos (Log to verify the data received)
             error_log("Datos POST recibidos: " . print_r($_POST, true));
             
@@ -113,22 +101,6 @@ class ctrlAdminUser {
             } else {
                 throw new \Exception("No se pudo actualizar el usuario");
             }
-
-        // } catch (\Exception $e) {
-        //     // Log detallado del error
-        //     error_log("Error en editUser: " . $e->getMessage());
-        //     error_log("Trace: " . $e->getTraceAsString());
-            
-        //     // Guardar el error en la sesión
-        //     $response->setSession("error", $e->getMessage());
-            
-        //     // Redirigir de vuelta al formulario
-        //     if (isset($data['user_id'])) {
-        //         $response->redirect("Location: /admin/edituser/" . $data['user_id']);
-        //     } else {
-        //         $response->redirect("Location: /admin");
-        //     }
-        // }
         return $response;
     }
 
@@ -139,7 +111,7 @@ class ctrlAdminUser {
         $result = $usersModel->deleteUser($userId);  
         $_SESSION['success'] = "Usuario eliminado correctamente";
         $response->redirect("Location: /admin");
-    
+
         return $response;
     }
 }	
