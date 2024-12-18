@@ -47,7 +47,7 @@ $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMac
 $app->get("/addtech", [\App\Controllers\ctrlAddTech::class, "index"]);
 $app->post("/assign-technician", [\App\Controllers\ctrlAddTech::class, "assignTechnician"]);
 
-$app->get('/generate_machine_qr/{id}', [\App\Controllers\CtrlGenerateMachineQR::class, "generateQR"]);
+$app->get('/generate_machine_qr/{id}', [\App\Controllers\ctrlGenerateMachineQR::class, "generateQR"]);
 $app->post('/uploadcsv', [\App\Controllers\ctrlCSV::class, "uploadCSV"]);
 $app->get("/search-machines", [\App\Controllers\ctrlFormMachine::class, "searchMachines"]);
 

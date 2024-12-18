@@ -6,6 +6,7 @@
     <title>Lista de Notificaciones - Tot Maquina</title>
     <meta name="description" content="Listado de incidencias registradas en el sistema Tot Maquina">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script href="/js/Save.js"></script>
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -16,7 +17,7 @@
         <div class="flex items-center justify-between h-20">
             <!-- Logo y nombre -->
             <div class="flex items-center space-x-4">
-                <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+                <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
                 <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
             </div>
         </div>
@@ -74,11 +75,12 @@
                             Frecuencia
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
-                            Siguiente Mantenimiento
+                            Next Mantenimiento
                         </th>
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
-                            Accion
+                            Estado
                         </th>
+
                     </tr>
 
 
@@ -99,25 +101,30 @@
                                 <?= htmlspecialchars($notification["user_id"]) ?>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#478249] text-white">
+                                <span class="px-2 inline-flex text-m leading-5 font-semibold rounded-full text-white">
                                     <?= htmlspecialchars($notification["frequency"]) ?>
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                 <?= htmlspecialchars($notification["next_maintenance"]) ?>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <div class="flex justify-center space-x-2">
-                                    <a href="/admin/editinci/<?= htmlspecialchars($maintenance['maintenance_id']) ?>"
-                                       class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-3 py-1 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-                                        <i class=""></i> Abierto
-                                    </a>
-                                    <a href="/maintenances/delete/<?= htmlspecialchars($maintenance['maintenance_id']) ?>"
-                                       class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-3 py-1 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-                                        <i class=""></i> Cerrado
-                                    </a>
-                                </div>
+
+                            <td style="padding: 8px;">
+                                <select style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ddd;">
+                                    <option value="">Hecho</option>
+                                    <option value="">No Hecho</option>
+                                </select>
                             </td>
+                            <td class="text-white">
+                                        <button
+                                                onclick="guardarInformacion()"
+                                                class="bg-cyan-500 text-white px-6 py-2 rounded-md hover:bg-cyan-400">
+                                            Guardar
+                                        </button>
+                            </td>
+                        </tr>
+
+
                         </tr>
                     <?php } ?>
                     </tbody>

@@ -5,7 +5,7 @@ use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 
-class CtrlGenerateMachineQR
+class ctrlGenerateMachineQR
 {
     //Generar el QR de máquina (Generate the machine QR)
     public function generateQR($request, $response, $container)

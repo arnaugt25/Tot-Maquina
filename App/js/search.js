@@ -1,20 +1,20 @@
 import $ from "jquery";
 
 $(document).ready(function () {
-    var identificador = document.getElementById("searchMachine");
-
+    var identificador = document.getElementById("searchMachine"); // El contenido de "identificador" recoge info del id de la vista 
+                                                                 // (The "identificador" content collects info about the view id)
     if (identificador != null) {
         identificador.addEventListener("input", function () {
             const query = this.value.trim();
-            const grid = document.querySelector(".grid");
+            const grid = document.querySelector(".grid"); 
 
             if (query.length > 0) {
-                fetch(`/search-machines?query=${encodeURIComponent(query)}`)
-                    .then(response => response.json())
+                fetch(`/search-machines?query=${encodeURIComponent(query)}`) 
+                    .then(response => response.json()) // Respuesta formato json (Response json format)
                     .then(data => {
                         grid.innerHTML = "";
 
-                        if (data.length > 0) {
+                        if (data.length > 0) { //HTML card con la información de la máquina (HTML card with machine information)
                             data.forEach(machine => {
                                 const card = `
                                     <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
@@ -71,16 +71,14 @@ $(document).ready(function () {
                                 `;
                                 grid.innerHTML += card;
                             });
-                        } else {
+                        } else { // Mensaje al no encontrar máquina (Message when machine not found)
                             grid.innerHTML = "<p>No se encontraron máquinas</p>";
                         }
-                    })
+                    }) // Error en la búsqueda (Search error)
                     .catch(error => {
                         console.error("Error en la búsqueda:", error);
                         grid.innerHTML = "<p>Error en la búsqueda.</p>";
                     });
-            } else {
-                grid.innerHTML = "";
             }
         });
     }

@@ -19,7 +19,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo y nombre -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!-- Enlaces de navegación -->
@@ -44,7 +44,9 @@
               </a>
             </li>
             <li>
-              <a href="" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+
+              <a href="/notify" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+
                 <i class="fa-solid fa-envelope"></i> Notificaciones
                 <input type="button" id="viewAlerta" value="">
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>

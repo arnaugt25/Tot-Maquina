@@ -22,7 +22,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo y nombre -->
                 <div class="flex items-center space-x-4">
-                    <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+                    <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
                     <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
                 </div>
 
@@ -120,7 +120,11 @@
                                 <i class="fas fa-user-circle text-6xl text-[#5DA6C3]"></i>
                             <?php endif; ?>
                         </div>
-                        <button id="camera-button" class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors">
+                        <button 
+                            id="camera-button" 
+                            class="absolute bottom-0 right-0 bg-[#478249] p-2 rounded-full text-white hover:bg-[#2D3F58] transition-colors"
+                            aria-label="Activar cámara"
+                            type="button">
                             <i class="fas fa-camera"></i>
                         </button>
                     </div>
@@ -137,8 +141,8 @@
             </div>
 
             <!-- Modal de la Cámara -->
-            <div id="camera-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-                <div class="bg-[#214969] p-6 rounded-xl max-w-2xl w-full mx-4">
+            <div id="camera-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+                <div class="bg-[#214969] max-w-lg mx-auto mt-20 rounded-lg p-6">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-bold text-white">Tomar Foto</h3>
                         <button id="close-modal" class="text-white hover:text-[#5DA6C3]">
@@ -210,7 +214,7 @@
                             <div class="flex flex-col items-center justify-center h-full">
                                 <i class="fas fa-desktop text-4xl text-[#5DA6C3] mb-4"></i>
                                 <div class="text-lg text-[#577788] mb-3">Máquinas Asignadas</div>
-                                <div class="text-3xl font-bold text-[#C1D1D8]"><?= $user['machines_count'] ?? '0' ?></div>
+                                <div class="text-3xl font-bold text-[#C1D1D8]"><?= $machineCount ?? '0' ?></div>
                             </div>
                         </div>
 
@@ -224,7 +228,44 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Notificaciones -->
+                <div class="md:col-span-2 bg-[#214969] rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6 flex items-center">
+                        <i class="fas fa-bell mr-3"></i>
+                        Notificaciones
+                    </h2>
+                    
+                    <?php if (empty($notifications)): ?>
+                        <div class="text-center py-8 text-[#577788]">
+                            <i class="fas fa-inbox text-4xl mb-4 block"></i>
+                            <p>No tienes notificaciones nuevas</p>
+                        </div>
+                    <?php else: ?>
+                        <div class="space-y-4">
+                            <?php foreach ($notifications as $notification): ?>
+                                <div class="bg-[#132048] p-4 rounded-lg flex items-start space-x-4 hover:bg-[#1A2B3C] transition-colors">
+                                    <div class="text-[#5DA6C3] mt-1">
+                                        <i class="<?= $notification['icon'] ?? 'fas fa-info-circle' ?>"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-[#C1D1D8] font-semibold"><?= $notification['title'] ?></h3>
+                                        <p class="text-[#577788] text-sm"><?= $notification['message'] ?></p>
+                                        <span class="text-xs text-[#577788] mt-2 block">
+                                            <?= $notification['created_at'] ?>
+                                        </span>
+                                    </div>
+                                    <button class="text-[#577788] hover:text-[#C1D1D8] transition-colors" 
+                                            aria-label="Marcar como leída">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
+            
         </div>
     </main>
 </body>
