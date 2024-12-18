@@ -214,7 +214,7 @@
                             <div class="flex flex-col items-center justify-center h-full">
                                 <i class="fas fa-desktop text-4xl text-[#5DA6C3] mb-4"></i>
                                 <div class="text-lg text-[#577788] mb-3">Máquinas Asignadas</div>
-                                <div class="text-3xl font-bold text-[#C1D1D8]"><?= $user['machines_count'] ?? '0' ?></div>
+                                <div class="text-3xl font-bold text-[#C1D1D8]"><?= $machineCount ?? '0' ?></div>
                             </div>
                         </div>
 
@@ -228,7 +228,44 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Notificaciones -->
+                <div class="md:col-span-2 bg-[#214969] rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6 flex items-center">
+                        <i class="fas fa-bell mr-3"></i>
+                        Notificaciones
+                    </h2>
+                    
+                    <?php if (empty($notifications)): ?>
+                        <div class="text-center py-8 text-[#577788]">
+                            <i class="fas fa-inbox text-4xl mb-4 block"></i>
+                            <p>No tienes notificaciones nuevas</p>
+                        </div>
+                    <?php else: ?>
+                        <div class="space-y-4">
+                            <?php foreach ($notifications as $notification): ?>
+                                <div class="bg-[#132048] p-4 rounded-lg flex items-start space-x-4 hover:bg-[#1A2B3C] transition-colors">
+                                    <div class="text-[#5DA6C3] mt-1">
+                                        <i class="<?= $notification['icon'] ?? 'fas fa-info-circle' ?>"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="text-[#C1D1D8] font-semibold"><?= $notification['title'] ?></h3>
+                                        <p class="text-[#577788] text-sm"><?= $notification['message'] ?></p>
+                                        <span class="text-xs text-[#577788] mt-2 block">
+                                            <?= $notification['created_at'] ?>
+                                        </span>
+                                    </div>
+                                    <button class="text-[#577788] hover:text-[#C1D1D8] transition-colors" 
+                                            aria-label="Marcar como leída">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
+            
         </div>
     </main>
 </body>
