@@ -17,5 +17,6 @@ class Notification
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+
 }
 

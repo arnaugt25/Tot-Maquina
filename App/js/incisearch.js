@@ -18,11 +18,9 @@ $(document).ready(function () { //Ejecutar antes html y después js
                         // Agregar resultados
                         if (data.length > 0) {
                             //HTML para gregar las incidencias
-                            data.forEach(maintenance => {
+                            data.forEach(machine => {
                                 const card = `
-                             <tbody class="bg-[#214969] divide-y divide-[#132048]">
-                            <?php foreach ($maintenances as $maintenance) { ?>
-                                <tr class="hover:bg-[#2C5F88] transition-colors duration-200">
+                             <tr class="hover:bg-[#2C5F88] transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                         <?= htmlspecialchars($maintenance["maintenance_id"]) ?>
                                     </td>
@@ -48,9 +46,6 @@ $(document).ready(function () { //Ejecutar antes html y después js
                                             <?= htmlspecialchars($maintenance["type"]) ?>
                                         </span>
                                     </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
                         `;
                                 grid.innerHTML += card; // Añadir la carta
 

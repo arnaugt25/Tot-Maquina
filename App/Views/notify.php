@@ -6,6 +6,7 @@
     <title>Lista de Notificaciones - Tot Maquina</title>
     <meta name="description" content="Listado de incidencias registradas en el sistema Tot Maquina">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script href="/js/Save.js"></script>
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -114,6 +115,15 @@
                                     <option value="">No Hecho</option>
                                 </select>
                             </td>
+                            <td class="text-white">
+                                        <button
+                                                onclick="guardarInformacion()"
+                                                class="bg-cyan-500 text-white px-6 py-2 rounded-md hover:bg-cyan-400">
+                                            Guardar
+                                        </button>
+                            </td>
+                        </tr>
+
 
                         </tr>
                     <?php } ?>
