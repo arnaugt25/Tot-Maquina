@@ -30,32 +30,25 @@ class Container extends EmesetContainer {
         };
 
         $this["Users"] = function ($c) {
-            return new \App\Models\Users(
-                $c->get("config")["db"]["user"],
-                $c->get("config")["db"]["pass"],
-                $c->get("config")["db"]["name"],
-                $c->get("config")["db"]["host"]
-            );
+            $db = $c->get("db");
+            $config = $c->get("config");
+            $Users = new \App\Models\Users($db->getConnection());
+            return $Users;
         };
 
         $this["Machine"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");
-            $machine = new \App\Models\Machine(
-                $config["db"]["user"],
-                $config["db"]["pass"],
-                $config["db"]["name"],
-                $config["db"]["host"]
-            );
-            return $machine;
+            $Machine = new \App\Models\Machine($db->getConnection());
+            return $Machine;
         };
 
 
         $this["Maintenances"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");
-            $notification = new \App\Models\Maintenances($db->getConnection());
-            return $notification;
+            $maintenance = new \App\Models\Maintenances($db->getConnection());
+            return $maintenance;
         };
         
         $this["Notification"] = function ($c) {

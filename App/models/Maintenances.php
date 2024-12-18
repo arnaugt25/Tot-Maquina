@@ -13,6 +13,7 @@ class Maintenances
     {
         $this->db = $db;
     }
+    
     public function addMaintenance($data){
         $stmt = $this->db->prepare("INSERT INTO maintenance (description, type, assigned_date, user_id, machine_id, priority) VALUES (:description, :type, :assigned_date, :user_id, :machine_id, :priority)");
         $stmt->execute();

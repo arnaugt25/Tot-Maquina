@@ -93,21 +93,17 @@ class auth {
         return $response;
     }
 
-    function user(Request $request, Response $response, Container $container, $next) : Response {
-        // Verifica si existe una sesión de usuario
-        if (!isset($_SESSION['user'])) {
-            $_SESSION['error'] = "Debes iniciar sesión para acceder a esta sección.";
-            $response->setTemplate("forbidden.php");
-            return $response;
-        }
-
+    function isUser(Request $request, Response $response, Container $container, $next) : Response {
+        $user = $request->get("SESSION", "user"); // Get user from session
+        $logged = $request->get("SESSION", "logged"); // Check if user is logged in
         // Verifica si el usuario tiene el rol específico de "user"
-        if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== 'user') {
-            $_SESSION['error'] = "No tienes permisos para acceder a esta sección.";
-            $response->setTemplate("forbidden.php");
-            return $response;
+        if ($user["role"] == "user" && $logged) {
+            $response->setTemplate("forbidden.php"); // Redirect if user is a regular user
         }
-
+        else {
+            return \Emeset\Middleware::next($request, $response, $container, $next); // Proceed if not a regular user
+        }
+        return $response; // Return the response
         // Si el usuario está autenticado y tiene el rol correcto, continúa
         $response = \Emeset\Middleware::next($request, $response, $container, $next);
         return $response;
