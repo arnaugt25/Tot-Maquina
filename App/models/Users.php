@@ -3,25 +3,24 @@
 namespace App\Models;
 
 class Users extends Db {
+    //Login
     public function login($username, $password) {
-            $query = "SELECT user_id, name, surname, username, password, role FROM user WHERE username = :username";
-            $stmt = $this->sql->prepare($query);
-            $stmt->execute([':username' => $username]);
-            $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-           
-            if (!$user || !password_verify($password, $user['password'])) {
-                throw new \Exception("Usuario no encontrado o contraseña incorrecta");
-            }
-            unset($user['password']);
-            return $user;
+        $query = "SELECT user_id, name, surname, username, password, role FROM user WHERE username = :username";
+        $stmt = $this->sql->prepare($query);
+        $stmt->execute([':username' => $username]);
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if (!$user || !password_verify($password, $user['password'])) {
+            throw new \Exception("Usuario no encontrado o contraseña incorrecta");
+        }
+        unset($user['password']);
+        return $user;
     }
 
+    //Add User
     public function addUser($username, $password, $email, $profile_pic, $name, $surname, $role) {
-            
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
             $query = "INSERT INTO user (username, password, email, profile_pic, name, surname, role) 
                       VALUES (:username, :password, :email, :profile_pic, :name, :surname, :role)";
-            
             $stmt = $this->sql->prepare($query);
             $result = $stmt->execute([
                 ':username' => $username,
@@ -33,45 +32,35 @@ class Users extends Db {
                 ':role' => $role
             ]);
 
-           if (!$result) {
+            if (!$result) {
                 throw new \Exception("Error al insertar el usuario");
             }
-            
             return $this->sql->lastInsertId();
     }
 
+    //Edit Porfile 
     public function editProfile($data) {
-        try {
             $query = "UPDATE user SET name = :name, surname = :surname, email = :email";
-            $params = [
+                        $params = [
                 ':name' => $data['name'],
                 ':surname' => $data['surname'],
                 ':email' => $data['email'],
                 ':user_id' => $data['user_id']
             ];
-
             if (!empty($data['new_password'])) {
                 $query .= ", password = :password";
                 $params[':password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
             }
-
             $query .= " WHERE user_id = :user_id";
-
             $stmt = $this->sql->prepare($query);
             $result = $stmt->execute($params);
-
             if (!$result) {
                 throw new \Exception("Error al actualizar el usuario");
             }
-
             return true;
-
-        } catch (\PDOException $e) {
-            error_log("Error actualizando usuario: " . $e->getMessage());
-            throw new \Exception("Error al actualizar el perfil");
-        }
     }
 
+    //Obtener el usuario por id (Get user by id)
     public function getUserById($id) {
         $query = "SELECT * FROM user WHERE user_id = :id";
         $stmt = $this->sql->prepare($query);
@@ -80,31 +69,23 @@ class Users extends Db {
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    //Obtener todos los usuarios (Get all users)
     public function getAllUsers() {
-        try {
-            $query = "SELECT user_id as id, name, surname, role FROM user ORDER BY name ASC";
-            $stmt = $this->sql->prepare($query);
-            $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting users: " . $e->getMessage());
-            return [];
-        }
+        $query = "SELECT user_id as id, name, surname, role FROM user ORDER BY name ASC";
+        $stmt = $this->sql->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    //Obtener todos los usuario con rol técnico (Get all users with technical role)
     public function getAllTechnicians() {
-
-        try {
-            $query = "SELECT user_id, name, surname, username, role FROM user WHERE role = 'tecnico' ORDER BY user_id ASC";
-            $stmt = $this->sql->prepare($query);
-            $stmt->execute();
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting users: " . $e->getMessage());
-            return [];
-        }
+        $query = "SELECT user_id, name, surname, username, role FROM user WHERE role = 'tecnico' ORDER BY user_id ASC";
+        $stmt = $this->sql->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    //Editar usuario (Edit user)
     public function editUser($data) {
         $query = "UPDATE user SET 
                   name = :name, 
@@ -113,7 +94,6 @@ class Users extends Db {
                   email = :email, 
                   role = :role 
                   WHERE user_id = :user_id";
-        
         $stmt = $this->sql->prepare($query);
         $params = [
             ':name' => $data['name'],
@@ -123,32 +103,27 @@ class Users extends Db {
             ':role' => $data['role'],
             ':user_id' => $data['user_id']
         ];
-
         $result = $stmt->execute($params);
-
         if (!$result) {
             error_log("Error PDO: " . print_r($stmt->errorInfo(), true));
             throw new \Exception("Error al actualizar el usuario");
         }
-
         if ($stmt->rowCount() === 0) {
             error_log("No se actualizó ninguna fila");
             return false;
         }
-
         return true;
     }
 
+    //Eliminar Usuario (Delete User)
     public function deleteUser($userId) {
-            $query = "DELETE FROM user WHERE user_id = :user_id";
-            $stmt = $this->sql->prepare($query);
-            $result = $stmt->execute([':user_id' => $userId]); 
-            
-            if (!$result) {
-                throw new \Exception("Error al eliminar el usuario");
-            }
-            
-            return true;
+        $query = "DELETE FROM user WHERE user_id = :user_id";
+        $stmt = $this->sql->prepare($query);
+        $result = $stmt->execute([':user_id' => $userId]); 
+        if (!$result) {
+            throw new \Exception("Error al eliminar el usuario");
+        }
+        return true;
     }
-} // Cierre de la clase Users
+} 
 

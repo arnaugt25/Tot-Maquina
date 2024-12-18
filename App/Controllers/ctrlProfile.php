@@ -66,7 +66,6 @@ class ctrlProfile {
 
     //Procesador de editar perfil (Edit Profile Processor)
     public function processEditProfile($request, $response, $container) {
-        // try {
             $user = $request->get("SESSION", "user");
             $data = [
                 'name' => $_POST['name'] ?? '',
@@ -107,12 +106,6 @@ class ctrlProfile {
                 $response->redirect("Location: /profile");
                 return $response;
             }
-
-        // } catch (\Exception $e) {
-        //     $response->setSession("error", $e->getMessage());
-        //     $response->redirect("Location: /editprofile");
-        //     return $response;
-        // }
     }
 
 }
