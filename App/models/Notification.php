@@ -27,6 +27,7 @@ class Notification {
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null; // Devuelve null si no se encuentra la notificación (Returns null if the notification is not found)
     }
 
+
     // Método para crear una nueva notificación (Returns null if the notification is not found)
     public function createNotification($data) {
         $stmt = $this->db->prepare("INSERT INTO notification (frequency, next_maintenance, machine_id, user_id, maintenance_id) VALUES (:frequency, :next_maintenance, :machine_id, :user_id, :maintenance_id)");
@@ -37,6 +38,7 @@ class Notification {
         $stmt->bindParam(':maintenance_id', $data['maintenance_id']);
         return $stmt->execute();
     }
+
 
     // Método para eliminar una notificación (Method to delete a notification)
     public function deleteNotification($id) {

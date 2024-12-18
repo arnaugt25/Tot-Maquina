@@ -114,4 +114,11 @@ class Machine extends Db
         $stmt = $this->sql->prepare($query);
         return $stmt->execute([$technicianId, $machineId]);
     }
+
+    public function countMachinesByUserId($user_id) {
+        $query = "SELECT COUNT(*) FROM machine WHERE user_id = :user_id";
+        $stmt = $this->sql->prepare($query);
+        $stmt->execute([':user_id' => $user_id]);
+        return $stmt->fetchColumn();
+    }
 }

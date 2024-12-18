@@ -134,6 +134,7 @@ class Maintenances extends Db
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+
     //Consulta para buscar la incidencia en la base de datos (Query to search for the incident in the database)
     public function searchMaintenance($idmaintenance) {
         $query = "SELECT maintenance_id, description, assigned_date, machine_id FROM maintenance WHERE machine_id = :machine_id"; 
@@ -143,3 +144,20 @@ class Maintenances extends Db
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
+
+    //Consulta para buscar la incidencia en la base de datos
+    public function searchMaintenance($query) {
+        $searchTerm = "%{$query}%";
+        $sql = "SELECT * FROM maintenance 
+                WHERE maintenance_id LIKE :query 
+                OR machine_id LIKE :query 
+                OR user_id LIKE :query";
+
+        $stmt = $this->sql->prepare($sql);
+        $stmt->execute([':query' => $searchTerm]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+}
+
+
