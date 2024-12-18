@@ -1,5 +1,5 @@
 import $ from "jquery";
-
+//Leer CSV
 $(document).ready(function() {
     $('#csvFileInput').on('change', function() {
         const fileName = $('#fileName');

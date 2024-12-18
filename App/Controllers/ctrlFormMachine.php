@@ -4,14 +4,14 @@ namespace App\Controllers;
 
 class ctrlFormMachine
 {
-    //MOSTRAR EL FORM DE AÑADIR MAQUINA 
+    //Mostrar formulario añadir maquina (Show form add machine) 
     public function formMachine($request, $response, $container)
     {
         $response->setTemplate("formMachine.php");
         return $response;
     }
 
-    //AÑADIR MAQUINA A LA BASE DE DATOS DESDE EL FORM
+    //Añadir maquina a la BDD (Add machine to the database)
     public function ctrladdMachine($request, $response, $container)
     {
         $model = $request->get(INPUT_POST, "model");
@@ -19,19 +19,17 @@ class ctrlFormMachine
         $dateinstall = $request->get(INPUT_POST, "installation_date");
         $serialnum = $request->get(INPUT_POST, "serial_number");
         $coordinates = $request->get(INPUT_POST, "coordinates");
-
-        // Manejo simple de la imagen
+        //Image
         $imageURL = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = 'uploads/images';
             $imageName = basename($_FILES['image']['name']);
             $targetPath = $uploadDir . $imageName;
-
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
                 $imageURL = '/' . $targetPath;
             }
         }
-        //Array de los datos
+        //Array de los datos (Array of data)
         $machineData = [
             'model' => $model,
             'created_by' => $createdby,
@@ -47,7 +45,7 @@ class ctrlFormMachine
         return $response;
     }
 
-    //MOSTRAR LA MAQUINA EN LISTA DE MAQUINAS CON LA INFO DE LA BDD
+    //Mostrar maquina en lista de maquinas con la info de la bdd (Show machine in machine list with database info)
     public function ctrlListMachine($request, $response, $container)
     {
         $machineModel = $container->get("Machine");
@@ -59,7 +57,7 @@ class ctrlFormMachine
         return $response;
     }
 
-    //MOSTRAR FORM EDITAR MAQUINA
+    //Mostrar form editar maquina (Show form edit machine)
     public function editMachine($request, $response, $container)
     {
         $machineId = $request->get(INPUT_GET, "machine_id");
@@ -72,40 +70,22 @@ class ctrlFormMachine
         return $response;
     }
 
-    //PARA EDITAR LA MAQUINA 
-    // public function editaMachine($request, $response, $container)
-    // {
-    //     // Get id 
-    //     $machineId = $request->get(INPUT_GET, "machine_id");
-    //     // die();
-    //     $machineModel = $container->get("Machine");
-    //     $machine = $machineModel->editMachine($machineId);
-    //     $response->set('machine', $machine);
-    //     $response->setTemplate("editMachine.php");
-    //     return $response;
-    // }
-
-    //PARA HACER EL UPDATE EN LA BASE DE DATOS 
+    //Para hacer el update en la bdd (To make the update in the database)
     public function updateMachine($request, $response, $container)
     {
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
-    
-        // Obtener los datos actuales de la máquina
         $currentMachine = $machineModel->getMachineById($machineId);
-    
-        // Manejo de la imagen
-        $imageURL = $currentMachine['image']; // Mantener la imagen actual por defecto
+        // Image
+        $imageURL = $currentMachine['image'];
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = 'uploads/';
             $imageName = basename($_FILES['image']['name']);
             $targetPath = $uploadDir . $imageName;
-    
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
-                $imageURL = '/' . $targetPath; // Actualizar la URL de la imagen si se sube una nueva
+                $imageURL = '/' . $targetPath; 
             }
         }
-    
         $data = [
             'machine_id' => $machineId,
             'model' => $request->get(INPUT_POST, "model"),
@@ -113,28 +93,25 @@ class ctrlFormMachine
             'installation_date' => $request->get(INPUT_POST, "installation_date"),
             'serial_number' => $request->get(INPUT_POST, "serial_number"),
             'coordinates' =>  $request->get(INPUT_POST, "coordinates"),
-            'image' =>  $imageURL // Usar la URL de la imagen actualizada
+            'image' =>  $imageURL 
         ];
-    
         $result = $machineModel->editMachine($data);
-    
         $response->redirect("Location: /addlist");
         return $response;
     }
 
-    // Para mostrar máquina 
+    // Para mostrar detalles máquina (To show machine details)
     public function machineId($request, $response, $container)
     {
         $machineId = $request->get(INPUT_GET, "machine_id");
         $machineModel = $container->get("Machine");
         $machine = $machineModel->getMachineById($machineId);
         $response->set('machine', $machine);
-
         $response->setTemplate("maquina.php");
         return $response;
     }
 
-    // Buscar por id de la máquina
+    // Buscar por id de la máquina (Search by machine id)
     public function showMachine($request, $response, $container)
     {
         $machineShow = $request->get(INPUT_GET, "machine_id");
@@ -147,28 +124,23 @@ class ctrlFormMachine
         return $response;
     }
 
-    //Eliminar máquina
+    //Eliminar máquina (Delete machine)
     public function deleteMachine($request, $response, $container)
     {
         $machine_id = $request->getParam('id');
         $machineModel = $container->get("Machine");
         $result = $machineModel->deleteMachine($machine_id);
         $response->redirect("Location: /addlist");
-
         return $response;
     }
 
-   //Buscador de máquinas controlador
+   //Buscador de máquinas (Machine Finder)
     public function searchMachines($request, $response, $container) {
         $query = $request->get(INPUT_GET, "query");
         $machineModel = $container->get("Machine");
         $results = $machineModel->searchMachine($query);
-        
         header('Content-Type: application/json');
         echo json_encode($results);
         exit;
     }
-
 }
-    
-

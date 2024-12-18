@@ -142,5 +142,6 @@
             </form>
         </div>
     </main>
+    <script src="/js/bundle.js"></script>
 </body>
 </html>

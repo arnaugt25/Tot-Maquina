@@ -12,21 +12,15 @@ class ctrlLogin {
     }
 
     public function ctrlLogin($request, $response, $container) {
-        try {
             $username = $request->get(INPUT_POST, "username");
             $password = $request->get(INPUT_POST, "password");
-
+    
             $userModel = $container->get("Users");
             $user = $userModel->login($username, $password);
             
             $response->setSession('user', $user);
             $response->setSession('logged', true);
             $response->redirect("Location: /");
-            
-        } catch (\Exception $e) {
-            $response->setSession("error", $e->getMessage());
-            $response->redirect("Location: /login");
-        }
         
         return $response;
     }

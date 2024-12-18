@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador Tot Maquina</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="bg-[#C1D1D8]">
 
@@ -16,7 +30,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo y nombre -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
 
@@ -54,16 +68,20 @@
         </div>  
         <!-- Botón menú móvil -->
         <div class="md:hidden">
-          <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+          <button id="mobile-menu-button" type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </div>
 
       <!-- Menú móvil -->
-      <div class="hidden md:hidden">
+      <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-house"></i> Inicio
@@ -76,8 +94,8 @@
             <i class="fa-solid fa-address-card"></i> Perfil
           </a>
           <?php if ($_SESSION['user']['role'] == 'admin'): ?>
-          <a href="#" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-            Admin panel
+          <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+            <i class="fas fa-cog mr-2"></i>Admin panel
           </a>
           <?php endif; ?>
           <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
@@ -120,7 +138,7 @@
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Usuarios</h3>
             <div class="bg-[#5DA6C3]/10 p-3 rounded-full">
-              <i class="fas fa-users text-[#5DA6C3] text-xl"></i>
+              <i class="fas fa-users text-[#5DA6C3] text-xl"></i> 
             </div>
           </div>
           <button onclick="window.location.href='/admin/adduser'" 
@@ -273,7 +291,7 @@
     </div>
   </div>
 
-<script src="/js/nav.js"></script>
+<script src="/js/bundle.js"></script>
 <script>
 function confirmDeleteUser(userId, userName) {
     if (confirm(`¿Estás seguro que deseas eliminar al usuario ${userName}? Esta acción no se puede deshacer.`)) {

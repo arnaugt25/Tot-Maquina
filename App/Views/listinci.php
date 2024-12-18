@@ -16,25 +16,87 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo y nombre -->
                 <div class="flex items-center space-x-4">
-                    <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+                    <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
                     <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
                 </div>
             </div>
         </nav>
-        <!-- Navigation Section -->
-        <nav class="bg-[#1A1A1A] text-white">
-            <ul class="flex space-x-4">
-                <li>
-                    <a href="/" class="relative group px-3 py-2 text-[#E0E0E0] hover:text-[#FFFFFF] transition-colors duration-300">
-                        <i class="fa-solid fa-house"></i> Inicio
-                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    </a>
-                </li>
-                <!-- Add more navigation items as needed -->
-            </ul>
-        </nav>
-    </header>
+                <!-- Enlaces de navegación -->
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-8">
+                        <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-house"></i> Inicio
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        </a>
+                        <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+                            <i class="fa-solid fa-desktop"></i> Maquinas
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        </a>
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+                                <i class="fa-solid fa-address-card"></i> Perfil
+                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </a>
+                            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                                <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                    <i class="fas fa-cog mr-2"></i>Admin panel
+                                </a>
+                            <?php endif; ?>
 
+                            <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                            </a>
+                        <?php else: ?>
+                            <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <!-- Botón menú móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" type="button" 
+                            class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                            aria-label="Abrir menú"
+                            aria-expanded="false"
+                            aria-controls="mobile-menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menú móvil -->
+            <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+                        <i class="fa-solid fa-house"></i> Inicio
+                    </a>
+                    <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+                        <i class="fa-solid fa-desktop"></i> Máquinas
+                    </a>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+                            <i class="fa-solid fa-address-card"></i> Perfil
+                        </a>
+                        <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                            <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                                <i class="fas fa-cog mr-2"></i>Admin panel
+                            </a>
+                        <?php endif; ?>
+                        <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                        </a>
+                    <?php else: ?>
+                        <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Contenido Principal -->
     <main class="container mx-auto px-6 py-8">
@@ -51,34 +113,30 @@
                 </div>
 
                 <!-- Filtros y Búsqueda -->
-                <div class="bg-[#357e9b] p-6 rounded-lg shadow-lg mb-6">
+                <div class="bg-[#132048] p-6 rounded-lg shadow-lg mb-6">
                     <div class="flex flex-col md:flex-row gap-4">
-                        <div class="relative flex-1">
-                            <input type="text" id="searchMaintenance"
-                                   aria-label="Buscar incidencia"
-                                   class="w-full pl-10 pr-4 py-3 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
-                                   placeholder="Buscar incidencia...">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3]"></i>
-                            </div>
+                        <div class="flex-1">
+                            <input type="text" 
+                                placeholder="Buscar incidencia..." 
+                                class="w-full px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]"
+                                aria-label="Buscar incidencia">
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <label for="prioritySelect" class="sr-only">Seleccionar prioridad</label>
-                            <select id="prioritySelect" class="px-4 py-2 border rounded-lg bg-[#357e9b] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
                                 <option value="" selected>Seleccionar prioridad</option>
-                                <optgroup label="Prioridades">
-                                    <option value="baja">Baja</option>
-                                    <option value="media">Media</option>
-                                    <option value="urgente">Urgente</option>
-                                </optgroup>
+                                <option value="baja">Baja</option>
+                                <option value="media">Media</option>
+                                <option value="urgente">Urgente</option>
                             </select>
-                            <label for="typeSelect" class="sr-only">Seleccionar tipo</label>
-                            <select id="typeSelect" class="px-4 py-2 border rounded-lg bg-[#357e9b] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
                                 <option value="" selected>Seleccionar tipo</option>
-                                <optgroup label="Tipos de Mantenimiento">
-                                    <option value="preventivo">Preventivo</option>
-                                    <option value="correctivo">Correctivo</option>
-                                </optgroup>
+                                <option value="preventivo">Preventivo</option>
+                                <option value="correctivo">Correctivo</option>
+                            </select>
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                                <option value="" selected>Selecionar Verificacion</option>
+                                <option value="preventivo">Verificado</option>
+                                <option value="correctivo">No verificado</option>
                             </select>
                         </div>
                     </div>
@@ -87,38 +145,39 @@
                 <!-- Tabla -->
                 <div class="bg-[#132048] rounded-lg shadow-lg overflow-hidden">
                     <table class="min-w-full divide-y divide-[#214969]">
-                        <caption class="sr-only">Lista de Incidencias</caption>
-                        <thead class="bg-[#357e9b]">
+                        <thead class="bg-[#0C0C04]">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Nº Incidencia
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     ID Máquina
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Descripción
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Técnico
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Fecha
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Prioridad
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Tipo
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium text-white uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                     Acciones
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider text-center pl-2">
+                                Verificado
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-[#214969] divide-y divide-[#132048]">
                             <?php foreach ($maintenances as $maintenance) { ?>
-                                
                                 <tr class="hover:bg-[#2C5F88] transition-colors duration-200">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                         <?= htmlspecialchars($maintenance["maintenance_id"]) ?>
@@ -157,6 +216,11 @@
                                             </a>
                                         </div>
                                     </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                       <span class="px-4 inline-flex text-lg leading-6 font-semibold rounded-full text-white">
+                                            <input type="checkbox">
+                                        </span>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -178,20 +242,11 @@
                             </button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </main>
+    <script src="/js/bundle.js"></script>
 </body>
-<script>
-    function confirmDeleteMachine(machine_id, model) {
-        if (confirm(`¿Estás seguro que deseas eliminar al usuario ${model}? Esta acción no se puede deshacer.`)) {
-            window.location.href = `/delete/${maintenance_id}`;
-        }
-    }
-</script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </html>
