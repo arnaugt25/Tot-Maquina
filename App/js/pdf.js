@@ -49,11 +49,13 @@ $(document).ready(function () {
                 });
 
                 // Guardar el archivo PDF
-                doc.save(`historial_maquina_${machineId}.pdf`);
+                doc.save(`Historial_maquina_${machineId}.pdf`);
+                window.location.href="/history/"+machineId;
             })
             .catch(error => {
                 console.error("Error detallado:", error);
-                alert('Error al generar el PDF');
+                alert('Error al generar el PDF: ' + error.message); // Mostrar el mensaje de error
+
             });
         });
     } //else {

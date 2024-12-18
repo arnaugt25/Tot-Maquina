@@ -132,7 +132,7 @@
         <div class="bg-[#214969] p-6 rounded-lg shadow-lg text-white">
           <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
           <div class="space-y-4">
-            <p><span class="font-medium text-[#5DA6C3]">Fabricante: awdwad</span><?= ($machine['created_by']) ?></p>
+            <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= ($machine['created_by']) ?></p>
             <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= ($machine['installation_date']) ?></p>
             <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= ($machine['serial_number']) ?></p>
           </div>
