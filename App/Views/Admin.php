@@ -41,25 +41,29 @@
             <i class="fa-solid fa-house"></i> Inicio
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <!-- Maquinas (machines)-->   
             <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
             <i class="fa-solid fa-desktop"></i> Maquinas
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <!-- Perfil (profile) --> 
             <?php if (isset($_SESSION['user'])): ?>
             <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
                 <i class="fa-solid fa-address-card"></i> Perfil
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <!-- Admin panel (admin) --> 
             <?php if ($_SESSION['user']['role'] == 'admin'): ?>
                 <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                     <i class="fas fa-cog mr-2"></i>Admin panel
                 </a>
             <?php endif; ?>
-            
+            <!-- Cerrar Sesión (logout) --> 
             <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
             <?php else: ?>
+            <!-- Iniciar Sesión (login) --> 
             <a href="/login" class="bg-[#5DA6C3] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
             </a>
@@ -83,25 +87,31 @@
       <!-- Menú móvil -->
       <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
         <div class="px-2 pt-2 pb-3 space-y-1">
+          <!-- Inicio (home) -->
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-house"></i> Inicio
           </a>
+          <!-- Maquinas (machines)-->   
           <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-desktop"></i> Máquinas
           </a>
+          <!-- Perfil (profile) --> 
           <?php if (isset($_SESSION['user'])): ?>
           <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
             <i class="fa-solid fa-address-card"></i> Perfil
           </a>
+          <!-- Admin panel (admin) --> 
           <?php if ($_SESSION['user']['role'] == 'admin'): ?>
           <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
             <i class="fas fa-cog mr-2"></i>Admin panel
           </a>
           <?php endif; ?>
+          <!-- Cerrar Sesión (logout) --> 
           <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
             <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
           </a>
           <?php else: ?>
+          <!-- Iniciar Sesión (login) --> 
           <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
             <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
           </a>
@@ -111,7 +121,7 @@
     </nav>
   </header>
 
-
+  <!-- Contenido Principal (Main Content) --> 
   <div class="container mx-auto px-6 py-8">
     <?php if (isset($_SESSION['success'])): ?>
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
@@ -119,21 +129,22 @@
             <?php unset($_SESSION['success']); ?>
         </div>
     <?php endif; ?>
-
+    <!-- Error message display / Visualización de mensaje de error -->
     <?php if (isset($_SESSION['error'])): ?>
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
             <span class="block sm:inline"><?= htmlspecialchars($_SESSION['error']) ?></span>
             <?php unset($_SESSION['error']); ?>
         </div>
     <?php endif; ?>
+    <!-- Title of the admin panel / Título del panel de administración -->
     <h1 class="text-3xl font-bold text-[#214969] mb-8">Panel de Administración</h1>
     
-    <!-- Tarjetas de Gestión -->
+    <!-- Management cards / Tarjetas de gestión -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
-      <!-- Sección Usuarios -->
+      <!-- Users section / Sección de usuarios -->
       <div class="space-y-6">
-        <!-- Tarjeta de botones -->
+        <!-- Buttons card / Tarjeta de botones -->
         <div class="bg-[#214969] rounded-lg shadow-xl hover:shadow-2xl transition-all p-6">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Usuarios</h3>
@@ -147,7 +158,7 @@
           </button>
         </div>
         
-        <!-- Lista de Usuarios -->
+        <!-- Users list / Lista de usuarios -->
         <div class="bg-[#132048] rounded-lg p-4 shadow-lg">
             <h4 class="text-[#5DA6C3] font-semibold mb-3">Usuarios Recientes</h4>
             <div class="space-y-2 text-white">
@@ -183,9 +194,9 @@
         </div>
       </div>
 
-      <!-- Sección Máquinas -->
+      <!-- Machines section / Sección de máquinas -->
       <div class="space-y-6">
-        <!-- Tarjeta de botones -->
+        <!-- Buttons card / Tarjeta de botones -->
         <div class="bg-[#214969] rounded-lg shadow-xl hover:shadow-2xl transition-all p-6">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Máquinas</h3>
@@ -200,7 +211,7 @@
           </div>
         </div>
 
-        <!-- Lista de Máquinas -->
+        <!-- Machines list / Lista de máquinas -->
         <div class="bg-[#132048] rounded-lg p-4 shadow-lg">
             <h4 class="text-[#5DA6C3] font-semibold mb-3">Máquinas Recientes</h4>
             <div class="space-y-2 text-white">
@@ -235,9 +246,9 @@
         </div>
       </div>
 
-      <!-- Sección Incidencias -->
+      <!-- Incidents section / Sección de incidencias -->
       <div class="space-y-6">
-        <!-- Tarjeta de botones -->
+        <!-- Buttons card / Tarjeta de botones -->
         <div class="bg-[#214969] rounded-lg shadow-xl hover:shadow-2xl transition-all p-6">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-bold text-[#5DA6C3]">Gestión Incidencias</h3>
@@ -252,17 +263,20 @@
           </div>
         </div>
 
-        <!-- Lista de Incidencias -->
+        <!-- Incidents list / Lista de incidencias -->
         <div class="bg-[#132048] rounded-lg p-4 shadow-lg">
             <h4 class="text-[#5DA6C3] font-semibold mb-3">Incidencias Recientes</h4>
             <div class="space-y-2 text-white">
+              <!-- Incidents list / Lista de incidencias -->
                 <?php if (!empty($maintenances)): ?>
                     <?php foreach ($maintenances as $maintenance): ?>
                         <div class="flex items-center justify-between p-2 hover:bg-[#214969] rounded transition-colors">
                             <div class="flex items-center space-x-4">
+                              <!-- Incidents icon / Icono de incidencias -->
                                 <div class="w-10 h-10 rounded-full bg-[#214969] flex items-center justify-center">
                                     <i class="fa-solid fa-wrench text-[#5DA6C3]"></i>
                                 </div>
+                                <!-- Incidents description / Descripción de incidencias -->
                                 <div>
                                     <span class="font-medium"><?= htmlspecialchars($maintenance['description']) ?></span>
                                     <span class="text-sm <?= $maintenance['priority'] == 'urgente' ? 'text-red-400' : ($maintenance['priority'] == 'media' ? 'text-yellow-400' : 'text-green-400') ?> block">
@@ -271,10 +285,12 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-3">
+                                <!-- Edit button / Botón de edición -->
                                 <button onclick="window.location.href='/admin/editinci/<?= $maintenance['maintenance_id'] ?>'" 
                                         class="text-yellow-400 hover:text-yellow-300 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </button>
+                                <!-- Delete button / Botón de eliminación -->
                                 <button onclick="confirmDeleteMaintenance(<?= $maintenance['maintenance_id'] ?>, '<?= htmlspecialchars($maintenance['description'], ENT_QUOTES) ?>')" 
                                         class="text-red-400 hover:text-red-300 transition-colors">
                                     <i class="fas fa-trash"></i>

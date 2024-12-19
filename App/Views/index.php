@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Máquinas Pro</title>
+  <title>Tot Maquina</title>
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -76,7 +76,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png" alt="Logo Tot Maquina" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina </span>
         </div>
         <!--Enlaces de navegación (Navigation links) -->

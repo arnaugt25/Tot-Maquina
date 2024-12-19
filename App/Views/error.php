@@ -23,18 +23,19 @@
       <div class="text-center mb-8">
         <i class="fas fa-exclamation-triangle text-6xl text-[#5DA6C3] mb-4"></i>
         <h1 class="text-3xl font-bold mb-4">¡Ups! Algo ha salido mal</h1>
-        
+        <!-- Error message display / Visualización de mensaje de error -->
         <?php if (isset($error) && $error != "") { ?>
           <div class="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
             <?= htmlspecialchars($error) ?>
           </div>
         <?php } ?>
-        
+        <!-- Error message display / Visualización de mensaje de error -->
         <p class="text-[#C1D1D8] mb-8">
           Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde.
         </p>
         
         <div class="space-y-4">
+          <!-- Back to admin panel button / Botón de volver al panel de administración -->
           <a href="/admin" class="inline-block bg-[#478249] hover:bg-[#2D3F58] text-white px-6 py-3 rounded-lg transition-colors duration-300">
             <i class="fas fa-home mr-2"></i> Volver al panel de administración
           </a>

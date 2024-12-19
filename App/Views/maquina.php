@@ -41,7 +41,7 @@
             <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
           </div>
 
-          <!-- Enlaces de navegación -->
+          <!-- Navigation links / Enlaces de navegación -->
           <div class="hidden md:block">
             <div class="flex items-center space-x-8">
               <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
@@ -74,7 +74,7 @@
             </div>
           </div>
 
-          <!-- Único botón de menú móvil -->
+          <!-- Unique mobile menu button / Único botón de menú móvil -->
           <button id="mobile-menu-button" 
                   class="md:hidden text-gray-300 hover:text-white focus:outline-none focus:text-white"
                   aria-label="Abrir menú de navegación"
@@ -86,7 +86,7 @@
           </button>
         </div>
 
-        <!-- Menú móvil -->
+        <!-- Mobile menu / Menú móvil -->
         <div id="mobile-menu" class="hidden md:hidden">
           <div class="px-2 pt-2 pb-3 space-y-1">
             <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -120,18 +120,18 @@
     <main class="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Cuadro de información -->
+          <!-- Information box / Cuadro de información -->
           <div class="bg-[#214969] p-4 sm:p-6 rounded-lg shadow-lg text-white">
             <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
             <div class="space-y-4">
-              <p><span class="font-medium text-[#5DA6C3]">Modelo: </span><?= htmlspecialchars($machine['model']) ?></p>
+              <p><span class="font-medium text-[#5DA6C3]">Nombre: </span><?= htmlspecialchars($machine['model']) ?></p>
               <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= htmlspecialchars($machine['created_by']) ?></p>
               <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= htmlspecialchars($machine['installation_date']) ?></p>
               <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= htmlspecialchars($machine['serial_number']) ?></p>
             </div>
           </div>
 
-          <!-- Imagen de la máquina -->
+          <!-- Machine image / Imagen de la máquina -->
           <div class="relative group">
             <img class="w-full h-48 sm:h-64 object-cover rounded-lg shadow-lg transition-all duration-300 group-hover:scale-105"
               src="<?= !empty($machine['image']) ? htmlspecialchars($machine['image']) : '/uploads/default-machine.jpg' ?>" 
@@ -141,7 +141,7 @@
           </div>
         </div>
 
-        <!-- Botón de Ver Historial -->
+        <!-- View history button / Botón de Ver Historial -->
         <div class="flex justify-center my-8">
           <a href="/history/<?= htmlspecialchars($machine['machine_id']) ?>"
             class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-20 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center">
@@ -150,7 +150,7 @@
           </a>
         </div>
 
-        <!-- Mapa de ubicación -->
+        <!-- Location map / Mapa de ubicación -->
         <div class="w-full">
           <div class="bg-[#214969] p-4 sm:p-6 rounded-lg shadow-lg text-white">
             <h2 class="text-xl sm:text-2xl font-semibold text-[#5DA6C3] mb-4">Ubicación de la máquina</h2>

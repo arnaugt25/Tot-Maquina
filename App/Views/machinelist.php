@@ -10,15 +10,15 @@
 </head>
 <body class="bg-[#C1D1D8] text-gray-800">
   <header class="bg-[#0C0C04] text-white">
-    <!-- Barra de navegación principal (Main navigation bar) -->
+    <!-- Main navigation bar / Barra de navegación principal -->
     <nav class="container mx-auto px-6">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo and name -->
+        <!-- Logo and name / Logo y nombre -->
         <div class="flex items-center space-x-4">
           <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
-        <!-- Enlaces de navegación (Navigation links) -->
+        <!-- Navigation links / Enlaces de navegación -->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
             <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
@@ -52,7 +52,7 @@
             <?php endif; ?>
           </div>
         </div>
-        <!-- Botón menú móvil (Mobile menu button)-->
+        <!-- Mobile menu button / Botón menú móvil -->
         <div class="md:hidden">
           <button id="mobile-menu-button" type="button" 
                   class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <!-- Menú móvil -->
+      <!-- Mobile menu / Menú móvil -->
       <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
 
         <div class="px-2 pt-2 pb-3 space-y-1">
@@ -103,10 +103,10 @@
   </header>
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-    <!-- Buscador y botón de importación (Search and import button) -->
+      <!-- Search and import button / Buscador y botón de importación -->
     <div class="mb-8 max-w-4xl mx-auto">
         <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-            <!-- Buscador -->
+            <!-- Search / Buscador -->
             <div class="relative flex-1">
                 <label for="searchMachine" class="sr-only">Buscar máquina</label>
                 <input type="text" id="searchMachine" name="searchMachine" 
@@ -116,7 +116,7 @@
                     <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3] text-lg md:text-xl"></i>
                 </div>
             </div>
-            <!-- Grupo de botones -->
+            <!-- Group of buttons / Grupo de botones -->
             <div class="flex flex-wrap gap-2 sm:flex-nowrap">
                 <a href="/forminci" 
                    class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
@@ -130,18 +130,23 @@
                 </button>
                 <a href="/addtech" 
                    class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
-                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <i class="fas fa-user-plus mr-2"></i>
                     <span>Añadir Técnico</span>
+                </a>
+                <a href="/listinci" 
+                   class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Ver Incidencias</span>
                 </a>
             </div>
         </div>
     </div>
-    <!-- Grid de tarjetas (Card grid)-->
+      <!-- Grid of cards / Grid de tarjetas -->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
         <?php foreach ($machines as $machine): ?>
           <div class="bg-gradient-to-br from-[#214969] to-[#1a3850] rounded-xl overflow-hidden shadow-xl">
-            <!-- Imagen de la máquina (Image of the machine)-->
+            <!-- Machine image / Imagen de la máquina -->
             <div class="relative group">
               <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 src="<?= ($machine['image']) ?>" 
@@ -152,13 +157,13 @@
                 <span>Activa</span>
               </div>
             </div>
-            <!-- Contenido de la tarjeta (Card content)-->
+            <!-- Card content / Contenido de la tarjeta -->
             <div class="p-6">
               <h1 class="text-[#5DA6C3] font-bold text-xl mb-3 flex items-center space-x-2">
                 <i class="fas fa-desktop text-lg"></i>
                 <span><?= ($machine['model']) ?></span>
               </h1>
-              <!-- Detalles de la máquina (Machine details)-->
+              <!-- Machine details / Detalles de la máquina -->
               <div class="space-y-3 text-[#C1D1D8] mb-6">
                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                   <i class="fas fa-barcode text-[#5DA6C3]"></i>
@@ -173,7 +178,7 @@
                   <span>Fabricante: <?= ($machine['created_by']) ?></span>
                 </div>
               </div>
-              <!-- Botones de acción (Action Buttons)-->
+              <!-- Action buttons / Botones de acción -->
               <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
                 <a href="/maquina_id?machine_id=<?= ($machine['machine_id']) ?>"
                   class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
@@ -209,7 +214,7 @@
       </div>
     </div>
   </div>
-  <!-- Modal de importación CSV (CSV Import Modal)-->
+  <!-- CSV import modal / Modal de importación CSV -->
   <div id="csvModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
     <div class="fixed inset-0 flex items-center justify-center p-4">
       <div class="bg-[#214969] rounded-lg max-w-md w-full p-6 shadow-xl">

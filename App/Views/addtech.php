@@ -23,28 +23,34 @@
         <!--Enlaces de navegación (Navigation links) -->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
+            <!-- Inicio (home) --> 
             <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
               <i class="fa-solid fa-house"></i> Inicio
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <!-- Maquinas (machines)--> 
             <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
               <i class="fa-solid fa-desktop"></i> Maquinas
               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </a>
+            <!-- Perfil (profile) --> 
             <?php if (isset($_SESSION['user'])): ?>
               <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
                 <i class="fa-solid fa-address-card"></i> Perfil
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </a>
+              <!-- Admin panel (admin) --> 
               <?php if ($_SESSION['user']['role'] == 'admin'): ?>
                 <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                   <i class="fas fa-cog mr-2"></i>Admin panel
                 </a>
               <?php endif; ?>
+              <!-- Cerrar Sesión (logout) --> 
               <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
               </a>
             <?php else: ?>
+              <!-- Iniciar Sesión (login) --> 
               <a href="/login" class="bg-[#165f7c] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl" role="button" aria-label="Iniciar Sesión">
                 <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
               </a>
@@ -68,28 +74,34 @@
       <!-- Menú móvil -->
       <div id="mobile-menu" class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-house"></i> Inicio
-          </a>
-          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-desktop"></i> Máquinas 
-          </a>
-          <?php if (isset($_SESSION['user'])): ?>
-            <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-              <i class="fa-solid fa-address-card"></i> Perfil
+            <!-- Inicio (home) --> 
+            <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+              <i class="fa-solid fa-house"></i> Inicio
             </a>
-            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
-              <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-                Admin panel
+            <!-- Maquinas (machines)--> 
+          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+              <i class="fa-solid fa-desktop"></i> Máquinas 
+            </a>
+            <!-- Perfil (profile) --> 
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
+                <i class="fa-solid fa-address-card"></i> Perfil
+              </a>
+              <!-- Admin panel (admin) --> 
+              <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
+                  Admin panel
               </a>
             <?php endif; ?>
+            <!-- Cerrar Sesión (logout) --> 
             <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
               <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
-          <?php else: ?>
-            <a href="/login" class="block px-3 py-2 bg-[#165f7c] text-white hover:bg-[#478249] rounded-md transition-colors duration-300" role="button" aria-label="Iniciar Sesión">
-              <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
-            </a>
+            <?php else: ?>
+              <!-- Iniciar Sesión (login) --> 
+              <a href="/login" class="block px-3 py-2 bg-[#165f7c] text-white hover:bg-[#478249] rounded-md transition-colors duration-300" role="button" aria-label="Iniciar Sesión">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+              </a>
           <?php endif; ?>
         </div>
       </div>

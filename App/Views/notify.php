@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#8FA9B5] min-h-screen">
-<!--Header and Nav -->
+<!--Header and Nav / Cabecera y navegación -->
 <header class="bg-[#0C0C04] text-white">
-    <!--Barra de navegación principal (Main navigation bar)-->
+    <!--Main navigation bar / Barra de navegación principal-->
     <nav class="container mx-auto px-6">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo and name -->
+        <!-- Logo and name / Logo y nombre -->
         <div class="flex items-center space-x-4">
           <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina </span>
         </div>
-        <!--Enlaces de navegación (Navigation links) -->
+        <!--Navigation links / Enlaces de navegación-->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
             <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
@@ -52,7 +52,7 @@
             <?php endif; ?>
           </div>
         </div>
-        <!--Botón menú móvil (Mobile menu button) -->
+        <!--Mobile menu button / Botón menú móvil-->
         <div class="md:hidden">
           <button id="mobile-menu-button" type="button" 
                   class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
@@ -66,7 +66,7 @@
           </button>
         </div>
       </div>
-      <!-- Menú móvil -->
+      <!-- Mobile menu / Menú móvil -->
       <div id="mobile-menu" class="hidden md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -98,12 +98,12 @@
   </header>
   
 
-<!-- Contenido Principal -->
+<!-- Main content / Contenido Principal -->
 <main class="container mx-auto px-6 py-8">
     <div class="max-w-7xl mx-auto">
-        <!-- Contenedor principal con gradiente -->
+        <!-- Main container with gradient / Contenedor principal con gradiente -->
         <div class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
-            <!-- Cabecera -->
+            <!-- Header / Cabecera -->
             <div class="mb-8">
                 <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
                     <i class="fas fa-clipboard-list mr-4 text-[#5DA6C3]"></i>
@@ -111,7 +111,7 @@
                 </h1>
                 <p class="text-[#A8C5D6]">Gestiona todas las notificaciones del sistema</p>
             </div>
-            <!-- Tabla -->
+            <!-- Table / Tabla -->
             <div class="bg-[#132048] rounded-lg shadow-lg overflow-hidden">
                 <table class="min-w-full divide-y divide-[#214969]">
                     <head class="bg-[#0C0C04]">
@@ -188,7 +188,7 @@
                 </table>
             </div>
 
-            <!-- Paginación -->
+            <!-- Pagination / Paginación -->
             <div class="mt-6 bg-[#132048] px-6 py-4 rounded-lg shadow-lg">
                 <div class="flex justify-between items-center">
                     <p class="text-white">

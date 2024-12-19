@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#8FA9B5] min-h-screen">
-    <!-- Contenido Principal -->
+    <!-- Main content / Contenido principal -->
     <main class="container mx-auto px-6 py-8">
         <div class="max-w-2xl mx-auto">
-            <!-- Cabecera del formulario -->
+            <!-- Form header / Cabecera del formulario -->
             <div class="bg-gradient-to-r from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8 mb-8">
                 <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
                     <i class="fa-solid fa-wrench mr-4 text-[#5DA6C3]"></i>
@@ -21,7 +21,7 @@
             </div>
 
             <form action="/incidencias/crear" method="POST" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
-                <!-- Machine -->
+                <!-- Machine label / Etiqueta de máquina -->
                 <div class="mb-6">
                     <label class="block text-[#A8C5D6] font-medium mb-2" for="machine">
                         <i class="fas fa-desktop text-[#5DA6C3] mr-2"></i>
@@ -38,7 +38,7 @@
                     </select>
                 </div>
 
-                <!-- Descripción -->
+                <!-- Description label / Etiqueta de descripción -->
                 <div class="mb-6">
                     <label class="block text-[#A8C5D6] font-medium mb-2" for="description">
                         <i class="fa-solid fa-pen text-[#5DA6C3] mr-2"></i>
@@ -52,7 +52,7 @@
                           required></textarea>
                 </div>
 
-                <!-- Técnico -->
+                <!-- Technician label / Etiqueta de técnico -->
                 <div class="mb-6">
                     <label class="block text-[#A8C5D6] font-medium mb-2" for="user_id">
                         <i class="fas fa-user text-[#5DA6C3] mr-2"></i>
@@ -69,7 +69,7 @@
                     </select>
                 </div>
 
-                <!-- Fecha -->
+                <!-- Date label / Etiqueta de fecha -->
                 <div class="mb-6">
                     <label class="block text-[#A8C5D6] font-medium mb-2" for="assigned_date">
                         <i class="fas fa-calendar-alt text-[#5DA6C3] mr-2"></i>
@@ -82,7 +82,7 @@
                            required>
                 </div>
 
-                <!-- Prioridad -->
+                <!-- Priority label / Etiqueta de prioridad -->
                 <div class="mb-6">
                     <label class="block text-[#A8C5D6] font-medium mb-2" for="priority">
                         <i class="fas fa-exclamation-circle text-[#5DA6C3] mr-2"></i>
@@ -99,7 +99,7 @@
                     </select>
                 </div>
 
-                <!-- Tipo -->
+                <!-- Type label / Etiqueta de tipo -->
                 <div class="mb-6">
                     <label class="block text-[#A8C5D6] font-medium mb-2" for="type">
                         <i class="fas fa-tools text-[#5DA6C3] mr-2"></i>
@@ -115,13 +115,14 @@
                     </select>
                 </div>
 
-                <!-- Botones -->
+                <!-- Buttons / Botones -->
                 <div class="flex justify-end space-x-4 mt-8">
                     <a href="/admin" 
                        class="bg-[#2a652c] hover:bg-[#1a4a1c] text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
                        role="button">
                         Cancelar
                     </a>
+                    <!-- Create incident button / Botón de crear incidencia -->
                     <button type="submit" 
                             class="bg-[#165f7c] hover:bg-[#0d4259] text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
                         Crear Incidencia
