@@ -144,7 +144,9 @@
             <!-- Imagen de la máquina (Image of the machine)-->
             <div class="relative group">
               <img class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                src=<?= htmlspecialchars($machine['image']) ?> alt="Imagen Máquina">
+                src="<?= ($machine['image']) ?>" 
+                alt="Imagen de <?= ($machine['model']) ?>"
+                onerror="this.src='/uploads/default-machine.png'">
               <div class="absolute top-0 right-0 bg-gradient-to-r from-[#478249] to-[#3d7040] text-white px-4 py-1.5 m-3 rounded-full text-sm font-medium shadow-lg flex items-center space-x-2">
                 <span class="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
                 <span>Activa</span>
@@ -154,33 +156,33 @@
             <div class="p-6">
               <h1 class="text-[#5DA6C3] font-bold text-xl mb-3 flex items-center space-x-2">
                 <i class="fas fa-desktop text-lg"></i>
-                <span><?= htmlspecialchars($machine['model']) ?></span>
+                <span><?= ($machine['model']) ?></span>
               </h1>
               <!-- Detalles de la máquina (Machine details)-->
               <div class="space-y-3 text-[#C1D1D8] mb-6">
                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                   <i class="fas fa-barcode text-[#5DA6C3]"></i>
-                  <span>SN: <?= htmlspecialchars($machine['serial_number']) ?></span>
+                  <span>SN: <?= ($machine['serial_number']) ?></span>
                 </div>
                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                   <i class="fas fa-calendar text-[#5DA6C3]"></i>
-                  <span>Instalada: <?= htmlspecialchars($machine['installation_date']) ?></span>
+                  <span>Instalada: <?= ($machine['installation_date']) ?></span>
                 </div>
                 <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-[#1a3850]/50 transition-colors">
                   <i class="fas fa-tools text-[#5DA6C3]"></i>
-                  <span>Fabricante: <?= htmlspecialchars($machine['created_by']) ?></span>
+                  <span>Fabricante: <?= ($machine['created_by']) ?></span>
                 </div>
               </div>
               <!-- Botones de acción (Action Buttons)-->
               <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
-                <a href="/maquina_id?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
+                <a href="/maquina_id?machine_id=<?= ($machine['machine_id']) ?>"
                   class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
                   title="Ver detalles">
                   <i class="fas fa-info-circle text-lg group-hover:rotate-12 transition-transform"></i>
                   <span class="hidden sm:inline sm:ml-2">Detalles</span>
                 </a>
 
-                <a href="/editmachine?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
+                <a href="/editmachine?machine_id=<?= ($machine['machine_id']) ?>"
                   class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
                   title="Editar máquina">
                   <i class="fa-solid fa-pen-to-square text-lg"></i>
