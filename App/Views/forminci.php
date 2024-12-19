@@ -117,10 +117,13 @@
 
                 <!-- Botones -->
                 <div class="flex justify-end space-x-4 mt-8">
-                    <a href="/admin" class="bg-[#478249] hover:bg-[#054525] text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
+                    <a href="/admin" 
+                       class="bg-[#2a652c] hover:bg-[#1a4a1c] text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300"
+                       role="button">
                         Cancelar
                     </a>
-                    <button type="submit" class="bg-[#5DA6C3] hover:bg-[#4A8599] text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
+                    <button type="submit" 
+                            class="bg-[#165f7c] hover:bg-[#0d4259] text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
                         Crear Incidencia
                     </button>
                 </div>

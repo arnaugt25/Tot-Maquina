@@ -26,8 +26,7 @@ $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"],[[\App\Middleware\auth::class, "admin"]]);
 
 // Rutas de formularios e incidencias (Form and incident routes)
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"],[[\App\Middleware\auth::class, "isUser"]]);
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"],[[\App\Middleware\auth::class, "isUser"]]);
+$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->get("/admin/editinci/{id}", [\App\Controllers\ctrlListinci::class, "editMaintenance"],[[\App\Middleware\auth::class, "admin"]]);
 $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "updateMaintenance"],[[\App\Middleware\auth::class, "admin"]]);
@@ -41,7 +40,7 @@ $app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMac
 $app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
 $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"],[[\App\Middleware\auth::class, "isUser"]]);
-$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"],[[\App\Middleware\auth::class, "isUser"]]);
+$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"],[[\App\Middleware\auth::class, "isUser"]]);
 
 $app->get("/addtech", [\App\Controllers\ctrlAddTech::class, "index"],[[\App\Middleware\auth::class, "isUser"]]);
@@ -67,7 +66,11 @@ $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "
 $app->get("/maintenances/delete/{id}", [\App\Controllers\ctrlListinci::class, "deleteMaintenance"]);
 $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
+<<<<<<< HEAD
 $app->route("/notify", "\App\Controllers\ctrlNotification:getNotifications",[[\App\Middleware\auth::class, "isUser"]]);
+=======
+$app->route("/notify", [\App\Controllers\ctrlNotification::class, "getNotifications"]);
+>>>>>>> dee29478616f79652e102929963cd67b3359ab47
 
 // Rutas de mantenimiento e historial Maintenance routes and history
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);

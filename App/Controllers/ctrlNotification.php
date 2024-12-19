@@ -13,6 +13,16 @@ class CtrlNotification
         $response->set("notifications", $notification);
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+>>>>>>> dee29478616f79652e102929963cd67b3359ab47
         $response->setTemplate("notify.php");
         return $response;
     }

@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="es">
 
   <head>
@@ -37,7 +37,7 @@
         <div class="flex items-center justify-between h-20">
           <!-- Logo y nombre -->
           <div class="flex items-center space-x-4">
-            <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
+            <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
             <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
           </div>
 
@@ -115,6 +115,29 @@
             <?php endif; ?>
           </div>
         </div>
+
+        <!-- Botón menú móvil -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" 
+                  type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú de navegación"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+            <span class="sr-only">Abrir menú</span>
+            <svg class="h-6 w-6" 
+                 fill="none" 
+                 viewBox="0 0 24 24" 
+                 stroke="currentColor" 
+                 aria-hidden="true"
+                 role="presentation">
+              <path stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    stroke-width="2" 
+                    d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -181,6 +204,46 @@
 
         // Manejar coordenadas
         if (machine && machine.coordinates) {
+
+          const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
+
+          if (!isNaN(lat) && !isNaN(lng)) {
+            // Personalizar el icono del marcador para mejorar la accesibilidad
+            const customIcon = L.divIcon({
+              className: 'custom-div-icon',
+              html: `<div class="marker-pin" role="img" aria-label="Ubicación de ${machine.created_by}"></div>`,
+              iconSize: [30, 42],
+              iconAnchor: [15, 42]
+            });
+
+            // Crear marcador con el icono personalizado
+            const marker = L.marker([lat, lng], {
+              icon: customIcon,
+              keyboard: true,
+              title: `Ubicación de ${machine.created_by}`
+            }).addTo(map);
+
+            // Popup accesible con botón de cierre
+            const popupContent = document.createElement('div');
+            popupContent.setAttribute('role', 'dialog');
+            popupContent.setAttribute('aria-label', 'Información de la máquina');
+            popupContent.innerHTML = `
+              <div class="popup-content">
+                <h2 class="font-semibold">${machine.created_by}</h2>
+                <p>Serial: ${machine.serial_number}</p>
+                <p>Installed: ${machine.installation_date}</p>
+                <button type="button" 
+                        class="popup-close-button" 
+                        onclick="closePopup()"
+                        aria-label="Cerrar información">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            `;
+
+            marker.bindPopup(popupContent).openPopup();
+            map.setView([lat, lng], 15);
+
           try {
             const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
 
@@ -197,6 +260,7 @@
             }
           } catch (error) {
             console.error('Error al procesar coordenadas:', error);
+
           }
         }
 
@@ -205,6 +269,43 @@
           map.invalidateSize();
         });
       });
+
+      function closePopup() {
+        map.closePopup();
+      }
     </script>
+
+    <style>
+      .custom-div-icon {
+        background: none;
+        border: none;
+      }
+
+      .marker-pin {
+        width: 30px;
+        height: 42px;
+        background-color: #214969;
+        border: 2px solid #fff;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        margin: -38px -15px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      }
+
+      .popup-close-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 4px 8px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #333;
+      }
+      .popup-close-button:hover {
+        color: #000;
+      }
+    </style>
   </body>
   </html>

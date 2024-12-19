@@ -4,7 +4,15 @@ import 'leaflet/dist/leaflet.css';
 
 let map; // Variable global para el mapa (Variable global para el mapa)
 const customIcon = L.divIcon({
-    html: '<i class="fa-solid fa-location-dot" style="color: #214969;"></i>',
+    html: `
+        <div class="marker-pin" 
+             role="button"
+             aria-label="Ver ubicación de máquina"
+             tabindex="0">
+            <i class="fa-solid fa-location-dot" 
+               style="color: #214969;" 
+               aria-hidden="true"></i>
+        </div>`,
     iconSize: [20, 20],
     className: 'custom-div-icon',
     iconAnchor: [10, 20],
@@ -54,8 +62,24 @@ window.loadMarkers = function(machines) {
                     if (!isNaN(lat) && !isNaN(lng)) {
                         bounds.push([lat, lng]);
 
+                        const machineIcon = L.divIcon({
+                            html: `
+                                <div class="marker-pin" 
+                                     role="button"
+                                     aria-label="Ver ubicación de máquina ${machine.model}"
+                                     tabindex="0">
+                                    <i class="fa-solid fa-location-dot" 
+                                       style="color: #214969;" 
+                                       aria-hidden="true"></i>
+                                </div>`,
+                            iconSize: [20, 20],
+                            className: 'custom-div-icon',
+                            iconAnchor: [10, 20],
+                            popupAnchor: [0, -20]
+                        });
+
                         const marker = L.marker([lat, lng], {
-                            icon: customIcon,
+                            icon: machineIcon,
                             title: machine.model,
                             riseOnHover: true
                         }).addTo(markersLayer);

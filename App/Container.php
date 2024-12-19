@@ -46,10 +46,8 @@ class Container extends EmesetContainer {
             $config = $c->get("config");
             $notification = new \App\Models\Notification($db->getConnection());
             return $notification;
-
-        
+ 
         };
     }
-
 
 }
