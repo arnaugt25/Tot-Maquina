@@ -26,7 +26,7 @@ $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"],[[\App\Middleware\auth::class, "admin"]]);
 
 // Rutas de formularios e incidencias (Form and incident routes)
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"],[[\App\Middleware\auth::class, "isUser"]]);
+$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->get("/admin/editinci/{id}", [\App\Controllers\ctrlListinci::class, "editMaintenance"],[[\App\Middleware\auth::class, "admin"]]);
 $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "updateMaintenance"],[[\App\Middleware\auth::class, "admin"]]);
@@ -40,7 +40,7 @@ $app->post("/addmachine1", [\App\Controllers\ctrlFormMachine::class, "ctrladdMac
 $app->route("/addlist", [\App\Controllers\ctrlFormMachine::class, "ctrlListMachine"]);
 $app->get("/editmachine", [\App\Controllers\ctrlFormMachine::class, "editMachine"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->post("/updatemachine", [\App\Controllers\ctrlFormMachine::class, "updateMachine"],[[\App\Middleware\auth::class, "isUser"]]);
-$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"],[[\App\Middleware\auth::class, "isUser"]]);
+$app->get("/maquina_id", [\App\Controllers\ctrlFormMachine::class, "machineId"]);
 $app->route("/delete/{id}", [\App\Controllers\ctrlFormMachine::class, "deleteMachine"],[[\App\Middleware\auth::class, "isUser"]]);
 
 $app->get("/addtech", [\App\Controllers\ctrlAddTech::class, "index"],[[\App\Middleware\auth::class, "isUser"]]);
