@@ -12,7 +12,7 @@ class Container extends EmesetContainer {
         // Definir la conexiÃ³n a la base de datos
         $this["db"] = function($c) {
             $config = $c->get("config");
-            return(new \App\Models\Db(
+            return(new \App\Models\Db( 
                 $config["db"]["user"],
                 $config["db"]["pass"],
                 $config["db"]["name"],
