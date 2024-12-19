@@ -26,7 +26,6 @@ $app->route("/profile", [\App\Controllers\ctrlProfile::class, "profile"]);
 $app->route("/admin", [\App\Controllers\ctrlAdmin::class, "index"],[[\App\Middleware\auth::class, "admin"]]);
 
 // Rutas de formularios e incidencias (Form and incident routes)
-$app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "index"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->route("/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormInci"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->post("/incidencias/crear", [\App\Controllers\ctrlListinci::class, "create"],[[\App\Middleware\auth::class, "isUser"]]);
 $app->get("/admin/editinci/{id}", [\App\Controllers\ctrlListinci::class, "editMaintenance"],[[\App\Middleware\auth::class, "admin"]]);
@@ -67,7 +66,7 @@ $app->post("/maintenances/update/{id}", [\App\Controllers\ctrlListinci::class, "
 $app->get("/maintenances/delete/{id}", [\App\Controllers\ctrlListinci::class, "deleteMaintenance"]);
 $app->route("/listinci", [\App\Controllers\ctrlListinci::class, "index"]);
 $app->route("/maintenance", "\App\Controllers\ctrlMaintenance:index");
-$app->route("/notify", "\App\Controllers\ctrlNotification:index",[[\App\Middleware\auth::class, "isUser"]]);
+$app->route("/notify", [\App\Controllers\ctrlNotification::class, "getNotifications"]);
 
 // Rutas de mantenimiento e historial Maintenance routes and history
 $app->route("/maintenance", [\App\Controllers\ctrlMaintenances::class, "maintenance"]);
