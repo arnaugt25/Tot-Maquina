@@ -118,7 +118,7 @@
 
     <!-- Action buttons / Botones de acción -->
     <div class="mb-8 max-w-4xl mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
             <a href="/addmachine" 
                class="flex items-center justify-center px-4 py-3 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm">
                 <i class="fas fa-plus-circle mr-2"></i>
@@ -145,6 +145,7 @@
                 <span>Importar CSV</span>
             </button>
         </div>
+    </div>
     </div>
       <!-- Grid of cards / Grid de tarjetas -->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
