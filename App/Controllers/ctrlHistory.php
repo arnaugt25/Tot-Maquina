@@ -11,7 +11,7 @@ class ctrlHistory
         return $response;
     }
 
-    //Mostrar la info de del historial
+    // Controlador que muestra la info de del historial de dos modelos (Controller showing history information for two models)
     public function showhistory($request, $response, $container)
     {
         $idmaintenance = $request->getParam('id');
@@ -35,21 +35,10 @@ class ctrlHistory
         return $response;
     }
 
-
-    //Mostrar info de incidencia en el historial
-    // public function showMaintenances($request, $response, $container) {
-    //     $idmaintenance= $request->getParam('id');
-    //     $historyModel = $container->get("maintenance");
-    //     $history = $historyModel->searchMaintenance($idmaintenance);
-    //     //var_dump($history);
-    //     //die();
-    //     $response->set('infomaintenance', $history);
-    //     $response->setTemplate("history.php");
-    //     return $response;
-    // }
-
+    // Controlador para generar PDF del historial (Driver to generate PDF of history)
     public function generatePdf($request, $response, $container) {
         $idmaintenance = $request->getParam('id');
+        
         $historyModel = $container->get("Maintenances");
         $history = $historyModel->historyMaintenance($idmaintenance);
         $incidence = $historyModel->searchMaintenance($idmaintenance);
@@ -60,6 +49,11 @@ class ctrlHistory
         $response->set("incidencias",$incidence);
         // var_dump($response);
         // die();
+
+        // $response->setTemplate("history.php");
+        //$response->redirect("Location: /history1");
+        //$response->redirect("location: /history/".$idmaintenance);
+
         return $response;
         
     }
