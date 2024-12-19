@@ -1,28 +1,33 @@
+// Agrega listeners a los botones que disparan las notificaciones (Add listeners to buttons that trigger notifications)
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', function() {
+        // Obtiene el tipo de notificación (Gets the notification type)
         const tipo = this.getAttribute('data-tipo');
+        // Selecciona la plantilla toast 
         const toast = document.querySelector(`.toast.${tipo}`);
+        // Obtiener contenedor (Select the toast template)
         const contenedorToast = document.getElementById('contenedor-toast');
-        
-        // Clona el toast y lo agrega al contenedor
         const nuevoToast = toast.cloneNode(true);
         contenedorToast.appendChild(nuevoToast);
         
-        // Muestra el nuevo toast
+        // Hace visible el nuevo toast (Makes the new toast visible)
         nuevoToast.style.display = 'block'; 
         
-        // Oculta el toast después de 3 segundos
+        // Temporizador para eliminar el toast después de 3 segundos (Timer to remove toast after 3 seconds)
         setTimeout(() => {
             nuevoToast.style.display = 'none'; 
-            contenedorToast.removeChild(nuevoToast); // Elimina el toast del DOM
+            contenedorToast.removeChild(nuevoToast); 
         }, 3000);
     });
 });
 
+// Agrega listeners a los botones de cerrar (Add listeners to close buttons)
 document.querySelectorAll('.btn-cerrar').forEach(button => {
     button.addEventListener('click', function() {
+        // Encuentra el toast (Find the toast)
         const toast = this.closest('.toast');
-        toast.style.display = 'none'; // Oculta el toast al hacer clic en cerrar
-        toast.parentNode.removeChild(toast); // Elimina el toast del DOM
+        // Oculta y elimina el toast cuando se hace clic en botón de cerrar (Hide and remove the toast when the close button is clicked)
+        toast.style.display = 'none'; 
+        toast.parentNode.removeChild(toast); 
     });
 });

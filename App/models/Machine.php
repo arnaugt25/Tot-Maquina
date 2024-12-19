@@ -2,17 +2,23 @@
 
 namespace App\Models;
 
-class Machine extends Db
+use PDO;
+use PDOException;
+
+class Machine
 {
+    private $db;
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
+
     //Añadir màquina
     public function addMachine($data)
     {
-        $query = "INSERT INTO machine (model, created_by, serial_number, installation_date, coordinates,  image ) 
-
+        $stmt = "INSERT INTO machine (model, created_by, serial_number, installation_date, coordinates,  image ) 
                        VALUES (:model, :created_by, :serial_number, :installation_date, :coordinates, :image)";
-        //     var_dump($query);
-        //    die();
-        $stmt = $this->sql->prepare($query);
+        $stmt = $this->db->prepare($stmt);
         $result = $stmt->execute([
             ':model' => $data['model'],
             ':created_by' => $data['created_by'],
@@ -21,20 +27,16 @@ class Machine extends Db
             ':coordinates' => $data['coordinates'],
             ':image' => $data['image']
         ]);
-        //  var_dump($result);
-        //  die();
-        return $this->sql->lastInsertId();
+        return $this->db->lastInsertId();
     }
 
     public function listMachine()
     {
-        $query = "SELECT * FROM machine";
-        // var_dump($query);
-        // die();
-        $stmt = $this->sql->prepare($query);
+        $stmt = "SELECT * FROM machine";
+        $stmt = $this->db->prepare($stmt);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
+    }   
 
     public function editMachine($data)
     {
@@ -43,7 +45,7 @@ class Machine extends Db
             return $this->getByIdMachine($data);
         }
         // Si es un array, actualizar la máquina
-        $query = "UPDATE machine 
+        $stmt = "UPDATE machine 
                  SET model = :model, 
                      created_by = :created_by, 
                      serial_number = :serial_number, 
@@ -51,9 +53,7 @@ class Machine extends Db
                      coordinates = :coordinates,
                      image = :image
                  WHERE machine_id = :machine_id";
-        $stmt = $this->sql->prepare($query);
-        // var_dump($data);
-        // die();
+        $stmt = $this->db->prepare($stmt);
         $result = $stmt->execute([
             ':machine_id' => $data['machine_id'],
             ':model' => $data['model'],
@@ -69,8 +69,8 @@ class Machine extends Db
 
     public function getByIdMachine($idmachine)
     {
-        $query = "SELECT * FROM Machine where machine_id = :machine_id";
-        $stmt = $this->sql->prepare($query);
+        $stmt = "SELECT * FROM Machine where machine_id = :machine_id";
+        $stmt = $this->db->prepare($stmt);
         $stmt->bindParam(':machine_id', $idmachine, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -78,22 +78,17 @@ class Machine extends Db
 
 
     public function getAllMachines() {
-        try {
-            $query = "SELECT * FROM machine ORDER BY machine_id DESC";
-            $stmt = $this->sql->prepare($query);
+            $stmt = "SELECT * FROM machine ORDER BY machine_id DESC";
+            $stmt = $this->db->prepare($stmt);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting machines: " . $e->getMessage());
-            throw new \Exception("Error al obtener las máquinas");
-        }
     }
 
     //Buscar máquina por ID
     public function getMachineById($machine_id)
     {
-        $query = "SELECT * FROM machine WHERE machine_id = :machine_id";
-        $stmt = $this->sql->prepare($query);
+        $stmt = "SELECT * FROM machine WHERE machine_id = :machine_id";
+        $stmt = $this->db->prepare($stmt);
         $stmt->execute([':machine_id' => $machine_id]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
@@ -101,8 +96,8 @@ class Machine extends Db
     //Eliminar Máquina
     public function deleteMachine($machine_id)
     {
-        $query = "DELETE FROM machine WHERE machine_id = :machine_id";
-        $stmt = $this->sql->prepare($query);
+        $stmt = "DELETE FROM machine WHERE machine_id = :machine_id";
+        $stmt = $this->db->prepare($stmt);
         $result = $stmt->execute([':machine_id' => $machine_id]);
         return true;
     }
@@ -110,24 +105,26 @@ class Machine extends Db
     //Buscador de máquina modelo
     public function searchMachine($query) {
         $searchTerm = "%{$query}%";
-        $sql = "SELECT * FROM machine 
+        $stmt = "SELECT * FROM machine 
                 WHERE model LIKE :query 
                 OR serial_number LIKE :query 
                 OR created_by LIKE :query";
         
-        $stmt = $this->sql->prepare($sql);
+        $stmt = $this->db->prepare($stmt);
         $stmt->execute([':query' => $searchTerm]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function assignTechnician($machineId, $technicianId) {
-        try {
-            $query = "UPDATE machine SET user_id = ? WHERE machine_id = ?";
-            $stmt = $this->sql->prepare($query);
-            return $stmt->execute([$technicianId, $machineId]);
-        } catch (\PDOException $e) {
-            error_log("Error assigning technician: " . $e->getMessage());
-            return false;
-        }
+        $stmt = "UPDATE machine SET user_id = ? WHERE machine_id = ?";
+        $stmt = $this->db->prepare($stmt);
+        return $stmt->execute([$technicianId, $machineId]);
+    }
+
+    public function countMachinesByUserId($user_id) {
+        $stmt = "SELECT COUNT(*) FROM machine WHERE user_id = :user_id";
+        $stmt = $this->db->prepare($stmt);
+        $stmt->execute([':user_id' => $user_id]);
+        return $stmt->fetchColumn();
     }
 }

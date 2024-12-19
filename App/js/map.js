@@ -2,9 +2,17 @@ import L from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
 
-let map; // Variable global para el mapa
+let map; // Variable global para el mapa (Variable global para el mapa)
 const customIcon = L.divIcon({
-    html: '<i class="fa-solid fa-location-dot" style="color: #214969;"></i>',
+    html: `
+        <div class="marker-pin" 
+             role="button"
+             aria-label="Ver ubicación de máquina"
+             tabindex="0">
+            <i class="fa-solid fa-location-dot" 
+               style="color: #214969;" 
+               aria-hidden="true"></i>
+        </div>`,
     iconSize: [20, 20],
     className: 'custom-div-icon',
     iconAnchor: [10, 20],
@@ -35,12 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Función para cargar los marcadores
+// Función para cargar los marcadores (Función para cargar los marcadores)
 window.loadMarkers = function(machines) {
     if (!machines || machines.length === 0) {
         return;
     }
-
     const bounds = [];
     const markersLayer = L.featureGroup().addTo(map);
     
@@ -55,8 +62,24 @@ window.loadMarkers = function(machines) {
                     if (!isNaN(lat) && !isNaN(lng)) {
                         bounds.push([lat, lng]);
 
+                        const machineIcon = L.divIcon({
+                            html: `
+                                <div class="marker-pin" 
+                                     role="button"
+                                     aria-label="Ver ubicación de máquina ${machine.model}"
+                                     tabindex="0">
+                                    <i class="fa-solid fa-location-dot" 
+                                       style="color: #214969;" 
+                                       aria-hidden="true"></i>
+                                </div>`,
+                            iconSize: [20, 20],
+                            className: 'custom-div-icon',
+                            iconAnchor: [10, 20],
+                            popupAnchor: [0, -20]
+                        });
+
                         const marker = L.marker([lat, lng], {
-                            icon: customIcon,
+                            icon: machineIcon,
                             title: machine.model,
                             riseOnHover: true
                         }).addTo(markersLayer);
@@ -99,7 +122,7 @@ window.loadMarkers = function(machines) {
     }
 };
 
-// Funciones del modal
+// Funciones del modal (Functions of the modal)
 window.abrirMapaModal = function() {
     const modal = document.getElementById('mapaModal');
     if (modal) {
@@ -113,6 +136,7 @@ window.abrirMapaModal = function() {
     }
 };
 
+// Funciones para cerrar el mapa del modal (Functions to close the modal map)
 window.cerrarMapaModal = function() {
     const modal = document.getElementById('mapaModal');
     if (modal) {

@@ -15,7 +15,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!-- Enlaces de navegación (Navigation links) -->
@@ -39,7 +39,7 @@
                   <i class="fas fa-cog mr-2"></i>Admin panel
                 </a>
               <?php endif; ?>
-              <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <a href="/logout" class="bg-[#b30f0f] hover:bg-[#8b0000] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                 <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
               </a>
             <?php else: ?>
@@ -86,7 +86,7 @@
                 <i class="fas fa-cog mr-2"></i>Admin panel
               </a>
             <?php endif; ?>
-            <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
+            <a href="/logout" class="block px-3 py-2 bg-[#b30f0f] text-white hover:bg-[#8b0000] rounded-md transition-colors duration-300">
               <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
             </a>
           <?php else: ?>
@@ -235,29 +235,25 @@
       </div>
     </div>
   </div>
-</body>
-<script>
-  function confirmDeleteMachine(machine_id, model) {
-    if (confirm(`¿Estás seguro que deseas eliminar al usuario ${model}? Esta acción no se puede deshacer.`)) {
-      window.location.href = `/delete/${machine_id}`;
+  <!-- Scripts - Movidos dentro del body -->
+  <script>
+    function confirmDeleteMachine(machine_id, model) {
+      if (confirm(`¿Estás seguro que deseas eliminar al usuario ${model}? Esta acción no se puede deshacer.`)) {
+        window.location.href = `/delete/${machine_id}`;
+      }
     }
-  }
-  function showMachineQRCode(machineId) {
-    window.location.href = `/generate_machine_qr/${machineId}`;
-  }
-  function closePopup() {
-    // Función para cerrar el popup
-    map.closePopup();
-  }
-
-  // Asegurarse de que el botón del menú móvil actualiza su estado
-  document.querySelector('[aria-label="Abrir menú de navegación"]').addEventListener('click', function() {
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !isExpanded);
-    // Aquí va la lógica para mostrar/ocultar el menú
-  });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    function showMachineQRCode(machineId) {
+      window.location.href = `/generate_machine_qr/${machineId}`;
+    }
+    
+    function closePopup() {
+      // Función para cerrar el popup
+      map.closePopup();
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
 </html>

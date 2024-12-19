@@ -31,13 +31,13 @@
     </style>
   </head>
 
-  <body class="bg-[#C1D1D8] text-gray-800">
+  <body class="bg-[#C1D1D8] text-gray-800 min-h-screen flex flex-col">
     <header class="bg-[#0C0C04] text-white">
       <nav class="container mx-auto px-6">
         <div class="flex items-center justify-between h-20">
           <!-- Logo y nombre -->
           <div class="flex items-center space-x-4">
-            <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+            <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
             <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
           </div>
 
@@ -75,7 +75,11 @@
           </div>
           <!-- Botón menú móvil -->
           <div class="md:hidden">
-            <button type="button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+            <button id="mobile-menu-button" type="button" 
+                    class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                    aria-label="Abrir menú"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -84,7 +88,7 @@
         </div>
 
         <!-- Menú móvil -->
-        <div class="hidden md:hidden">
+        <div id="mobile-menu" class="hidden md:hidden">
           <div class="px-2 pt-2 pb-3 space-y-1">
             <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
               <i class="fa-solid fa-house"></i> Inicio
@@ -111,88 +115,71 @@
             <?php endif; ?>
           </div>
         </div>
+
         <!-- Botón menú móvil -->
         <div class="md:hidden">
-          <button id="mobile-menu-button" type="button" 
+          <button id="mobile-menu-button" 
+                  type="button" 
                   class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
-                  aria-label="Abrir menú"
+                  aria-label="Abrir menú de navegación"
                   aria-expanded="false"
                   aria-controls="mobile-menu">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <span class="sr-only">Abrir menú</span>
+            <svg class="h-6 w-6" 
+                 fill="none" 
+                 viewBox="0 0 24 24" 
+                 stroke="currentColor" 
+                 aria-hidden="true"
+                 role="presentation">
+              <path stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    stroke-width="2" 
+                    d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Cuadro de información -->
-        <div class="bg-[#214969] p-6 rounded-lg shadow-lg text-white">
-          <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
-          <div class="space-y-4">
-            <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= ($machine['created_by']) ?></p>
-            <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= ($machine['installation_date']) ?></p>
-            <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= ($machine['serial_number']) ?></p>
+    <main class="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Cuadro de información -->
+          <div class="bg-[#214969] p-4 sm:p-6 rounded-lg shadow-lg text-white">
+            <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
+            <div class="space-y-4">
+              <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= htmlspecialchars($machine['created_by']) ?></p>
+              <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= htmlspecialchars($machine['installation_date']) ?></p>
+              <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= htmlspecialchars($machine['serial_number']) ?></p>
+            </div>
           </div>
-        </div>
-      <!-- Menú móvil -->
-      <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-house"></i> Inicio
-          </a>
-          <a href="/addlist" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-            <i class="fa-solid fa-desktop"></i> Máquinas
-          </a>
-          <?php if (isset($_SESSION['user'])): ?>
-            <a href="/profile" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
-              <i class="fa-solid fa-address-card"></i> Perfil
-            </a>
-            <?php if ($_SESSION['user']['role'] == 'admin'): ?>
-              <a href="/admin" class="block px-3 py-2 bg-[#214969] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-                <i class="fas fa-cog mr-2"></i>Admin panel
-              </a>
-            <?php endif; ?>
-            <a href="/logout" class="block px-3 py-2 bg-[#d32f2f] text-white hover:bg-[#b71c1c] rounded-md transition-colors duration-300">
-              <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
-            </a>
-          <?php else: ?>
-            <a href="/login" class="block px-3 py-2 bg-[#5DA6C3] text-white hover:bg-[#478249] rounded-md transition-colors duration-300">
-              <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
-            </a>
-          <?php endif; ?>
-        </div>
-      </div>
-      <!-- Imagen de la máquina -->
-      <div class="flex justify-between items-center mb-6">
-          <div class="relative group mb-6">
-            <img class="w-full h-64 object-cover rounded-lg shadow-lg transition-all duration-300 group-hover:scale-105"
+
+          <!-- Imagen de la máquina -->
+          <div class="relative group">
+            <img class="w-full h-48 sm:h-64 object-cover rounded-lg shadow-lg transition-all duration-300 group-hover:scale-105"
               src="<?= !empty($machine['image']) ? htmlspecialchars($machine['image']) : '/uploads/default-machine.jpg' ?>" 
               alt="Máquina <?= htmlspecialchars($machine['model']) ?> - <?= htmlspecialchars($machine['serial_number']) ?>"
+              loading="lazy"
             >
           </div>
         </div>
 
         <!-- Botón de Ver Historial -->
-        <div class="mb-8">
+        <div class="flex justify-center my-8">
           <a href="/history/<?= htmlspecialchars($machine['machine_id']) ?>"
-            class="w-1/2 mx-auto bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center inline-block">
+            class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-20 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center">
             <i class="fas fa-history mr-2"></i>
             Ver historial
           </a>
         </div>
 
-        
-      <!-- Mapa de ubicación -->
-      <div class="mt-16 w-[90vw] relative left-0 -mx-[45vw]">
-        <div class="bg-[#214969] p-6 rounded-lg shadow-lg text-white mb-4">
-          <h2 class="text-2xl font-semibold text-[#5DA6C3]">Ubicación de la máquina</h2>
-          <div id="individualMap" class="w-full h-[400px]"></div>
+        <!-- Mapa de ubicación -->
+        <div class="w-full">
+          <div class="bg-[#214969] p-4 sm:p-6 rounded-lg shadow-lg text-white">
+            <h2 class="text-xl sm:text-2xl font-semibold text-[#5DA6C3] mb-4">Ubicación de la máquina</h2>
+            <div id="individualMap" class="w-full h-[300px] sm:h-[400px] rounded-lg overflow-hidden"></div>
+          </div>
         </div>
-        
-      </div>
       </div>
     </main>
 
@@ -205,32 +192,120 @@
     <script>
       const machine = <?php echo json_encode($machine); ?>;
       document.addEventListener('DOMContentLoaded', function() {
-        // Initialize map
+        // Inicializar mapa
         const map = L.map('individualMap').setView([39.5696, 2.6502], 12);
 
-        // Add OpenStreetMap tiles
+        // Añadir tiles con mejor manejo de errores
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: ' OpenStreetMap contributors'
+          attribution: '© OpenStreetMap contributors',
+          maxZoom: 19,
+          minZoom: 3
         }).addTo(map);
 
-        // Parse coordinates from the string format
+        // Manejar coordenadas
         if (machine && machine.coordinates) {
+
           const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
 
           if (!isNaN(lat) && !isNaN(lng)) {
-            const marker = L.marker([lat, lng]).addTo(map);
-            marker.bindPopup(`
+            // Personalizar el icono del marcador para mejorar la accesibilidad
+            const customIcon = L.divIcon({
+              className: 'custom-div-icon',
+              html: `<div class="marker-pin" role="img" aria-label="Ubicación de ${machine.created_by}"></div>`,
+              iconSize: [30, 42],
+              iconAnchor: [15, 42]
+            });
+
+            // Crear marcador con el icono personalizado
+            const marker = L.marker([lat, lng], {
+              icon: customIcon,
+              keyboard: true,
+              title: `Ubicación de ${machine.created_by}`
+            }).addTo(map);
+
+            // Popup accesible con botón de cierre
+            const popupContent = document.createElement('div');
+            popupContent.setAttribute('role', 'dialog');
+            popupContent.setAttribute('aria-label', 'Información de la máquina');
+            popupContent.innerHTML = `
               <div class="popup-content">
-                <h3 class="font-semibold">${machine.created_by}</h3>
+                <h2 class="font-semibold">${machine.created_by}</h2>
                 <p>Serial: ${machine.serial_number}</p>
                 <p>Installed: ${machine.installation_date}</p>
+                <button type="button" 
+                        class="popup-close-button" 
+                        onclick="closePopup()"
+                        aria-label="Cerrar información">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-            `).openPopup();
+            `;
+
+            marker.bindPopup(popupContent).openPopup();
             map.setView([lat, lng], 15);
+
+          try {
+            const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
+
+            if (!isNaN(lat) && !isNaN(lng)) {
+              const marker = L.marker([lat, lng]).addTo(map);
+              marker.bindPopup(`
+                <div class="popup-content p-2">
+                  <h3 class="font-semibold text-sm">${machine.created_by}</h3>
+                  <p class="text-xs">Serial: ${machine.serial_number}</p>
+                  <p class="text-xs">Installed: ${machine.installation_date}</p>
+                </div>
+              `).openPopup();
+              map.setView([lat, lng], 15);
+            }
+          } catch (error) {
+            console.error('Error al procesar coordenadas:', error);
+
           }
         }
-      });
-    </script>
-  </body>
 
+        // Manejar resize del mapa
+        window.addEventListener('resize', function() {
+          map.invalidateSize();
+        });
+      });
+
+      function closePopup() {
+        map.closePopup();
+      }
+    </script>
+
+    <style>
+      .custom-div-icon {
+        background: none;
+        border: none;
+      }
+
+      .marker-pin {
+        width: 30px;
+        height: 42px;
+        background-color: #214969;
+        border: 2px solid #fff;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        margin: -38px -15px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      }
+
+      .popup-close-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 4px 8px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #333;
+      }
+      .popup-close-button:hover {
+        color: #000;
+      }
+    </style>
+  </body>
   </html>

@@ -6,7 +6,7 @@ namespace App\Controllers;
 class ctrlListinci{
     
     public function index($request, $response, $container){
-        $maintenances = $container->get('maintenance');
+        $maintenances = $container->get('Maintenances');
         $maintenance = $maintenances->getMaintenances();
         $response->set("maintenances", $maintenance);
         $response->setTemplate("listinci.php");
@@ -16,7 +16,7 @@ class ctrlListinci{
     //Crear incidencia (Create an incident)
     public function create($request, $response, $container){
         $crear = $_POST;
-        $maintenanceModel = $container->get("maintenance");
+        $maintenanceModel = $container->get("Maintenances");
         $maintenanceModel-> addMaintenance($crear);
         $response->redirect("location: /listinci");
         return $response;
@@ -30,13 +30,13 @@ class ctrlListinci{
         $maintenanceid = $request->getparam("id");
         //var_dump($maintenanceid);
         //die();
-        $machineModel = $container->get("maintenance");
+        $machineModel = $container->get("Maintenances");
         $maintenance = $machineModel->getMaintenanceById($maintenanceid);
         $UsersModel = $container->get("Users");
         $Users = $UsersModel->getAllTechnicians("username");
 
         $response->set("machine", $machine);
-        $response->set('maintenance', $maintenance);
+        $response->set('Maintenances', $maintenance);
         $response->set('Users', $Users);
         $response->setTemplate("editinci.php");
         return $response;
@@ -46,7 +46,7 @@ class ctrlListinci{
     public function updateMaintenance($request, $response, $container)
     {
         $maintenanceid = $request->getparam("id");
-        $maintenanceModel = $container->get("maintenance");
+        $maintenanceModel = $container->get("Maintenances");
 
         $data = [
             'maintenance_id' => $maintenanceid,
@@ -66,9 +66,17 @@ class ctrlListinci{
     //Eliminar incidencia (Delete issue)
     public function deleteMaintenance($request, $response, $container) {
         $maintenanceid = $request->getParam('id');
-        $maintenancesModel = $container->get("maintenance");
+        $maintenancesModel = $container->get("Maintenances");
         $result = $maintenancesModel->deleteMaintenances($maintenanceid);
         $response->redirect("Location: /listinci");
         return $response;
+    }
+    public function searchMaintenance($request, $response, $container) {
+        $query = $request->get(INPUT_GET, "query");
+        $maintenanceModel = $container->get("Maintenances");
+        $results = $maintenanceModel->searchMaintenance($query);
+        header('Content-Type: application/json');
+        echo json_encode($results);
+        exit;
     }
 }

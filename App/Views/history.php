@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Historial</title>
@@ -19,7 +18,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo y nombre -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/images/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!-- Enlaces de navegación -->
@@ -44,9 +43,11 @@
               </a>
             </li>
             <li>
-              <a href="" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+
+              <a href="/notify" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+
                 <i class="fa-solid fa-envelope"></i> Notificaciones
-                <input type="button" id="viewAlerta" value="">
+                <input type="button" id="viewAlerta" value="" aria-label="Ver alertas" class="sr-only">
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </a>
             </li>
@@ -106,15 +107,15 @@
       <nav class="flex mb-8" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
           <li class="inline-flex items-center">
-            <a href="/" class="text-[#214969] hover:text-[#5DA6C3] transition-colors">
+            <a href="/" class="text-[#163e5e] hover:text-[#5DA6C3] transition-colors">
               <i class="fa-solid fa-house"></i>
               <span class="ml-1 text-sm font-medium">Inicio</span>
             </a>
           </li>
           <li>
             <div class="flex items-center">
-              <i class="fa-solid fa-chevron-right text-gray-400 mx-2"></i>
-              <span class="text-sm font-medium text-gray-500">Historial</span>
+              <i class="fa-solid fa-chevron-right text-[#353c4a] mx-2"></i>
+              <span class="text-sm font-medium text-[#353c4a]">Historial</span>
             </div>
           </li>
         </ol>
@@ -128,7 +129,7 @@
           <a id="downloadPdf"
             href="/pdf/<?= ($machine['machine_id'] ?? '') ?>"
             data-machine-id="<?= ($machine['machine_id'] ?? '') ?>"
-            class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center">
+            class="bg-[#2a652c] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center">
             <i class="fas fa-file-pdf mr-2"></i> Descargar PDF
           </a>
 
@@ -152,13 +153,13 @@
               <h2 class="text-xl font-semibold text-[#214969] mb-4">Mantenimiento <?= $contador++ ?></h2>
               <div class="space-y-4">
                 <div>
-                  <h3 class="text-sm font-medium text-gray-500">Máquina</h3>
+                  <h3 class="text-sm font-medium text-[#525967]">Máquina</h3>
                   <p class="mt-1 text-[#214969]">
                     <?= htmlspecialchars($historial['model']) ?>
                   </p>
                 </div>
                 <div>
-                  <h3 class="text-sm font-medium text-gray-500">Tipo</h3>
+                  <h3 class="text-sm font-medium text-[#525967]">Tipo</h3>
                   <p class="mt-1 text-[#214969]">
                     <?= htmlspecialchars($historial['type']) ?>
                   </p>
@@ -169,13 +170,13 @@
               <h2 class="text-xl font-semibold text-[#214969] mb-4">Detalles</h2>
               <div class="space-y-4">
                 <div>
-                  <h3 class="text-sm font-medium text-gray-500">Fecha de Instalación</h3>
+                  <h3 class="text-sm font-medium text-[#525967]">Fecha de Instalación</h3>
                   <p class="mt-1 text-[#214969]">
                     <?= htmlspecialchars($historial['installation_date']) ?>
                   </p>
                 </div>
                 <div>
-                  <h3 class="text-sm font-medium text-gray-500">Técnico Responsable</h3>
+                  <h3 class="text-sm font-medium text-[#525967]">Técnico Responsable</h3>
                   <p class="mt-1 text-[#214969]">
                     <?= htmlspecialchars($historial['name']) ?>
                   </p>

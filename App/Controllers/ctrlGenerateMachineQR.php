@@ -5,7 +5,7 @@ use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 
-class CtrlGenerateMachineQR
+class ctrlGenerateMachineQR
 {
     //Generar el QR de máquina (Generate the machine QR)
     public function generateQR($request, $response, $container)
@@ -14,7 +14,7 @@ class CtrlGenerateMachineQR
         error_log("ID de máquina recibido: " . $machineId);
 
         if ($machineId) {
-            $data = '/machine' . $machineId; 
+            $data = '/generateMachineQR/{machine_id}' . $machineId; 
             $options = new QROptions([
                 'version'    => 7,
                 'outputType' => QRCode::OUTPUT_MARKUP_SVG,

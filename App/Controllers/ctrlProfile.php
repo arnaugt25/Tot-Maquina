@@ -7,6 +7,7 @@ class ctrlProfile {
     //Mostrar perfil (Show profile)
     public function profile($request, $response, $container){
         $user = $request->get("SESSION", "user");
+        $machineModel = $container->get("Machine");
         // Verificar si el email existe (Check if the email exists)
         if (!isset($user['email'])) {
             $user['email'] = 'No disponible';
@@ -27,7 +28,11 @@ class ctrlProfile {
                 $user['profile_pic'] = $userData['profile_pic'];
             }
         }
+        // Obtener el conteo de máquinas asignadas
+        $machineCount = $machineModel->countMachinesByUserId($user['user_id']);
+    
         $response->set("user", $user);
+        $response->set("machineCount", $machineCount);
         $response->setTemplate("profile.php");
         return $response;
 
@@ -61,7 +66,6 @@ class ctrlProfile {
 
     //Procesador de editar perfil (Edit Profile Processor)
     public function processEditProfile($request, $response, $container) {
-        // try {
             $user = $request->get("SESSION", "user");
             $data = [
                 'name' => $_POST['name'] ?? '',
@@ -102,12 +106,6 @@ class ctrlProfile {
                 $response->redirect("Location: /profile");
                 return $response;
             }
-
-        // } catch (\Exception $e) {
-        //     $response->setSession("error", $e->getMessage());
-        //     $response->redirect("Location: /editprofile");
-        //     return $response;
-        // }
     }
 
 }
