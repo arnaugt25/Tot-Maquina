@@ -31,7 +31,7 @@ class Maintenances
 
     // SELECT para obtener todos los mantenimientos con información relacionada
     public function getMaintenances(){
-        $stmt = $this->db->prepare("SELECT m.*,u.username as technician_name FROM maintenance m left join user u on m.user_id =u.user_id   ");
+        $stmt = $this->db->prepare("SELECT * FROM maintenance");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }
@@ -71,48 +71,25 @@ class Maintenances
                       FROM maintenance m
                       JOIN user u ON m.user_id = u.user_id
                       WHERE m.machine_id = :machine_id
-<<<<<<< HEAD
-                      ORDER BY m.assigned_date DESC";
-
-            $stmt = $this->sql->prepare($query);
-            $stmt->execute([':machine_id' => $machine_id]);
-
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting machine maintenances: " . $e->getMessage());
-            throw new \Exception("Error al obtener los mantenimientos de la máquina");
-        }
-=======
                       ORDER BY m.assigned_date DESC);");
         $stmt->bindParam(':machine_id', $machine_id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
->>>>>>> c8ee088610f82ccc35b76f6944816a832c6758ed
     }
 
     public function editMaintenance($data)
     {
 
-<<<<<<< HEAD
-        $query = "UPDATE maintenance 
-=======
         $stmt = $this->db->prepare("UPDATE maintenance 
->>>>>>> c8ee088610f82ccc35b76f6944816a832c6758ed
                  SET machine_id = :machine_id,
                      description = :description, 
                      user_id = :user_id, 
                      assigned_date = :assigned_date,
                      priority = :priority,
                      type = :type
-<<<<<<< HEAD
-                 WHERE maintenance_id = :maintenance_id";
-
-        $stmt = $this->sql->prepare($query);
-=======
                  WHERE maintenance_id = :maintenance_id");
 
         $stmt = $this->db->prepare($stmt);
->>>>>>> c8ee088610f82ccc35b76f6944816a832c6758ed
 
         $result = $stmt->execute([
             ':machine_id' => $data['machine_id'],
@@ -148,23 +125,6 @@ class Maintenances
         INNER JOIN user u ON u.user_id = m.user_id WHERE ma.machine_id = :machine_id");
         $stmt->bindParam(':machine_id', $idmaintenance, PDO::PARAM_INT);
         $stmt->execute();
-<<<<<<< HEAD
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-        //return $stmt->fetch(\PDO::FETCH_ASSOC);
-    }
-
-    //Consulta para buscar la incidencia en la base de datos
-    public function searchMaintenance($idmaintenance) {
-        $query = "SELECT maintenance_id, description, assigned_date, machine_id FROM maintenance WHERE machine_id = :machine_id"; 
-        $stmt = $this->sql->prepare($query);
-        $stmt->bindParam(':machine_id', $idmaintenance, \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-}
-=======
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }
 
@@ -180,8 +140,3 @@ class Maintenances
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }
     }
-<<<<<<< HEAD
-
->>>>>>> c8ee088610f82ccc35b76f6944816a832c6758ed
-=======
->>>>>>> a72ba2e953d16b8b851e5fc14a403364b60224fc
