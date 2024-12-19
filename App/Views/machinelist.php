@@ -105,34 +105,31 @@
   <div class="container mx-auto px-4 py-8 max-w-7xl">
     <!-- Buscador y botón de importación (Search and import button) -->
     <div class="mb-8 max-w-4xl mx-auto">
-        <div class="relative flex space-x-4">
+        <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+            <!-- Buscador -->
             <div class="relative flex-1">
-              <label for="searchMachine" class="sr-only">Buscar máquina</label>
-                <input type="text" id="searchMachine" name="searchMachine"class="w-full pl-12 pr-6 py-4 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] text-lg"
-                placeholder="Buscar máquina..." aria-label="Buscar máquina" >
-              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3] text-xl"></i>
-              </div>
+                <label for="searchMachine" class="sr-only">Buscar máquina</label>
+                <input type="text" id="searchMachine" name="searchMachine" 
+                    class="w-full pl-12 pr-6 py-3 md:py-4 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] text-base md:text-lg"
+                    placeholder="Buscar máquina..." aria-label="Buscar máquina">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3] text-lg md:text-xl"></i>
+                </div>
             </div>
-            <!-- Botón de Añadir Incidencia (Add Incident Button)-->
-            <div class="relative">
+            <!-- Grupo de botones -->
+            <div class="flex flex-wrap gap-2 sm:flex-nowrap">
                 <a href="/forminci" 
-                   class="flex items-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
+                   class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
                     <i class="fas fa-exclamation-circle mr-2"></i>
                     <span>Añadir Incidencia</span>
                 </a>
-            </div>
-            <!-- Botón de importación CSV (CSV Import Button)-->
-            <div class="relative">
-                <button onclick="showCSVModal()" class="flex items-center px-4 py-3 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md"
-                  aria-label="Importar archivo CSV">
+                <button onclick="showCSVModal()" 
+                        class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
                     <i class="fas fa-file-csv mr-2"></i>
                     <span>Importar CSV</span>
                 </button>
-            </div>
-            <div class="relative">
                 <a href="/addtech" 
-                   class="flex items-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md">
+                   class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
                     <i class="fas fa-exclamation-circle mr-2"></i>
                     <span>Añadir Técnico</span>
                 </a>
@@ -177,26 +174,31 @@
               <!-- Botones de acción (Action Buttons)-->
               <div class="flex justify-between items-center pt-2 border-t border-[#2a5475]/30">
                 <a href="/maquina_id?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
-                  class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
-                  <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
-                  <span>Detalles</span>
+                  class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
+                  title="Ver detalles">
+                  <i class="fas fa-info-circle text-lg group-hover:rotate-12 transition-transform"></i>
+                  <span class="hidden sm:inline sm:ml-2">Detalles</span>
                 </a>
+
                 <a href="/editmachine?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>"
-                  class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <span>Editar</span>
+                  class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
+                  title="Editar máquina">
+                  <i class="fa-solid fa-pen-to-square text-lg"></i>
+                  <span class="hidden sm:inline sm:ml-2">Editar</span>
                 </a>
+
                 <button onclick="confirmDeleteMachine(<?= $machine['machine_id'] ?>, '<?= htmlspecialchars($machine['model'], ENT_QUOTES) ?>')"
-                  class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
+                  class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
                   title="Eliminar máquina">
-                  <i class="fas fa-trash"></i>
-                  <span>Eliminar</span>
+                  <i class="fas fa-trash text-lg"></i>
+                  <span class="hidden sm:inline sm:ml-2">Eliminar</span>
                 </button>
-                <!-- QR -->
+
                 <button onclick="showMachineQRCode(<?= $machine['machine_id'] ?>)"
-                  class="bg-gradient-to-r from-[#577788] to-[#4a6573] text-white py-2.5 px-5 rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 text-sm font-medium shadow-md hover:shadow-xl flex items-center space-x-2 group"
+                  class="flex items-center justify-center p-2.5 bg-gradient-to-r from-[#577788] to-[#4a6573] text-white rounded-lg hover:from-[#132048] hover:to-[#1c2d5f] transition-all duration-300 shadow-md hover:shadow-xl group"
                   title="Generar QR">
-                  <i class="fas fa-qrcode"></i>
+                  <i class="fas fa-qrcode text-lg"></i>
+                  <span class="hidden sm:inline sm:ml-2">QR</span>
                 </button>
               </div>
             </div>

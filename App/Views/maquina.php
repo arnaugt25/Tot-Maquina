@@ -73,18 +73,17 @@
               <?php endif; ?>
             </div>
           </div>
-          <!-- Botón menú móvil -->
-          <div class="md:hidden">
-            <button id="mobile-menu-button" type="button" 
-                    class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
-                    aria-label="Abrir menú"
-                    aria-expanded="false"
-                    aria-controls="mobile-menu">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+
+          <!-- Único botón de menú móvil -->
+          <button id="mobile-menu-button" 
+                  class="md:hidden text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú de navegación"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
 
         <!-- Menú móvil -->
@@ -115,30 +114,7 @@
             <?php endif; ?>
           </div>
         </div>
-
-        <!-- Botón menú móvil -->
-        <div class="md:hidden">
-          <button id="mobile-menu-button" 
-                  type="button" 
-                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
-                  aria-label="Abrir menú de navegación"
-                  aria-expanded="false"
-                  aria-controls="mobile-menu">
-            <span class="sr-only">Abrir menú</span>
-            <svg class="h-6 w-6" 
-                 fill="none" 
-                 viewBox="0 0 24 24" 
-                 stroke="currentColor" 
-                 aria-hidden="true"
-                 role="presentation">
-              <path stroke-linecap="round" 
-                    stroke-linejoin="round" 
-                    stroke-width="2" 
-                    d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
+      </nav>
     </header>
 
     <main class="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
