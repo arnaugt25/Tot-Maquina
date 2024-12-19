@@ -124,6 +124,7 @@
           <div class="bg-[#214969] p-4 sm:p-6 rounded-lg shadow-lg text-white">
             <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-[#5DA6C3]">Información de la máquina</h2>
             <div class="space-y-4">
+              <p><span class="font-medium text-[#5DA6C3]">Modelo: </span><?= htmlspecialchars($machine['model']) ?></p>
               <p><span class="font-medium text-[#5DA6C3]">Fabricante: </span><?= htmlspecialchars($machine['created_by']) ?></p>
               <p><span class="font-medium text-[#5DA6C3]">Fecha de instalación: </span><?= htmlspecialchars($machine['installation_date']) ?></p>
               <p><span class="font-medium text-[#5DA6C3]">Número de serie: </span><?= htmlspecialchars($machine['serial_number']) ?></p>
