@@ -14,7 +14,7 @@ class ctrlGenerateMachineQR
         error_log("ID de máquina recibido: " . $machineId);
 
         if ($machineId) {
-            $data = 'grup2dawcendrassos.cat/generate_machine_qr/' . $machineId; 
+            $data = 'https://grup2dawcendrassos.cat/generate_machine_qr/' . $machineId; 
             $options = new QROptions([
                 'version'    => 7,
                 'outputType' => QRCode::OUTPUT_MARKUP_SVG,
