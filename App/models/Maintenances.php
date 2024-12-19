@@ -140,4 +140,3 @@ class Maintenances
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }
     }
-

@@ -10,6 +10,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-[#C1D1D8] text-gray-800">
+
+  <!--Header and Nav -->
+  <header class="bg-[#0C0C04] text-white">
+    <!--Barra de navegación principal (Main navigation bar)-->
+    <nav class="container mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo and name -->
+        <div class="flex items-center space-x-4">
+          <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
+        </div>
+        <!--Enlaces de navegación (Navigation links) -->
+        <div class="hidden md:block">
+          <div class="flex items-center space-x-8">
+            <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-house"></i> Inicio
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <a href="/addlist" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-desktop"></i> Maquinas
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="/profile" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
+                <i class="fa-solid fa-address-card"></i> Perfil
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#5DA6C3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </a>
+              <?php if ($_SESSION['user']['role'] == 'admin'): ?>
+                <a href="/admin" class="bg-[#214969] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                  <i class="fas fa-cog mr-2"></i>Admin panel
+                </a>
+              <?php endif; ?>
+              <a href="/logout" class="bg-[#d32f2f] hover:bg-[#b71c1c] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+              </a>
+            <?php else: ?>
+              <a href="/login" class="bg-[#165f7c] hover:bg-[#478249] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl" role="button" aria-label="Iniciar Sesión">
+                <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+        <!--Botón menú móvil (Mobile menu button) -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" type="button" 
+                  class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
+                  aria-label="Abrir menú"
+                  aria-expanded="false"
+                  aria-controls="mobile-menu">
+
     <!-- Cabecera y Navegación (Header and Navigation) -->
     <header class="bg-[#0C0C04] text-white">
         <!-- Barra de navegación principal (Main navigation bar) -->
@@ -105,13 +155,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Lista de Máquinas (Machine List) -->
             <div class="bg-[#214969] rounded-xl shadow-xl p-6">
-                <!-- Título de la sección de máquinas (Machine section title) -->
-                <h2 class="text-2xl font-bold text-[#5DA6C3] mb-6 flex items-center">
+                <h1 class="text-2xl font-bold text-[#feffff] mb-6 flex items-center">
                     <i class="fas fa-desktop mr-3"></i>
-                    Lista de Máquinas (Machine List)
-                </h2>
+                    Lista de Máquinas
+                </h1>
 
                 <!-- Contenedor de lista de máquinas (Machine list container) -->
+
                 <div class="space-y-4">
                     <?php if (isset($machines) && !empty($machines)): ?>
                         <!-- Iteración sobre cada máquina (Iteration over each machine) -->
@@ -120,11 +170,11 @@
                             <div class="bg-[#132048] rounded-lg p-4 hover:bg-[#1a3850] transition-colors">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
-                                        <div class="w-12 h-12 bg-[#5DA6C3] rounded-full flex items-center justify-center">
+                                        <div class="w-12 h-12 bg-[#0f3757] rounded-full flex items-center justify-center">
                                             <i class="fas fa-desktop text-white text-xl"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white font-medium"><?= ($machine['model']) ?></h3>
+                                            <h2 class="text-white font-medium"><?= ($machine['model']) ?></h2>
                                             <p class="text-[#A8C5D6] text-sm">SN: <?= ($machine['serial_number']) ?></p>
                                         </div>
                                     </div>
@@ -132,7 +182,7 @@
                                          data-machine-id="<?= ($machine['machine_id']) ?>"
                                          ondrop="drop(event)" 
                                          ondragover="allowDrop(event)">
-                                        <span class="text-[#5DA6C3] text-sm font-medium">
+                                        <span class="text-[#feffff] text-sm font-medium">
                                             ID Técnico: <?= ($machine['user_id'] ?? 'Sin asignar') ?>
                                         </span>
                                     </div>
@@ -148,13 +198,14 @@
 
             <!-- Lista de Técnicos (Technician List) -->
             <div class="bg-[#214969] rounded-xl shadow-xl p-6">
-                <!-- Título de la sección de técnicos (Technician section title) -->
-                <h2 class="text-2xl font-bold text-[#5DA6C3] mb-6 flex items-center">
+
+                <h1 class="text-2xl font-bold text-[#feffff] mb-6 flex items-center">
                     <i class="fas fa-users mr-3"></i>
-                    Lista de Técnicos (Technician List)
-                </h2>
+                    Lista de Técnicos
+                </h1>
 
                 <!-- Contenedor de lista de técnicos (Technician list container) -->
+
                 <div class="space-y-4">
                     <?php if (isset($technicians) && !empty($technicians)): ?>
                         <!-- Iteración sobre cada técnico (Iteration over each technician) -->
@@ -163,11 +214,11 @@
                             <div class="bg-[#132048] rounded-lg p-4 hover:bg-[#1a3850] transition-colors">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
-                                        <div class="w-12 h-12 bg-[#5DA6C3] rounded-full flex items-center justify-center">
+                                        <div class="w-12 h-12 bg-[#0f3757] rounded-full flex items-center justify-center">
                                             <i class="fas fa-user text-white text-xl"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white font-medium"><?= ($technician['username']) ?></h3>
+                                            <h2 class="text-white font-medium"><?= ($technician['username']) ?></h2>
                                             <p class="text-[#A8C5D6] text-sm"><?= ($technician['name'] . ' ' . $technician['surname']) ?></p>
                                         </div>
                                     </div>
@@ -175,7 +226,7 @@
                                          draggable="true"
                                          ondragstart="drag(event)"
                                          data-technician-id="<?= ($technician['user_id']) ?>">
-                                        <span class="text-[#5DA6C3] text-sm font-medium">
+                                        <span class="text-[#feffff] text-sm font-medium">
                                             ID: <?= ($technician['user_id']) ?>
                                         </span>
                                     </div>
