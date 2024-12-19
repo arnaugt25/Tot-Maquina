@@ -231,40 +231,50 @@
 
                 <!-- Notifications / Notificaciones -->
                 <div class="md:col-span-2 bg-[#214969] rounded-xl shadow-lg p-8">
-                    <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6 flex items-center">
-                        <i class="fas fa-bell mr-3"></i>
-                        Notificaciones
-                    </h2>
-                    
-                    <?php if (empty($notifications)): ?>
-                        <div class="text-center py-8 text-[#577788]">
-                            <i class="fas fa-inbox text-4xl mb-4 block"></i>
-                            <p>No tienes notificaciones nuevas</p>
-                        </div>
-                    <?php else: ?>
-                        <div class="space-y-4">
-                            <?php foreach ($notifications as $notification): ?>
-                                <div class="bg-[#132048] p-4 rounded-lg flex items-start space-x-4 hover:bg-[#1A2B3C] transition-colors">
-                                    <div class="text-[#5DA6C3] mt-1">
-                                        <i class="<?= $notification['icon'] ?? 'fas fa-info-circle' ?>"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h3 class="text-[#C1D1D8] font-semibold"><?= $notification['title'] ?></h3>
-                                        <p class="text-[#577788] text-sm"><?= $notification['message'] ?></p>
-                                        <span class="text-xs text-[#577788] mt-2 block">
-                                            <?= $notification['created_at'] ?>
-                                        </span>
-                                    </div>
-                                    <button class="text-[#577788] hover:text-[#C1D1D8] transition-colors" 
-                                            aria-label="Marcar como leída">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
+    <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6 flex items-center">
+        <i class="fas fa-bell mr-3"></i>
+        Notificaciones
+    </h2>
+    
+    <table class="min-w-full">
+        <thead>
+            <tr class="bg-[#132048] text-[#C1D1D8]">
+                <th class="px-6 py-4">ID Notificación</th>
+                <th class="px-6 py-4">ID Mantenimiento</th>
+                <th class="px-6 py-4">Modelo</th>
+                <th class="px-6 py-4">Usuario</th>
+                <th class="px-6 py-4">Frecuencia</th>
+                <th class="px-6 py-4">Próximo Mantenimiento</th>
+            </tr>
+            </thead>
+                <tbody>
+                 <?php foreach($notifications as $notification):?>
+                        <tr class="hover:bg-[#2C5F88] transition-colors duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
+                                <?= htmlspecialchars($notification["notification_id"]) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
+                                <?= htmlspecialchars($notification["maintenance_id"]) ?>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-white">
+                                <?= htmlspecialchars($notification["model"]) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
+                                <?= htmlspecialchars($notification["username"]) ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-m leading-5 font-semibold rounded-full text-white">
+                                    <?= htmlspecialchars($notification["frequency"]) ?>
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
+                                <?= htmlspecialchars($notification["next_maintenance"]) ?>
+                            </td>
                             <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>
+                        </tr
+                     </tr>
+                 </tbody>
+                 </thead>
             
         </div>
     </main>

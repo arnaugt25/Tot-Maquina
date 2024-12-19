@@ -31,7 +31,7 @@ class Maintenances
 
     // SELECT para obtener todos los mantenimientos con información relacionada
     public function getMaintenances(){
-        $stmt = $this->db->prepare("SELECT * FROM maintenance");
+        $stmt = $this->db->prepare("SELECT m.*,u.username FROM maintenance m left join user u on u.user_id = m.user_id order by m.assigned_date desc");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }

@@ -137,10 +137,7 @@
                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                             Estado
                         </th>
-
                     </tr>
-
-
                     </head>
                     <?php foreach ($notifications as $notification) {
                         ?>

@@ -108,6 +108,7 @@
                     </h1>
                     <p class="text-[#A8C5D6]">Gestiona todas las incidencias del sistema</p>
                 </div>
+                <!-- Tabla -->
 
                 <!-- Filters and Search / Filtros y búsqueda -->
                 <div class="bg-[#132048] p-4 sm:p-6 rounded-lg shadow-lg mb-6">
@@ -137,8 +138,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Table / Tabla -->
                 <div class="overflow-x-auto relative">
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden shadow-lg rounded-lg">
@@ -169,9 +168,6 @@
                                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                             Acciones
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider text-center pl-2">
-                                        Verificado
-                                        </th>
                                     </tr>
                                 </thead>
                                 <!-- Table body / Cuerpo de la tabla -->
@@ -188,7 +184,7 @@
                                                 <?= htmlspecialchars($maintenance["description"]) ?>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                                                <?= htmlspecialchars($maintenance["user_id"]) ?>
+                                                <?= htmlspecialchars($maintenance["username"]) ?>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                                 <?= htmlspecialchars($maintenance["assigned_date"]) ?>
@@ -214,11 +210,6 @@
                                                         <i class="fas fa-trash-alt mr-1"></i> Eliminar
                                                     </a>
                                                 </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                               <span class="px-4 inline-flex text-lg leading-6 font-semibold rounded-full text-white">
-                                                    <input type="checkbox">
-                                                </span>
                                             </td>
                                         </tr>
                                     <?php } ?>
