@@ -108,36 +108,6 @@
                     </h1>
                     <p class="text-[#A8C5D6]">Gestiona todas las incidencias del sistema</p>
                 </div>
-
-                <!-- Filtros y Búsqueda -->
-                <div class="bg-[#132048] p-4 sm:p-6 rounded-lg shadow-lg mb-6">
-                    <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
-                        <div class="flex-1">
-                            <input type="text" 
-                                placeholder="Buscar incidencia..." 
-                                class="w-full px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
-                                <option value="" selected>Seleccionar prioridad</option>
-                                <option value="baja">Baja</option>
-                                <option value="media">Media</option>
-                                <option value="urgente">Urgente</option>
-                            </select>
-                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
-                                <option value="" selected>Seleccionar tipo</option>
-                                <option value="preventivo">Preventivo</option>
-                                <option value="correctivo">Correctivo</option>
-                            </select>
-                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
-                                <option value="" selected>Selecionar Verificacion</option>
-                                <option value="preventivo">Verificado</option>
-                                <option value="correctivo">No verificado</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Tabla -->
                 <div class="overflow-x-auto relative">
                     <div class="inline-block min-w-full align-middle">
@@ -169,9 +139,6 @@
                                         <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider">
                                             Acciones
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-xs font-medium text-[#5DA6C3] uppercase tracking-wider text-center pl-2">
-                                        Verificado
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-[#214969] divide-y divide-[#132048]">
@@ -187,7 +154,7 @@
                                                 <?= htmlspecialchars($maintenance["description"]) ?>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                                                <?= htmlspecialchars($maintenance["user_id"]) ?>
+                                                <?= htmlspecialchars($maintenance["username"]) ?>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                                 <?= htmlspecialchars($maintenance["assigned_date"]) ?>
@@ -213,11 +180,6 @@
                                                         <i class="fas fa-trash-alt mr-1"></i> Eliminar
                                                     </a>
                                                 </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                               <span class="px-4 inline-flex text-lg leading-6 font-semibold rounded-full text-white">
-                                                    <input type="checkbox">
-                                                </span>
                                             </td>
                                         </tr>
                                     <?php } ?>

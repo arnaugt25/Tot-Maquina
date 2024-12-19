@@ -13,9 +13,9 @@ class Notification {
     }
 
     //Detalles notificación (Notification details)
-    public function getNotificationDetails() {
-        $stmt = $this->db->prepare("SELECT * FROM notification");
-        $stmt->execute();
+    public function getNotificationDetails($id) {
+        $stmt = $this->db->prepare("SELECT n.*,u.username,m.model FROM notification n left join machine m on n.machine_id = m.machine_id left join user u on u.user_id = n.user_id where n.user_id = :id");
+        $stmt->execute([":id"=> $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados (Returns an empty array if there are no results)
     }
 

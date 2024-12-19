@@ -28,9 +28,15 @@ class ctrlProfile {
                 $user['profile_pic'] = $userData['profile_pic'];
             }
         }
+        if (isset($_SESSION['user'])) {
+            $user_id = $_SESSION['user']['user_id'];
+        }
         // Obtener el conteo de máquinas asignadas
         $machineCount = $machineModel->countMachinesByUserId($user['user_id']);
-    
+        $notifications = $container->get('Notification');
+        $notification = $notifications->getNotificationDetails($user_id);
+
+        $response->set("notifications", $notification);
         $response->set("user", $user);
         $response->set("machineCount", $machineCount);
         $response->setTemplate("profile.php");
@@ -107,5 +113,6 @@ class ctrlProfile {
                 return $response;
             }
     }
+    
 
 }
