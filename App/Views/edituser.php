@@ -76,6 +76,8 @@
                             required>
                         <option value="admin" <?= ($user['role'] === 'admin') ? 'selected' : '' ?>>Administrador</option>
                         <option value="user" <?= ($user['role'] === 'user') ? 'selected' : '' ?>>Usuario</option>
+                        <option value="tecnico" <?= ($user['role'] === 'tecnico') ? 'selected' : '' ?>>Técnico</option>
+                        <option value="supervisor" <?= ($user['role'] === 'supervisor') ? 'selected' : '' ?>>Supervisor</option>
                     </select>
                 </div>
 
