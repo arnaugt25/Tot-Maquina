@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Models;
+
 use PDO;
 use PDOException;
 
 class Notification {
     private $db;
-    public function __construct() {
-        // Conectar a la base de datos (Connect to database)
-        $this->db = new PDO('mysql:host=localhost;dbname=tu_base_de_datos', 'usuario', 'contraseña');
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    public function __construct($db) {
+        $this->db = $db;
     }
 
     //Detalles notificación (Notification details)

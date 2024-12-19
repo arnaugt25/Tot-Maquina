@@ -5,7 +5,7 @@ namespace App\Models;
 use PDO;
 use PDOException;
 
-class Machine extends Db
+class Machine
 {
     private $db;
     public function __construct($db)

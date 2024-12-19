@@ -2,34 +2,27 @@
 
 namespace App\Controllers;
 
-class CtrlNotification {
-    protected $notificationModel;
-
-    public function __construct() {
-        $this->notificationModel = new \App\Models\Notification();
-    }
+class CtrlNotification
+{
 
     //Obtener notificacion (Get notification)
-    public function getNotifications($request,$response,$container) {
+    function getNotifications($request, $response, $container)
+    {
+        $notifications = $container->get('Notification');
+        $notification= $notifications->getNotificationDetails();
+        $response->set("notifications", $notification);
 
-            // Obtener todas las notificaciones (Get all notifications)
-            $allNotifications = $this->notificationModel->getNotificationDetails();
-            // Datos (Data)
-            foreach($allNotifications as $notification) {
-                echo "Incidencia: " . $notification['maintenance_id'] . "<br>";
-                echo "Técnico: " . $notification['user_id'] . "<br>";
-                echo "Máquina: " . $notification['machine_id'] . "<br>";
-                echo "Fecha: " . $notification['next_maintenance'] . "<br>";
-                echo "Frecuencia: " . $notification['frequency'] . "<br>";
-            }
-        $response->set("notifications",$allNotifications);
+
+        $response->setTemplate("notify.php");
         return $response;
     }
 
     //Crear notificacion (Create notification)
-    public function createNotification($data) {
-            $this->notificationModel->createNotification($data);
-            echo "Notificación creada con éxito.";
+    public function createNotification($request, $response, $container)
+    {
+       // die("tenia razon");
+        $response->set("notifications", "p");
+        return $response;
 
     }
 }
