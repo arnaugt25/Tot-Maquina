@@ -77,7 +77,7 @@
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
           <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
-          <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina proooooo</span>
+          <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina </span>
         </div>
         <!--Enlaces de navegación (Navigation links) -->
         <div class="hidden md:block">

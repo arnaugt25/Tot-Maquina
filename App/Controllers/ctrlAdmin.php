@@ -12,7 +12,7 @@ class ctrlAdmin {
         $machinesModel = $container->get("Machine");
         $machines = $machinesModel->getAllMachines();
 
-        $maintenanceModel = $container->get("maintenance");
+        $maintenanceModel = $container->get("Maintenances");
         $maintenances = $maintenanceModel->getMaintenances();
         
         $response->set("users", $users);

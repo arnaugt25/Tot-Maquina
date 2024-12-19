@@ -217,7 +217,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <button onclick="window.location.href='/admin/editMachine/<?= $machine['machine_id'] ?>'" 
+                                <button onclick="window.location.href='/admin/editmachine?machine_id=<?= $machine['machine_id'] ?>'" 
                                         class="text-yellow-400 hover:text-yellow-300 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </button>
