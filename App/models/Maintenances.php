@@ -15,8 +15,16 @@ class Maintenances
     }
     
     public function addMaintenance($data){
+
         $stmt = $this->db->prepare("INSERT INTO maintenance (description, type, assigned_date, user_id, machine_id, priority) VALUES (:description, :type, :assigned_date, :user_id, :machine_id, :priority)");
-        $stmt->execute();
+        $stmt->execute([
+            ":description" => $data['description'],
+            ":type" => $data['type'],
+            ":assigned_date" => $data['assigned_date'],
+            ":user_id" => $data['user_id'],
+            ":machine_id" => $data['machine'],
+            ":priority" => $data['priority']
+        ]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
 
     }
