@@ -189,91 +189,6 @@
             
     <!-- Include bundled JS -->
     <script src="/js/bundle.js"></script>
-    <script>
-      const machine = <?php echo json_encode($machine); ?>;
-      document.addEventListener('DOMContentLoaded', function() {
-        // Inicializar mapa
-        const map = L.map('individualMap').setView([39.5696, 2.6502], 12);
-
-        // Añadir tiles con mejor manejo de errores
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap contributors',
-          maxZoom: 19,
-          minZoom: 3
-        }).addTo(map);
-
-        // Manejar coordenadas
-        if (machine && machine.coordinates) {
-
-          const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
-
-          if (!isNaN(lat) && !isNaN(lng)) {
-            // Personalizar el icono del marcador para mejorar la accesibilidad
-            const customIcon = L.divIcon({
-              className: 'custom-div-icon',
-              html: `<div class="marker-pin" role="img" aria-label="Ubicación de ${machine.created_by}"></div>`,
-              iconSize: [30, 42],
-              iconAnchor: [15, 42]
-            });
-
-            // Crear marcador con el icono personalizado
-            const marker = L.marker([lat, lng], {
-              icon: customIcon,
-              keyboard: true,
-              title: `Ubicación de ${machine.created_by}`
-            }).addTo(map);
-
-            // Popup accesible con botón de cierre
-            const popupContent = document.createElement('div');
-            popupContent.setAttribute('role', 'dialog');
-            popupContent.setAttribute('aria-label', 'Información de la máquina');
-            popupContent.innerHTML = `
-              <div class="popup-content">
-                <h2 class="font-semibold">${machine.created_by}</h2>
-                <p>Serial: ${machine.serial_number}</p>
-                <p>Installed: ${machine.installation_date}</p>
-                <button type="button" 
-                        class="popup-close-button" 
-                        onclick="closePopup()"
-                        aria-label="Cerrar información">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            `;
-
-            marker.bindPopup(popupContent).openPopup();
-            map.setView([lat, lng], 15);
-
-          try {
-            const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
-
-            if (!isNaN(lat) && !isNaN(lng)) {
-              const marker = L.marker([lat, lng]).addTo(map);
-              marker.bindPopup(`
-                <div class="popup-content p-2">
-                  <h3 class="font-semibold text-sm">${machine.created_by}</h3>
-                  <p class="text-xs">Serial: ${machine.serial_number}</p>
-                  <p class="text-xs">Installed: ${machine.installation_date}</p>
-                </div>
-              `).openPopup();
-              map.setView([lat, lng], 15);
-            }
-          } catch (error) {
-            console.error('Error al procesar coordenadas:', error);
-
-          }
-        }
-
-        // Manejar resize del mapa
-        window.addEventListener('resize', function() {
-          map.invalidateSize();
-        });
-      });
-
-      function closePopup() {
-        map.closePopup();
-      }
-    </script>
 
     <style>
       .custom-div-icon {
@@ -307,5 +222,42 @@
         color: #000;
       }
     </style>
+
+    <script>
+    const machine = <?php echo json_encode($machine); ?>;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const map = L.map('individualMap').setView([39.5696, 2.6502], 12);
+      
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+        minZoom: 3
+      }).addTo(map);
+
+      if (machine && machine.coordinates) {
+        const [lat, lng] = machine.coordinates.split(',').map(coord => parseFloat(coord.trim()));
+        if (!isNaN(lat) && !isNaN(lng)) {
+          const marker = L.marker([lat, lng]).addTo(map);
+          marker.bindPopup(`
+            <div class="popup-content">
+              <h3>${machine.created_by}</h3>
+              <p>Serial: ${machine.serial_number}</p>
+              <p>Installed: ${machine.installation_date}</p>
+            </div>
+          `).openPopup();
+          map.setView([lat, lng], 15);
+        }
+      }
+
+      window.addEventListener('resize', () => map.invalidateSize());
+    });
+
+    function closePopup() {
+      if (typeof map !== 'undefined') {
+        map.closePopup();
+      }
+    }
+    </script>
   </body>
   </html>
