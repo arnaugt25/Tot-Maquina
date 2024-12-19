@@ -241,14 +241,14 @@
               <div class="w-20 h-20 bg-[#2a652c] rounded-full flex items-center justify-center mb-6 shadow-lg">
                 <i class="fas fa-plus text-3xl text-white"></i>
               </div>
-              <h3 class="text-2xl font-semibold text-[#f8f9fa] mb-4">Nueva Máquina</h3>
-              <p class="text-[#e9ecef] mb-8">Registra una nueva máquina en el sistema</p>
-              <a href="/addmachine"
+              <h3 class="text-2xl font-semibold text-[#f8f9fa] mb-4">Nueva Incidencia</h3>
+              <p class="text-[#e9ecef] mb-8">Registra una nueva incidencia en el sistema</p>
+              <a href="/forminci"
                 class="w-full bg-[#2a652c] text-[#fff] py-4 px-6 rounded-lg hover:bg-[#1e4a20] transition-all duration-300 flex items-center justify-center space-x-3 group"
                 role="button"
                 aria-label="Añadir nueva máquina">
                 <i class="fas fa-plus text-lg"></i>
-                <span class="font-medium">Añadir Máquina</span>
+                <span class="font-medium">Añadir Incidencia</span>
                 <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
               </a>
             </div>

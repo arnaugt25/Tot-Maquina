@@ -103,42 +103,47 @@
   </header>
   <!-- Target -->
   <div class="container mx-auto px-4 py-8 max-w-7xl">
-      <!-- Search and import button / Buscador y botón de importación -->
+    <!-- Search bar / Barra de búsqueda -->
     <div class="mb-8 max-w-4xl mx-auto">
-        <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-            <!-- Search / Buscador -->
-            <div class="relative flex-1">
-                <label for="searchMachine" class="sr-only">Buscar máquina</label>
-                <input type="text" id="searchMachine" name="searchMachine" 
-                    class="w-full pl-12 pr-6 py-3 md:py-4 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] text-base md:text-lg"
-                    placeholder="Buscar máquina..." aria-label="Buscar máquina">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3] text-lg md:text-xl"></i>
-                </div>
+        <div class="relative">
+            <label for="searchMachine" class="sr-only">Buscar máquina</label>
+            <input type="text" id="searchMachine" name="searchMachine" 
+                class="w-full pl-12 pr-6 py-4 bg-white rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#5DA6C3] text-xl"
+                placeholder="Buscar máquina..." aria-label="Buscar máquina">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fas fa-search text-gray-400 transition-colors duration-300 group-hover:text-[#5DA6C3] text-xl"></i>
             </div>
-            <!-- Group of buttons / Grupo de botones -->
-            <div class="flex flex-wrap gap-2 sm:flex-nowrap">
-                <a href="/forminci" 
-                   class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
-                    <i class="fas fa-exclamation-circle mr-2"></i>
-                    <span>Añadir Incidencia</span>
-                </a>
-                <button onclick="showCSVModal()" 
-                        class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
-                    <i class="fas fa-file-csv mr-2"></i>
-                    <span>Importar CSV</span>
-                </button>
-                <a href="/addtech" 
-                   class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
-                    <i class="fas fa-user-plus mr-2"></i>
-                    <span>Añadir Técnico</span>
-                </a>
-                <a href="/listinci" 
-                   class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm md:text-base">
-                    <i class="fas fa-exclamation-circle mr-2"></i>
-                    <span>Ver Incidencias</span>
-                </a>
-            </div>
+        </div>
+    </div>
+
+    <!-- Action buttons / Botones de acción -->
+    <div class="mb-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <a href="/addmachine" 
+               class="flex items-center justify-center px-4 py-3 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm">
+                <i class="fas fa-plus-circle mr-2"></i>
+                <span>Añadir Máquina</span>
+            </a>
+            <a href="/forminci" 
+               class="flex items-center justify-center px-4 py-3 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span>Añadir Incidencia</span>
+            </a>
+            <a href="/addtech" 
+               class="flex items-center justify-center px-3 py-2 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm">
+                <i class="fas fa-user-plus mr-2"></i>
+                <span>Añadir Técnico</span>
+            </a>
+            <a href="/listinci" 
+               class="flex items-center justify-center px-3 py-2 bg-[#214969] hover:bg-[#1a3850] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span>Ver Incidencias</span>
+            </a>
+            <button onclick="showCSVModal()" 
+                    class="flex items-center justify-center px-3 py-2 bg-[#2a652c] hover:bg-[#3d6e3f] text-white rounded-lg cursor-pointer transition-colors duration-300 shadow-md text-sm">
+                <i class="fas fa-file-csv mr-2"></i>
+                <span>Importar CSV</span>
+            </button>
         </div>
     </div>
       <!-- Grid of cards / Grid de tarjetas -->
