@@ -7,105 +7,6 @@ use PDOException;
 
 class Maintenances
 {
-<<<<<<< HEAD
-    public function addMaintenance($data)
-    {
-        try {
-            $query = "INSERT INTO maintenance (description, type, assigned_date, user_id, machine_id, priority) 
-                      VALUES (:description, :type, :assigned_date, :user_id, :machine_id, :priority)";
-            $userId = isset($data['user_id']) && !empty($data['user_id']) ? (int)$data['user_id'] : NULL;
-            $stmt = $this->sql->prepare($query);
-            $stmt->execute(
-                [
-                    ':description' => $data['description'],
-                    ':type' => $data['type'],
-                    ':assigned_date' => $data['assigned_date'],
-                    ':user_id' => $data['user_id'],
-                    ':machine_id' => $data['machine'],
-                    ':priority' => $data['priority']
-                ]
-            );
-        } catch (\Exception $e) {
-            error_log("Error in addMaintenance: " . $e->getMessage());
-            error_log("Stack trace: " . $e->getTraceAsString());
-            throw $e;  // Re-throw after logging if needed
-        }
-        return $this->sql->lastInsertId();
-    }
-
-
-    // SELECT para obtener todos los mantenimientos con información relacionada
-    public function getMaintenances()
-    {
-        try {
-            $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority,
-                             u.name as technician_name,
-                             mc.machine_id as machine_id,
-                             mc.model as machine_name
-                    FROM maintenance m
-                    JOIN user u ON m.user_id = u.user_id
-                    JOIN machine mc ON m.machine_id = mc.machine_id
-                    ORDER BY m.assigned_date ASC;";
-
-
-            $stmt = $this->sql->prepare($query);
-            //die('hola');
-
-            $stmt->execute();
-
-
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting maintenances: " . $e->getMessage());
-            throw new \Exception("Error al obtener los mantenimientos");
-        }
-    }
-
-    // SELECT para obtener un mantenimiento específico
-    public function getMaintenanceById($maintenance_id)
-    {
-
-        $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority,
-                             u.name as technician_name,
-                             mc.model as machine_name
-                      FROM maintenance m
-                      JOIN user u ON m.user_id = u.user_id
-                      JOIN machine mc ON m.machine_id = mc.machine_id
-                      WHERE m.maintenance_id = :maintenance_id";
-
-        $stmt = $this->sql->prepare($query);
-        $stmt->execute([':maintenance_id' => $maintenance_id]);
-
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
-    }
-
-    // SELECT para obtener mantenimientos por técnico
-    public function getMaintenancesByUser($user_id)
-    {
-        try {
-            $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority
-                             mc.name as machine_name
-                      FROM maintenance m
-                      JOIN machine mc ON m.machine_id = mc.machine_id
-                      WHERE m.user_id = :user_id
-                      ORDER BY m.assigned_date DESC";
-
-            $stmt = $this->sql->prepare($query);
-            $stmt->execute([':user_id' => $user_id]);
-
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("Error getting user maintenances: " . $e->getMessage());
-            throw new \Exception("Error al obtener los mantenimientos del técnico");
-        }
-    }
-
-    // SELECT para obtener mantenimientos por máquina
-    public function getMaintenancesByMachine($machine_id)
-    {
-        try {
-            $query = "SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority
-=======
     private $db;
 
     public function __construct($db)
@@ -114,15 +15,23 @@ class Maintenances
     }
     
     public function addMaintenance($data){
+
         $stmt = $this->db->prepare("INSERT INTO maintenance (description, type, assigned_date, user_id, machine_id, priority) VALUES (:description, :type, :assigned_date, :user_id, :machine_id, :priority)");
-        $stmt->execute();
+        $stmt->execute([
+            ":description" => $data['description'],
+            ":type" => $data['type'],
+            ":assigned_date" => $data['assigned_date'],
+            ":user_id" => $data['user_id'],
+            ":machine_id" => $data['machine'],
+            ":priority" => $data['priority']
+        ]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
 
     }
 
     // SELECT para obtener todos los mantenimientos con información relacionada
     public function getMaintenances(){
-        $stmt = $this->db->prepare("SELECT * FROM maintenance");
+        $stmt = $this->db->prepare("SELECT m.*,u.username as technician_name FROM maintenance m left join user u on m.user_id =u.user_id   ");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }
@@ -158,7 +67,6 @@ class Maintenances
     public function getMaintenancesByMachine($machine_id)
     {
         $stmt = $this->db->prepare("(SELECT m.maintenance_id, m.description, m.type, m.assigned_date, m.priority
->>>>>>> c8ee088610f82ccc35b76f6944816a832c6758ed
                              u.name as technician_name
                       FROM maintenance m
                       JOIN user u ON m.user_id = u.user_id
@@ -272,5 +180,8 @@ class Maintenances
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: []; // Devuelve un array vacío si no hay resultados
     }
     }
+<<<<<<< HEAD
 
 >>>>>>> c8ee088610f82ccc35b76f6944816a832c6758ed
+=======
+>>>>>>> a72ba2e953d16b8b851e5fc14a403364b60224fc

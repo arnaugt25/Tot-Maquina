@@ -95,9 +95,8 @@ class auth {
 
     function isUser(Request $request, Response $response, Container $container, $next) : Response {
         $user = $request->get("SESSION", "user"); // Get user from session
-        $logged = $request->get("SESSION", "logged"); // Check if user is logged in
         // Verifica si el usuario tiene el rol específico de "user"
-        if ($user["role"] == "user" && $logged) {
+        if ($user["role"] == "user") {
             $response->setTemplate("forbidden.php"); // Redirect if user is a regular user
         }
         else {

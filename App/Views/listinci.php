@@ -183,13 +183,13 @@
                                         <?= htmlspecialchars($maintenance["maintenance_id"]) ?>
                                     </td>
                                     <td class="px-6 py-4 text-sm text-white">
-                                        <?= htmlspecialchars($maintenance["machine_name"]) ?>
+                                        <?= htmlspecialchars($maintenance["machine_id"]) ?>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                         <?= htmlspecialchars($maintenance["description"]) ?>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
-                                        <?= htmlspecialchars($maintenance["technician_name"]) ?>
+                                        <?= htmlspecialchars($maintenance["user_id"]) ?>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-white">
                                         <?= htmlspecialchars($maintenance["assigned_date"]) ?>
