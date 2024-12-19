@@ -15,7 +15,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo and name -->
         <div class="flex items-center space-x-4">
-          <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
+          <img src="/uploads/logototmaquina.png" alt="Logo" class="h-20 transition-transform hover:scale-105">
           <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
         </div>
         <!--Enlaces de navegación (Navigation links) -->
@@ -99,21 +99,21 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Lista de Máquinas -->
             <div class="bg-[#214969] rounded-xl shadow-xl p-6">
-                <h2 class="text-2xl font-bold text-[#5DA6C3] mb-6 flex items-center">
+                <h1 class="text-2xl font-bold text-[#feffff] mb-6 flex items-center">
                     <i class="fas fa-desktop mr-3"></i>
                     Lista de Máquinas
-                </h2>
+                </h1>
                 <div class="space-y-4">
                     <?php if (isset($machines) && !empty($machines)): ?>
                         <?php foreach ($machines as $machine): ?>
                             <div class="bg-[#132048] rounded-lg p-4 hover:bg-[#1a3850] transition-colors">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
-                                        <div class="w-12 h-12 bg-[#5DA6C3] rounded-full flex items-center justify-center">
+                                        <div class="w-12 h-12 bg-[#0f3757] rounded-full flex items-center justify-center">
                                             <i class="fas fa-desktop text-white text-xl"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white font-medium"><?= ($machine['model']) ?></h3>
+                                            <h2 class="text-white font-medium"><?= ($machine['model']) ?></h2>
                                             <p class="text-[#A8C5D6] text-sm">SN: <?= ($machine['serial_number']) ?></p>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                          data-machine-id="<?= ($machine['machine_id']) ?>"
                                          ondrop="drop(event)" 
                                          ondragover="allowDrop(event)">
-                                        <span class="text-[#5DA6C3] text-sm font-medium">
+                                        <span class="text-[#feffff] text-sm font-medium">
                                             ID Técnico: <?= ($machine['user_id'] ?? 'Sin asignar') ?>
                                         </span>
                                     </div>
@@ -136,21 +136,21 @@
 
             <!-- Lista de Técnicos -->
             <div class="bg-[#214969] rounded-xl shadow-xl p-6">
-                <h2 class="text-2xl font-bold text-[#5DA6C3] mb-6 flex items-center">
+                <h1 class="text-2xl font-bold text-[#feffff] mb-6 flex items-center">
                     <i class="fas fa-users mr-3"></i>
                     Lista de Técnicos
-                </h2>
+                </h1>
                 <div class="space-y-4">
                     <?php if (isset($technicians) && !empty($technicians)): ?>
                         <?php foreach ($technicians as $technician): ?>
                             <div class="bg-[#132048] rounded-lg p-4 hover:bg-[#1a3850] transition-colors">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
-                                        <div class="w-12 h-12 bg-[#5DA6C3] rounded-full flex items-center justify-center">
+                                        <div class="w-12 h-12 bg-[#0f3757] rounded-full flex items-center justify-center">
                                             <i class="fas fa-user text-white text-xl"></i>
                                         </div>
                                         <div>
-                                            <h3 class="text-white font-medium"><?= ($technician['username']) ?></h3>
+                                            <h2 class="text-white font-medium"><?= ($technician['username']) ?></h2>
                                             <p class="text-[#A8C5D6] text-sm"><?= ($technician['name'] . ' ' . $technician['surname']) ?></p>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                          draggable="true"
                                          ondragstart="drag(event)"
                                          data-technician-id="<?= ($technician['user_id']) ?>">
-                                        <span class="text-[#5DA6C3] text-sm font-medium">
+                                        <span class="text-[#feffff] text-sm font-medium">
                                             ID: <?= ($technician['user_id']) ?>
                                         </span>
                                     </div>
