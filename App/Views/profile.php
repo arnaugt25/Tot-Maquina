@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - Tot Maquina</title>
     
-    <!-- Favicons -->
+    <!-- Favicons / Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -15,18 +15,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-[#C1D1D8] min-h-screen">
-    <!-- Header y Nav mejorados -->
+    <!-- Improved header and Nav / Header y Nav mejorados -->
     <header class="bg-[#0C0C04] text-white">
-        <!-- Barra de navegación principal -->
+        <!-- Main navigation bar / Barra de navegación principal -->
         <nav class="container mx-auto px-6">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo y nombre -->
+                <!-- Logo and name / Logo y nombre -->
                 <div class="flex items-center space-x-4">
                     <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
                     <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
                 </div>
 
-                <!-- Enlaces de navegación -->
+                <!-- Navigation links / Enlaces de navegación -->
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-8">
                         <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 
-                <!-- Botón menú móvil -->
+                <!-- Mobile menu button / Botón menú móvil -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button" type="button" 
                             class="text-gray-300 hover:text-white focus:outline-none focus:text-white"
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <!-- Menú móvil -->
+            <!-- Mobile menu / Menú móvil -->
             <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -104,10 +104,10 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Main content / Contenido Principal -->
     <main class="container mx-auto px-6 py-8">
         <div class="max-w-4xl mx-auto">
-            <!-- Cabecera del Perfil -->
+            <!-- Profile header / Cabecera del Perfil -->
             <div class="bg-[#214969] rounded-xl shadow-lg p-8 mb-8">
                 <div class="flex items-center space-x-6">
                     <div class="relative">
@@ -140,7 +140,7 @@
                 </div>
             </div>
 
-            <!-- Modal de la Cámara -->
+            <!-- Camera modal / Modal de la Cámara -->
             <div id="camera-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
                 <div class="bg-[#214969] max-w-lg mx-auto mt-20 rounded-lg p-6">
                     <div class="flex justify-between items-center mb-4">
@@ -161,13 +161,13 @@
                 </div>
             </div>
 
-            <!-- Información del Perfil -->
+            <!-- Profile information / Información del Perfil -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Información Personal -->
+                <!-- Personal information / Información Personal -->
                 <div class="bg-[#214969] rounded-xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6">Información Personal</h2>
                     <div class="space-y-4">
-                        <!-- Email -->
+                        <!-- Email / Correo electrónico -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-envelope w-6"></i>
                             <div class="flex flex-col">
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                         
-                        <!-- Nombre Completo -->
+                        <!-- Full name / Nombre Completo -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-user w-6"></i>
                             <div class="flex flex-col">
@@ -185,7 +185,7 @@
                             </div>
                         </div>
 
-                        <!-- Nombre de Usuario -->
+                        <!-- Username / Nombre de Usuario -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-user-tag w-6"></i>
                             <div class="flex flex-col">
@@ -194,7 +194,7 @@
                             </div>
                         </div>
 
-                        <!-- Rol -->
+                        <!-- Role / Rol -->
                         <div class="flex items-center space-x-4 text-[#C1D1D8]">
                             <i class="fas fa-user-shield w-6"></i>
                             <div class="flex flex-col">
@@ -205,11 +205,11 @@
                     </div>
                 </div>
 
-                <!-- Estadísticas Mejoradas -->
+                <!-- Improved statistics / Estadísticas Mejoradas -->
                 <div class="bg-[#214969] rounded-xl shadow-lg p-8">
                     <h2 class="text-2xl font-bold text-[#C1D1D8] mb-8">Estadísticas</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <!-- Máquinas Asignadas -->
+                        <!-- Assigned machines / Máquinas Asignadas -->
                         <div class="bg-[#132048] p-8 rounded-xl text-center hover:bg-[#1A2B3C] transition-colors duration-300 transform hover:scale-105">
                             <div class="flex flex-col items-center justify-center h-full">
                                 <i class="fas fa-desktop text-4xl text-[#5DA6C3] mb-4"></i>
@@ -218,7 +218,7 @@
                             </div>
                         </div>
 
-                        <!-- Mantenimientos Realizados -->
+                        <!-- Maintenance performed / Mantenimientos Realizados -->
                         <div class="bg-[#132048] p-8 rounded-xl text-center hover:bg-[#1A2B3C] transition-colors duration-300 transform hover:scale-105">
                             <div class="flex flex-col items-center justify-center h-full">
                                 <i class="fas fa-tools text-4xl text-[#5DA6C3] mb-4"></i>
@@ -229,7 +229,7 @@
                     </div>
                 </div>
 
-                <!-- Notificaciones -->
+                <!-- Notifications / Notificaciones -->
                 <div class="md:col-span-2 bg-[#214969] rounded-xl shadow-lg p-8">
     <h2 class="text-2xl font-bold text-[#C1D1D8] mb-6 flex items-center">
         <i class="fas fa-bell mr-3"></i>

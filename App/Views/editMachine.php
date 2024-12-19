@@ -10,11 +10,10 @@
 </head>
 
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#8FA9B5] min-h-screen">
-
-    <!-- Contenido Principal -->
+    <!-- Main content / Contenido principal -->
     <main class="container mx-auto px-6 py-8">
         <div class="max-w-2xl mx-auto">
-            <!-- Cabecera del formulario -->
+            <!-- Header of the form / Cabecera del formulario -->
             <div class="bg-gradient-to-r from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8 mb-8">
                 <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
                     <i class="fas fa-cog mr-4 text-[#5DA6C3]"></i>
@@ -23,9 +22,9 @@
                 <p class="text-[#A8C5D6]">Introduce la información de la nueva máquina</p>
             </div>
 
-            <!-- Formulario -->
+            <!-- Form to update the machine information / Formulario para actualizar la información de la máquina -->
             <form class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8" method="POST" action="/updatemachine?machine_id=<?= htmlspecialchars($machine['machine_id']) ?>" enctype="multipart/form-data">
-                <!-- Modelo -->
+                <!-- Model input / Campo de modelo -->
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="model" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-cube mr-2 text-[#5DA6C3]"></i>
@@ -37,7 +36,7 @@
                         placeholder="Ingrese la maquina" required />
                 </div>
 
-                <!-- Fabricante y Fecha de instalación -->
+                <!-- Manufacturer and installation date -->
                 <div class="grid md:grid-cols-2 md:gap-6">
                     <div class="relative z-0 w-full mb-6 group">
                         <label for="created_by" class="block text-[#A8C5D6] font-medium mb-2">
@@ -61,7 +60,7 @@
                     </div>
                 </div>
 
-                <!-- Número de serie -->
+                <!-- Serial number -->
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="serial_number" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-barcode mr-2 text-[#5DA6C3]"></i>
@@ -73,7 +72,7 @@
                         placeholder="Ingrese el número de serie" required />
                 </div>
 
-                <!-- Cordenadas -->
+                <!-- Coordinates -->
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="coordinates" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-barcode mr-2 text-[#5DA6C3]"></i>
@@ -86,7 +85,7 @@
                 </div>
 
 
-                <!-- Imagen -->
+                <!-- Image -->
                 <div class="relative z-0 w-full mb-8 group">
                     <label for="image" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-image mr-2 text-[#5DA6C3]"></i>
@@ -97,7 +96,7 @@
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#5DA6C3] file:text-white hover:file:bg-[#4A8A9F]" />
                 </div>
 
-                <!-- Botones -->
+                <!-- Buttons -->
                 <div class="flex space-x-4">
                     <button type="submit"
                         class="flex-1 bg-gradient-to-r from-[#478249] to-[#539959] text-white py-3 px-6 rounded-lg hover:from-[#2D3F58] hover:to-[#3A516D] transition-all duration-300 font-medium flex items-center justify-center">

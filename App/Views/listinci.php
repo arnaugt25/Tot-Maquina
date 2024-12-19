@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#8FA9B5] min-h-screen">
-    <!-- Header con navegación -->
+    <!-- Header with navigation -->
     <header class="bg-[#0C0C04] text-white">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-20">
-                <!-- Logo y nombre -->
+                <!-- Logo and name -->
                 <div class="flex items-center">
                     <img src="/uploads/logototmaquina.png" alt="Logo" class="h-16 sm:h-20 transition-transform hover:scale-105">
                     <span class="text-lg sm:text-xl font-bold text-[#5DA6C3] ml-2 sm:ml-4">Tot Maquina</span>
                 </div>
 
-                <!-- Enlaces de navegación para desktop -->
+                <!-- Navigation links for desktop -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <a href="/" class="relative group px-3 py-2 text-[#C1D1D8] hover:text-white transition-colors duration-300">
                         <i class="fa-solid fa-house"></i> Inicio
@@ -51,7 +51,7 @@
                     <?php endif; ?>
                 </div>
 
-                <!-- Botón menú móvil -->
+                <!-- Mobile menu button / Botón menú móvil -->
                 <div class="lg:hidden">
                     <button id="mobile-menu-button" 
                             class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-[#214969] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <!-- Menú móvil mejorado -->
+            <!-- Improved mobile menu / Menú móvil mejorado -->
             <div id="mobile-menu" class="lg:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <a href="/" class="block px-3 py-2 text-[#C1D1D8] hover:text-white hover:bg-[#214969] rounded-md transition-colors duration-300">
@@ -95,12 +95,12 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Main content / Contenido Principal -->
     <main class="container mx-auto px-6 py-8">
         <div class="max-w-7xl mx-auto">
-            <!-- Contenedor principal con gradiente -->
+            <!-- Main container with gradient -->
             <div class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
-                <!-- Cabecera -->
+                <!-- Header -->
                 <div class="mb-8">
                     <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
                         <i class="fas fa-clipboard-list mr-4 text-[#5DA6C3]"></i>
@@ -109,6 +109,35 @@
                     <p class="text-[#A8C5D6]">Gestiona todas las incidencias del sistema</p>
                 </div>
                 <!-- Tabla -->
+
+                <!-- Filters and Search / Filtros y búsqueda -->
+                <div class="bg-[#132048] p-4 sm:p-6 rounded-lg shadow-lg mb-6">
+                    <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
+                        <div class="flex-1">
+                            <input type="text" 
+                                placeholder="Buscar incidencia..." 
+                                class="w-full px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                                <option value="" selected>Seleccionar prioridad</option>
+                                <option value="baja">Baja</option>
+                                <option value="media">Media</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                                <option value="" selected>Seleccionar tipo</option>
+                                <option value="preventivo">Preventivo</option>
+                                <option value="correctivo">Correctivo</option>
+                            </select>
+                            <select class="px-4 py-2 border rounded-lg bg-[#214969] text-white border-[#577788] focus:outline-none focus:ring-2 focus:ring-[#5DA6C3]">
+                                <option value="" selected>Selecionar Verificacion</option>
+                                <option value="preventivo">Verificado</option>
+                                <option value="correctivo">No verificado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="overflow-x-auto relative">
                     <div class="inline-block min-w-full align-middle">
                         <div class="overflow-hidden shadow-lg rounded-lg">
@@ -141,6 +170,7 @@
                                         </th>
                                     </tr>
                                 </thead>
+                                <!-- Table body / Cuerpo de la tabla -->
                                 <tbody class="bg-[#214969] divide-y divide-[#132048]">
                                     <?php foreach ($maintenances as $maintenance) { ?>
                                         <tr class="hover:bg-[#2C5F88] transition-colors duration-200">
@@ -189,7 +219,7 @@
                     </div>
                 </div>
 
-                <!-- Paginación -->
+                <!-- Pagination / Paginación -->
                 <div class="mt-6 bg-[#132048] px-4 sm:px-6 py-4 rounded-lg shadow-lg">
                     <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
                         <p class="text-white text-sm sm:text-base">

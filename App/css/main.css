@@ -70,4 +70,35 @@
 .leaflet-popup-close-button:hover {
     color: #C1D1D8 !important;
     background: none !important;
+} 
+
+.custom-div-icon {
+  background: none;
+  border: none;
+}
+
+.marker-pin {
+  width: 30px;
+  height: 42px;
+  background-color: #214969;
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  margin: -38px -15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #333;
+}
+.popup-close-button:hover {
+  color: #000;
 }

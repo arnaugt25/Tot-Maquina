@@ -17,6 +17,7 @@
 </head>
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#8FA9B5] min-h-screen">
     <main class="container mx-auto px-6 py-8">
+        <!-- Main content / Contenido principal -->
         <div class="max-w-2xl mx-auto">
             <div class="bg-gradient-to-r from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8 mb-8">
                 <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
@@ -25,11 +26,14 @@
                 </h1>
                 <p class="text-[#A8C5D6]">Actualiza la información del usuario seleccionado</p>
             </div>
-
+        
+            <!-- Form to update the user information / Formulario para actualizar la información del usuario -->
             <form action="/admin/edituser/<?=($user['user_id']) ?>" method="POST" enctype="multipart/form-data" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
                 <input type="hidden" name="user_id" value="<?=($user['user_id']) ?>">
                 <div class="mb-6">
+                    <!-- Name label / Etiqueta de nombre -->
                     <label for="name" class="block text-[#A8C5D6] font-medium mb-2">Nombre</label>
+                    <!-- Name input / Campo de nombre -->
                     <input type="text" 
                            id="name" 
                            name="name" 
@@ -39,7 +43,9 @@
                 </div>
 
                 <div class="mb-6">
+                    <!-- Surname label / Etiqueta de apellido -->
                     <label for="surname" class="block text-[#A8C5D6] font-medium mb-2">Apellido</label>
+                    <!-- Surname input / Campo de apellido -->
                     <input type="text" 
                            id="surname" 
                            name="surname" 
@@ -49,7 +55,9 @@
                 </div>
 
                 <div class="mb-6">
+                    <!-- Username label / Etiqueta de usuario -->
                     <label for="username" class="block text-[#A8C5D6] font-medium mb-2">Usuario</label>
+                    <!-- Username input / Campo de usuario -->
                     <input type="text" 
                            id="username" 
                            name="username" 
@@ -59,7 +67,9 @@
                 </div>
 
                 <div class="mb-6">
+                    <!-- Email label / Etiqueta de correo electrónico -->
                     <label for="email" class="block text-[#A8C5D6] font-medium mb-2">Email</label>
+                    <!-- Email input / Campo de correo electrónico -->
                     <input type="email" 
                            id="email" 
                            name="email" 
@@ -69,17 +79,22 @@
                 </div>
 
                 <div class="mb-6">
+                    <!-- Role label / Etiqueta de rol -->
                     <label for="role" class="block text-[#A8C5D6] font-medium mb-2">Rol</label>
+                    <!-- Role select / Selección de rol -->
                     <select id="role" 
                             name="role" 
                             class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white" 
                             required>
                         <option value="admin" <?= ($user['role'] === 'admin') ? 'selected' : '' ?>>Administrador</option>
                         <option value="user" <?= ($user['role'] === 'user') ? 'selected' : '' ?>>Usuario</option>
+                        <option value="tecnico" <?= ($user['role'] === 'tecnico') ? 'selected' : '' ?>>Técnico</option>
+                        <option value="supervisor" <?= ($user['role'] === 'supervisor') ? 'selected' : '' ?>>Supervisor</option>
                     </select>
                 </div>
 
                 <div class="mb-6">
+                    <!-- Current profile picture label / Etiqueta de imagen de perfil actual -->
                     <label class="block text-[#A8C5D6] font-medium mb-4">Imagen de perfil actual</label>
                     <div class="bg-[#132048] p-6 rounded-lg border border-[#577788]">
                         <?php if (!empty($user['profile_pic'])): ?>
@@ -104,10 +119,12 @@
                 </div>
 
                 <div class="mb-6">
-                    <label for="profile_pic" class="block text-[#A8C5D6] font-medium mb-2">
+                    <!-- New profile picture label / Etiqueta de nueva imagen de perfil -->
+                        <label for="profile_pic" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-camera mr-2 text-[#5DA6C3]"></i>
                         Nueva imagen de perfil
                     </label>
+                    <!-- New profile picture input / Campo de nueva imagen de perfil -->
                     <div class="bg-[#132048] p-6 rounded-lg border border-[#577788] hover:border-[#5DA6C3] transition-colors">
                         <div class="flex items-center justify-center w-full">
                             <label for="profile_pic" class="flex flex-col items-center justify-center w-full cursor-pointer">
@@ -126,7 +143,7 @@
                     </div>
                     <p class="mt-2 text-sm text-[#577788]">Deja este campo vacío si no deseas cambiar la imagen actual</p>
                 </div>
-
+                <!-- Buttons / Botones -->
                 <div class="flex space-x-4">
                     <button type="submit"
                             class="flex-1 bg-gradient-to-r from-[#478249] to-[#539959] text-white py-3 px-6 rounded-lg hover:from-[#2D3F58] hover:to-[#3A516D] transition-all duration-300 font-medium flex items-center justify-center">

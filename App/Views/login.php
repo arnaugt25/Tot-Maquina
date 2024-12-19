@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#214969] min-h-screen flex flex-col">
-    <!-- Contenido Principal -->
+    <!-- Main content / Contenido Principal -->
     <main class="flex-grow container mx-auto px-6 py-12 flex items-center justify-center">
         <div class="w-full max-w-md">
-            <!-- Card principal -->
+            <!-- Main card / Tarjeta principal -->
             <div class="bg-[#214969] rounded-2xl shadow-2xl p-8 border border-[#577788]">
                 <div class="text-center mb-8">
                     <div class="inline-block p-4 rounded-full bg-[#132048] mb-4">
@@ -29,7 +29,7 @@
                 </div>
 
                 <form action="/login" method="POST" class="space-y-6">
-                    <!-- Campo Usuario -->
+                    <!-- User field / Campo de usuario -->
                     <div class="space-y-2">
                         <label for="username" class="block text-sm font-medium text-[#C1D1D8] ml-1">
                             Usuario
@@ -44,7 +44,7 @@
                         </div>
                     </div>
 
-                    <!-- Campo Contraseña -->
+                    <!-- Password field / Campo de contraseña -->
                     <div class="space-y-2">
                         <label for="password" class="block text-sm font-medium text-[#C1D1D8] ml-1">
                             Contraseña
@@ -59,13 +59,13 @@
                         </div>
                     </div>
 
-                    <!-- Botón de login -->
+                    <!-- Login button / Botón de login -->
                     <button type="submit"
                         class="w-full bg-[#051425] hover:bg-[#132048] text-[#C1D1D8] py-3 rounded-xl transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                         Iniciar Sesión
                     </button>
                 </form>
-
+                <!-- Error message / Mensaje de error -->
                 <?php if (isset($error) && $error != "") { ?>
                     <div class="mt-4 bg-[#132048] text-[#C1D1D8] p-4 rounded-xl border border-red-500/30">
                         <div class="flex items-center space-x-2">

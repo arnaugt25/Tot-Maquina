@@ -17,10 +17,10 @@
 <body class="bg-gradient-to-br from-[#C1D1D8] to-[#8FA9B5] min-h-screen">
     <!-- Header -->
     <header class="bg-[#0C0C04] text-white">
-        <!-- Barra de navegación principal -->
+        <!-- Main navigation bar / Barra de navegación principal -->
         <nav class="container mx-auto px-6">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo y nombre -->
+                <!-- Logo and name / Logo y nombre -->
                 <div class="flex items-center space-x-4">
                     <img src="/uploads/logototmaquina.png"" alt="Logo" class="h-20 transition-transform hover:scale-105">
                     <span class="text-xl font-bold text-[#5DA6C3]">Tot Maquina</span>
@@ -29,10 +29,10 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal -->
+    <!-- Main content / Contenido principal -->
     <main class="container mx-auto px-6 py-8">
         <div class="max-w-2xl mx-auto">
-            <!-- Cabecera del formulario -->
+            <!-- Form header / Cabecera del formulario -->
             <div class="bg-gradient-to-r from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8 mb-8">
                 <h1 class="text-3xl font-bold text-white mb-4 flex items-center">
                     <i class="fas fa-user-edit mr-4 text-[#5DA6C3]"></i>
@@ -43,7 +43,7 @@
 
             <!-- Formulario -->
             <form action="/profile/update" method="POST" enctype="multipart/form-data" class="bg-gradient-to-br from-[#214969] to-[#2C5F88] rounded-xl shadow-2xl p-8">
-                <!-- Nombre -->
+                <!-- Name input / Campo de nombre -->
                 <div class="mb-6">
                     <label for="name" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-user mr-2 text-[#5DA6C3]"></i>
@@ -54,7 +54,7 @@
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all">
                 </div>
 
-                <!-- Apellido -->
+                <!-- Surname input / Campo de apellido -->
                 <div class="mb-6">
                     <label for="surname" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-user mr-2 text-[#5DA6C3]"></i>
@@ -65,7 +65,7 @@
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all">
                 </div>
 
-                <!-- Email -->
+                <!-- Email input / Campo de correo electrónico -->
                 <div class="mb-6">
                     <label for="email" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-envelope mr-2 text-[#5DA6C3]"></i>
@@ -76,7 +76,7 @@
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all">
                 </div>
 
-                <!-- Foto de Perfil Combinado -->
+                <!-- Profile picture combined / Foto de perfil combinada -->
                 <div class="mb-8">
                     <label class="block text-[#A8C5D6] font-medium mb-4">
                         <i class="fas fa-camera mr-2 text-[#5DA6C3]"></i>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-                <!-- Contraseña -->
+                <!-- Password input / Campo de contraseña -->
                 <div class="mb-8">
                     <label for="new_password" class="block text-[#A8C5D6] font-medium mb-2">
                         <i class="fas fa-lock mr-2 text-[#5DA6C3]"></i>
@@ -122,7 +122,7 @@
                         class="w-full bg-[#132048] border border-[#577788] rounded-lg px-4 py-3 text-white placeholder-[#577788] focus:outline-none focus:border-[#5DA6C3] focus:ring-2 focus:ring-[#5DA6C3]/50 transition-all">
                 </div>
 
-                <!-- Botones -->
+                <!-- Buttons / Botones -->
                 <div class="flex space-x-4">
                     <button type="submit"
                         class="flex-1 bg-gradient-to-r from-[#478249] to-[#539959] text-white py-3 px-6 rounded-lg hover:from-[#2D3F58] hover:to-[#3A516D] transition-all duration-300 font-medium flex items-center justify-center">
@@ -137,7 +137,7 @@
                 </div>
             </form>
 
-            <!-- Mensajes de error -->
+            <!-- Error messages / Mensajes de error -->
             <?php if (isset($error) && $error != "") { ?>
                 <div class="mt-6 bg-red-500/10 border border-red-500/30 rounded-lg p-4">
                     <div class="flex items-center text-red-500">
