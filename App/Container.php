@@ -19,16 +19,7 @@ class Container extends EmesetContainer {
                 $c->get("config")["db"]["name"],
                 $c->get("config")["db"]["host"]));
         };
-
-        $this["Machines"] = function($container) { 
-            return new \App\Models\Machine(
-                $container->get("config")["db"]["user"],
-                $container->get("config")["db"]["pass"],
-                $container->get("config")["db"]["name"],
-                $container->get("config")["db"]["host"]
-            );
-        };
-
+        
         $this["Users"] = function ($c) {
             $db = $c->get("db");
             $config = $c->get("config");

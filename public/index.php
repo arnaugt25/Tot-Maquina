@@ -95,5 +95,4 @@ $app->route("/admin/forminci", [\App\Controllers\ctrlFormInci::class, "ctrlFormI
 
 // Ruta por defecto (error) (Default route (error))
 $app->route(Router::DEFAULT_ROUTE, "ctrlError");
-
 $app->execute();
