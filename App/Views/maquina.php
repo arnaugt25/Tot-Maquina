@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="es">
 
   <head>
@@ -165,27 +165,41 @@
           <?php endif; ?>
         </div>
       </div>
-      <!-- Botones -->
-      <div class="flex justify-center mt-8">
-        <a href="/history/<?= htmlspecialchars($machine['machine_id']) ?>"
-          class="bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center w-1/2">
-          <i class="fas fa-plus mr-2"></i>
-          Ver historial
-        </a>
-      </div>
-      <!-- Mapa de ubicación y botones -->
-      <div class="mt-8 bg-[#214969] p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-semibold mb-4 text-[#5DA6C3]">Ubicación de la máquina</h2>
-        <div id="individualMap" class="w-full h-[400px] rounded-lg"></div>
-      </div>
+      <!-- Imagen de la máquina -->
+      <div class="flex justify-between items-center mb-6">
+          <div class="relative group mb-6">
+            <img class="w-full h-64 object-cover rounded-lg shadow-lg transition-all duration-300 group-hover:scale-105"
+              src="<?= !empty($machine['image']) ? htmlspecialchars($machine['image']) : '/uploads/default-machine.jpg' ?>" 
+              alt="Máquina <?= htmlspecialchars($machine['model']) ?> - <?= htmlspecialchars($machine['serial_number']) ?>"
+            >
+          </div>
+        </div>
 
+        <!-- Botón de Ver Historial -->
+        <div class="mb-8">
+          <a href="/history/<?= htmlspecialchars($machine['machine_id']) ?>"
+            class="w-1/2 mx-auto bg-[#478249] hover:bg-[#5DA6C3] text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-center inline-block">
+            <i class="fas fa-history mr-2"></i>
+            Ver historial
+          </a>
+        </div>
 
+        
+      <!-- Mapa de ubicación -->
+      <div class="mt-16 w-[90vw] relative left-0 -mx-[45vw]">
+        <div class="bg-[#214969] p-6 rounded-lg shadow-lg text-white mb-4">
+          <h2 class="text-2xl font-semibold text-[#5DA6C3]">Ubicación de la máquina</h2>
+          <div id="individualMap" class="w-full h-[400px]"></div>
+        </div>
+        
+      </div>
+      </div>
     </main>
 
     <!-- Include Leaflet CSS and JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
+            
     <!-- Include bundled JS -->
     <script src="/js/bundle.js"></script>
     <script>
